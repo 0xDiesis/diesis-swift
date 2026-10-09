@@ -1,0 +1,4 @@
+Sources/Diesis/Generated/**
+Sources/Diesis/Addresses.swift
+Sources/Diesis/Chains+Generated.swift
+Sources/Diesis/Contracts+Generated.swift
