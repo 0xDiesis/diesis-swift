@@ -8,7 +8,7 @@ import web3swift
 /// Types and constants of the `IDiesisPerpsBook` contract.
 public enum IDiesisPerpsBook {
     /// JSON ABI of the `IDiesisPerpsBook` contract.
-    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"int256","name":"marginDelta","type":"int256"}],"name":"adjustIsolatedMargin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"policyHash","type":"bytes32"}],"name":"advancePricedPerpRuntime","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"amendPerpOrder","outputs":[{"internalType":"bytes32","name":"replacementOrderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"int256","name":"fundingRateBps","type":"int256"}],"name":"applyPerpFunding","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"cancelPerpOrder","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"makerOrderId","type":"bytes32"},{"internalType":"bytes32","name":"takerOrderId","type":"bytes32"},{"internalType":"uint256","name":"fillPrice","type":"uint256"},{"internalType":"uint256","name":"fillQty","type":"uint256"}],"name":"executePerpTrade","outputs":[{"internalType":"bytes32","name":"clearingTransactionId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"expirePerpOrder","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint64","name":"epoch","type":"uint64"},{"internalType":"bytes32","name":"snapshotHash","type":"bytes32"}],"name":"finalizePerpFeeEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"trader","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getIsolatedMargin","outputs":[{"internalType":"uint256","name":"isolatedMargin","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"trader","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getPosition","outputs":[{"components":[{"internalType":"bytes32","name":"header","type":"bytes32"},{"internalType":"uint256","name":"size","type":"uint256"},{"internalType":"uint256","name":"entryPrice","type":"uint256"}],"internalType":"struct IDiesisPerpsBook.PackedPosition","name":"position","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes","name":"encodedWrapper","type":"bytes"}],"name":"submitBoundSessionActions","outputs":[{"internalType":"bytes32","name":"resultHash","type":"bytes32"},{"internalType":"uint16","name":"acceptedCount","type":"uint16"},{"internalType":"uint16","name":"rejectedCount","type":"uint16"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"encodedActions","type":"bytes"}],"name":"submitExchangeActions","outputs":[{"internalType":"bytes32","name":"resultHash","type":"bytes32"},{"internalType":"uint16","name":"acceptedCount","type":"uint16"},{"internalType":"uint16","name":"rejectedCount","type":"uint16"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"side","type":"uint8"},{"internalType":"uint8","name":"orderType","type":"uint8"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint8","name":"flags","type":"uint8"},{"internalType":"uint8","name":"marginType","type":"uint8"},{"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"submitPerpOrder","outputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"signedEnvelope","type":"bytes"}],"name":"submitSponsoredPerpActions","outputs":[{"internalType":"bytes32","name":"batchId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"markPrice","type":"uint256"}],"name":"updatePerpMark","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"indexPrice","type":"uint256"},{"internalType":"uint256","name":"markPrice","type":"uint256"},{"internalType":"uint64","name":"observedAt","type":"uint64"},{"internalType":"uint64","name":"oracleRound","type":"uint64"},{"internalType":"bytes32","name":"sourceSetHash","type":"bytes32"},{"internalType":"bytes32","name":"evidenceHash","type":"bytes32"}],"name":"updatePerpOracle","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"payload","type":"bytes"}],"name":"updatePricedOracle","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"bytes32","name":"resultId","type":"bytes32"}],"name":"ExchangeActionAccepted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"uint16","name":"reasonCode","type":"uint16"},{"indexed":false,"internalType":"bytes32","name":"context","type":"bytes32"}],"name":"ExchangeActionRejected","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"mutation","type":"uint8"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint64","name":"priceTicks","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"quantityLots","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"remainingLots","type":"uint64"}],"name":"ExchangeL3Mutation","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"int256","name":"fundingRate","type":"int256"},{"indexed":false,"internalType":"uint64","name":"timestamp","type":"uint64"}],"name":"FundingApplied","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"marginDelta","type":"int256"},{"indexed":false,"internalType":"uint256","name":"newIsolatedMargin","type":"uint256"}],"name":"IsolatedMarginAdjusted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"timestamp","type":"uint256"}],"name":"MarkPriceUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"}],"name":"OrderCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"fillQty","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fillPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"remainingAmount","type":"uint256"},{"indexed":false,"internalType":"bool","name":"complete","type":"bool"}],"name":"OrderFilled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint8","name":"flags","type":"uint8"}],"name":"OrderPlaced","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"realizedPnl","type":"int256"}],"name":"PositionClosed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"collateralDelta","type":"int256"},{"indexed":false,"internalType":"uint256","name":"newClaim","type":"uint256"}],"name":"PositionCollateralAdjusted","type":"event"}]"#
+    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"int256","name":"marginDelta","type":"int256"}],"name":"adjustIsolatedMargin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"amendPerpOrderV1","outputs":[{"internalType":"bytes32","name":"replacementOrderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"int256","name":"fundingRateBps","type":"int256"}],"name":"applyPerpFundingV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"cancelPerpOrderV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"makerOrderId","type":"bytes32"},{"internalType":"bytes32","name":"takerOrderId","type":"bytes32"},{"internalType":"uint256","name":"fillPrice","type":"uint256"},{"internalType":"uint256","name":"fillQty","type":"uint256"}],"name":"executePerpTradeV1","outputs":[{"internalType":"bytes32","name":"clearingTransactionId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"expirePerpOrderV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint64","name":"epoch","type":"uint64"},{"internalType":"bytes32","name":"snapshotHash","type":"bytes32"}],"name":"finalizePerpFeeEpochV2","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"trader","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getIsolatedMargin","outputs":[{"internalType":"uint256","name":"isolatedMargin","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"trader","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getPosition","outputs":[{"components":[{"internalType":"bytes32","name":"header","type":"bytes32"},{"internalType":"uint256","name":"size","type":"uint256"},{"internalType":"uint256","name":"entryPrice","type":"uint256"}],"internalType":"struct IDiesisPerpsBook.PackedPosition","name":"position","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes","name":"encodedActions","type":"bytes"}],"name":"submitExchangeActionsV2","outputs":[{"internalType":"bytes32","name":"resultHash","type":"bytes32"},{"internalType":"uint16","name":"acceptedCount","type":"uint16"},{"internalType":"uint16","name":"rejectedCount","type":"uint16"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"side","type":"uint8"},{"internalType":"uint8","name":"orderType","type":"uint8"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint8","name":"flags","type":"uint8"},{"internalType":"uint8","name":"marginType","type":"uint8"},{"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"submitPerpOrderV1","outputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"signedEnvelope","type":"bytes"}],"name":"submitSignedPerpActionsV2","outputs":[{"internalType":"bytes32","name":"batchId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"markPrice","type":"uint256"}],"name":"updatePerpMarkV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"indexPrice","type":"uint256"},{"internalType":"uint256","name":"markPrice","type":"uint256"},{"internalType":"uint64","name":"observedAt","type":"uint64"},{"internalType":"uint64","name":"oracleRound","type":"uint64"},{"internalType":"bytes32","name":"sourceSetHash","type":"bytes32"},{"internalType":"bytes32","name":"evidenceHash","type":"bytes32"}],"name":"updatePerpOracleV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"bytes32","name":"resultId","type":"bytes32"}],"name":"ExchangeActionAcceptedV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"uint16","name":"reasonCode","type":"uint16"},{"indexed":false,"internalType":"bytes32","name":"context","type":"bytes32"}],"name":"ExchangeActionRejectedV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"mutation","type":"uint8"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint64","name":"priceTicks","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"quantityLots","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"remainingLots","type":"uint64"}],"name":"ExchangeL3MutationV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"int256","name":"fundingRate","type":"int256"},{"indexed":false,"internalType":"uint64","name":"timestamp","type":"uint64"}],"name":"FundingApplied","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"marginDelta","type":"int256"},{"indexed":false,"internalType":"uint256","name":"newIsolatedMargin","type":"uint256"}],"name":"IsolatedMarginAdjusted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"timestamp","type":"uint256"}],"name":"MarkPriceUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"}],"name":"OrderCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"fillQty","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fillPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"remainingAmount","type":"uint256"},{"indexed":false,"internalType":"bool","name":"complete","type":"bool"}],"name":"OrderFilled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint8","name":"flags","type":"uint8"}],"name":"OrderPlaced","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"realizedPnl","type":"int256"}],"name":"PositionClosed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"collateralDelta","type":"int256"},{"indexed":false,"internalType":"uint256","name":"newClaim","type":"uint256"}],"name":"PositionCollateralAdjusted","type":"event"}]"#
 
     /// Canonical signature of `adjustIsolatedMargin(bytes32,int256)`.
     public static let adjustIsolatedMarginSignature = "adjustIsolatedMargin(bytes32,int256)"
@@ -16,47 +16,41 @@ public enum IDiesisPerpsBook {
     /// Selector of `adjustIsolatedMargin(bytes32,int256)`.
     public static let adjustIsolatedMarginSelector = Data([0xea, 0x26, 0x30, 0xbc])
 
-    /// Canonical signature of `advancePricedPerpRuntime(bytes32)`.
-    public static let advancePricedPerpRuntimeSignature = "advancePricedPerpRuntime(bytes32)"
+    /// Canonical signature of `amendPerpOrderV1(bytes32,uint256,uint256,uint64)`.
+    public static let amendPerpOrderV1Signature = "amendPerpOrderV1(bytes32,uint256,uint256,uint64)"
 
-    /// Selector of `advancePricedPerpRuntime(bytes32)`.
-    public static let advancePricedPerpRuntimeSelector = Data([0xe1, 0x3d, 0x5c, 0x47])
+    /// Selector of `amendPerpOrderV1(bytes32,uint256,uint256,uint64)`.
+    public static let amendPerpOrderV1Selector = Data([0xb4, 0xa9, 0x5c, 0x17])
 
-    /// Canonical signature of `amendPerpOrder(bytes32,uint256,uint256,uint64)`.
-    public static let amendPerpOrderSignature = "amendPerpOrder(bytes32,uint256,uint256,uint64)"
+    /// Canonical signature of `applyPerpFundingV1(bytes32,int256)`.
+    public static let applyPerpFundingV1Signature = "applyPerpFundingV1(bytes32,int256)"
 
-    /// Selector of `amendPerpOrder(bytes32,uint256,uint256,uint64)`.
-    public static let amendPerpOrderSelector = Data([0xef, 0xa5, 0x8c, 0xa6])
+    /// Selector of `applyPerpFundingV1(bytes32,int256)`.
+    public static let applyPerpFundingV1Selector = Data([0xf0, 0xe8, 0x16, 0x77])
 
-    /// Canonical signature of `applyPerpFunding(bytes32,int256)`.
-    public static let applyPerpFundingSignature = "applyPerpFunding(bytes32,int256)"
+    /// Canonical signature of `cancelPerpOrderV1(bytes32)`.
+    public static let cancelPerpOrderV1Signature = "cancelPerpOrderV1(bytes32)"
 
-    /// Selector of `applyPerpFunding(bytes32,int256)`.
-    public static let applyPerpFundingSelector = Data([0xdb, 0xb4, 0x69, 0xae])
+    /// Selector of `cancelPerpOrderV1(bytes32)`.
+    public static let cancelPerpOrderV1Selector = Data([0x21, 0xc2, 0x02, 0xd4])
 
-    /// Canonical signature of `cancelPerpOrder(bytes32)`.
-    public static let cancelPerpOrderSignature = "cancelPerpOrder(bytes32)"
+    /// Canonical signature of `executePerpTradeV1(bytes32,bytes32,uint256,uint256)`.
+    public static let executePerpTradeV1Signature = "executePerpTradeV1(bytes32,bytes32,uint256,uint256)"
 
-    /// Selector of `cancelPerpOrder(bytes32)`.
-    public static let cancelPerpOrderSelector = Data([0xd7, 0xf8, 0x75, 0x90])
+    /// Selector of `executePerpTradeV1(bytes32,bytes32,uint256,uint256)`.
+    public static let executePerpTradeV1Selector = Data([0x89, 0x87, 0x72, 0xb8])
 
-    /// Canonical signature of `executePerpTrade(bytes32,bytes32,uint256,uint256)`.
-    public static let executePerpTradeSignature = "executePerpTrade(bytes32,bytes32,uint256,uint256)"
+    /// Canonical signature of `expirePerpOrderV1(bytes32)`.
+    public static let expirePerpOrderV1Signature = "expirePerpOrderV1(bytes32)"
 
-    /// Selector of `executePerpTrade(bytes32,bytes32,uint256,uint256)`.
-    public static let executePerpTradeSelector = Data([0x00, 0x67, 0x53, 0x1e])
+    /// Selector of `expirePerpOrderV1(bytes32)`.
+    public static let expirePerpOrderV1Selector = Data([0xa2, 0xc8, 0x64, 0x02])
 
-    /// Canonical signature of `expirePerpOrder(bytes32)`.
-    public static let expirePerpOrderSignature = "expirePerpOrder(bytes32)"
+    /// Canonical signature of `finalizePerpFeeEpochV2(bytes32,uint64,bytes32)`.
+    public static let finalizePerpFeeEpochV2Signature = "finalizePerpFeeEpochV2(bytes32,uint64,bytes32)"
 
-    /// Selector of `expirePerpOrder(bytes32)`.
-    public static let expirePerpOrderSelector = Data([0xbd, 0x97, 0x04, 0x8f])
-
-    /// Canonical signature of `finalizePerpFeeEpoch(bytes32,uint64,bytes32)`.
-    public static let finalizePerpFeeEpochSignature = "finalizePerpFeeEpoch(bytes32,uint64,bytes32)"
-
-    /// Selector of `finalizePerpFeeEpoch(bytes32,uint64,bytes32)`.
-    public static let finalizePerpFeeEpochSelector = Data([0x9f, 0x63, 0x73, 0xeb])
+    /// Selector of `finalizePerpFeeEpochV2(bytes32,uint64,bytes32)`.
+    public static let finalizePerpFeeEpochV2Selector = Data([0x52, 0x1f, 0x5d, 0x0c])
 
     /// Canonical signature of `getIsolatedMargin(address,bytes32)`.
     public static let getIsolatedMarginSignature = "getIsolatedMargin(address,bytes32)"
@@ -70,65 +64,53 @@ public enum IDiesisPerpsBook {
     /// Selector of `getPosition(address,bytes32)`.
     public static let getPositionSelector = Data([0x0f, 0xa8, 0xf5, 0x16])
 
-    /// Canonical signature of `submitBoundSessionActions(bytes)`.
-    public static let submitBoundSessionActionsSignature = "submitBoundSessionActions(bytes)"
+    /// Canonical signature of `submitExchangeActionsV2(bytes)`.
+    public static let submitExchangeActionsV2Signature = "submitExchangeActionsV2(bytes)"
 
-    /// Selector of `submitBoundSessionActions(bytes)`.
-    public static let submitBoundSessionActionsSelector = Data([0x1c, 0xf0, 0x5d, 0xa9])
+    /// Selector of `submitExchangeActionsV2(bytes)`.
+    public static let submitExchangeActionsV2Selector = Data([0x88, 0x1c, 0x51, 0xde])
 
-    /// Canonical signature of `submitExchangeActions(bytes)`.
-    public static let submitExchangeActionsSignature = "submitExchangeActions(bytes)"
+    /// Canonical signature of `submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)`.
+    public static let submitPerpOrderV1Signature = "submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)"
 
-    /// Selector of `submitExchangeActions(bytes)`.
-    public static let submitExchangeActionsSelector = Data([0xd4, 0x7b, 0x70, 0x4f])
+    /// Selector of `submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)`.
+    public static let submitPerpOrderV1Selector = Data([0xa6, 0xc4, 0x0b, 0x3c])
 
-    /// Canonical signature of `submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)`.
-    public static let submitPerpOrderSignature = "submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)"
+    /// Canonical signature of `submitSignedPerpActionsV2(bytes)`.
+    public static let submitSignedPerpActionsV2Signature = "submitSignedPerpActionsV2(bytes)"
 
-    /// Selector of `submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)`.
-    public static let submitPerpOrderSelector = Data([0x08, 0x18, 0x63, 0x90])
+    /// Selector of `submitSignedPerpActionsV2(bytes)`.
+    public static let submitSignedPerpActionsV2Selector = Data([0xab, 0xde, 0x9b, 0x72])
 
-    /// Canonical signature of `submitSponsoredPerpActions(bytes)`.
-    public static let submitSponsoredPerpActionsSignature = "submitSponsoredPerpActions(bytes)"
+    /// Canonical signature of `updatePerpMarkV1(bytes32,uint256)`.
+    public static let updatePerpMarkV1Signature = "updatePerpMarkV1(bytes32,uint256)"
 
-    /// Selector of `submitSponsoredPerpActions(bytes)`.
-    public static let submitSponsoredPerpActionsSelector = Data([0x22, 0xdb, 0xf5, 0x41])
+    /// Selector of `updatePerpMarkV1(bytes32,uint256)`.
+    public static let updatePerpMarkV1Selector = Data([0x38, 0xea, 0x0b, 0xe1])
 
-    /// Canonical signature of `updatePerpMark(bytes32,uint256)`.
-    public static let updatePerpMarkSignature = "updatePerpMark(bytes32,uint256)"
+    /// Canonical signature of `updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)`.
+    public static let updatePerpOracleV1Signature = "updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)"
 
-    /// Selector of `updatePerpMark(bytes32,uint256)`.
-    public static let updatePerpMarkSelector = Data([0x6e, 0xe8, 0x32, 0xf9])
+    /// Selector of `updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)`.
+    public static let updatePerpOracleV1Selector = Data([0xeb, 0xf1, 0x8a, 0x92])
 
-    /// Canonical signature of `updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)`.
-    public static let updatePerpOracleSignature = "updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)"
+    /// Canonical signature of the `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
+    public static let exchangeActionAcceptedV2EventSignature = "ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)"
 
-    /// Selector of `updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)`.
-    public static let updatePerpOracleSelector = Data([0x85, 0x5d, 0xc9, 0x76])
+    /// Topic 0 of the `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
+    public static let exchangeActionAcceptedV2EventTopic = Data([0x3c, 0xa6, 0xab, 0x0c, 0x03, 0x16, 0xf6, 0x31, 0x3b, 0xc2, 0x0a, 0xbb, 0xc2, 0xdc, 0x76, 0x91, 0x33, 0x83, 0x4b, 0x25, 0x42, 0x5e, 0x93, 0xa8, 0x65, 0xb9, 0xef, 0x08, 0x92, 0xd8, 0x3e, 0x2f])
 
-    /// Canonical signature of `updatePricedOracle(bytes)`.
-    public static let updatePricedOracleSignature = "updatePricedOracle(bytes)"
+    /// Canonical signature of the `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
+    public static let exchangeActionRejectedV2EventSignature = "ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)"
 
-    /// Selector of `updatePricedOracle(bytes)`.
-    public static let updatePricedOracleSelector = Data([0x96, 0xfb, 0xe9, 0x71])
+    /// Topic 0 of the `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
+    public static let exchangeActionRejectedV2EventTopic = Data([0x91, 0x9a, 0x92, 0xf6, 0xca, 0xb2, 0xe0, 0x2a, 0x05, 0x99, 0xf1, 0xc7, 0x6a, 0xb5, 0x64, 0x59, 0x7a, 0xc5, 0x48, 0x73, 0xd0, 0x64, 0xae, 0x7b, 0x21, 0xc5, 0xba, 0x8a, 0x87, 0x44, 0xd9, 0x58])
 
-    /// Canonical signature of the `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
-    public static let exchangeActionAcceptedEventSignature = "ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)"
+    /// Canonical signature of the `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
+    public static let exchangeL3MutationV2EventSignature = "ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)"
 
-    /// Topic 0 of the `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
-    public static let exchangeActionAcceptedEventTopic = Data([0x9f, 0xd3, 0x56, 0x6e, 0x39, 0xf1, 0x4b, 0x3c, 0x59, 0x39, 0x67, 0xcf, 0x13, 0xd7, 0xe1, 0x1e, 0x65, 0xda, 0xfe, 0xd9, 0xc4, 0xa3, 0xbf, 0xea, 0xb3, 0x95, 0x04, 0xf8, 0x93, 0xa7, 0x21, 0x58])
-
-    /// Canonical signature of the `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
-    public static let exchangeActionRejectedEventSignature = "ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)"
-
-    /// Topic 0 of the `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
-    public static let exchangeActionRejectedEventTopic = Data([0x70, 0x93, 0x7d, 0x7f, 0x95, 0x95, 0xdc, 0x38, 0x7b, 0x9e, 0x50, 0xf4, 0x55, 0xa2, 0x40, 0xb0, 0x83, 0x07, 0x50, 0xa1, 0x7e, 0xc1, 0xbe, 0x43, 0x73, 0xc1, 0x43, 0xfc, 0x5d, 0xde, 0x1b, 0x54])
-
-    /// Canonical signature of the `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
-    public static let exchangeL3MutationEventSignature = "ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)"
-
-    /// Topic 0 of the `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
-    public static let exchangeL3MutationEventTopic = Data([0x2a, 0x5a, 0x4f, 0xc8, 0x32, 0x4c, 0x7e, 0x62, 0x21, 0x3e, 0x49, 0xae, 0xe2, 0x38, 0x83, 0x74, 0x6c, 0x43, 0x98, 0xed, 0x74, 0xbd, 0x31, 0xd2, 0xec, 0xcc, 0x48, 0xde, 0x31, 0x02, 0x67, 0x34])
+    /// Topic 0 of the `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
+    public static let exchangeL3MutationV2EventTopic = Data([0x08, 0x3d, 0x99, 0xce, 0xa6, 0x49, 0xc1, 0xd1, 0x15, 0xfc, 0x1f, 0x70, 0xb8, 0x04, 0x5c, 0x9b, 0x19, 0x86, 0x34, 0xbd, 0x9b, 0x28, 0x6c, 0xc4, 0x3a, 0x59, 0x5e, 0x2f, 0x53, 0x28, 0xfb, 0xdd])
 
     /// Canonical signature of the `FundingApplied(bytes32,int256,uint64)` event.
     public static let fundingAppliedEventSignature = "FundingApplied(bytes32,int256,uint64)"
@@ -205,22 +187,10 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `advancePricedPerpRuntime(bytes32)`.
-    ///
-    /// Request the system-owned canonical priced runtime tick.
-    /// Inactive until qualified runtime activation. Every caller currently reverts. Future execution requires authenticated selected authority and a matching policy hash.
-    public struct AdvancePricedPerpRuntimeParams: Sendable, Hashable {
-        public let policyHash: Data
-
-        public init(policyHash: Data) {
-            self.policyHash = policyHash
-        }
-    }
-
-    /// Arguments of `amendPerpOrder(bytes32,uint256,uint256,uint64)`.
+    /// Arguments of `amendPerpOrderV1(bytes32,uint256,uint256,uint64)`.
     ///
     /// Atomically cancel and replace an order with new price, amount, expiry, canonical margin reservation, and priority identity.
-    public struct AmendPerpOrderParams: Sendable, Hashable {
+    public struct AmendPerpOrderV1Params: Sendable, Hashable {
         public let orderId: Data
         public let price: BigUInt
         public let amount: BigUInt
@@ -234,11 +204,11 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `applyPerpFunding(bytes32,int256)`.
+    /// Arguments of `applyPerpFundingV1(bytes32,int256)`.
     ///
     /// Advance canonical funding through solvency-frontier segments.
     /// System-only and bounded to the protocol funding-rate limit.
-    public struct ApplyPerpFundingParams: Sendable, Hashable {
+    public struct ApplyPerpFundingV1Params: Sendable, Hashable {
         public let marketId: Data
         public let fundingRateBps: BigInt
 
@@ -248,10 +218,10 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `cancelPerpOrder(bytes32)`.
+    /// Arguments of `cancelPerpOrderV1(bytes32)`.
     ///
     /// Cancel an owned V1 order and return all unused canonical margin.
-    public struct CancelPerpOrderParams: Sendable, Hashable {
+    public struct CancelPerpOrderV1Params: Sendable, Hashable {
         public let orderId: Data
 
         public init(orderId: Data) {
@@ -259,11 +229,11 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `executePerpTrade(bytes32,bytes32,uint256,uint256)`.
+    /// Arguments of `executePerpTradeV1(bytes32,bytes32,uint256,uint256)`.
     ///
     /// Commit one system-owned opposite-side fill through canonical clearing.
     /// Reads and validates both stored V1 orders, derives deterministic maker/taker fees and persistent frontier proofs, then commits the PreparedClearingTransactionV1 and both order consumptions under one outer EVM checkpoint. The lower order ID is the canonical maker.
-    public struct ExecutePerpTradeParams: Sendable, Hashable {
+    public struct ExecutePerpTradeV1Params: Sendable, Hashable {
         public let makerOrderId: Data
         public let takerOrderId: Data
         public let fillPrice: BigUInt
@@ -277,10 +247,10 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `expirePerpOrder(bytes32)`.
+    /// Arguments of `expirePerpOrderV1(bytes32)`.
     ///
     /// Permissionlessly expire a GTD order after its canonical deadline.
-    public struct ExpirePerpOrderParams: Sendable, Hashable {
+    public struct ExpirePerpOrderV1Params: Sendable, Hashable {
         public let orderId: Data
 
         public init(orderId: Data) {
@@ -288,11 +258,11 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `finalizePerpFeeEpoch(bytes32,uint64,bytes32)`.
+    /// Arguments of `finalizePerpFeeEpochV2(bytes32,uint64,bytes32)`.
     ///
     /// Finalize the exact stored snapshot of one closed fee epoch.
     /// Native queue/accounting behavior is introduced by X4b M3. This declaration prevents public ABI drift before that implementation.
-    public struct FinalizePerpFeeEpochParams: Sendable, Hashable {
+    public struct FinalizePerpFeeEpochV2Params: Sendable, Hashable {
         public let marketId: Data
         public let epoch: BigUInt
         public let snapshotHash: Data
@@ -330,23 +300,11 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `submitBoundSessionActions(bytes)`.
-    ///
-    /// Proposed ordinary-caller bound-session V3 action wrapper.
-    /// Inactive until a separately accepted resource policy and dispatch revision. DXS3 contains the expected principal and current positive generation, followed by unchanged DXA2 bytes. The result commits the full wrapper. Sponsorship and relayer adapters are unsupported. Counts retain V2 types.
-    public struct SubmitBoundSessionActionsParams: Sendable, Hashable {
-        public let encodedWrapper: Data
-
-        public init(encodedWrapper: Data) {
-            self.encodedWrapper = encodedWrapper
-        }
-    }
-
-    /// Arguments of `submitExchangeActions(bytes)`.
+    /// Arguments of `submitExchangeActionsV2(bytes)`.
     ///
     /// Encode the shared bounded V2 action call for future Lane B use.
     /// The ABI is frozen for tooling parity, but perpetual V2 execution remains protocol-gated until the Lane B activation revision. `resultHash` commits to the original bytes and every ordered action outcome.
-    public struct SubmitExchangeActionsParams: Sendable, Hashable {
+    public struct SubmitExchangeActionsV2Params: Sendable, Hashable {
         public let encodedActions: Data
 
         public init(encodedActions: Data) {
@@ -354,11 +312,11 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)`.
+    /// Arguments of `submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)`.
     ///
     /// Submit one versioned perpetual order funded from canonical settlement custody.
     /// The call atomically moves initial margin plus the deterministic fee reserve from GlobalUserAvailable to the market's UserMargin ledger. `price` is a nonzero integer tick and price-protected market orders use it as their worst acceptable execution price. `expiry == 0` selects GTC; otherwise expiry is a Unix timestamp in seconds. V1 requires `flags == 0`; reduce-only and advanced time-in-force semantics are reserved for the bounded V2 action surface.
-    public struct SubmitPerpOrderParams: Sendable, Hashable {
+    public struct SubmitPerpOrderV1Params: Sendable, Hashable {
         public let marketId: Data
         public let side: BigUInt
         public let orderType: BigUInt
@@ -380,11 +338,11 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `submitSponsoredPerpActions(bytes)`.
+    /// Arguments of `submitSignedPerpActionsV2(bytes)`.
     ///
     /// Execute a sponsored bounded V2 action batch on behalf of a signer.
-    /// The relayer is the outer transaction sender and pays fees; the recovered EIP-712 signer of `signedEnvelope` is the trading principal. The precompile verifies the signature, consumes the signer's canonical per-trader nonce-bitmap bit, and executes the exact same canonical action bytes, admission policy, replay protection, clearing journal, and logs as the direct `submitExchangeActions` path. Later tasks implement verification and execution; this freezes the release selector and wire shape.
-    public struct SubmitSponsoredPerpActionsParams: Sendable, Hashable {
+    /// The relayer is the outer transaction sender and pays fees; the recovered EIP-712 signer of `signedEnvelope` is the trading principal. The precompile verifies the signature, consumes the signer's canonical per-trader nonce-bitmap bit, and executes the exact same canonical action bytes, admission policy, replay protection, clearing journal, and logs as the direct `submitExchangeActionsV2` path. Later tasks implement verification and execution; this freezes the release selector and wire shape.
+    public struct SubmitSignedPerpActionsV2Params: Sendable, Hashable {
         public let signedEnvelope: Data
 
         public init(signedEnvelope: Data) {
@@ -392,11 +350,11 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `updatePerpMark(bytes32,uint256)`.
+    /// Arguments of `updatePerpMarkV1(bytes32,uint256)`.
     ///
     /// Advance the canonical scaled mark through solvency-frontier segments.
     /// System-only. If a root is reached, the market enters Protection and persists the original target until liquidation resolves the root.
-    public struct UpdatePerpMarkParams: Sendable, Hashable {
+    public struct UpdatePerpMarkV1Params: Sendable, Hashable {
         public let marketId: Data
         public let markPrice: BigUInt
 
@@ -406,11 +364,11 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)`.
+    /// Arguments of `updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)`.
     ///
     /// Persist one validator-attested oracle round for a market.
     /// System-only. Accepts strictly increasing rounds and observed-at timestamps, an active `sourceSetHash`, and a canonical `evidenceHash` commitment. The call atomically writes the canonical index/mark, round, observed-at, source-set/evidence commitments, and derived circuit-breaker/recovery state; there is no operator path that bypasses freshness or evidence. Later tasks implement the transition; this freezes the release selector and argument layout.
-    public struct UpdatePerpOracleParams: Sendable, Hashable {
+    public struct UpdatePerpOracleV1Params: Sendable, Hashable {
         public let marketId: Data
         public let indexPrice: BigUInt
         public let markPrice: BigUInt
@@ -430,20 +388,8 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Arguments of `updatePricedOracle(bytes)`.
-    ///
-    /// Persist one descriptor-authorized priced oracle observation.
-    /// System-only, caller address zero. payload is exactly one canonical DOR2 observation: a 128-byte V2 context/round header followed by a 144-byte observation. The native runtime verifies chain, genesis, exact parent number/hash, immutable descriptor/source commitments, tick alignment and canonical observation freshness before writes. Canonical oracle prices use p; the clearing mirror uses p*PRICE_SCALE. This distinct selector returns no data and leaves V1 encoding intact.
-    public struct UpdatePricedOracleParams: Sendable, Hashable {
-        public let payload: Data
-
-        public init(payload: Data) {
-            self.payload = payload
-        }
-    }
-
-    /// Fields of the `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
-    public struct ExchangeActionAcceptedEvent: Sendable, Hashable {
+    /// Fields of the `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
+    public struct ExchangeActionAcceptedV2Event: Sendable, Hashable {
         public let clientActionId: Data
         public let actionIndex: BigUInt
         public let actionTag: BigUInt
@@ -461,8 +407,8 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Fields of the `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
-    public struct ExchangeActionRejectedEvent: Sendable, Hashable {
+    /// Fields of the `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
+    public struct ExchangeActionRejectedV2Event: Sendable, Hashable {
         public let clientActionId: Data
         public let actionIndex: BigUInt
         public let actionTag: BigUInt
@@ -482,8 +428,8 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    /// Fields of the `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
-    public struct ExchangeL3MutationEvent: Sendable, Hashable {
+    /// Fields of the `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
+    public struct ExchangeL3MutationV2Event: Sendable, Hashable {
         public let marketId: Data
         public let orderId: Data
         public let trader: EthereumAddress
@@ -688,45 +634,20 @@ public enum IDiesisPerpsBook {
         return AdjustIsolatedMarginResult()
     }
 
-    /// ABI-encodes `advancePricedPerpRuntime(bytes32)` for an offline transaction.
-    public static func encodeAdvancePricedPerpRuntime(_ args: AdvancePricedPerpRuntimeParams) throws -> Data {
-        guard args.policyHash.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard let data = try _contract().method("advancePricedPerpRuntime(bytes32)", parameters: [args.policyHash], extraData: nil) else { throw WrapperError.encodingFailed("advancePricedPerpRuntime(bytes32)") }
-        return data
-    }
-
-    /// Decoded result of `advancePricedPerpRuntime(bytes32)`.
-    ///
-    /// Request the system-owned canonical priced runtime tick.
-    /// Inactive until qualified runtime activation. Every caller currently reverts. Future execution requires authenticated selected authority and a matching policy hash.
-    public struct AdvancePricedPerpRuntimeResult: Sendable, Hashable {
-        public init() {}
-    }
-
-    private static func _decodeAdvancePricedPerpRuntimeValues(_ values: [String: Any]) throws -> AdvancePricedPerpRuntimeResult {
-        return AdvancePricedPerpRuntimeResult()
-    }
-
-    /// Decodes raw return data for `advancePricedPerpRuntime(bytes32)` offline.
-    public static func decodeAdvancePricedPerpRuntimeResult(_ data: Data) throws -> AdvancePricedPerpRuntimeResult {
-        guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return AdvancePricedPerpRuntimeResult()
-    }
-
-    /// ABI-encodes `amendPerpOrder(bytes32,uint256,uint256,uint64)` for an offline transaction.
-    public static func encodeAmendPerpOrder(_ args: AmendPerpOrderParams) throws -> Data {
+    /// ABI-encodes `amendPerpOrderV1(bytes32,uint256,uint256,uint64)` for an offline transaction.
+    public static func encodeAmendPerpOrderV1(_ args: AmendPerpOrderV1Params) throws -> Data {
         guard args.orderId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.price < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
         guard args.amount < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
         guard args.expiry < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
-        guard let data = try _contract().method("amendPerpOrder(bytes32,uint256,uint256,uint64)", parameters: [args.orderId, args.price, args.amount, args.expiry], extraData: nil) else { throw WrapperError.encodingFailed("amendPerpOrder(bytes32,uint256,uint256,uint64)") }
+        guard let data = try _contract().method("amendPerpOrderV1(bytes32,uint256,uint256,uint64)", parameters: [args.orderId, args.price, args.amount, args.expiry], extraData: nil) else { throw WrapperError.encodingFailed("amendPerpOrderV1(bytes32,uint256,uint256,uint64)") }
         return data
     }
 
-    /// Decoded result of `amendPerpOrder(bytes32,uint256,uint256,uint64)`.
+    /// Decoded result of `amendPerpOrderV1(bytes32,uint256,uint256,uint64)`.
     ///
     /// Atomically cancel and replace an order with new price, amount, expiry, canonical margin reservation, and priority identity.
-    public struct AmendPerpOrderResult: Sendable, Hashable {
+    public struct AmendPerpOrderV1Result: Sendable, Hashable {
         public let replacementOrderId: Data
 
         public init(replacementOrderId: Data) {
@@ -734,82 +655,82 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    private static func _decodeAmendPerpOrderValues(_ values: [String: Any]) throws -> AmendPerpOrderResult {
+    private static func _decodeAmendPerpOrderV1Values(_ values: [String: Any]) throws -> AmendPerpOrderV1Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: Data.self)
-        return AmendPerpOrderResult(replacementOrderId: value0)
+        return AmendPerpOrderV1Result(replacementOrderId: value0)
     }
 
-    /// Decodes raw return data for `amendPerpOrder(bytes32,uint256,uint256,uint64)` offline.
-    public static func decodeAmendPerpOrderResult(_ data: Data) throws -> AmendPerpOrderResult {
-        return try _decodeAmendPerpOrderValues(_contract().decodeReturnData("amendPerpOrder(bytes32,uint256,uint256,uint64)", data: data))
+    /// Decodes raw return data for `amendPerpOrderV1(bytes32,uint256,uint256,uint64)` offline.
+    public static func decodeAmendPerpOrderV1Result(_ data: Data) throws -> AmendPerpOrderV1Result {
+        return try _decodeAmendPerpOrderV1Values(_contract().decodeReturnData("amendPerpOrderV1(bytes32,uint256,uint256,uint64)", data: data))
     }
 
-    /// ABI-encodes `applyPerpFunding(bytes32,int256)` for an offline transaction.
-    public static func encodeApplyPerpFunding(_ args: ApplyPerpFundingParams) throws -> Data {
+    /// ABI-encodes `applyPerpFundingV1(bytes32,int256)` for an offline transaction.
+    public static func encodeApplyPerpFundingV1(_ args: ApplyPerpFundingV1Params) throws -> Data {
         guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.fundingRateBps >= -(BigInt(1) << 255) && args.fundingRateBps < (BigInt(1) << 255) else { throw WrapperError.encodingFailed("int256 out of range") }
-        guard let data = try _contract().method("applyPerpFunding(bytes32,int256)", parameters: [args.marketId, args.fundingRateBps], extraData: nil) else { throw WrapperError.encodingFailed("applyPerpFunding(bytes32,int256)") }
+        guard let data = try _contract().method("applyPerpFundingV1(bytes32,int256)", parameters: [args.marketId, args.fundingRateBps], extraData: nil) else { throw WrapperError.encodingFailed("applyPerpFundingV1(bytes32,int256)") }
         return data
     }
 
-    /// Decoded result of `applyPerpFunding(bytes32,int256)`.
+    /// Decoded result of `applyPerpFundingV1(bytes32,int256)`.
     ///
     /// Advance canonical funding through solvency-frontier segments.
     /// System-only and bounded to the protocol funding-rate limit.
-    public struct ApplyPerpFundingResult: Sendable, Hashable {
+    public struct ApplyPerpFundingV1Result: Sendable, Hashable {
         public init() {}
     }
 
-    private static func _decodeApplyPerpFundingValues(_ values: [String: Any]) throws -> ApplyPerpFundingResult {
-        return ApplyPerpFundingResult()
+    private static func _decodeApplyPerpFundingV1Values(_ values: [String: Any]) throws -> ApplyPerpFundingV1Result {
+        return ApplyPerpFundingV1Result()
     }
 
-    /// Decodes raw return data for `applyPerpFunding(bytes32,int256)` offline.
-    public static func decodeApplyPerpFundingResult(_ data: Data) throws -> ApplyPerpFundingResult {
+    /// Decodes raw return data for `applyPerpFundingV1(bytes32,int256)` offline.
+    public static func decodeApplyPerpFundingV1Result(_ data: Data) throws -> ApplyPerpFundingV1Result {
         guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return ApplyPerpFundingResult()
+        return ApplyPerpFundingV1Result()
     }
 
-    /// ABI-encodes `cancelPerpOrder(bytes32)` for an offline transaction.
-    public static func encodeCancelPerpOrder(_ args: CancelPerpOrderParams) throws -> Data {
+    /// ABI-encodes `cancelPerpOrderV1(bytes32)` for an offline transaction.
+    public static func encodeCancelPerpOrderV1(_ args: CancelPerpOrderV1Params) throws -> Data {
         guard args.orderId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard let data = try _contract().method("cancelPerpOrder(bytes32)", parameters: [args.orderId], extraData: nil) else { throw WrapperError.encodingFailed("cancelPerpOrder(bytes32)") }
+        guard let data = try _contract().method("cancelPerpOrderV1(bytes32)", parameters: [args.orderId], extraData: nil) else { throw WrapperError.encodingFailed("cancelPerpOrderV1(bytes32)") }
         return data
     }
 
-    /// Decoded result of `cancelPerpOrder(bytes32)`.
+    /// Decoded result of `cancelPerpOrderV1(bytes32)`.
     ///
     /// Cancel an owned V1 order and return all unused canonical margin.
-    public struct CancelPerpOrderResult: Sendable, Hashable {
+    public struct CancelPerpOrderV1Result: Sendable, Hashable {
         public init() {}
     }
 
-    private static func _decodeCancelPerpOrderValues(_ values: [String: Any]) throws -> CancelPerpOrderResult {
-        return CancelPerpOrderResult()
+    private static func _decodeCancelPerpOrderV1Values(_ values: [String: Any]) throws -> CancelPerpOrderV1Result {
+        return CancelPerpOrderV1Result()
     }
 
-    /// Decodes raw return data for `cancelPerpOrder(bytes32)` offline.
-    public static func decodeCancelPerpOrderResult(_ data: Data) throws -> CancelPerpOrderResult {
+    /// Decodes raw return data for `cancelPerpOrderV1(bytes32)` offline.
+    public static func decodeCancelPerpOrderV1Result(_ data: Data) throws -> CancelPerpOrderV1Result {
         guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return CancelPerpOrderResult()
+        return CancelPerpOrderV1Result()
     }
 
-    /// ABI-encodes `executePerpTrade(bytes32,bytes32,uint256,uint256)` for an offline transaction.
-    public static func encodeExecutePerpTrade(_ args: ExecutePerpTradeParams) throws -> Data {
+    /// ABI-encodes `executePerpTradeV1(bytes32,bytes32,uint256,uint256)` for an offline transaction.
+    public static func encodeExecutePerpTradeV1(_ args: ExecutePerpTradeV1Params) throws -> Data {
         guard args.makerOrderId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.takerOrderId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.fillPrice < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
         guard args.fillQty < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
-        guard let data = try _contract().method("executePerpTrade(bytes32,bytes32,uint256,uint256)", parameters: [args.makerOrderId, args.takerOrderId, args.fillPrice, args.fillQty], extraData: nil) else { throw WrapperError.encodingFailed("executePerpTrade(bytes32,bytes32,uint256,uint256)") }
+        guard let data = try _contract().method("executePerpTradeV1(bytes32,bytes32,uint256,uint256)", parameters: [args.makerOrderId, args.takerOrderId, args.fillPrice, args.fillQty], extraData: nil) else { throw WrapperError.encodingFailed("executePerpTradeV1(bytes32,bytes32,uint256,uint256)") }
         return data
     }
 
-    /// Decoded result of `executePerpTrade(bytes32,bytes32,uint256,uint256)`.
+    /// Decoded result of `executePerpTradeV1(bytes32,bytes32,uint256,uint256)`.
     ///
     /// Commit one system-owned opposite-side fill through canonical clearing.
     /// Reads and validates both stored V1 orders, derives deterministic maker/taker fees and persistent frontier proofs, then commits the PreparedClearingTransactionV1 and both order consumptions under one outer EVM checkpoint. The lower order ID is the canonical maker.
-    public struct ExecutePerpTradeResult: Sendable, Hashable {
+    public struct ExecutePerpTradeV1Result: Sendable, Hashable {
         public let clearingTransactionId: Data
 
         public init(clearingTransactionId: Data) {
@@ -817,66 +738,66 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    private static func _decodeExecutePerpTradeValues(_ values: [String: Any]) throws -> ExecutePerpTradeResult {
+    private static func _decodeExecutePerpTradeV1Values(_ values: [String: Any]) throws -> ExecutePerpTradeV1Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: Data.self)
-        return ExecutePerpTradeResult(clearingTransactionId: value0)
+        return ExecutePerpTradeV1Result(clearingTransactionId: value0)
     }
 
-    /// Decodes raw return data for `executePerpTrade(bytes32,bytes32,uint256,uint256)` offline.
-    public static func decodeExecutePerpTradeResult(_ data: Data) throws -> ExecutePerpTradeResult {
-        return try _decodeExecutePerpTradeValues(_contract().decodeReturnData("executePerpTrade(bytes32,bytes32,uint256,uint256)", data: data))
+    /// Decodes raw return data for `executePerpTradeV1(bytes32,bytes32,uint256,uint256)` offline.
+    public static func decodeExecutePerpTradeV1Result(_ data: Data) throws -> ExecutePerpTradeV1Result {
+        return try _decodeExecutePerpTradeV1Values(_contract().decodeReturnData("executePerpTradeV1(bytes32,bytes32,uint256,uint256)", data: data))
     }
 
-    /// ABI-encodes `expirePerpOrder(bytes32)` for an offline transaction.
-    public static func encodeExpirePerpOrder(_ args: ExpirePerpOrderParams) throws -> Data {
+    /// ABI-encodes `expirePerpOrderV1(bytes32)` for an offline transaction.
+    public static func encodeExpirePerpOrderV1(_ args: ExpirePerpOrderV1Params) throws -> Data {
         guard args.orderId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard let data = try _contract().method("expirePerpOrder(bytes32)", parameters: [args.orderId], extraData: nil) else { throw WrapperError.encodingFailed("expirePerpOrder(bytes32)") }
+        guard let data = try _contract().method("expirePerpOrderV1(bytes32)", parameters: [args.orderId], extraData: nil) else { throw WrapperError.encodingFailed("expirePerpOrderV1(bytes32)") }
         return data
     }
 
-    /// Decoded result of `expirePerpOrder(bytes32)`.
+    /// Decoded result of `expirePerpOrderV1(bytes32)`.
     ///
     /// Permissionlessly expire a GTD order after its canonical deadline.
-    public struct ExpirePerpOrderResult: Sendable, Hashable {
+    public struct ExpirePerpOrderV1Result: Sendable, Hashable {
         public init() {}
     }
 
-    private static func _decodeExpirePerpOrderValues(_ values: [String: Any]) throws -> ExpirePerpOrderResult {
-        return ExpirePerpOrderResult()
+    private static func _decodeExpirePerpOrderV1Values(_ values: [String: Any]) throws -> ExpirePerpOrderV1Result {
+        return ExpirePerpOrderV1Result()
     }
 
-    /// Decodes raw return data for `expirePerpOrder(bytes32)` offline.
-    public static func decodeExpirePerpOrderResult(_ data: Data) throws -> ExpirePerpOrderResult {
+    /// Decodes raw return data for `expirePerpOrderV1(bytes32)` offline.
+    public static func decodeExpirePerpOrderV1Result(_ data: Data) throws -> ExpirePerpOrderV1Result {
         guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return ExpirePerpOrderResult()
+        return ExpirePerpOrderV1Result()
     }
 
-    /// ABI-encodes `finalizePerpFeeEpoch(bytes32,uint64,bytes32)` for an offline transaction.
-    public static func encodeFinalizePerpFeeEpoch(_ args: FinalizePerpFeeEpochParams) throws -> Data {
+    /// ABI-encodes `finalizePerpFeeEpochV2(bytes32,uint64,bytes32)` for an offline transaction.
+    public static func encodeFinalizePerpFeeEpochV2(_ args: FinalizePerpFeeEpochV2Params) throws -> Data {
         guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.epoch < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
         guard args.snapshotHash.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard let data = try _contract().method("finalizePerpFeeEpoch(bytes32,uint64,bytes32)", parameters: [args.marketId, args.epoch, args.snapshotHash], extraData: nil) else { throw WrapperError.encodingFailed("finalizePerpFeeEpoch(bytes32,uint64,bytes32)") }
+        guard let data = try _contract().method("finalizePerpFeeEpochV2(bytes32,uint64,bytes32)", parameters: [args.marketId, args.epoch, args.snapshotHash], extraData: nil) else { throw WrapperError.encodingFailed("finalizePerpFeeEpochV2(bytes32,uint64,bytes32)") }
         return data
     }
 
-    /// Decoded result of `finalizePerpFeeEpoch(bytes32,uint64,bytes32)`.
+    /// Decoded result of `finalizePerpFeeEpochV2(bytes32,uint64,bytes32)`.
     ///
     /// Finalize the exact stored snapshot of one closed fee epoch.
     /// Native queue/accounting behavior is introduced by X4b M3. This declaration prevents public ABI drift before that implementation.
-    public struct FinalizePerpFeeEpochResult: Sendable, Hashable {
+    public struct FinalizePerpFeeEpochV2Result: Sendable, Hashable {
         public init() {}
     }
 
-    private static func _decodeFinalizePerpFeeEpochValues(_ values: [String: Any]) throws -> FinalizePerpFeeEpochResult {
-        return FinalizePerpFeeEpochResult()
+    private static func _decodeFinalizePerpFeeEpochV2Values(_ values: [String: Any]) throws -> FinalizePerpFeeEpochV2Result {
+        return FinalizePerpFeeEpochV2Result()
     }
 
-    /// Decodes raw return data for `finalizePerpFeeEpoch(bytes32,uint64,bytes32)` offline.
-    public static func decodeFinalizePerpFeeEpochResult(_ data: Data) throws -> FinalizePerpFeeEpochResult {
+    /// Decodes raw return data for `finalizePerpFeeEpochV2(bytes32,uint64,bytes32)` offline.
+    public static func decodeFinalizePerpFeeEpochV2Result(_ data: Data) throws -> FinalizePerpFeeEpochV2Result {
         guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return FinalizePerpFeeEpochResult()
+        return FinalizePerpFeeEpochV2Result()
     }
 
     /// ABI-encodes `getIsolatedMargin(address,bytes32)` for an offline transaction.
@@ -937,54 +858,17 @@ public enum IDiesisPerpsBook {
         return try _decodeGetPositionValues(_contract().decodeReturnData("getPosition(address,bytes32)", data: data))
     }
 
-    /// ABI-encodes `submitBoundSessionActions(bytes)` for an offline transaction.
-    public static func encodeSubmitBoundSessionActions(_ args: SubmitBoundSessionActionsParams) throws -> Data {
-        guard let data = try _contract().method("submitBoundSessionActions(bytes)", parameters: [args.encodedWrapper], extraData: nil) else { throw WrapperError.encodingFailed("submitBoundSessionActions(bytes)") }
+    /// ABI-encodes `submitExchangeActionsV2(bytes)` for an offline transaction.
+    public static func encodeSubmitExchangeActionsV2(_ args: SubmitExchangeActionsV2Params) throws -> Data {
+        guard let data = try _contract().method("submitExchangeActionsV2(bytes)", parameters: [args.encodedActions], extraData: nil) else { throw WrapperError.encodingFailed("submitExchangeActionsV2(bytes)") }
         return data
     }
 
-    /// Decoded result of `submitBoundSessionActions(bytes)`.
-    ///
-    /// Proposed ordinary-caller bound-session V3 action wrapper.
-    /// Inactive until a separately accepted resource policy and dispatch revision. DXS3 contains the expected principal and current positive generation, followed by unchanged DXA2 bytes. The result commits the full wrapper. Sponsorship and relayer adapters are unsupported. Counts retain V2 types.
-    public struct SubmitBoundSessionActionsResult: Sendable, Hashable {
-        public let resultHash: Data
-        public let acceptedCount: BigUInt
-        public let rejectedCount: BigUInt
-
-        public init(resultHash: Data, acceptedCount: BigUInt, rejectedCount: BigUInt) {
-            self.resultHash = resultHash
-            self.acceptedCount = acceptedCount
-            self.rejectedCount = rejectedCount
-        }
-    }
-
-    private static func _decodeSubmitBoundSessionActionsValues(_ values: [String: Any]) throws -> SubmitBoundSessionActionsResult {
-        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
-        let value0 = try _cast(raw0, as: Data.self)
-        guard let raw1 = values["1"] else { throw WrapperError.invalidValue("output 1") }
-        let value1 = try _cast(raw1, as: BigUInt.self)
-        guard let raw2 = values["2"] else { throw WrapperError.invalidValue("output 2") }
-        let value2 = try _cast(raw2, as: BigUInt.self)
-        return SubmitBoundSessionActionsResult(resultHash: value0, acceptedCount: value1, rejectedCount: value2)
-    }
-
-    /// Decodes raw return data for `submitBoundSessionActions(bytes)` offline.
-    public static func decodeSubmitBoundSessionActionsResult(_ data: Data) throws -> SubmitBoundSessionActionsResult {
-        return try _decodeSubmitBoundSessionActionsValues(_contract().decodeReturnData("submitBoundSessionActions(bytes)", data: data))
-    }
-
-    /// ABI-encodes `submitExchangeActions(bytes)` for an offline transaction.
-    public static func encodeSubmitExchangeActions(_ args: SubmitExchangeActionsParams) throws -> Data {
-        guard let data = try _contract().method("submitExchangeActions(bytes)", parameters: [args.encodedActions], extraData: nil) else { throw WrapperError.encodingFailed("submitExchangeActions(bytes)") }
-        return data
-    }
-
-    /// Decoded result of `submitExchangeActions(bytes)`.
+    /// Decoded result of `submitExchangeActionsV2(bytes)`.
     ///
     /// Encode the shared bounded V2 action call for future Lane B use.
     /// The ABI is frozen for tooling parity, but perpetual V2 execution remains protocol-gated until the Lane B activation revision. `resultHash` commits to the original bytes and every ordered action outcome.
-    public struct SubmitExchangeActionsResult: Sendable, Hashable {
+    public struct SubmitExchangeActionsV2Result: Sendable, Hashable {
         public let resultHash: Data
         public let acceptedCount: BigUInt
         public let rejectedCount: BigUInt
@@ -996,23 +880,23 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    private static func _decodeSubmitExchangeActionsValues(_ values: [String: Any]) throws -> SubmitExchangeActionsResult {
+    private static func _decodeSubmitExchangeActionsV2Values(_ values: [String: Any]) throws -> SubmitExchangeActionsV2Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: Data.self)
         guard let raw1 = values["1"] else { throw WrapperError.invalidValue("output 1") }
         let value1 = try _cast(raw1, as: BigUInt.self)
         guard let raw2 = values["2"] else { throw WrapperError.invalidValue("output 2") }
         let value2 = try _cast(raw2, as: BigUInt.self)
-        return SubmitExchangeActionsResult(resultHash: value0, acceptedCount: value1, rejectedCount: value2)
+        return SubmitExchangeActionsV2Result(resultHash: value0, acceptedCount: value1, rejectedCount: value2)
     }
 
-    /// Decodes raw return data for `submitExchangeActions(bytes)` offline.
-    public static func decodeSubmitExchangeActionsResult(_ data: Data) throws -> SubmitExchangeActionsResult {
-        return try _decodeSubmitExchangeActionsValues(_contract().decodeReturnData("submitExchangeActions(bytes)", data: data))
+    /// Decodes raw return data for `submitExchangeActionsV2(bytes)` offline.
+    public static func decodeSubmitExchangeActionsV2Result(_ data: Data) throws -> SubmitExchangeActionsV2Result {
+        return try _decodeSubmitExchangeActionsV2Values(_contract().decodeReturnData("submitExchangeActionsV2(bytes)", data: data))
     }
 
-    /// ABI-encodes `submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)` for an offline transaction.
-    public static func encodeSubmitPerpOrder(_ args: SubmitPerpOrderParams) throws -> Data {
+    /// ABI-encodes `submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)` for an offline transaction.
+    public static func encodeSubmitPerpOrderV1(_ args: SubmitPerpOrderV1Params) throws -> Data {
         guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.side < (BigUInt(1) << 8) else { throw WrapperError.encodingFailed("uint8 out of range") }
         guard args.orderType < (BigUInt(1) << 8) else { throw WrapperError.encodingFailed("uint8 out of range") }
@@ -1021,15 +905,15 @@ public enum IDiesisPerpsBook {
         guard args.flags < (BigUInt(1) << 8) else { throw WrapperError.encodingFailed("uint8 out of range") }
         guard args.marginType < (BigUInt(1) << 8) else { throw WrapperError.encodingFailed("uint8 out of range") }
         guard args.expiry < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
-        guard let data = try _contract().method("submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)", parameters: [args.marketId, args.side, args.orderType, args.price, args.amount, args.flags, args.marginType, args.expiry], extraData: nil) else { throw WrapperError.encodingFailed("submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)") }
+        guard let data = try _contract().method("submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)", parameters: [args.marketId, args.side, args.orderType, args.price, args.amount, args.flags, args.marginType, args.expiry], extraData: nil) else { throw WrapperError.encodingFailed("submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)") }
         return data
     }
 
-    /// Decoded result of `submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)`.
+    /// Decoded result of `submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)`.
     ///
     /// Submit one versioned perpetual order funded from canonical settlement custody.
     /// The call atomically moves initial margin plus the deterministic fee reserve from GlobalUserAvailable to the market's UserMargin ledger. `price` is a nonzero integer tick and price-protected market orders use it as their worst acceptable execution price. `expiry == 0` selects GTC; otherwise expiry is a Unix timestamp in seconds. V1 requires `flags == 0`; reduce-only and advanced time-in-force semantics are reserved for the bounded V2 action surface.
-    public struct SubmitPerpOrderResult: Sendable, Hashable {
+    public struct SubmitPerpOrderV1Result: Sendable, Hashable {
         public let orderId: Data
 
         public init(orderId: Data) {
@@ -1037,28 +921,28 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    private static func _decodeSubmitPerpOrderValues(_ values: [String: Any]) throws -> SubmitPerpOrderResult {
+    private static func _decodeSubmitPerpOrderV1Values(_ values: [String: Any]) throws -> SubmitPerpOrderV1Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: Data.self)
-        return SubmitPerpOrderResult(orderId: value0)
+        return SubmitPerpOrderV1Result(orderId: value0)
     }
 
-    /// Decodes raw return data for `submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)` offline.
-    public static func decodeSubmitPerpOrderResult(_ data: Data) throws -> SubmitPerpOrderResult {
-        return try _decodeSubmitPerpOrderValues(_contract().decodeReturnData("submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)", data: data))
+    /// Decodes raw return data for `submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)` offline.
+    public static func decodeSubmitPerpOrderV1Result(_ data: Data) throws -> SubmitPerpOrderV1Result {
+        return try _decodeSubmitPerpOrderV1Values(_contract().decodeReturnData("submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)", data: data))
     }
 
-    /// ABI-encodes `submitSponsoredPerpActions(bytes)` for an offline transaction.
-    public static func encodeSubmitSponsoredPerpActions(_ args: SubmitSponsoredPerpActionsParams) throws -> Data {
-        guard let data = try _contract().method("submitSponsoredPerpActions(bytes)", parameters: [args.signedEnvelope], extraData: nil) else { throw WrapperError.encodingFailed("submitSponsoredPerpActions(bytes)") }
+    /// ABI-encodes `submitSignedPerpActionsV2(bytes)` for an offline transaction.
+    public static func encodeSubmitSignedPerpActionsV2(_ args: SubmitSignedPerpActionsV2Params) throws -> Data {
+        guard let data = try _contract().method("submitSignedPerpActionsV2(bytes)", parameters: [args.signedEnvelope], extraData: nil) else { throw WrapperError.encodingFailed("submitSignedPerpActionsV2(bytes)") }
         return data
     }
 
-    /// Decoded result of `submitSponsoredPerpActions(bytes)`.
+    /// Decoded result of `submitSignedPerpActionsV2(bytes)`.
     ///
     /// Execute a sponsored bounded V2 action batch on behalf of a signer.
-    /// The relayer is the outer transaction sender and pays fees; the recovered EIP-712 signer of `signedEnvelope` is the trading principal. The precompile verifies the signature, consumes the signer's canonical per-trader nonce-bitmap bit, and executes the exact same canonical action bytes, admission policy, replay protection, clearing journal, and logs as the direct `submitExchangeActions` path. Later tasks implement verification and execution; this freezes the release selector and wire shape.
-    public struct SubmitSponsoredPerpActionsResult: Sendable, Hashable {
+    /// The relayer is the outer transaction sender and pays fees; the recovered EIP-712 signer of `signedEnvelope` is the trading principal. The precompile verifies the signature, consumes the signer's canonical per-trader nonce-bitmap bit, and executes the exact same canonical action bytes, admission policy, replay protection, clearing journal, and logs as the direct `submitExchangeActionsV2` path. Later tasks implement verification and execution; this freezes the release selector and wire shape.
+    public struct SubmitSignedPerpActionsV2Result: Sendable, Hashable {
         public let batchId: Data
 
         public init(batchId: Data) {
@@ -1066,45 +950,45 @@ public enum IDiesisPerpsBook {
         }
     }
 
-    private static func _decodeSubmitSponsoredPerpActionsValues(_ values: [String: Any]) throws -> SubmitSponsoredPerpActionsResult {
+    private static func _decodeSubmitSignedPerpActionsV2Values(_ values: [String: Any]) throws -> SubmitSignedPerpActionsV2Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: Data.self)
-        return SubmitSponsoredPerpActionsResult(batchId: value0)
+        return SubmitSignedPerpActionsV2Result(batchId: value0)
     }
 
-    /// Decodes raw return data for `submitSponsoredPerpActions(bytes)` offline.
-    public static func decodeSubmitSponsoredPerpActionsResult(_ data: Data) throws -> SubmitSponsoredPerpActionsResult {
-        return try _decodeSubmitSponsoredPerpActionsValues(_contract().decodeReturnData("submitSponsoredPerpActions(bytes)", data: data))
+    /// Decodes raw return data for `submitSignedPerpActionsV2(bytes)` offline.
+    public static func decodeSubmitSignedPerpActionsV2Result(_ data: Data) throws -> SubmitSignedPerpActionsV2Result {
+        return try _decodeSubmitSignedPerpActionsV2Values(_contract().decodeReturnData("submitSignedPerpActionsV2(bytes)", data: data))
     }
 
-    /// ABI-encodes `updatePerpMark(bytes32,uint256)` for an offline transaction.
-    public static func encodeUpdatePerpMark(_ args: UpdatePerpMarkParams) throws -> Data {
+    /// ABI-encodes `updatePerpMarkV1(bytes32,uint256)` for an offline transaction.
+    public static func encodeUpdatePerpMarkV1(_ args: UpdatePerpMarkV1Params) throws -> Data {
         guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.markPrice < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
-        guard let data = try _contract().method("updatePerpMark(bytes32,uint256)", parameters: [args.marketId, args.markPrice], extraData: nil) else { throw WrapperError.encodingFailed("updatePerpMark(bytes32,uint256)") }
+        guard let data = try _contract().method("updatePerpMarkV1(bytes32,uint256)", parameters: [args.marketId, args.markPrice], extraData: nil) else { throw WrapperError.encodingFailed("updatePerpMarkV1(bytes32,uint256)") }
         return data
     }
 
-    /// Decoded result of `updatePerpMark(bytes32,uint256)`.
+    /// Decoded result of `updatePerpMarkV1(bytes32,uint256)`.
     ///
     /// Advance the canonical scaled mark through solvency-frontier segments.
     /// System-only. If a root is reached, the market enters Protection and persists the original target until liquidation resolves the root.
-    public struct UpdatePerpMarkResult: Sendable, Hashable {
+    public struct UpdatePerpMarkV1Result: Sendable, Hashable {
         public init() {}
     }
 
-    private static func _decodeUpdatePerpMarkValues(_ values: [String: Any]) throws -> UpdatePerpMarkResult {
-        return UpdatePerpMarkResult()
+    private static func _decodeUpdatePerpMarkV1Values(_ values: [String: Any]) throws -> UpdatePerpMarkV1Result {
+        return UpdatePerpMarkV1Result()
     }
 
-    /// Decodes raw return data for `updatePerpMark(bytes32,uint256)` offline.
-    public static func decodeUpdatePerpMarkResult(_ data: Data) throws -> UpdatePerpMarkResult {
+    /// Decodes raw return data for `updatePerpMarkV1(bytes32,uint256)` offline.
+    public static func decodeUpdatePerpMarkV1Result(_ data: Data) throws -> UpdatePerpMarkV1Result {
         guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return UpdatePerpMarkResult()
+        return UpdatePerpMarkV1Result()
     }
 
-    /// ABI-encodes `updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)` for an offline transaction.
-    public static func encodeUpdatePerpOracle(_ args: UpdatePerpOracleParams) throws -> Data {
+    /// ABI-encodes `updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)` for an offline transaction.
+    public static func encodeUpdatePerpOracleV1(_ args: UpdatePerpOracleV1Params) throws -> Data {
         guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.indexPrice < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
         guard args.markPrice < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
@@ -1112,50 +996,26 @@ public enum IDiesisPerpsBook {
         guard args.oracleRound < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
         guard args.sourceSetHash.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.evidenceHash.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard let data = try _contract().method("updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)", parameters: [args.marketId, args.indexPrice, args.markPrice, args.observedAt, args.oracleRound, args.sourceSetHash, args.evidenceHash], extraData: nil) else { throw WrapperError.encodingFailed("updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)") }
+        guard let data = try _contract().method("updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)", parameters: [args.marketId, args.indexPrice, args.markPrice, args.observedAt, args.oracleRound, args.sourceSetHash, args.evidenceHash], extraData: nil) else { throw WrapperError.encodingFailed("updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)") }
         return data
     }
 
-    /// Decoded result of `updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)`.
+    /// Decoded result of `updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)`.
     ///
     /// Persist one validator-attested oracle round for a market.
     /// System-only. Accepts strictly increasing rounds and observed-at timestamps, an active `sourceSetHash`, and a canonical `evidenceHash` commitment. The call atomically writes the canonical index/mark, round, observed-at, source-set/evidence commitments, and derived circuit-breaker/recovery state; there is no operator path that bypasses freshness or evidence. Later tasks implement the transition; this freezes the release selector and argument layout.
-    public struct UpdatePerpOracleResult: Sendable, Hashable {
+    public struct UpdatePerpOracleV1Result: Sendable, Hashable {
         public init() {}
     }
 
-    private static func _decodeUpdatePerpOracleValues(_ values: [String: Any]) throws -> UpdatePerpOracleResult {
-        return UpdatePerpOracleResult()
+    private static func _decodeUpdatePerpOracleV1Values(_ values: [String: Any]) throws -> UpdatePerpOracleV1Result {
+        return UpdatePerpOracleV1Result()
     }
 
-    /// Decodes raw return data for `updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)` offline.
-    public static func decodeUpdatePerpOracleResult(_ data: Data) throws -> UpdatePerpOracleResult {
+    /// Decodes raw return data for `updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)` offline.
+    public static func decodeUpdatePerpOracleV1Result(_ data: Data) throws -> UpdatePerpOracleV1Result {
         guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return UpdatePerpOracleResult()
-    }
-
-    /// ABI-encodes `updatePricedOracle(bytes)` for an offline transaction.
-    public static func encodeUpdatePricedOracle(_ args: UpdatePricedOracleParams) throws -> Data {
-        guard let data = try _contract().method("updatePricedOracle(bytes)", parameters: [args.payload], extraData: nil) else { throw WrapperError.encodingFailed("updatePricedOracle(bytes)") }
-        return data
-    }
-
-    /// Decoded result of `updatePricedOracle(bytes)`.
-    ///
-    /// Persist one descriptor-authorized priced oracle observation.
-    /// System-only, caller address zero. payload is exactly one canonical DOR2 observation: a 128-byte V2 context/round header followed by a 144-byte observation. The native runtime verifies chain, genesis, exact parent number/hash, immutable descriptor/source commitments, tick alignment and canonical observation freshness before writes. Canonical oracle prices use p; the clearing mirror uses p*PRICE_SCALE. This distinct selector returns no data and leaves V1 encoding intact.
-    public struct UpdatePricedOracleResult: Sendable, Hashable {
-        public init() {}
-    }
-
-    private static func _decodeUpdatePricedOracleValues(_ values: [String: Any]) throws -> UpdatePricedOracleResult {
-        return UpdatePricedOracleResult()
-    }
-
-    /// Decodes raw return data for `updatePricedOracle(bytes)` offline.
-    public static func decodeUpdatePricedOracleResult(_ data: Data) throws -> UpdatePricedOracleResult {
-        guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return UpdatePricedOracleResult()
+        return UpdatePerpOracleV1Result()
     }
 
     /// A web3swift contract instance for typed reads and writes.
@@ -1199,183 +1059,153 @@ public enum IDiesisPerpsBook {
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "adjustIsolatedMargin(bytes32,int256)")
         }
 
-        /// Prepares `advancePricedPerpRuntime(bytes32)` with transaction options for signing or submission.
-        public func prepareAdvancePricedPerpRuntime(_ args: AdvancePricedPerpRuntimeParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `amendPerpOrderV1(bytes32,uint256,uint256,uint64)` with transaction options for signing or submission.
+        public func prepareAmendPerpOrderV1(_ args: AmendPerpOrderV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeAdvancePricedPerpRuntime(args)
+            tx.data = try IDiesisPerpsBook.encodeAmendPerpOrderV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "advancePricedPerpRuntime(bytes32)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "amendPerpOrderV1(bytes32,uint256,uint256,uint64)")
         }
 
-        /// Prepares `amendPerpOrder(bytes32,uint256,uint256,uint64)` with transaction options for signing or submission.
-        public func prepareAmendPerpOrder(_ args: AmendPerpOrderParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `applyPerpFundingV1(bytes32,int256)` with transaction options for signing or submission.
+        public func prepareApplyPerpFundingV1(_ args: ApplyPerpFundingV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeAmendPerpOrder(args)
+            tx.data = try IDiesisPerpsBook.encodeApplyPerpFundingV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "amendPerpOrder(bytes32,uint256,uint256,uint64)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "applyPerpFundingV1(bytes32,int256)")
         }
 
-        /// Prepares `applyPerpFunding(bytes32,int256)` with transaction options for signing or submission.
-        public func prepareApplyPerpFunding(_ args: ApplyPerpFundingParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `cancelPerpOrderV1(bytes32)` with transaction options for signing or submission.
+        public func prepareCancelPerpOrderV1(_ args: CancelPerpOrderV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeApplyPerpFunding(args)
+            tx.data = try IDiesisPerpsBook.encodeCancelPerpOrderV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "applyPerpFunding(bytes32,int256)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "cancelPerpOrderV1(bytes32)")
         }
 
-        /// Prepares `cancelPerpOrder(bytes32)` with transaction options for signing or submission.
-        public func prepareCancelPerpOrder(_ args: CancelPerpOrderParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `executePerpTradeV1(bytes32,bytes32,uint256,uint256)` with transaction options for signing or submission.
+        public func prepareExecutePerpTradeV1(_ args: ExecutePerpTradeV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeCancelPerpOrder(args)
+            tx.data = try IDiesisPerpsBook.encodeExecutePerpTradeV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "cancelPerpOrder(bytes32)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "executePerpTradeV1(bytes32,bytes32,uint256,uint256)")
         }
 
-        /// Prepares `executePerpTrade(bytes32,bytes32,uint256,uint256)` with transaction options for signing or submission.
-        public func prepareExecutePerpTrade(_ args: ExecutePerpTradeParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `expirePerpOrderV1(bytes32)` with transaction options for signing or submission.
+        public func prepareExpirePerpOrderV1(_ args: ExpirePerpOrderV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeExecutePerpTrade(args)
+            tx.data = try IDiesisPerpsBook.encodeExpirePerpOrderV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "executePerpTrade(bytes32,bytes32,uint256,uint256)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "expirePerpOrderV1(bytes32)")
         }
 
-        /// Prepares `expirePerpOrder(bytes32)` with transaction options for signing or submission.
-        public func prepareExpirePerpOrder(_ args: ExpirePerpOrderParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `finalizePerpFeeEpochV2(bytes32,uint64,bytes32)` with transaction options for signing or submission.
+        public func prepareFinalizePerpFeeEpochV2(_ args: FinalizePerpFeeEpochV2Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeExpirePerpOrder(args)
+            tx.data = try IDiesisPerpsBook.encodeFinalizePerpFeeEpochV2(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "expirePerpOrder(bytes32)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "finalizePerpFeeEpochV2(bytes32,uint64,bytes32)")
         }
 
-        /// Prepares `finalizePerpFeeEpoch(bytes32,uint64,bytes32)` with transaction options for signing or submission.
-        public func prepareFinalizePerpFeeEpoch(_ args: FinalizePerpFeeEpochParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `submitExchangeActionsV2(bytes)` with transaction options for signing or submission.
+        public func prepareSubmitExchangeActionsV2(_ args: SubmitExchangeActionsV2Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeFinalizePerpFeeEpoch(args)
+            tx.data = try IDiesisPerpsBook.encodeSubmitExchangeActionsV2(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "finalizePerpFeeEpoch(bytes32,uint64,bytes32)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitExchangeActionsV2(bytes)")
         }
 
-        /// Prepares `submitBoundSessionActions(bytes)` with transaction options for signing or submission.
-        public func prepareSubmitBoundSessionActions(_ args: SubmitBoundSessionActionsParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)` with transaction options for signing or submission.
+        public func prepareSubmitPerpOrderV1(_ args: SubmitPerpOrderV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeSubmitBoundSessionActions(args)
+            tx.data = try IDiesisPerpsBook.encodeSubmitPerpOrderV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitBoundSessionActions(bytes)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitPerpOrderV1(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)")
         }
 
-        /// Prepares `submitExchangeActions(bytes)` with transaction options for signing or submission.
-        public func prepareSubmitExchangeActions(_ args: SubmitExchangeActionsParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `submitSignedPerpActionsV2(bytes)` with transaction options for signing or submission.
+        public func prepareSubmitSignedPerpActionsV2(_ args: SubmitSignedPerpActionsV2Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeSubmitExchangeActions(args)
+            tx.data = try IDiesisPerpsBook.encodeSubmitSignedPerpActionsV2(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitExchangeActions(bytes)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitSignedPerpActionsV2(bytes)")
         }
 
-        /// Prepares `submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)` with transaction options for signing or submission.
-        public func prepareSubmitPerpOrder(_ args: SubmitPerpOrderParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `updatePerpMarkV1(bytes32,uint256)` with transaction options for signing or submission.
+        public func prepareUpdatePerpMarkV1(_ args: UpdatePerpMarkV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeSubmitPerpOrder(args)
+            tx.data = try IDiesisPerpsBook.encodeUpdatePerpMarkV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitPerpOrder(bytes32,uint8,uint8,uint256,uint256,uint8,uint8,uint64)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "updatePerpMarkV1(bytes32,uint256)")
         }
 
-        /// Prepares `submitSponsoredPerpActions(bytes)` with transaction options for signing or submission.
-        public func prepareSubmitSponsoredPerpActions(_ args: SubmitSponsoredPerpActionsParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)` with transaction options for signing or submission.
+        public func prepareUpdatePerpOracleV1(_ args: UpdatePerpOracleV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeSubmitSponsoredPerpActions(args)
+            tx.data = try IDiesisPerpsBook.encodeUpdatePerpOracleV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitSponsoredPerpActions(bytes)")
-        }
-
-        /// Prepares `updatePerpMark(bytes32,uint256)` with transaction options for signing or submission.
-        public func prepareUpdatePerpMark(_ args: UpdatePerpMarkParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
-            var tx = transaction ?? CodableTransaction(to: address, data: Data())
-            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
-            tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeUpdatePerpMark(args)
-            tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "updatePerpMark(bytes32,uint256)")
-        }
-
-        /// Prepares `updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)` with transaction options for signing or submission.
-        public func prepareUpdatePerpOracle(_ args: UpdatePerpOracleParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
-            var tx = transaction ?? CodableTransaction(to: address, data: Data())
-            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
-            tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeUpdatePerpOracle(args)
-            tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "updatePerpOracle(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)")
-        }
-
-        /// Prepares `updatePricedOracle(bytes)` with transaction options for signing or submission.
-        public func prepareUpdatePricedOracle(_ args: UpdatePricedOracleParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
-            var tx = transaction ?? CodableTransaction(to: address, data: Data())
-            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
-            tx.to = address
-            tx.data = try IDiesisPerpsBook.encodeUpdatePricedOracle(args)
-            tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "updatePricedOracle(bytes)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "updatePerpOracleV1(bytes32,uint256,uint256,uint64,uint64,bytes32,bytes32)")
         }
     }
 
-    private static func _eventExchangeActionAccepted() throws -> ABI.Element.Event {
+    private static func _eventExchangeActionAcceptedV2() throws -> ABI.Element.Event {
         guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
             if case .event(let value) = element { return value }
             return nil
-        }).first(where: { $0.signature == "ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)" }) else { throw WrapperError.invalidValue("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+        }).first(where: { $0.signature == "ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)" }) else { throw WrapperError.invalidValue("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
         return event
     }
 
-    /// Builds indexed topics for `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)`. Reference values use their 32-byte topic hashes.
-    public static func filterExchangeActionAccepted(filter0: Data? = nil, filter1: BigUInt? = nil, filter3: Data? = nil) throws -> [EventFilterParameters.Topic?] {
-        let event = try _eventExchangeActionAccepted()
+    /// Builds indexed topics for `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)`. Reference values use their 32-byte topic hashes.
+    public static func filterExchangeActionAcceptedV2(filter0: Data? = nil, filter1: BigUInt? = nil, filter3: Data? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventExchangeActionAcceptedV2()
         var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
         if let value = filter0 {
             guard value.count == 16 else { throw WrapperError.encodingFailed("bytes16 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter1 {
             guard value < (BigUInt(1) << 16) else { throw WrapperError.encodingFailed("uint16 out of range") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter3 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[3], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[3], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         return topics
     }
 
-    /// Decodes a `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)` log.
-    public static func decodeExchangeActionAcceptedEvent(_ log: EventLog) throws -> ExchangeActionAcceptedEvent {
-        let event = try _eventExchangeActionAccepted()
+    /// Decodes a `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)` log.
+    public static func decodeExchangeActionAcceptedV2Event(_ log: EventLog) throws -> ExchangeActionAcceptedV2Event {
+        let event = try _eventExchangeActionAcceptedV2()
         guard log.topics.count == 4 else { throw WrapperError.eventMismatch }
         guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
-        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
         let topic0 = log.topics[1]
         guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
         guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
@@ -1391,45 +1221,45 @@ public enum IDiesisPerpsBook {
         let value3 = try _cast(raw3, as: Data.self)
         let value4 = try _cast(decoded[1], as: EthereumAddress.self)
         let value5 = try _cast(decoded[2], as: Data.self)
-        return ExchangeActionAcceptedEvent(clientActionId: value0, actionIndex: value1, actionTag: value2, marketId: value3, principal: value4, resultId: value5)
+        return ExchangeActionAcceptedV2Event(clientActionId: value0, actionIndex: value1, actionTag: value2, marketId: value3, principal: value4, resultId: value5)
     }
 
-    private static func _eventExchangeActionRejected() throws -> ABI.Element.Event {
+    private static func _eventExchangeActionRejectedV2() throws -> ABI.Element.Event {
         guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
             if case .event(let value) = element { return value }
             return nil
-        }).first(where: { $0.signature == "ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)" }) else { throw WrapperError.invalidValue("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+        }).first(where: { $0.signature == "ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)" }) else { throw WrapperError.invalidValue("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
         return event
     }
 
-    /// Builds indexed topics for `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)`. Reference values use their 32-byte topic hashes.
-    public static func filterExchangeActionRejected(filter0: Data? = nil, filter1: BigUInt? = nil, filter3: Data? = nil) throws -> [EventFilterParameters.Topic?] {
-        let event = try _eventExchangeActionRejected()
+    /// Builds indexed topics for `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)`. Reference values use their 32-byte topic hashes.
+    public static func filterExchangeActionRejectedV2(filter0: Data? = nil, filter1: BigUInt? = nil, filter3: Data? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventExchangeActionRejectedV2()
         var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
         if let value = filter0 {
             guard value.count == 16 else { throw WrapperError.encodingFailed("bytes16 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter1 {
             guard value < (BigUInt(1) << 16) else { throw WrapperError.encodingFailed("uint16 out of range") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter3 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[3], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[3], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         return topics
     }
 
-    /// Decodes a `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` log.
-    public static func decodeExchangeActionRejectedEvent(_ log: EventLog) throws -> ExchangeActionRejectedEvent {
-        let event = try _eventExchangeActionRejected()
+    /// Decodes a `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` log.
+    public static func decodeExchangeActionRejectedV2Event(_ log: EventLog) throws -> ExchangeActionRejectedV2Event {
+        let event = try _eventExchangeActionRejectedV2()
         guard log.topics.count == 4 else { throw WrapperError.eventMismatch }
         guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
-        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
         let topic0 = log.topics[1]
         guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
         guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
@@ -1446,44 +1276,44 @@ public enum IDiesisPerpsBook {
         let value4 = try _cast(decoded[1], as: EthereumAddress.self)
         let value5 = try _cast(decoded[2], as: BigUInt.self)
         let value6 = try _cast(decoded[3], as: Data.self)
-        return ExchangeActionRejectedEvent(clientActionId: value0, actionIndex: value1, actionTag: value2, marketId: value3, principal: value4, reasonCode: value5, context: value6)
+        return ExchangeActionRejectedV2Event(clientActionId: value0, actionIndex: value1, actionTag: value2, marketId: value3, principal: value4, reasonCode: value5, context: value6)
     }
 
-    private static func _eventExchangeL3Mutation() throws -> ABI.Element.Event {
+    private static func _eventExchangeL3MutationV2() throws -> ABI.Element.Event {
         guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
             if case .event(let value) = element { return value }
             return nil
-        }).first(where: { $0.signature == "ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)" }) else { throw WrapperError.invalidValue("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+        }).first(where: { $0.signature == "ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)" }) else { throw WrapperError.invalidValue("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
         return event
     }
 
-    /// Builds indexed topics for `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)`. Reference values use their 32-byte topic hashes.
-    public static func filterExchangeL3Mutation(filter0: Data? = nil, filter1: Data? = nil, filter2: EthereumAddress? = nil) throws -> [EventFilterParameters.Topic?] {
-        let event = try _eventExchangeL3Mutation()
+    /// Builds indexed topics for `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)`. Reference values use their 32-byte topic hashes.
+    public static func filterExchangeL3MutationV2(filter0: Data? = nil, filter1: Data? = nil, filter2: EthereumAddress? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventExchangeL3MutationV2()
         var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
         if let value = filter0 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter1 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter2 {
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[2], value: value) else { throw WrapperError.encodingFailed("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[2], value: value) else { throw WrapperError.encodingFailed("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
             topics.append(topic)
         } else { topics.append(nil) }
         return topics
     }
 
-    /// Decodes a `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` log.
-    public static func decodeExchangeL3MutationEvent(_ log: EventLog) throws -> ExchangeL3MutationEvent {
-        let event = try _eventExchangeL3Mutation()
+    /// Decodes a `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` log.
+    public static func decodeExchangeL3MutationV2Event(_ log: EventLog) throws -> ExchangeL3MutationV2Event {
+        let event = try _eventExchangeL3MutationV2()
         guard log.topics.count == 4 else { throw WrapperError.eventMismatch }
         guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
-        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
         let topic0 = log.topics[1]
         guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
         guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
@@ -1501,7 +1331,7 @@ public enum IDiesisPerpsBook {
         let value5 = try _cast(decoded[2], as: BigUInt.self)
         let value6 = try _cast(decoded[3], as: BigUInt.self)
         let value7 = try _cast(decoded[4], as: BigUInt.self)
-        return ExchangeL3MutationEvent(marketId: value0, orderId: value1, trader: value2, mutation: value3, side: value4, priceTicks: value5, quantityLots: value6, remainingLots: value7)
+        return ExchangeL3MutationV2Event(marketId: value0, orderId: value1, trader: value2, mutation: value3, side: value4, priceTicks: value5, quantityLots: value6, remainingLots: value7)
     }
 
     private static func _eventFundingApplied() throws -> ABI.Element.Event {

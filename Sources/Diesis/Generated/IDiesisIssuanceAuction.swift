@@ -8,43 +8,31 @@ import web3swift
 /// Types and constants of the `IDiesisIssuanceAuction` contract.
 public enum IDiesisIssuanceAuction {
     /// JSON ABI of the `IDiesisIssuanceAuction` contract.
-    public static let abi = #"[{"inputs":[{"components":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"address","name":"baseAsset","type":"address"},{"internalType":"address","name":"quoteAsset","type":"address"},{"internalType":"bytes32","name":"evidenceHash","type":"bytes32"},{"internalType":"uint8","name":"pricingVersion","type":"uint8"},{"internalType":"uint64","name":"priceDenominator","type":"uint64"}],"internalType":"struct IDiesisIssuanceAuction.PricedPerpRegistration","name":"registration","type":"tuple"}],"name":"bidPricedPerpListing","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"components":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"address","name":"baseAsset","type":"address"},{"internalType":"address","name":"quoteAsset","type":"address"},{"internalType":"bytes32","name":"evidenceHash","type":"bytes32"}],"internalType":"struct IDiesisIssuanceAuction.UnpricedPerpRegistration","name":"registration","type":"tuple"}],"name":"bidUnpricedPerpListing","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"currentPerpListingPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getPerpListingSlot","outputs":[{"components":[{"internalType":"uint64","name":"slotStartBlock","type":"uint64"},{"internalType":"uint64","name":"slotLengthBlocks","type":"uint64"},{"internalType":"uint256","name":"initialPriceUsdc","type":"uint256"},{"internalType":"uint256","name":"winningPriceUsdc","type":"uint256"},{"internalType":"address","name":"currentWinner","type":"address"},{"internalType":"bytes32","name":"registrationDigest","type":"bytes32"}],"internalType":"struct IDiesisIssuanceAuction.PerpListingSlot","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getPerpRegistrationPricing","outputs":[{"internalType":"uint8","name":"pricingVersion","type":"uint8"},{"internalType":"uint64","name":"priceDenominator","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"settlePerpListing","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"bidder","type":"address"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"bytes32","name":"registrationDigest","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"priceUsdc","type":"uint256"}],"name":"BidAccepted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"winner","type":"address"},{"indexed":false,"internalType":"bytes32","name":"registrationDigest","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"priceUsdc","type":"uint256"}],"name":"SlotSettled","type":"event"},{"inputs":[],"name":"AuctionNotSettled","type":"error"},{"inputs":[],"name":"InvalidUnpricedPerpRegistration","type":"error"},{"inputs":[],"name":"IssuanceAuctionCallFailed","type":"error"},{"inputs":[],"name":"RegistrationConflict","type":"error"}]"#
+    public static let abi = #"[{"inputs":[{"components":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"address","name":"baseAsset","type":"address"},{"internalType":"address","name":"quoteAsset","type":"address"},{"internalType":"bytes32","name":"evidenceHash","type":"bytes32"}],"internalType":"struct IDiesisIssuanceAuction.PerpRegistrationV1","name":"registration","type":"tuple"}],"name":"bidPerpListingV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"currentPerpListingPriceV1","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getPerpListingSlotV1","outputs":[{"components":[{"internalType":"uint64","name":"slotStartBlock","type":"uint64"},{"internalType":"uint64","name":"slotLengthBlocks","type":"uint64"},{"internalType":"uint256","name":"initialPriceUsdc","type":"uint256"},{"internalType":"uint256","name":"winningPriceUsdc","type":"uint256"},{"internalType":"address","name":"currentWinner","type":"address"},{"internalType":"bytes32","name":"registrationDigest","type":"bytes32"}],"internalType":"struct IDiesisIssuanceAuction.PerpListingSlotV1","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"settlePerpListingV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"bidder","type":"address"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"bytes32","name":"registrationDigest","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"priceUsdc","type":"uint256"}],"name":"BidAccepted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"winner","type":"address"},{"indexed":false,"internalType":"bytes32","name":"registrationDigest","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"priceUsdc","type":"uint256"}],"name":"SlotSettled","type":"event"},{"inputs":[],"name":"AuctionNotSettled","type":"error"},{"inputs":[],"name":"InvalidPerpRegistrationV1","type":"error"},{"inputs":[],"name":"IssuanceAuctionCallFailed","type":"error"},{"inputs":[],"name":"RegistrationConflict","type":"error"}]"#
 
-    /// Canonical signature of `bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))`.
-    public static let bidPricedPerpListingSignature = "bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))"
+    /// Canonical signature of `bidPerpListingV1((bytes32,address,address,bytes32))`.
+    public static let bidPerpListingV1Signature = "bidPerpListingV1((bytes32,address,address,bytes32))"
 
-    /// Selector of `bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))`.
-    public static let bidPricedPerpListingSelector = Data([0xf8, 0xa6, 0x31, 0xa6])
+    /// Selector of `bidPerpListingV1((bytes32,address,address,bytes32))`.
+    public static let bidPerpListingV1Selector = Data([0xc7, 0x3f, 0x51, 0xbc])
 
-    /// Canonical signature of `bidUnpricedPerpListing((bytes32,address,address,bytes32))`.
-    public static let bidUnpricedPerpListingSignature = "bidUnpricedPerpListing((bytes32,address,address,bytes32))"
+    /// Canonical signature of `currentPerpListingPriceV1()`.
+    public static let currentPerpListingPriceV1Signature = "currentPerpListingPriceV1()"
 
-    /// Selector of `bidUnpricedPerpListing((bytes32,address,address,bytes32))`.
-    public static let bidUnpricedPerpListingSelector = Data([0x2b, 0x37, 0xf8, 0x8d])
+    /// Selector of `currentPerpListingPriceV1()`.
+    public static let currentPerpListingPriceV1Selector = Data([0x5f, 0x4e, 0x5e, 0xcf])
 
-    /// Canonical signature of `currentPerpListingPrice()`.
-    public static let currentPerpListingPriceSignature = "currentPerpListingPrice()"
+    /// Canonical signature of `getPerpListingSlotV1()`.
+    public static let getPerpListingSlotV1Signature = "getPerpListingSlotV1()"
 
-    /// Selector of `currentPerpListingPrice()`.
-    public static let currentPerpListingPriceSelector = Data([0x6a, 0xcd, 0xd6, 0x27])
+    /// Selector of `getPerpListingSlotV1()`.
+    public static let getPerpListingSlotV1Selector = Data([0x4e, 0x8d, 0x9d, 0x31])
 
-    /// Canonical signature of `getPerpListingSlot()`.
-    public static let getPerpListingSlotSignature = "getPerpListingSlot()"
+    /// Canonical signature of `settlePerpListingV1()`.
+    public static let settlePerpListingV1Signature = "settlePerpListingV1()"
 
-    /// Selector of `getPerpListingSlot()`.
-    public static let getPerpListingSlotSelector = Data([0x01, 0xe0, 0x6b, 0x79])
-
-    /// Canonical signature of `getPerpRegistrationPricing(bytes32)`.
-    public static let getPerpRegistrationPricingSignature = "getPerpRegistrationPricing(bytes32)"
-
-    /// Selector of `getPerpRegistrationPricing(bytes32)`.
-    public static let getPerpRegistrationPricingSelector = Data([0x79, 0xdb, 0xb1, 0x99])
-
-    /// Canonical signature of `settlePerpListing()`.
-    public static let settlePerpListingSignature = "settlePerpListing()"
-
-    /// Selector of `settlePerpListing()`.
-    public static let settlePerpListingSelector = Data([0x2c, 0x4e, 0x0d, 0xa1])
+    /// Selector of `settlePerpListingV1()`.
+    public static let settlePerpListingV1Selector = Data([0x5c, 0x66, 0xb7, 0x8b])
 
     /// Canonical signature of the `BidAccepted(address,bytes32,bytes32,uint256)` event.
     public static let bidAcceptedEventSignature = "BidAccepted(address,bytes32,bytes32,uint256)"
@@ -64,11 +52,11 @@ public enum IDiesisIssuanceAuction {
     /// Selector of the `AuctionNotSettled()` error.
     public static let auctionNotSettledErrorSelector = Data([0x47, 0x2f, 0xd1, 0x99])
 
-    /// Canonical signature of the `InvalidUnpricedPerpRegistration()` error.
-    public static let invalidUnpricedPerpRegistrationErrorSignature = "InvalidUnpricedPerpRegistration()"
+    /// Canonical signature of the `InvalidPerpRegistrationV1()` error.
+    public static let invalidPerpRegistrationV1ErrorSignature = "InvalidPerpRegistrationV1()"
 
-    /// Selector of the `InvalidUnpricedPerpRegistration()` error.
-    public static let invalidUnpricedPerpRegistrationErrorSelector = Data([0xe4, 0x31, 0xe4, 0xd8])
+    /// Selector of the `InvalidPerpRegistrationV1()` error.
+    public static let invalidPerpRegistrationV1ErrorSelector = Data([0x97, 0xbb, 0x06, 0x17])
 
     /// Canonical signature of the `IssuanceAuctionCallFailed()` error.
     public static let issuanceAuctionCallFailedErrorSignature = "IssuanceAuctionCallFailed()"
@@ -82,27 +70,8 @@ public enum IDiesisIssuanceAuction {
     /// Selector of the `RegistrationConflict()` error.
     public static let registrationConflictErrorSelector = Data([0x54, 0xdd, 0xad, 0xaf])
 
-    /// The `PricedPerpRegistration` tuple.
-    public struct PricedPerpRegistration: Sendable, Hashable {
-        public let marketId: Data
-        public let baseAsset: EthereumAddress
-        public let quoteAsset: EthereumAddress
-        public let evidenceHash: Data
-        public let pricingVersion: BigUInt
-        public let priceDenominator: BigUInt
-
-        public init(marketId: Data, baseAsset: EthereumAddress, quoteAsset: EthereumAddress, evidenceHash: Data, pricingVersion: BigUInt, priceDenominator: BigUInt) {
-            self.marketId = marketId
-            self.baseAsset = baseAsset
-            self.quoteAsset = quoteAsset
-            self.evidenceHash = evidenceHash
-            self.pricingVersion = pricingVersion
-            self.priceDenominator = priceDenominator
-        }
-    }
-
-    /// The `UnpricedPerpRegistration` tuple.
-    public struct UnpricedPerpRegistration: Sendable, Hashable {
+    /// The `PerpRegistrationV1` tuple.
+    public struct PerpRegistrationV1: Sendable, Hashable {
         public let marketId: Data
         public let baseAsset: EthereumAddress
         public let quoteAsset: EthereumAddress
@@ -116,8 +85,8 @@ public enum IDiesisIssuanceAuction {
         }
     }
 
-    /// The `PerpListingSlot` tuple.
-    public struct PerpListingSlot: Sendable, Hashable {
+    /// The `PerpListingSlotV1` tuple.
+    public struct PerpListingSlotV1: Sendable, Hashable {
         public let slotStartBlock: BigUInt
         public let slotLengthBlocks: BigUInt
         public let initialPriceUsdc: BigUInt
@@ -135,39 +104,15 @@ public enum IDiesisIssuanceAuction {
         }
     }
 
-    /// Arguments of `bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))`.
-    ///
-    /// Place a canonical-USDC bid bound to immutable priced units.
-    /// The native runtime debits msg.sender and retains the accepted identity preimage. Successful admission and identical retries return no data, as with bidUnpricedPerpListing.
-    public struct BidPricedPerpListingParams: Sendable, Hashable {
-        public let registration: PricedPerpRegistration
-
-        public init(registration: PricedPerpRegistration) {
-            self.registration = registration
-        }
-    }
-
-    /// Arguments of `bidUnpricedPerpListing((bytes32,address,address,bytes32))`.
+    /// Arguments of `bidPerpListingV1((bytes32,address,address,bytes32))`.
     ///
     /// Place a canonical-USDC bid bound to one perpetual registration.
     /// The native runtime debits USDC; this selector is intentionally not payable and accepts no caller-supplied winner.
-    public struct BidUnpricedPerpListingParams: Sendable, Hashable {
-        public let registration: UnpricedPerpRegistration
+    public struct BidPerpListingV1Params: Sendable, Hashable {
+        public let registration: PerpRegistrationV1
 
-        public init(registration: UnpricedPerpRegistration) {
+        public init(registration: PerpRegistrationV1) {
             self.registration = registration
-        }
-    }
-
-    /// Arguments of `getPerpRegistrationPricing(bytes32)`.
-    ///
-    /// Read the authenticated units retained by an accepted bid.
-    /// A proved legacy registration returns zero and one. Unknown records, absent identity preimages, or deleted priced metadata revert.
-    public struct GetPerpRegistrationPricingParams: Sendable, Hashable {
-        public let marketId: Data
-
-        public init(marketId: Data) {
-            self.marketId = marketId
         }
     }
 
@@ -206,8 +151,8 @@ public enum IDiesisIssuanceAuction {
         public init() {}
     }
 
-    /// Arguments of the `InvalidUnpricedPerpRegistration()` error.
-    public struct InvalidUnpricedPerpRegistrationError: Sendable, Hashable {
+    /// Arguments of the `InvalidPerpRegistrationV1()` error.
+    public struct InvalidPerpRegistrationV1Error: Sendable, Hashable {
         public init() {}
     }
 
@@ -243,101 +188,64 @@ public enum IDiesisIssuanceAuction {
     }
     private static func _contract() throws -> EthereumContract { try EthereumContract(abi) }
 
-    private static func _encodePricedPerpRegistration(_ value: PricedPerpRegistration) -> [Any] { [value.marketId, value.baseAsset, value.quoteAsset, value.evidenceHash, value.pricingVersion, value.priceDenominator] }
-    private static func _validatePricedPerpRegistration(_ value: PricedPerpRegistration) throws {
-        guard value.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard value.evidenceHash.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard value.pricingVersion < (BigUInt(1) << 8) else { throw WrapperError.encodingFailed("uint8 out of range") }
-        guard value.priceDenominator < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
-    }
-    private static func _decodePricedPerpRegistration(_ raw: Any) throws -> PricedPerpRegistration {
-        guard let values = raw as? [Any], values.count == 6 else { throw WrapperError.invalidValue("PricedPerpRegistration") }
-        return PricedPerpRegistration(marketId: try _cast(values[0], as: Data.self), baseAsset: try _cast(values[1], as: EthereumAddress.self), quoteAsset: try _cast(values[2], as: EthereumAddress.self), evidenceHash: try _cast(values[3], as: Data.self), pricingVersion: try _cast(values[4], as: BigUInt.self), priceDenominator: try _cast(values[5], as: BigUInt.self))
-    }
-
-    private static func _encodeUnpricedPerpRegistration(_ value: UnpricedPerpRegistration) -> [Any] { [value.marketId, value.baseAsset, value.quoteAsset, value.evidenceHash] }
-    private static func _validateUnpricedPerpRegistration(_ value: UnpricedPerpRegistration) throws {
+    private static func _encodePerpRegistrationV1(_ value: PerpRegistrationV1) -> [Any] { [value.marketId, value.baseAsset, value.quoteAsset, value.evidenceHash] }
+    private static func _validatePerpRegistrationV1(_ value: PerpRegistrationV1) throws {
         guard value.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard value.evidenceHash.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
     }
-    private static func _decodeUnpricedPerpRegistration(_ raw: Any) throws -> UnpricedPerpRegistration {
-        guard let values = raw as? [Any], values.count == 4 else { throw WrapperError.invalidValue("UnpricedPerpRegistration") }
-        return UnpricedPerpRegistration(marketId: try _cast(values[0], as: Data.self), baseAsset: try _cast(values[1], as: EthereumAddress.self), quoteAsset: try _cast(values[2], as: EthereumAddress.self), evidenceHash: try _cast(values[3], as: Data.self))
+    private static func _decodePerpRegistrationV1(_ raw: Any) throws -> PerpRegistrationV1 {
+        guard let values = raw as? [Any], values.count == 4 else { throw WrapperError.invalidValue("PerpRegistrationV1") }
+        return PerpRegistrationV1(marketId: try _cast(values[0], as: Data.self), baseAsset: try _cast(values[1], as: EthereumAddress.self), quoteAsset: try _cast(values[2], as: EthereumAddress.self), evidenceHash: try _cast(values[3], as: Data.self))
     }
 
-    private static func _encodePerpListingSlot(_ value: PerpListingSlot) -> [Any] { [value.slotStartBlock, value.slotLengthBlocks, value.initialPriceUsdc, value.winningPriceUsdc, value.currentWinner, value.registrationDigest] }
-    private static func _validatePerpListingSlot(_ value: PerpListingSlot) throws {
+    private static func _encodePerpListingSlotV1(_ value: PerpListingSlotV1) -> [Any] { [value.slotStartBlock, value.slotLengthBlocks, value.initialPriceUsdc, value.winningPriceUsdc, value.currentWinner, value.registrationDigest] }
+    private static func _validatePerpListingSlotV1(_ value: PerpListingSlotV1) throws {
         guard value.slotStartBlock < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
         guard value.slotLengthBlocks < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
         guard value.initialPriceUsdc < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
         guard value.winningPriceUsdc < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
         guard value.registrationDigest.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
     }
-    private static func _decodePerpListingSlot(_ raw: Any) throws -> PerpListingSlot {
-        guard let values = raw as? [Any], values.count == 6 else { throw WrapperError.invalidValue("PerpListingSlot") }
-        return PerpListingSlot(slotStartBlock: try _cast(values[0], as: BigUInt.self), slotLengthBlocks: try _cast(values[1], as: BigUInt.self), initialPriceUsdc: try _cast(values[2], as: BigUInt.self), winningPriceUsdc: try _cast(values[3], as: BigUInt.self), currentWinner: try _cast(values[4], as: EthereumAddress.self), registrationDigest: try _cast(values[5], as: Data.self))
+    private static func _decodePerpListingSlotV1(_ raw: Any) throws -> PerpListingSlotV1 {
+        guard let values = raw as? [Any], values.count == 6 else { throw WrapperError.invalidValue("PerpListingSlotV1") }
+        return PerpListingSlotV1(slotStartBlock: try _cast(values[0], as: BigUInt.self), slotLengthBlocks: try _cast(values[1], as: BigUInt.self), initialPriceUsdc: try _cast(values[2], as: BigUInt.self), winningPriceUsdc: try _cast(values[3], as: BigUInt.self), currentWinner: try _cast(values[4], as: EthereumAddress.self), registrationDigest: try _cast(values[5], as: Data.self))
     }
 
-    /// ABI-encodes `bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))` for an offline transaction.
-    public static func encodeBidPricedPerpListing(_ args: BidPricedPerpListingParams) throws -> Data {
-        try _validatePricedPerpRegistration(args.registration)
-        guard let data = try _contract().method("bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))", parameters: [_encodePricedPerpRegistration(args.registration)], extraData: nil) else { throw WrapperError.encodingFailed("bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))") }
+    /// ABI-encodes `bidPerpListingV1((bytes32,address,address,bytes32))` for an offline transaction.
+    public static func encodeBidPerpListingV1(_ args: BidPerpListingV1Params) throws -> Data {
+        try _validatePerpRegistrationV1(args.registration)
+        guard let data = try _contract().method("bidPerpListingV1((bytes32,address,address,bytes32))", parameters: [_encodePerpRegistrationV1(args.registration)], extraData: nil) else { throw WrapperError.encodingFailed("bidPerpListingV1((bytes32,address,address,bytes32))") }
         return data
     }
 
-    /// Decoded result of `bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))`.
-    ///
-    /// Place a canonical-USDC bid bound to immutable priced units.
-    /// The native runtime debits msg.sender and retains the accepted identity preimage. Successful admission and identical retries return no data, as with bidUnpricedPerpListing.
-    public struct BidPricedPerpListingResult: Sendable, Hashable {
-        public init() {}
-    }
-
-    private static func _decodeBidPricedPerpListingValues(_ values: [String: Any]) throws -> BidPricedPerpListingResult {
-        return BidPricedPerpListingResult()
-    }
-
-    /// Decodes raw return data for `bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))` offline.
-    public static func decodeBidPricedPerpListingResult(_ data: Data) throws -> BidPricedPerpListingResult {
-        guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return BidPricedPerpListingResult()
-    }
-
-    /// ABI-encodes `bidUnpricedPerpListing((bytes32,address,address,bytes32))` for an offline transaction.
-    public static func encodeBidUnpricedPerpListing(_ args: BidUnpricedPerpListingParams) throws -> Data {
-        try _validateUnpricedPerpRegistration(args.registration)
-        guard let data = try _contract().method("bidUnpricedPerpListing((bytes32,address,address,bytes32))", parameters: [_encodeUnpricedPerpRegistration(args.registration)], extraData: nil) else { throw WrapperError.encodingFailed("bidUnpricedPerpListing((bytes32,address,address,bytes32))") }
-        return data
-    }
-
-    /// Decoded result of `bidUnpricedPerpListing((bytes32,address,address,bytes32))`.
+    /// Decoded result of `bidPerpListingV1((bytes32,address,address,bytes32))`.
     ///
     /// Place a canonical-USDC bid bound to one perpetual registration.
     /// The native runtime debits USDC; this selector is intentionally not payable and accepts no caller-supplied winner.
-    public struct BidUnpricedPerpListingResult: Sendable, Hashable {
+    public struct BidPerpListingV1Result: Sendable, Hashable {
         public init() {}
     }
 
-    private static func _decodeBidUnpricedPerpListingValues(_ values: [String: Any]) throws -> BidUnpricedPerpListingResult {
-        return BidUnpricedPerpListingResult()
+    private static func _decodeBidPerpListingV1Values(_ values: [String: Any]) throws -> BidPerpListingV1Result {
+        return BidPerpListingV1Result()
     }
 
-    /// Decodes raw return data for `bidUnpricedPerpListing((bytes32,address,address,bytes32))` offline.
-    public static func decodeBidUnpricedPerpListingResult(_ data: Data) throws -> BidUnpricedPerpListingResult {
+    /// Decodes raw return data for `bidPerpListingV1((bytes32,address,address,bytes32))` offline.
+    public static func decodeBidPerpListingV1Result(_ data: Data) throws -> BidPerpListingV1Result {
         guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return BidUnpricedPerpListingResult()
+        return BidPerpListingV1Result()
     }
 
-    /// ABI-encodes `currentPerpListingPrice()` for an offline transaction.
-    public static func encodeCurrentPerpListingPrice() throws -> Data {
-        guard let data = try _contract().method("currentPerpListingPrice()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("currentPerpListingPrice()") }
+    /// ABI-encodes `currentPerpListingPriceV1()` for an offline transaction.
+    public static func encodeCurrentPerpListingPriceV1() throws -> Data {
+        guard let data = try _contract().method("currentPerpListingPriceV1()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("currentPerpListingPriceV1()") }
         return data
     }
 
-    /// Decoded result of `currentPerpListingPrice()`.
+    /// Decoded result of `currentPerpListingPriceV1()`.
     ///
     /// Return the fixed V1 perpetual-listing price in USDC units.
-    public struct CurrentPerpListingPriceResult: Sendable, Hashable {
+    public struct CurrentPerpListingPriceV1Result: Sendable, Hashable {
         public let uint256: BigUInt
 
         public init(uint256: BigUInt) {
@@ -345,101 +253,67 @@ public enum IDiesisIssuanceAuction {
         }
     }
 
-    private static func _decodeCurrentPerpListingPriceValues(_ values: [String: Any]) throws -> CurrentPerpListingPriceResult {
+    private static func _decodeCurrentPerpListingPriceV1Values(_ values: [String: Any]) throws -> CurrentPerpListingPriceV1Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: BigUInt.self)
-        return CurrentPerpListingPriceResult(uint256: value0)
+        return CurrentPerpListingPriceV1Result(uint256: value0)
     }
 
-    /// Decodes raw return data for `currentPerpListingPrice()` offline.
-    public static func decodeCurrentPerpListingPriceResult(_ data: Data) throws -> CurrentPerpListingPriceResult {
-        return try _decodeCurrentPerpListingPriceValues(_contract().decodeReturnData("currentPerpListingPrice()", data: data))
+    /// Decodes raw return data for `currentPerpListingPriceV1()` offline.
+    public static func decodeCurrentPerpListingPriceV1Result(_ data: Data) throws -> CurrentPerpListingPriceV1Result {
+        return try _decodeCurrentPerpListingPriceV1Values(_contract().decodeReturnData("currentPerpListingPriceV1()", data: data))
     }
 
-    /// ABI-encodes `getPerpListingSlot()` for an offline transaction.
-    public static func encodeGetPerpListingSlot() throws -> Data {
-        guard let data = try _contract().method("getPerpListingSlot()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("getPerpListingSlot()") }
+    /// ABI-encodes `getPerpListingSlotV1()` for an offline transaction.
+    public static func encodeGetPerpListingSlotV1() throws -> Data {
+        guard let data = try _contract().method("getPerpListingSlotV1()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("getPerpListingSlotV1()") }
         return data
     }
 
-    /// Decoded result of `getPerpListingSlot()`.
+    /// Decoded result of `getPerpListingSlotV1()`.
     ///
     /// Read the active perpetual-listing slot and registration digest.
-    public struct GetPerpListingSlotResult: Sendable, Hashable {
-        public let perpListingSlot: PerpListingSlot
+    public struct GetPerpListingSlotV1Result: Sendable, Hashable {
+        public let perpListingSlotV1: PerpListingSlotV1
 
-        public init(perpListingSlot: PerpListingSlot) {
-            self.perpListingSlot = perpListingSlot
+        public init(perpListingSlotV1: PerpListingSlotV1) {
+            self.perpListingSlotV1 = perpListingSlotV1
         }
     }
 
-    private static func _decodeGetPerpListingSlotValues(_ values: [String: Any]) throws -> GetPerpListingSlotResult {
+    private static func _decodeGetPerpListingSlotV1Values(_ values: [String: Any]) throws -> GetPerpListingSlotV1Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
-        let value0 = try _decodePerpListingSlot(raw0)
-        return GetPerpListingSlotResult(perpListingSlot: value0)
+        let value0 = try _decodePerpListingSlotV1(raw0)
+        return GetPerpListingSlotV1Result(perpListingSlotV1: value0)
     }
 
-    /// Decodes raw return data for `getPerpListingSlot()` offline.
-    public static func decodeGetPerpListingSlotResult(_ data: Data) throws -> GetPerpListingSlotResult {
-        return try _decodeGetPerpListingSlotValues(_contract().decodeReturnData("getPerpListingSlot()", data: data))
+    /// Decodes raw return data for `getPerpListingSlotV1()` offline.
+    public static func decodeGetPerpListingSlotV1Result(_ data: Data) throws -> GetPerpListingSlotV1Result {
+        return try _decodeGetPerpListingSlotV1Values(_contract().decodeReturnData("getPerpListingSlotV1()", data: data))
     }
 
-    /// ABI-encodes `getPerpRegistrationPricing(bytes32)` for an offline transaction.
-    public static func encodeGetPerpRegistrationPricing(_ args: GetPerpRegistrationPricingParams) throws -> Data {
-        guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard let data = try _contract().method("getPerpRegistrationPricing(bytes32)", parameters: [args.marketId], extraData: nil) else { throw WrapperError.encodingFailed("getPerpRegistrationPricing(bytes32)") }
+    /// ABI-encodes `settlePerpListingV1()` for an offline transaction.
+    public static func encodeSettlePerpListingV1() throws -> Data {
+        guard let data = try _contract().method("settlePerpListingV1()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("settlePerpListingV1()") }
         return data
     }
 
-    /// Decoded result of `getPerpRegistrationPricing(bytes32)`.
-    ///
-    /// Read the authenticated units retained by an accepted bid.
-    /// A proved legacy registration returns zero and one. Unknown records, absent identity preimages, or deleted priced metadata revert.
-    public struct GetPerpRegistrationPricingResult: Sendable, Hashable {
-        public let pricingVersion: BigUInt
-        public let priceDenominator: BigUInt
-
-        public init(pricingVersion: BigUInt, priceDenominator: BigUInt) {
-            self.pricingVersion = pricingVersion
-            self.priceDenominator = priceDenominator
-        }
-    }
-
-    private static func _decodeGetPerpRegistrationPricingValues(_ values: [String: Any]) throws -> GetPerpRegistrationPricingResult {
-        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
-        let value0 = try _cast(raw0, as: BigUInt.self)
-        guard let raw1 = values["1"] else { throw WrapperError.invalidValue("output 1") }
-        let value1 = try _cast(raw1, as: BigUInt.self)
-        return GetPerpRegistrationPricingResult(pricingVersion: value0, priceDenominator: value1)
-    }
-
-    /// Decodes raw return data for `getPerpRegistrationPricing(bytes32)` offline.
-    public static func decodeGetPerpRegistrationPricingResult(_ data: Data) throws -> GetPerpRegistrationPricingResult {
-        return try _decodeGetPerpRegistrationPricingValues(_contract().decodeReturnData("getPerpRegistrationPricing(bytes32)", data: data))
-    }
-
-    /// ABI-encodes `settlePerpListing()` for an offline transaction.
-    public static func encodeSettlePerpListing() throws -> Data {
-        guard let data = try _contract().method("settlePerpListing()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("settlePerpListing()") }
-        return data
-    }
-
-    /// Decoded result of `settlePerpListing()`.
+    /// Decoded result of `settlePerpListingV1()`.
     ///
     /// Settle the elapsed perpetual-listing slot.
     /// Native-runtime only: settlement atomically routes the accepted USDC price (70% burn, 20% treasury, 10% validator rewards) and records the winning registration with `DiesisPerpDeploy`. This selector is ABI-visible for system dispatch but intentionally not forwarded by `DiesisIssuanceAuction`. It returns no data; after the first due transition, every repeat is a successful no-op over persisted state.
-    public struct SettlePerpListingResult: Sendable, Hashable {
+    public struct SettlePerpListingV1Result: Sendable, Hashable {
         public init() {}
     }
 
-    private static func _decodeSettlePerpListingValues(_ values: [String: Any]) throws -> SettlePerpListingResult {
-        return SettlePerpListingResult()
+    private static func _decodeSettlePerpListingV1Values(_ values: [String: Any]) throws -> SettlePerpListingV1Result {
+        return SettlePerpListingV1Result()
     }
 
-    /// Decodes raw return data for `settlePerpListing()` offline.
-    public static func decodeSettlePerpListingResult(_ data: Data) throws -> SettlePerpListingResult {
+    /// Decodes raw return data for `settlePerpListingV1()` offline.
+    public static func decodeSettlePerpListingV1Result(_ data: Data) throws -> SettlePerpListingV1Result {
         guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
-        return SettlePerpListingResult()
+        return SettlePerpListingV1Result()
     }
 
     /// A web3swift contract instance for typed reads and writes.
@@ -455,61 +329,42 @@ public enum IDiesisIssuanceAuction {
             self.contract = try EthereumContract(IDiesisIssuanceAuction.abi, at: address)
         }
 
-        /// Calls `currentPerpListingPrice()` and decodes its result.
-        public func readCurrentPerpListingPrice(transaction: CodableTransaction? = nil) async throws -> CurrentPerpListingPriceResult {
+        /// Calls `currentPerpListingPriceV1()` and decodes its result.
+        public func readCurrentPerpListingPriceV1(transaction: CodableTransaction? = nil) async throws -> CurrentPerpListingPriceV1Result {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             tx.to = address
-            tx.data = try IDiesisIssuanceAuction.encodeCurrentPerpListingPrice()
-            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "currentPerpListingPrice()")
-            return try IDiesisIssuanceAuction._decodeCurrentPerpListingPriceValues(await operation.callContractMethod())
+            tx.data = try IDiesisIssuanceAuction.encodeCurrentPerpListingPriceV1()
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "currentPerpListingPriceV1()")
+            return try IDiesisIssuanceAuction._decodeCurrentPerpListingPriceV1Values(await operation.callContractMethod())
         }
 
-        /// Calls `getPerpListingSlot()` and decodes its result.
-        public func readGetPerpListingSlot(transaction: CodableTransaction? = nil) async throws -> GetPerpListingSlotResult {
+        /// Calls `getPerpListingSlotV1()` and decodes its result.
+        public func readGetPerpListingSlotV1(transaction: CodableTransaction? = nil) async throws -> GetPerpListingSlotV1Result {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             tx.to = address
-            tx.data = try IDiesisIssuanceAuction.encodeGetPerpListingSlot()
-            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "getPerpListingSlot()")
-            return try IDiesisIssuanceAuction._decodeGetPerpListingSlotValues(await operation.callContractMethod())
+            tx.data = try IDiesisIssuanceAuction.encodeGetPerpListingSlotV1()
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "getPerpListingSlotV1()")
+            return try IDiesisIssuanceAuction._decodeGetPerpListingSlotV1Values(await operation.callContractMethod())
         }
 
-        /// Calls `getPerpRegistrationPricing(bytes32)` and decodes its result.
-        public func readGetPerpRegistrationPricing(_ args: GetPerpRegistrationPricingParams, transaction: CodableTransaction? = nil) async throws -> GetPerpRegistrationPricingResult {
-            var tx = transaction ?? CodableTransaction(to: address, data: Data())
-            tx.to = address
-            tx.data = try IDiesisIssuanceAuction.encodeGetPerpRegistrationPricing(args)
-            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "getPerpRegistrationPricing(bytes32)")
-            return try IDiesisIssuanceAuction._decodeGetPerpRegistrationPricingValues(await operation.callContractMethod())
-        }
-
-        /// Prepares `bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))` with transaction options for signing or submission.
-        public func prepareBidPricedPerpListing(_ args: BidPricedPerpListingParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `bidPerpListingV1((bytes32,address,address,bytes32))` with transaction options for signing or submission.
+        public func prepareBidPerpListingV1(_ args: BidPerpListingV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisIssuanceAuction.encodeBidPricedPerpListing(args)
+            tx.data = try IDiesisIssuanceAuction.encodeBidPerpListingV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "bidPricedPerpListing((bytes32,address,address,bytes32,uint8,uint64))")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "bidPerpListingV1((bytes32,address,address,bytes32))")
         }
 
-        /// Prepares `bidUnpricedPerpListing((bytes32,address,address,bytes32))` with transaction options for signing or submission.
-        public func prepareBidUnpricedPerpListing(_ args: BidUnpricedPerpListingParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `settlePerpListingV1()` with transaction options for signing or submission.
+        public func prepareSettlePerpListingV1(transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisIssuanceAuction.encodeBidUnpricedPerpListing(args)
+            tx.data = try IDiesisIssuanceAuction.encodeSettlePerpListingV1()
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "bidUnpricedPerpListing((bytes32,address,address,bytes32))")
-        }
-
-        /// Prepares `settlePerpListing()` with transaction options for signing or submission.
-        public func prepareSettlePerpListing(transaction: CodableTransaction? = nil) throws -> WriteOperation {
-            var tx = transaction ?? CodableTransaction(to: address, data: Data())
-            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
-            tx.to = address
-            tx.data = try IDiesisIssuanceAuction.encodeSettlePerpListing()
-            tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "settlePerpListing()")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "settlePerpListingV1()")
         }
     }
 
@@ -603,8 +458,8 @@ public enum IDiesisIssuanceAuction {
     public enum DecodedCustomError {
         /// `AuctionNotSettled()`.
         case auctionNotSettled(AuctionNotSettledError)
-        /// `InvalidUnpricedPerpRegistration()`.
-        case invalidUnpricedPerpRegistration(InvalidUnpricedPerpRegistrationError)
+        /// `InvalidPerpRegistrationV1()`.
+        case invalidPerpRegistrationV1(InvalidPerpRegistrationV1Error)
         /// `IssuanceAuctionCallFailed()`.
         case issuanceAuctionCallFailed(IssuanceAuctionCallFailedError)
         /// `RegistrationConflict()`.
@@ -623,12 +478,12 @@ public enum IDiesisIssuanceAuction {
             }).first(where: { $0.signature == "AuctionNotSettled()" }), error.decodeEthError(Data(data.dropFirst(4))) != nil else { throw WrapperError.invalidValue("AuctionNotSettled()") }
             return .auctionNotSettled(AuctionNotSettledError())
         }
-        if selector == Data([0xe4, 0x31, 0xe4, 0xd8]) {
+        if selector == Data([0x97, 0xbb, 0x06, 0x17]) {
             guard let error = contract.abi.compactMap({ element -> ABI.Element.EthError? in
                 if case .error(let value) = element { return value }
                 return nil
-            }).first(where: { $0.signature == "InvalidUnpricedPerpRegistration()" }), error.decodeEthError(Data(data.dropFirst(4))) != nil else { throw WrapperError.invalidValue("InvalidUnpricedPerpRegistration()") }
-            return .invalidUnpricedPerpRegistration(InvalidUnpricedPerpRegistrationError())
+            }).first(where: { $0.signature == "InvalidPerpRegistrationV1()" }), error.decodeEthError(Data(data.dropFirst(4))) != nil else { throw WrapperError.invalidValue("InvalidPerpRegistrationV1()") }
+            return .invalidPerpRegistrationV1(InvalidPerpRegistrationV1Error())
         }
         if selector == Data([0x4d, 0xdd, 0x41, 0x9d]) {
             guard let error = contract.abi.compactMap({ element -> ABI.Element.EthError? in

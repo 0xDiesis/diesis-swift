@@ -8,13 +8,19 @@ import web3swift
 /// Types and constants of the `IDiesisSettlement` contract.
 public enum IDiesisSettlement {
     /// JSON ABI of the `IDiesisSettlement` contract.
-    public static let abi = #"[{"inputs":[{"internalType":"address","name":"sessionKey","type":"address"},{"internalType":"uint256","name":"actionScope","type":"uint256"},{"internalType":"uint64","name":"validUntil","type":"uint64"},{"internalType":"uint256","name":"maxNotionalOrSpend","type":"uint256"},{"internalType":"bytes32","name":"allowedMarketsMask","type":"bytes32"}],"name":"authorizeSessionKey","outputs":[{"internalType":"uint64","name":"generation","type":"uint64"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"address","name":"token","type":"address"}],"name":"availableBalance","outputs":[{"internalType":"uint256","name":"available","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint248","name":"wordPos","type":"uint248"}],"name":"cancelNonceWord","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"cancelOrderNonce","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"creditRouterDeposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"debitRouterWithdrawal","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"deposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"fundPerpBackstop","outputs":[{"internalType":"bytes32","name":"transactionId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"tradingKey","type":"address"}],"name":"getTradingKeyAuth","outputs":[{"components":[{"internalType":"bytes32","name":"header","type":"bytes32"},{"internalType":"uint256","name":"maxOrderNotional","type":"uint256"},{"internalType":"bytes32","name":"allowedMarketsMask","type":"bytes32"}],"internalType":"struct IDiesisSettlement.TradingKeyAuth","name":"auth","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"isNonceUsed","outputs":[{"internalType":"bool","name":"used","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"tradingKey","type":"address"},{"internalType":"uint64","name":"validUntil","type":"uint64"},{"internalType":"uint128","name":"maxOrderNotional","type":"uint128"},{"internalType":"bytes32","name":"allowedMarketsMask","type":"bytes32"},{"internalType":"bool","name":"canWithdraw","type":"bool"}],"name":"registerTradingKey","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sessionKey","type":"address"}],"name":"revokeSessionKey","outputs":[{"internalType":"uint64","name":"generation","type":"uint64"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"tradingKey","type":"address"}],"name":"revokeTradingKey","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"address","name":"token","type":"address"}],"name":"totalBalance","outputs":[{"internalType":"uint256","name":"total","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Deposit","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"NonceCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"funder","type":"address"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"quoteToken","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"bytes32","name":"transactionId","type":"bytes32"}],"name":"PerpBackstopFunded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"tradingKey","type":"address"},{"indexed":false,"internalType":"uint64","name":"validUntil","type":"uint64"},{"indexed":false,"internalType":"uint128","name":"maxOrderNotional","type":"uint128"},{"indexed":false,"internalType":"bytes32","name":"allowedMarketsMask","type":"bytes32"},{"indexed":false,"internalType":"bool","name":"canWithdraw","type":"bool"}],"name":"TradingKeyRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"tradingKey","type":"address"}],"name":"TradingKeyRevoked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Withdrawal","type":"event"}]"#
+    public static let abi = #"[{"inputs":[{"internalType":"address","name":"principal","type":"address"},{"internalType":"uint256","name":"actionScope","type":"uint256"},{"internalType":"uint64","name":"validUntil","type":"uint64"},{"internalType":"uint256","name":"maxNotionalOrSpend","type":"uint256"},{"internalType":"bytes32","name":"allowedMarketsMask","type":"bytes32"}],"name":"acceptSessionKeyV2","outputs":[{"internalType":"uint64","name":"generation","type":"uint64"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sessionKey","type":"address"},{"internalType":"uint256","name":"actionScope","type":"uint256"},{"internalType":"uint64","name":"validUntil","type":"uint64"},{"internalType":"uint256","name":"maxNotionalOrSpend","type":"uint256"},{"internalType":"bytes32","name":"allowedMarketsMask","type":"bytes32"}],"name":"authorizeSessionKeyV2","outputs":[{"internalType":"uint64","name":"generation","type":"uint64"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"address","name":"token","type":"address"}],"name":"availableBalance","outputs":[{"internalType":"uint256","name":"available","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint248","name":"wordPos","type":"uint248"}],"name":"cancelNonceWord","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"cancelOrderNonce","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"creditRouterDeposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"debitRouterWithdrawal","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"deposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"fundPerpBackstopV1","outputs":[{"internalType":"bytes32","name":"transactionId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"tradingKey","type":"address"}],"name":"getTradingKeyAuth","outputs":[{"components":[{"internalType":"bytes32","name":"header","type":"bytes32"},{"internalType":"uint256","name":"maxOrderNotional","type":"uint256"},{"internalType":"bytes32","name":"allowedMarketsMask","type":"bytes32"}],"internalType":"struct IDiesisSettlement.TradingKeyAuth","name":"auth","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"isNonceUsed","outputs":[{"internalType":"bool","name":"used","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"tradingKey","type":"address"},{"internalType":"uint64","name":"validUntil","type":"uint64"},{"internalType":"uint128","name":"maxOrderNotional","type":"uint128"},{"internalType":"bytes32","name":"allowedMarketsMask","type":"bytes32"},{"internalType":"bool","name":"canWithdraw","type":"bool"}],"name":"registerTradingKey","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sessionKey","type":"address"}],"name":"revokeSessionKeyV2","outputs":[{"internalType":"uint64","name":"generation","type":"uint64"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"tradingKey","type":"address"}],"name":"revokeTradingKey","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"address","name":"token","type":"address"}],"name":"totalBalance","outputs":[{"internalType":"uint256","name":"total","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Deposit","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"NonceCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"funder","type":"address"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"quoteToken","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"bytes32","name":"transactionId","type":"bytes32"}],"name":"PerpBackstopFunded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"tradingKey","type":"address"},{"indexed":false,"internalType":"uint64","name":"validUntil","type":"uint64"},{"indexed":false,"internalType":"uint128","name":"maxOrderNotional","type":"uint128"},{"indexed":false,"internalType":"bytes32","name":"allowedMarketsMask","type":"bytes32"},{"indexed":false,"internalType":"bool","name":"canWithdraw","type":"bool"}],"name":"TradingKeyRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"tradingKey","type":"address"}],"name":"TradingKeyRevoked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Withdrawal","type":"event"}]"#
 
-    /// Canonical signature of `authorizeSessionKey(address,uint256,uint64,uint256,bytes32)`.
-    public static let authorizeSessionKeySignature = "authorizeSessionKey(address,uint256,uint64,uint256,bytes32)"
+    /// Canonical signature of `acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)`.
+    public static let acceptSessionKeyV2Signature = "acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)"
 
-    /// Selector of `authorizeSessionKey(address,uint256,uint64,uint256,bytes32)`.
-    public static let authorizeSessionKeySelector = Data([0x52, 0xf0, 0x07, 0x2f])
+    /// Selector of `acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)`.
+    public static let acceptSessionKeyV2Selector = Data([0xca, 0x2b, 0xba, 0x63])
+
+    /// Canonical signature of `authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)`.
+    public static let authorizeSessionKeyV2Signature = "authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)"
+
+    /// Selector of `authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)`.
+    public static let authorizeSessionKeyV2Selector = Data([0xd1, 0xdf, 0x73, 0x6a])
 
     /// Canonical signature of `availableBalance(address,address)`.
     public static let availableBalanceSignature = "availableBalance(address,address)"
@@ -52,11 +58,11 @@ public enum IDiesisSettlement {
     /// Selector of `deposit(address,uint256)`.
     public static let depositSelector = Data([0x47, 0xe7, 0xef, 0x24])
 
-    /// Canonical signature of `fundPerpBackstop(bytes32,uint256,uint256)`.
-    public static let fundPerpBackstopSignature = "fundPerpBackstop(bytes32,uint256,uint256)"
+    /// Canonical signature of `fundPerpBackstopV1(bytes32,uint256,uint256)`.
+    public static let fundPerpBackstopV1Signature = "fundPerpBackstopV1(bytes32,uint256,uint256)"
 
-    /// Selector of `fundPerpBackstop(bytes32,uint256,uint256)`.
-    public static let fundPerpBackstopSelector = Data([0x04, 0x24, 0x47, 0x58])
+    /// Selector of `fundPerpBackstopV1(bytes32,uint256,uint256)`.
+    public static let fundPerpBackstopV1Selector = Data([0xb8, 0x03, 0x26, 0x46])
 
     /// Canonical signature of `getTradingKeyAuth(address,address)`.
     public static let getTradingKeyAuthSignature = "getTradingKeyAuth(address,address)"
@@ -76,11 +82,11 @@ public enum IDiesisSettlement {
     /// Selector of `registerTradingKey(address,uint64,uint128,bytes32,bool)`.
     public static let registerTradingKeySelector = Data([0xb5, 0xad, 0x16, 0xba])
 
-    /// Canonical signature of `revokeSessionKey(address)`.
-    public static let revokeSessionKeySignature = "revokeSessionKey(address)"
+    /// Canonical signature of `revokeSessionKeyV2(address)`.
+    public static let revokeSessionKeyV2Signature = "revokeSessionKeyV2(address)"
 
-    /// Selector of `revokeSessionKey(address)`.
-    public static let revokeSessionKeySelector = Data([0x84, 0xf4, 0xfc, 0x6a])
+    /// Selector of `revokeSessionKeyV2(address)`.
+    public static let revokeSessionKeyV2Selector = Data([0xa8, 0x16, 0x30, 0x70])
 
     /// Canonical signature of `revokeTradingKey(address)`.
     public static let revokeTradingKeySignature = "revokeTradingKey(address)"
@@ -149,11 +155,31 @@ public enum IDiesisSettlement {
         }
     }
 
-    /// Arguments of `authorizeSessionKey(address,uint256,uint64,uint256,bytes32)`.
+    /// Arguments of `acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)`.
     ///
-    /// Authorize one ordinary Ethereum sender as a scoped V2 session key.
-    /// A zero maximum is uncapped. Principal is always `msg.sender`.
-    public struct AuthorizeSessionKeyParams: Sendable, Hashable {
+    /// Accept exact authorization terms as the session key before principal activation.
+    /// One-use consent binds chain, endpoint, principal, key, terms and next generation. This call changes neither sender identity nor the principal's active-session count.
+    public struct AcceptSessionKeyV2Params: Sendable, Hashable {
+        public let principal: EthereumAddress
+        public let actionScope: BigUInt
+        public let validUntil: BigUInt
+        public let maxNotionalOrSpend: BigUInt
+        public let allowedMarketsMask: Data
+
+        public init(principal: EthereumAddress, actionScope: BigUInt, validUntil: BigUInt, maxNotionalOrSpend: BigUInt, allowedMarketsMask: Data) {
+            self.principal = principal
+            self.actionScope = actionScope
+            self.validUntil = validUntil
+            self.maxNotionalOrSpend = maxNotionalOrSpend
+            self.allowedMarketsMask = allowedMarketsMask
+        }
+    }
+
+    /// Arguments of `authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)`.
+    ///
+    /// Activate one scoped V2 session after its key accepted these exact terms.
+    /// A zero maximum is uncapped. Principal is always `msg.sender`; consent is consumed.
+    public struct AuthorizeSessionKeyV2Params: Sendable, Hashable {
         public let sessionKey: EthereumAddress
         public let actionScope: BigUInt
         public let validUntil: BigUInt
@@ -244,11 +270,11 @@ public enum IDiesisSettlement {
         }
     }
 
-    /// Arguments of `fundPerpBackstop(bytes32,uint256,uint256)`.
+    /// Arguments of `fundPerpBackstopV1(bytes32,uint256,uint256)`.
     ///
     /// Permanently contribute already-deposited quote collateral to a perpetual market's canonical liquidation backstop.
     /// `nonce` shares the settlement replay bitmap with other user-owned actions.
-    public struct FundPerpBackstopParams: Sendable, Hashable {
+    public struct FundPerpBackstopV1Params: Sendable, Hashable {
         public let marketId: Data
         public let amount: BigUInt
         public let nonce: BigUInt
@@ -299,10 +325,11 @@ public enum IDiesisSettlement {
         }
     }
 
-    /// Arguments of `revokeSessionKey(address)`.
+    /// Arguments of `revokeSessionKeyV2(address)`.
     ///
-    /// Revoke a V2 session key and advance its invalidating generation.
-    public struct RevokeSessionKeyParams: Sendable, Hashable {
+    /// Principal or key may revoke an active session and advance its generation.
+    /// A key may also cancel its pending consent. Expiry restores direct sender identity; explicit revocation releases the principal's retained capacity.
+    public struct RevokeSessionKeyV2Params: Sendable, Hashable {
         public let sessionKey: EthereumAddress
 
         public init(sessionKey: EthereumAddress) {
@@ -460,21 +487,21 @@ public enum IDiesisSettlement {
         return TradingKeyAuth(header: try _cast(values[0], as: Data.self), maxOrderNotional: try _cast(values[1], as: BigUInt.self), allowedMarketsMask: try _cast(values[2], as: Data.self))
     }
 
-    /// ABI-encodes `authorizeSessionKey(address,uint256,uint64,uint256,bytes32)` for an offline transaction.
-    public static func encodeAuthorizeSessionKey(_ args: AuthorizeSessionKeyParams) throws -> Data {
+    /// ABI-encodes `acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)` for an offline transaction.
+    public static func encodeAcceptSessionKeyV2(_ args: AcceptSessionKeyV2Params) throws -> Data {
         guard args.actionScope < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
         guard args.validUntil < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
         guard args.maxNotionalOrSpend < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
         guard args.allowedMarketsMask.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard let data = try _contract().method("authorizeSessionKey(address,uint256,uint64,uint256,bytes32)", parameters: [args.sessionKey, args.actionScope, args.validUntil, args.maxNotionalOrSpend, args.allowedMarketsMask], extraData: nil) else { throw WrapperError.encodingFailed("authorizeSessionKey(address,uint256,uint64,uint256,bytes32)") }
+        guard let data = try _contract().method("acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)", parameters: [args.principal, args.actionScope, args.validUntil, args.maxNotionalOrSpend, args.allowedMarketsMask], extraData: nil) else { throw WrapperError.encodingFailed("acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)") }
         return data
     }
 
-    /// Decoded result of `authorizeSessionKey(address,uint256,uint64,uint256,bytes32)`.
+    /// Decoded result of `acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)`.
     ///
-    /// Authorize one ordinary Ethereum sender as a scoped V2 session key.
-    /// A zero maximum is uncapped. Principal is always `msg.sender`.
-    public struct AuthorizeSessionKeyResult: Sendable, Hashable {
+    /// Accept exact authorization terms as the session key before principal activation.
+    /// One-use consent binds chain, endpoint, principal, key, terms and next generation. This call changes neither sender identity nor the principal's active-session count.
+    public struct AcceptSessionKeyV2Result: Sendable, Hashable {
         public let generation: BigUInt
 
         public init(generation: BigUInt) {
@@ -482,15 +509,48 @@ public enum IDiesisSettlement {
         }
     }
 
-    private static func _decodeAuthorizeSessionKeyValues(_ values: [String: Any]) throws -> AuthorizeSessionKeyResult {
+    private static func _decodeAcceptSessionKeyV2Values(_ values: [String: Any]) throws -> AcceptSessionKeyV2Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: BigUInt.self)
-        return AuthorizeSessionKeyResult(generation: value0)
+        return AcceptSessionKeyV2Result(generation: value0)
     }
 
-    /// Decodes raw return data for `authorizeSessionKey(address,uint256,uint64,uint256,bytes32)` offline.
-    public static func decodeAuthorizeSessionKeyResult(_ data: Data) throws -> AuthorizeSessionKeyResult {
-        return try _decodeAuthorizeSessionKeyValues(_contract().decodeReturnData("authorizeSessionKey(address,uint256,uint64,uint256,bytes32)", data: data))
+    /// Decodes raw return data for `acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)` offline.
+    public static func decodeAcceptSessionKeyV2Result(_ data: Data) throws -> AcceptSessionKeyV2Result {
+        return try _decodeAcceptSessionKeyV2Values(_contract().decodeReturnData("acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)", data: data))
+    }
+
+    /// ABI-encodes `authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)` for an offline transaction.
+    public static func encodeAuthorizeSessionKeyV2(_ args: AuthorizeSessionKeyV2Params) throws -> Data {
+        guard args.actionScope < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
+        guard args.validUntil < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
+        guard args.maxNotionalOrSpend < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
+        guard args.allowedMarketsMask.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+        guard let data = try _contract().method("authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)", parameters: [args.sessionKey, args.actionScope, args.validUntil, args.maxNotionalOrSpend, args.allowedMarketsMask], extraData: nil) else { throw WrapperError.encodingFailed("authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)") }
+        return data
+    }
+
+    /// Decoded result of `authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)`.
+    ///
+    /// Activate one scoped V2 session after its key accepted these exact terms.
+    /// A zero maximum is uncapped. Principal is always `msg.sender`; consent is consumed.
+    public struct AuthorizeSessionKeyV2Result: Sendable, Hashable {
+        public let generation: BigUInt
+
+        public init(generation: BigUInt) {
+            self.generation = generation
+        }
+    }
+
+    private static func _decodeAuthorizeSessionKeyV2Values(_ values: [String: Any]) throws -> AuthorizeSessionKeyV2Result {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: BigUInt.self)
+        return AuthorizeSessionKeyV2Result(generation: value0)
+    }
+
+    /// Decodes raw return data for `authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)` offline.
+    public static func decodeAuthorizeSessionKeyV2Result(_ data: Data) throws -> AuthorizeSessionKeyV2Result {
+        return try _decodeAuthorizeSessionKeyV2Values(_contract().decodeReturnData("authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)", data: data))
     }
 
     /// ABI-encodes `availableBalance(address,address)` for an offline transaction.
@@ -638,20 +698,20 @@ public enum IDiesisSettlement {
         return DepositResult()
     }
 
-    /// ABI-encodes `fundPerpBackstop(bytes32,uint256,uint256)` for an offline transaction.
-    public static func encodeFundPerpBackstop(_ args: FundPerpBackstopParams) throws -> Data {
+    /// ABI-encodes `fundPerpBackstopV1(bytes32,uint256,uint256)` for an offline transaction.
+    public static func encodeFundPerpBackstopV1(_ args: FundPerpBackstopV1Params) throws -> Data {
         guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
         guard args.amount < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
         guard args.nonce < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
-        guard let data = try _contract().method("fundPerpBackstop(bytes32,uint256,uint256)", parameters: [args.marketId, args.amount, args.nonce], extraData: nil) else { throw WrapperError.encodingFailed("fundPerpBackstop(bytes32,uint256,uint256)") }
+        guard let data = try _contract().method("fundPerpBackstopV1(bytes32,uint256,uint256)", parameters: [args.marketId, args.amount, args.nonce], extraData: nil) else { throw WrapperError.encodingFailed("fundPerpBackstopV1(bytes32,uint256,uint256)") }
         return data
     }
 
-    /// Decoded result of `fundPerpBackstop(bytes32,uint256,uint256)`.
+    /// Decoded result of `fundPerpBackstopV1(bytes32,uint256,uint256)`.
     ///
     /// Permanently contribute already-deposited quote collateral to a perpetual market's canonical liquidation backstop.
     /// `nonce` shares the settlement replay bitmap with other user-owned actions.
-    public struct FundPerpBackstopResult: Sendable, Hashable {
+    public struct FundPerpBackstopV1Result: Sendable, Hashable {
         public let transactionId: Data
 
         public init(transactionId: Data) {
@@ -659,15 +719,15 @@ public enum IDiesisSettlement {
         }
     }
 
-    private static func _decodeFundPerpBackstopValues(_ values: [String: Any]) throws -> FundPerpBackstopResult {
+    private static func _decodeFundPerpBackstopV1Values(_ values: [String: Any]) throws -> FundPerpBackstopV1Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: Data.self)
-        return FundPerpBackstopResult(transactionId: value0)
+        return FundPerpBackstopV1Result(transactionId: value0)
     }
 
-    /// Decodes raw return data for `fundPerpBackstop(bytes32,uint256,uint256)` offline.
-    public static func decodeFundPerpBackstopResult(_ data: Data) throws -> FundPerpBackstopResult {
-        return try _decodeFundPerpBackstopValues(_contract().decodeReturnData("fundPerpBackstop(bytes32,uint256,uint256)", data: data))
+    /// Decodes raw return data for `fundPerpBackstopV1(bytes32,uint256,uint256)` offline.
+    public static func decodeFundPerpBackstopV1Result(_ data: Data) throws -> FundPerpBackstopV1Result {
+        return try _decodeFundPerpBackstopV1Values(_contract().decodeReturnData("fundPerpBackstopV1(bytes32,uint256,uint256)", data: data))
     }
 
     /// ABI-encodes `getTradingKeyAuth(address,address)` for an offline transaction.
@@ -747,16 +807,17 @@ public enum IDiesisSettlement {
         return RegisterTradingKeyResult()
     }
 
-    /// ABI-encodes `revokeSessionKey(address)` for an offline transaction.
-    public static func encodeRevokeSessionKey(_ args: RevokeSessionKeyParams) throws -> Data {
-        guard let data = try _contract().method("revokeSessionKey(address)", parameters: [args.sessionKey], extraData: nil) else { throw WrapperError.encodingFailed("revokeSessionKey(address)") }
+    /// ABI-encodes `revokeSessionKeyV2(address)` for an offline transaction.
+    public static func encodeRevokeSessionKeyV2(_ args: RevokeSessionKeyV2Params) throws -> Data {
+        guard let data = try _contract().method("revokeSessionKeyV2(address)", parameters: [args.sessionKey], extraData: nil) else { throw WrapperError.encodingFailed("revokeSessionKeyV2(address)") }
         return data
     }
 
-    /// Decoded result of `revokeSessionKey(address)`.
+    /// Decoded result of `revokeSessionKeyV2(address)`.
     ///
-    /// Revoke a V2 session key and advance its invalidating generation.
-    public struct RevokeSessionKeyResult: Sendable, Hashable {
+    /// Principal or key may revoke an active session and advance its generation.
+    /// A key may also cancel its pending consent. Expiry restores direct sender identity; explicit revocation releases the principal's retained capacity.
+    public struct RevokeSessionKeyV2Result: Sendable, Hashable {
         public let generation: BigUInt
 
         public init(generation: BigUInt) {
@@ -764,15 +825,15 @@ public enum IDiesisSettlement {
         }
     }
 
-    private static func _decodeRevokeSessionKeyValues(_ values: [String: Any]) throws -> RevokeSessionKeyResult {
+    private static func _decodeRevokeSessionKeyV2Values(_ values: [String: Any]) throws -> RevokeSessionKeyV2Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: BigUInt.self)
-        return RevokeSessionKeyResult(generation: value0)
+        return RevokeSessionKeyV2Result(generation: value0)
     }
 
-    /// Decodes raw return data for `revokeSessionKey(address)` offline.
-    public static func decodeRevokeSessionKeyResult(_ data: Data) throws -> RevokeSessionKeyResult {
-        return try _decodeRevokeSessionKeyValues(_contract().decodeReturnData("revokeSessionKey(address)", data: data))
+    /// Decodes raw return data for `revokeSessionKeyV2(address)` offline.
+    public static func decodeRevokeSessionKeyV2Result(_ data: Data) throws -> RevokeSessionKeyV2Result {
+        return try _decodeRevokeSessionKeyV2Values(_contract().decodeReturnData("revokeSessionKeyV2(address)", data: data))
     }
 
     /// ABI-encodes `revokeTradingKey(address)` for an offline transaction.
@@ -895,14 +956,24 @@ public enum IDiesisSettlement {
             return try IDiesisSettlement._decodeTotalBalanceValues(await operation.callContractMethod())
         }
 
-        /// Prepares `authorizeSessionKey(address,uint256,uint64,uint256,bytes32)` with transaction options for signing or submission.
-        public func prepareAuthorizeSessionKey(_ args: AuthorizeSessionKeyParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)` with transaction options for signing or submission.
+        public func prepareAcceptSessionKeyV2(_ args: AcceptSessionKeyV2Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisSettlement.encodeAuthorizeSessionKey(args)
+            tx.data = try IDiesisSettlement.encodeAcceptSessionKeyV2(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "authorizeSessionKey(address,uint256,uint64,uint256,bytes32)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "acceptSessionKeyV2(address,uint256,uint64,uint256,bytes32)")
+        }
+
+        /// Prepares `authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)` with transaction options for signing or submission.
+        public func prepareAuthorizeSessionKeyV2(_ args: AuthorizeSessionKeyV2Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
+            tx.to = address
+            tx.data = try IDiesisSettlement.encodeAuthorizeSessionKeyV2(args)
+            tx.value = 0
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "authorizeSessionKeyV2(address,uint256,uint64,uint256,bytes32)")
         }
 
         /// Prepares `cancelNonceWord(uint248)` with transaction options for signing or submission.
@@ -955,14 +1026,14 @@ public enum IDiesisSettlement {
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "deposit(address,uint256)")
         }
 
-        /// Prepares `fundPerpBackstop(bytes32,uint256,uint256)` with transaction options for signing or submission.
-        public func prepareFundPerpBackstop(_ args: FundPerpBackstopParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `fundPerpBackstopV1(bytes32,uint256,uint256)` with transaction options for signing or submission.
+        public func prepareFundPerpBackstopV1(_ args: FundPerpBackstopV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisSettlement.encodeFundPerpBackstop(args)
+            tx.data = try IDiesisSettlement.encodeFundPerpBackstopV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "fundPerpBackstop(bytes32,uint256,uint256)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "fundPerpBackstopV1(bytes32,uint256,uint256)")
         }
 
         /// Prepares `registerTradingKey(address,uint64,uint128,bytes32,bool)` with transaction options for signing or submission.
@@ -975,14 +1046,14 @@ public enum IDiesisSettlement {
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "registerTradingKey(address,uint64,uint128,bytes32,bool)")
         }
 
-        /// Prepares `revokeSessionKey(address)` with transaction options for signing or submission.
-        public func prepareRevokeSessionKey(_ args: RevokeSessionKeyParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `revokeSessionKeyV2(address)` with transaction options for signing or submission.
+        public func prepareRevokeSessionKeyV2(_ args: RevokeSessionKeyV2Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisSettlement.encodeRevokeSessionKey(args)
+            tx.data = try IDiesisSettlement.encodeRevokeSessionKeyV2(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "revokeSessionKey(address)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "revokeSessionKeyV2(address)")
         }
 
         /// Prepares `revokeTradingKey(address)` with transaction options for signing or submission.

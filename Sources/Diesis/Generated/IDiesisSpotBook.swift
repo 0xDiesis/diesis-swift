@@ -8,7 +8,7 @@ import web3swift
 /// Types and constants of the `IDiesisSpotBook` contract.
 public enum IDiesisSpotBook {
     /// JSON ABI of the `IDiesisSpotBook` contract.
-    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"},{"internalType":"uint256","name":"newPrice","type":"uint256"},{"internalType":"uint256","name":"newAmount","type":"uint256"},{"internalType":"uint8","name":"newFlags","type":"uint8"}],"name":"amendOrder","outputs":[{"internalType":"bytes32","name":"newOrderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"cancelOrder","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"},{"internalType":"uint256","name":"fillPrice","type":"uint256"},{"internalType":"uint256","name":"fillQty","type":"uint256"}],"name":"executeSpotFill","outputs":[{"internalType":"uint256","name":"filledQty","type":"uint256"},{"internalType":"uint256","name":"executionPrice","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"makerOrderId","type":"bytes32"},{"internalType":"bytes32","name":"takerOrderId","type":"bytes32"},{"internalType":"uint256","name":"fillPrice","type":"uint256"},{"internalType":"uint256","name":"fillQty","type":"uint256"}],"name":"executeSpotTrade","outputs":[{"internalType":"uint256","name":"filledQty","type":"uint256"},{"internalType":"uint256","name":"executionPrice","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"finalizeOpeningAuction","outputs":[{"internalType":"uint256","name":"clearingPrice","type":"uint256"},{"internalType":"uint256","name":"totalVolume","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getBestAsk","outputs":[{"internalType":"uint256","name":"priceTicks","type":"uint256"},{"internalType":"uint256","name":"amountLots","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getBestBid","outputs":[{"internalType":"uint256","name":"priceTicks","type":"uint256"},{"internalType":"uint256","name":"amountLots","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getOpeningAuction","outputs":[{"internalType":"uint64","name":"startBlock","type":"uint64"},{"internalType":"uint64","name":"endBlock","type":"uint64"},{"internalType":"uint256","name":"referencePrice","type":"uint256"},{"internalType":"bool","name":"finalized","type":"bool"},{"internalType":"uint256","name":"clearingPrice","type":"uint256"},{"internalType":"uint256","name":"totalVolume","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"levels","type":"uint8"}],"name":"getOrderBookDepth","outputs":[{"internalType":"uint256[]","name":"bidPrices","type":"uint256[]"},{"internalType":"uint256[]","name":"bidAmounts","type":"uint256[]"},{"internalType":"uint256[]","name":"askPrices","type":"uint256[]"},{"internalType":"uint256[]","name":"askAmounts","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getUserOrders","outputs":[{"internalType":"bytes32[]","name":"orderIds","type":"bytes32[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint64","name":"startBlock","type":"uint64"},{"internalType":"uint64","name":"endBlock","type":"uint64"},{"internalType":"uint256","name":"referencePrice","type":"uint256"}],"name":"startOpeningAuction","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"encodedWrapper","type":"bytes"}],"name":"submitBoundSessionActions","outputs":[{"internalType":"bytes32","name":"resultHash","type":"bytes32"},{"internalType":"uint16","name":"acceptedCount","type":"uint16"},{"internalType":"uint16","name":"rejectedCount","type":"uint16"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"encodedActions","type":"bytes"}],"name":"submitExchangeActions","outputs":[{"internalType":"bytes32","name":"resultHash","type":"bytes32"},{"internalType":"uint16","name":"acceptedCount","type":"uint16"},{"internalType":"uint16","name":"rejectedCount","type":"uint16"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"side","type":"uint8"},{"internalType":"uint256","name":"priceTicks","type":"uint256"},{"internalType":"uint256","name":"amountLots","type":"uint256"},{"internalType":"uint8","name":"flags","type":"uint8"}],"name":"submitLimitOrder","outputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"side","type":"uint8"},{"internalType":"uint256","name":"amountLots","type":"uint256"}],"name":"submitMarketOrder","outputs":[{"internalType":"uint256","name":"filledAmount","type":"uint256"},{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"signedCancelAllJson","type":"bytes"}],"name":"submitSignedCancelAllSpotIntent","outputs":[{"internalType":"uint256","name":"cancelled","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"signedIntentJson","type":"bytes"}],"name":"submitSignedSpotIntent","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint16","name":"maxOrders","type":"uint16"}],"name":"triggerSpotStops","outputs":[{"internalType":"uint16","name":"activated","type":"uint16"},{"internalType":"bool","name":"hasMore","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"clearingPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"totalVolume","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"residualOrders","type":"uint256"}],"name":"BatchAuctionCleared","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"bytes32","name":"resultId","type":"bytes32"}],"name":"ExchangeActionAccepted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"uint16","name":"reasonCode","type":"uint16"},{"indexed":false,"internalType":"bytes32","name":"context","type":"bytes32"}],"name":"ExchangeActionRejected","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"mutation","type":"uint8"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint64","name":"priceTicks","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"quantityLots","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"remainingLots","type":"uint64"}],"name":"ExchangeL3Mutation","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"makerOrderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"takerOrderId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"maker","type":"address"},{"indexed":false,"internalType":"address","name":"taker","type":"address"},{"indexed":false,"internalType":"uint8","name":"aggressorSide","type":"uint8"},{"indexed":false,"internalType":"uint64","name":"priceTicks","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"quantityLots","type":"uint64"}],"name":"ExchangeTradeFill","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"}],"name":"OrderCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"fillQty","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fillPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"remainingAmount","type":"uint256"},{"indexed":false,"internalType":"bool","name":"complete","type":"bool"}],"name":"OrderFilled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint8","name":"flags","type":"uint8"}],"name":"OrderPlaced","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"triggerPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"activationPrice","type":"uint256"}],"name":"StopOrderTriggered","type":"event"}]"#
+    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"},{"internalType":"uint256","name":"newPrice","type":"uint256"},{"internalType":"uint256","name":"newAmount","type":"uint256"},{"internalType":"uint8","name":"newFlags","type":"uint8"}],"name":"amendOrder","outputs":[{"internalType":"bytes32","name":"newOrderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"cancelOrder","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"},{"internalType":"uint256","name":"fillPrice","type":"uint256"},{"internalType":"uint256","name":"fillQty","type":"uint256"}],"name":"executeSpotFill","outputs":[{"internalType":"uint256","name":"filledQty","type":"uint256"},{"internalType":"uint256","name":"executionPrice","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"makerOrderId","type":"bytes32"},{"internalType":"bytes32","name":"takerOrderId","type":"bytes32"},{"internalType":"uint256","name":"fillPrice","type":"uint256"},{"internalType":"uint256","name":"fillQty","type":"uint256"}],"name":"executeSpotTrade","outputs":[{"internalType":"uint256","name":"filledQty","type":"uint256"},{"internalType":"uint256","name":"executionPrice","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"finalizeOpeningAuction","outputs":[{"internalType":"uint256","name":"clearingPrice","type":"uint256"},{"internalType":"uint256","name":"totalVolume","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getBestAsk","outputs":[{"internalType":"uint256","name":"priceTicks","type":"uint256"},{"internalType":"uint256","name":"amountLots","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getBestBid","outputs":[{"internalType":"uint256","name":"priceTicks","type":"uint256"},{"internalType":"uint256","name":"amountLots","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getOpeningAuction","outputs":[{"internalType":"uint64","name":"startBlock","type":"uint64"},{"internalType":"uint64","name":"endBlock","type":"uint64"},{"internalType":"uint256","name":"referencePrice","type":"uint256"},{"internalType":"bool","name":"finalized","type":"bool"},{"internalType":"uint256","name":"clearingPrice","type":"uint256"},{"internalType":"uint256","name":"totalVolume","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"levels","type":"uint8"}],"name":"getOrderBookDepth","outputs":[{"internalType":"uint256[]","name":"bidPrices","type":"uint256[]"},{"internalType":"uint256[]","name":"bidAmounts","type":"uint256[]"},{"internalType":"uint256[]","name":"askPrices","type":"uint256[]"},{"internalType":"uint256[]","name":"askAmounts","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getUserOrders","outputs":[{"internalType":"bytes32[]","name":"orderIds","type":"bytes32[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint64","name":"startBlock","type":"uint64"},{"internalType":"uint64","name":"endBlock","type":"uint64"},{"internalType":"uint256","name":"referencePrice","type":"uint256"}],"name":"startOpeningAuction","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"encodedActions","type":"bytes"}],"name":"submitExchangeActionsV2","outputs":[{"internalType":"bytes32","name":"resultHash","type":"bytes32"},{"internalType":"uint16","name":"acceptedCount","type":"uint16"},{"internalType":"uint16","name":"rejectedCount","type":"uint16"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"side","type":"uint8"},{"internalType":"uint256","name":"priceTicks","type":"uint256"},{"internalType":"uint256","name":"amountLots","type":"uint256"},{"internalType":"uint8","name":"flags","type":"uint8"}],"name":"submitLimitOrder","outputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"side","type":"uint8"},{"internalType":"uint256","name":"amountLots","type":"uint256"}],"name":"submitMarketOrder","outputs":[{"internalType":"uint256","name":"filledAmount","type":"uint256"},{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"signedCancelAllJson","type":"bytes"}],"name":"submitSignedCancelAllSpotIntent","outputs":[{"internalType":"uint256","name":"cancelled","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"signedIntentJson","type":"bytes"}],"name":"submitSignedSpotIntent","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint16","name":"maxOrders","type":"uint16"}],"name":"triggerSpotStops","outputs":[{"internalType":"uint16","name":"activated","type":"uint16"},{"internalType":"bool","name":"hasMore","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"clearingPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"totalVolume","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"residualOrders","type":"uint256"}],"name":"BatchAuctionCleared","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"bytes32","name":"resultId","type":"bytes32"}],"name":"ExchangeActionAcceptedV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"uint16","name":"reasonCode","type":"uint16"},{"indexed":false,"internalType":"bytes32","name":"context","type":"bytes32"}],"name":"ExchangeActionRejectedV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"mutation","type":"uint8"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint64","name":"priceTicks","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"quantityLots","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"remainingLots","type":"uint64"}],"name":"ExchangeL3MutationV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"makerOrderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"takerOrderId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"maker","type":"address"},{"indexed":false,"internalType":"address","name":"taker","type":"address"},{"indexed":false,"internalType":"uint8","name":"aggressorSide","type":"uint8"},{"indexed":false,"internalType":"uint64","name":"priceTicks","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"quantityLots","type":"uint64"}],"name":"ExchangeTradeFillV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"}],"name":"OrderCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"fillQty","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fillPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"remainingAmount","type":"uint256"},{"indexed":false,"internalType":"bool","name":"complete","type":"bool"}],"name":"OrderFilled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint8","name":"flags","type":"uint8"}],"name":"OrderPlaced","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"triggerPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"activationPrice","type":"uint256"}],"name":"StopOrderTriggered","type":"event"}]"#
 
     /// Canonical signature of `amendOrder(bytes32,uint256,uint256,uint8)`.
     public static let amendOrderSignature = "amendOrder(bytes32,uint256,uint256,uint8)"
@@ -76,17 +76,11 @@ public enum IDiesisSpotBook {
     /// Selector of `startOpeningAuction(bytes32,uint64,uint64,uint256)`.
     public static let startOpeningAuctionSelector = Data([0x49, 0x35, 0x92, 0x65])
 
-    /// Canonical signature of `submitBoundSessionActions(bytes)`.
-    public static let submitBoundSessionActionsSignature = "submitBoundSessionActions(bytes)"
+    /// Canonical signature of `submitExchangeActionsV2(bytes)`.
+    public static let submitExchangeActionsV2Signature = "submitExchangeActionsV2(bytes)"
 
-    /// Selector of `submitBoundSessionActions(bytes)`.
-    public static let submitBoundSessionActionsSelector = Data([0x1c, 0xf0, 0x5d, 0xa9])
-
-    /// Canonical signature of `submitExchangeActions(bytes)`.
-    public static let submitExchangeActionsSignature = "submitExchangeActions(bytes)"
-
-    /// Selector of `submitExchangeActions(bytes)`.
-    public static let submitExchangeActionsSelector = Data([0xd4, 0x7b, 0x70, 0x4f])
+    /// Selector of `submitExchangeActionsV2(bytes)`.
+    public static let submitExchangeActionsV2Selector = Data([0x88, 0x1c, 0x51, 0xde])
 
     /// Canonical signature of `submitLimitOrder(bytes32,uint8,uint256,uint256,uint8)`.
     public static let submitLimitOrderSignature = "submitLimitOrder(bytes32,uint8,uint256,uint256,uint8)"
@@ -124,29 +118,29 @@ public enum IDiesisSpotBook {
     /// Topic 0 of the `BatchAuctionCleared(bytes32,uint256,uint256,uint256)` event.
     public static let batchAuctionClearedEventTopic = Data([0x23, 0x28, 0x2c, 0x93, 0x4e, 0x72, 0x93, 0x84, 0x79, 0x02, 0x6c, 0xdd, 0xee, 0xa9, 0xb0, 0x93, 0x91, 0xea, 0xeb, 0x60, 0x99, 0x37, 0xa7, 0x6d, 0x3b, 0x01, 0xa1, 0xd5, 0x29, 0x22, 0x31, 0xd8])
 
-    /// Canonical signature of the `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
-    public static let exchangeActionAcceptedEventSignature = "ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)"
+    /// Canonical signature of the `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
+    public static let exchangeActionAcceptedV2EventSignature = "ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)"
 
-    /// Topic 0 of the `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
-    public static let exchangeActionAcceptedEventTopic = Data([0x9f, 0xd3, 0x56, 0x6e, 0x39, 0xf1, 0x4b, 0x3c, 0x59, 0x39, 0x67, 0xcf, 0x13, 0xd7, 0xe1, 0x1e, 0x65, 0xda, 0xfe, 0xd9, 0xc4, 0xa3, 0xbf, 0xea, 0xb3, 0x95, 0x04, 0xf8, 0x93, 0xa7, 0x21, 0x58])
+    /// Topic 0 of the `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
+    public static let exchangeActionAcceptedV2EventTopic = Data([0x3c, 0xa6, 0xab, 0x0c, 0x03, 0x16, 0xf6, 0x31, 0x3b, 0xc2, 0x0a, 0xbb, 0xc2, 0xdc, 0x76, 0x91, 0x33, 0x83, 0x4b, 0x25, 0x42, 0x5e, 0x93, 0xa8, 0x65, 0xb9, 0xef, 0x08, 0x92, 0xd8, 0x3e, 0x2f])
 
-    /// Canonical signature of the `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
-    public static let exchangeActionRejectedEventSignature = "ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)"
+    /// Canonical signature of the `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
+    public static let exchangeActionRejectedV2EventSignature = "ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)"
 
-    /// Topic 0 of the `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
-    public static let exchangeActionRejectedEventTopic = Data([0x70, 0x93, 0x7d, 0x7f, 0x95, 0x95, 0xdc, 0x38, 0x7b, 0x9e, 0x50, 0xf4, 0x55, 0xa2, 0x40, 0xb0, 0x83, 0x07, 0x50, 0xa1, 0x7e, 0xc1, 0xbe, 0x43, 0x73, 0xc1, 0x43, 0xfc, 0x5d, 0xde, 0x1b, 0x54])
+    /// Topic 0 of the `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
+    public static let exchangeActionRejectedV2EventTopic = Data([0x91, 0x9a, 0x92, 0xf6, 0xca, 0xb2, 0xe0, 0x2a, 0x05, 0x99, 0xf1, 0xc7, 0x6a, 0xb5, 0x64, 0x59, 0x7a, 0xc5, 0x48, 0x73, 0xd0, 0x64, 0xae, 0x7b, 0x21, 0xc5, 0xba, 0x8a, 0x87, 0x44, 0xd9, 0x58])
 
-    /// Canonical signature of the `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
-    public static let exchangeL3MutationEventSignature = "ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)"
+    /// Canonical signature of the `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
+    public static let exchangeL3MutationV2EventSignature = "ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)"
 
-    /// Topic 0 of the `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
-    public static let exchangeL3MutationEventTopic = Data([0x2a, 0x5a, 0x4f, 0xc8, 0x32, 0x4c, 0x7e, 0x62, 0x21, 0x3e, 0x49, 0xae, 0xe2, 0x38, 0x83, 0x74, 0x6c, 0x43, 0x98, 0xed, 0x74, 0xbd, 0x31, 0xd2, 0xec, 0xcc, 0x48, 0xde, 0x31, 0x02, 0x67, 0x34])
+    /// Topic 0 of the `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
+    public static let exchangeL3MutationV2EventTopic = Data([0x08, 0x3d, 0x99, 0xce, 0xa6, 0x49, 0xc1, 0xd1, 0x15, 0xfc, 0x1f, 0x70, 0xb8, 0x04, 0x5c, 0x9b, 0x19, 0x86, 0x34, 0xbd, 0x9b, 0x28, 0x6c, 0xc4, 0x3a, 0x59, 0x5e, 0x2f, 0x53, 0x28, 0xfb, 0xdd])
 
-    /// Canonical signature of the `ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)` event.
-    public static let exchangeTradeFillEventSignature = "ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)"
+    /// Canonical signature of the `ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)` event.
+    public static let exchangeTradeFillV2EventSignature = "ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)"
 
-    /// Topic 0 of the `ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)` event.
-    public static let exchangeTradeFillEventTopic = Data([0xa9, 0xf7, 0x13, 0x09, 0x99, 0x05, 0x02, 0x53, 0xa9, 0xd4, 0xbe, 0x99, 0x31, 0xac, 0x9c, 0x49, 0xde, 0x06, 0x1f, 0xca, 0x2e, 0x68, 0x33, 0xad, 0x14, 0x22, 0xf1, 0xd7, 0x4c, 0xe0, 0xfb, 0x92])
+    /// Topic 0 of the `ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)` event.
+    public static let exchangeTradeFillV2EventTopic = Data([0x74, 0xee, 0xa6, 0x02, 0x40, 0x1d, 0xa7, 0x37, 0x6b, 0x8e, 0x69, 0xa8, 0x40, 0x1c, 0x01, 0x64, 0xde, 0xa6, 0x12, 0xf7, 0x37, 0x0c, 0x6d, 0x2e, 0xd8, 0xf0, 0x16, 0xe8, 0x6b, 0x19, 0xe5, 0xe2])
 
     /// Canonical signature of the `OrderCancelled(bytes32,bytes32,address)` event.
     public static let orderCancelledEventSignature = "OrderCancelled(bytes32,bytes32,address)"
@@ -327,23 +321,11 @@ public enum IDiesisSpotBook {
         }
     }
 
-    /// Arguments of `submitBoundSessionActions(bytes)`.
-    ///
-    /// Proposed ordinary-caller bound-session V3 action wrapper.
-    /// Inactive until a separately accepted resource policy and dispatch revision. DXS3 contains the expected principal and current positive generation, followed by unchanged DXA2 bytes. The result commits the full wrapper. Sponsorship and relayer adapters are unsupported. Counts retain V2 types.
-    public struct SubmitBoundSessionActionsParams: Sendable, Hashable {
-        public let encodedWrapper: Data
-
-        public init(encodedWrapper: Data) {
-            self.encodedWrapper = encodedWrapper
-        }
-    }
-
-    /// Arguments of `submitExchangeActions(bytes)`.
+    /// Arguments of `submitExchangeActionsV2(bytes)`.
     ///
     /// Submit one strictly bounded canonical V2 action batch.
     /// The ordinary EVM caller authenticates the batch. The encoded bytes contain no action-level signature or replay nonce. `resultHash` commits to the original bytes and every ordered action outcome.
-    public struct SubmitExchangeActionsParams: Sendable, Hashable {
+    public struct SubmitExchangeActionsV2Params: Sendable, Hashable {
         public let encodedActions: Data
 
         public init(encodedActions: Data) {
@@ -440,8 +422,8 @@ public enum IDiesisSpotBook {
         }
     }
 
-    /// Fields of the `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
-    public struct ExchangeActionAcceptedEvent: Sendable, Hashable {
+    /// Fields of the `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)` event.
+    public struct ExchangeActionAcceptedV2Event: Sendable, Hashable {
         public let clientActionId: Data
         public let actionIndex: BigUInt
         public let actionTag: BigUInt
@@ -459,8 +441,8 @@ public enum IDiesisSpotBook {
         }
     }
 
-    /// Fields of the `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
-    public struct ExchangeActionRejectedEvent: Sendable, Hashable {
+    /// Fields of the `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` event.
+    public struct ExchangeActionRejectedV2Event: Sendable, Hashable {
         public let clientActionId: Data
         public let actionIndex: BigUInt
         public let actionTag: BigUInt
@@ -480,8 +462,8 @@ public enum IDiesisSpotBook {
         }
     }
 
-    /// Fields of the `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
-    public struct ExchangeL3MutationEvent: Sendable, Hashable {
+    /// Fields of the `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` event.
+    public struct ExchangeL3MutationV2Event: Sendable, Hashable {
         public let marketId: Data
         public let orderId: Data
         public let trader: EthereumAddress
@@ -503,8 +485,8 @@ public enum IDiesisSpotBook {
         }
     }
 
-    /// Fields of the `ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)` event.
-    public struct ExchangeTradeFillEvent: Sendable, Hashable {
+    /// Fields of the `ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)` event.
+    public struct ExchangeTradeFillV2Event: Sendable, Hashable {
         public let marketId: Data
         public let makerOrderId: Data
         public let takerOrderId: Data
@@ -1001,54 +983,17 @@ public enum IDiesisSpotBook {
         return StartOpeningAuctionResult()
     }
 
-    /// ABI-encodes `submitBoundSessionActions(bytes)` for an offline transaction.
-    public static func encodeSubmitBoundSessionActions(_ args: SubmitBoundSessionActionsParams) throws -> Data {
-        guard let data = try _contract().method("submitBoundSessionActions(bytes)", parameters: [args.encodedWrapper], extraData: nil) else { throw WrapperError.encodingFailed("submitBoundSessionActions(bytes)") }
+    /// ABI-encodes `submitExchangeActionsV2(bytes)` for an offline transaction.
+    public static func encodeSubmitExchangeActionsV2(_ args: SubmitExchangeActionsV2Params) throws -> Data {
+        guard let data = try _contract().method("submitExchangeActionsV2(bytes)", parameters: [args.encodedActions], extraData: nil) else { throw WrapperError.encodingFailed("submitExchangeActionsV2(bytes)") }
         return data
     }
 
-    /// Decoded result of `submitBoundSessionActions(bytes)`.
-    ///
-    /// Proposed ordinary-caller bound-session V3 action wrapper.
-    /// Inactive until a separately accepted resource policy and dispatch revision. DXS3 contains the expected principal and current positive generation, followed by unchanged DXA2 bytes. The result commits the full wrapper. Sponsorship and relayer adapters are unsupported. Counts retain V2 types.
-    public struct SubmitBoundSessionActionsResult: Sendable, Hashable {
-        public let resultHash: Data
-        public let acceptedCount: BigUInt
-        public let rejectedCount: BigUInt
-
-        public init(resultHash: Data, acceptedCount: BigUInt, rejectedCount: BigUInt) {
-            self.resultHash = resultHash
-            self.acceptedCount = acceptedCount
-            self.rejectedCount = rejectedCount
-        }
-    }
-
-    private static func _decodeSubmitBoundSessionActionsValues(_ values: [String: Any]) throws -> SubmitBoundSessionActionsResult {
-        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
-        let value0 = try _cast(raw0, as: Data.self)
-        guard let raw1 = values["1"] else { throw WrapperError.invalidValue("output 1") }
-        let value1 = try _cast(raw1, as: BigUInt.self)
-        guard let raw2 = values["2"] else { throw WrapperError.invalidValue("output 2") }
-        let value2 = try _cast(raw2, as: BigUInt.self)
-        return SubmitBoundSessionActionsResult(resultHash: value0, acceptedCount: value1, rejectedCount: value2)
-    }
-
-    /// Decodes raw return data for `submitBoundSessionActions(bytes)` offline.
-    public static func decodeSubmitBoundSessionActionsResult(_ data: Data) throws -> SubmitBoundSessionActionsResult {
-        return try _decodeSubmitBoundSessionActionsValues(_contract().decodeReturnData("submitBoundSessionActions(bytes)", data: data))
-    }
-
-    /// ABI-encodes `submitExchangeActions(bytes)` for an offline transaction.
-    public static func encodeSubmitExchangeActions(_ args: SubmitExchangeActionsParams) throws -> Data {
-        guard let data = try _contract().method("submitExchangeActions(bytes)", parameters: [args.encodedActions], extraData: nil) else { throw WrapperError.encodingFailed("submitExchangeActions(bytes)") }
-        return data
-    }
-
-    /// Decoded result of `submitExchangeActions(bytes)`.
+    /// Decoded result of `submitExchangeActionsV2(bytes)`.
     ///
     /// Submit one strictly bounded canonical V2 action batch.
     /// The ordinary EVM caller authenticates the batch. The encoded bytes contain no action-level signature or replay nonce. `resultHash` commits to the original bytes and every ordered action outcome.
-    public struct SubmitExchangeActionsResult: Sendable, Hashable {
+    public struct SubmitExchangeActionsV2Result: Sendable, Hashable {
         public let resultHash: Data
         public let acceptedCount: BigUInt
         public let rejectedCount: BigUInt
@@ -1060,19 +1005,19 @@ public enum IDiesisSpotBook {
         }
     }
 
-    private static func _decodeSubmitExchangeActionsValues(_ values: [String: Any]) throws -> SubmitExchangeActionsResult {
+    private static func _decodeSubmitExchangeActionsV2Values(_ values: [String: Any]) throws -> SubmitExchangeActionsV2Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: Data.self)
         guard let raw1 = values["1"] else { throw WrapperError.invalidValue("output 1") }
         let value1 = try _cast(raw1, as: BigUInt.self)
         guard let raw2 = values["2"] else { throw WrapperError.invalidValue("output 2") }
         let value2 = try _cast(raw2, as: BigUInt.self)
-        return SubmitExchangeActionsResult(resultHash: value0, acceptedCount: value1, rejectedCount: value2)
+        return SubmitExchangeActionsV2Result(resultHash: value0, acceptedCount: value1, rejectedCount: value2)
     }
 
-    /// Decodes raw return data for `submitExchangeActions(bytes)` offline.
-    public static func decodeSubmitExchangeActionsResult(_ data: Data) throws -> SubmitExchangeActionsResult {
-        return try _decodeSubmitExchangeActionsValues(_contract().decodeReturnData("submitExchangeActions(bytes)", data: data))
+    /// Decodes raw return data for `submitExchangeActionsV2(bytes)` offline.
+    public static func decodeSubmitExchangeActionsV2Result(_ data: Data) throws -> SubmitExchangeActionsV2Result {
+        return try _decodeSubmitExchangeActionsV2Values(_contract().decodeReturnData("submitExchangeActionsV2(bytes)", data: data))
     }
 
     /// ABI-encodes `submitLimitOrder(bytes32,uint8,uint256,uint256,uint8)` for an offline transaction.
@@ -1351,24 +1296,14 @@ public enum IDiesisSpotBook {
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "startOpeningAuction(bytes32,uint64,uint64,uint256)")
         }
 
-        /// Prepares `submitBoundSessionActions(bytes)` with transaction options for signing or submission.
-        public func prepareSubmitBoundSessionActions(_ args: SubmitBoundSessionActionsParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `submitExchangeActionsV2(bytes)` with transaction options for signing or submission.
+        public func prepareSubmitExchangeActionsV2(_ args: SubmitExchangeActionsV2Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisSpotBook.encodeSubmitBoundSessionActions(args)
+            tx.data = try IDiesisSpotBook.encodeSubmitExchangeActionsV2(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitBoundSessionActions(bytes)")
-        }
-
-        /// Prepares `submitExchangeActions(bytes)` with transaction options for signing or submission.
-        public func prepareSubmitExchangeActions(_ args: SubmitExchangeActionsParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
-            var tx = transaction ?? CodableTransaction(to: address, data: Data())
-            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
-            tx.to = address
-            tx.data = try IDiesisSpotBook.encodeSubmitExchangeActions(args)
-            tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitExchangeActions(bytes)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "submitExchangeActionsV2(bytes)")
         }
 
         /// Prepares `submitLimitOrder(bytes32,uint8,uint256,uint256,uint8)` with transaction options for signing or submission.
@@ -1458,42 +1393,42 @@ public enum IDiesisSpotBook {
         return BatchAuctionClearedEvent(marketId: value0, clearingPrice: value1, totalVolume: value2, residualOrders: value3)
     }
 
-    private static func _eventExchangeActionAccepted() throws -> ABI.Element.Event {
+    private static func _eventExchangeActionAcceptedV2() throws -> ABI.Element.Event {
         guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
             if case .event(let value) = element { return value }
             return nil
-        }).first(where: { $0.signature == "ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)" }) else { throw WrapperError.invalidValue("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+        }).first(where: { $0.signature == "ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)" }) else { throw WrapperError.invalidValue("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
         return event
     }
 
-    /// Builds indexed topics for `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)`. Reference values use their 32-byte topic hashes.
-    public static func filterExchangeActionAccepted(filter0: Data? = nil, filter1: BigUInt? = nil, filter3: Data? = nil) throws -> [EventFilterParameters.Topic?] {
-        let event = try _eventExchangeActionAccepted()
+    /// Builds indexed topics for `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)`. Reference values use their 32-byte topic hashes.
+    public static func filterExchangeActionAcceptedV2(filter0: Data? = nil, filter1: BigUInt? = nil, filter3: Data? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventExchangeActionAcceptedV2()
         var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
         if let value = filter0 {
             guard value.count == 16 else { throw WrapperError.encodingFailed("bytes16 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter1 {
             guard value < (BigUInt(1) << 16) else { throw WrapperError.encodingFailed("uint16 out of range") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter3 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[3], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[3], value: value) else { throw WrapperError.encodingFailed("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         return topics
     }
 
-    /// Decodes a `ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)` log.
-    public static func decodeExchangeActionAcceptedEvent(_ log: EventLog) throws -> ExchangeActionAcceptedEvent {
-        let event = try _eventExchangeActionAccepted()
+    /// Decodes a `ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)` log.
+    public static func decodeExchangeActionAcceptedV2Event(_ log: EventLog) throws -> ExchangeActionAcceptedV2Event {
+        let event = try _eventExchangeActionAcceptedV2()
         guard log.topics.count == 4 else { throw WrapperError.eventMismatch }
         guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
-        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeActionAccepted(bytes16,uint16,uint8,bytes32,address,bytes32)") }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeActionAcceptedV2(bytes16,uint16,uint8,bytes32,address,bytes32)") }
         let topic0 = log.topics[1]
         guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
         guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
@@ -1509,45 +1444,45 @@ public enum IDiesisSpotBook {
         let value3 = try _cast(raw3, as: Data.self)
         let value4 = try _cast(decoded[1], as: EthereumAddress.self)
         let value5 = try _cast(decoded[2], as: Data.self)
-        return ExchangeActionAcceptedEvent(clientActionId: value0, actionIndex: value1, actionTag: value2, marketId: value3, principal: value4, resultId: value5)
+        return ExchangeActionAcceptedV2Event(clientActionId: value0, actionIndex: value1, actionTag: value2, marketId: value3, principal: value4, resultId: value5)
     }
 
-    private static func _eventExchangeActionRejected() throws -> ABI.Element.Event {
+    private static func _eventExchangeActionRejectedV2() throws -> ABI.Element.Event {
         guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
             if case .event(let value) = element { return value }
             return nil
-        }).first(where: { $0.signature == "ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)" }) else { throw WrapperError.invalidValue("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+        }).first(where: { $0.signature == "ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)" }) else { throw WrapperError.invalidValue("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
         return event
     }
 
-    /// Builds indexed topics for `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)`. Reference values use their 32-byte topic hashes.
-    public static func filterExchangeActionRejected(filter0: Data? = nil, filter1: BigUInt? = nil, filter3: Data? = nil) throws -> [EventFilterParameters.Topic?] {
-        let event = try _eventExchangeActionRejected()
+    /// Builds indexed topics for `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)`. Reference values use their 32-byte topic hashes.
+    public static func filterExchangeActionRejectedV2(filter0: Data? = nil, filter1: BigUInt? = nil, filter3: Data? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventExchangeActionRejectedV2()
         var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
         if let value = filter0 {
             guard value.count == 16 else { throw WrapperError.encodingFailed("bytes16 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter1 {
             guard value < (BigUInt(1) << 16) else { throw WrapperError.encodingFailed("uint16 out of range") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter3 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[3], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[3], value: value) else { throw WrapperError.encodingFailed("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
             topics.append(topic)
         } else { topics.append(nil) }
         return topics
     }
 
-    /// Decodes a `ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` log.
-    public static func decodeExchangeActionRejectedEvent(_ log: EventLog) throws -> ExchangeActionRejectedEvent {
-        let event = try _eventExchangeActionRejected()
+    /// Decodes a `ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)` log.
+    public static func decodeExchangeActionRejectedV2Event(_ log: EventLog) throws -> ExchangeActionRejectedV2Event {
+        let event = try _eventExchangeActionRejectedV2()
         guard log.topics.count == 4 else { throw WrapperError.eventMismatch }
         guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
-        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeActionRejected(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeActionRejectedV2(bytes16,uint16,uint8,bytes32,address,uint16,bytes32)") }
         let topic0 = log.topics[1]
         guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
         guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
@@ -1564,44 +1499,44 @@ public enum IDiesisSpotBook {
         let value4 = try _cast(decoded[1], as: EthereumAddress.self)
         let value5 = try _cast(decoded[2], as: BigUInt.self)
         let value6 = try _cast(decoded[3], as: Data.self)
-        return ExchangeActionRejectedEvent(clientActionId: value0, actionIndex: value1, actionTag: value2, marketId: value3, principal: value4, reasonCode: value5, context: value6)
+        return ExchangeActionRejectedV2Event(clientActionId: value0, actionIndex: value1, actionTag: value2, marketId: value3, principal: value4, reasonCode: value5, context: value6)
     }
 
-    private static func _eventExchangeL3Mutation() throws -> ABI.Element.Event {
+    private static func _eventExchangeL3MutationV2() throws -> ABI.Element.Event {
         guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
             if case .event(let value) = element { return value }
             return nil
-        }).first(where: { $0.signature == "ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)" }) else { throw WrapperError.invalidValue("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+        }).first(where: { $0.signature == "ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)" }) else { throw WrapperError.invalidValue("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
         return event
     }
 
-    /// Builds indexed topics for `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)`. Reference values use their 32-byte topic hashes.
-    public static func filterExchangeL3Mutation(filter0: Data? = nil, filter1: Data? = nil, filter2: EthereumAddress? = nil) throws -> [EventFilterParameters.Topic?] {
-        let event = try _eventExchangeL3Mutation()
+    /// Builds indexed topics for `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)`. Reference values use their 32-byte topic hashes.
+    public static func filterExchangeL3MutationV2(filter0: Data? = nil, filter1: Data? = nil, filter2: EthereumAddress? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventExchangeL3MutationV2()
         var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
         if let value = filter0 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter1 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter2 {
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[2], value: value) else { throw WrapperError.encodingFailed("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[2], value: value) else { throw WrapperError.encodingFailed("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
             topics.append(topic)
         } else { topics.append(nil) }
         return topics
     }
 
-    /// Decodes a `ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` log.
-    public static func decodeExchangeL3MutationEvent(_ log: EventLog) throws -> ExchangeL3MutationEvent {
-        let event = try _eventExchangeL3Mutation()
+    /// Decodes a `ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)` log.
+    public static func decodeExchangeL3MutationV2Event(_ log: EventLog) throws -> ExchangeL3MutationV2Event {
+        let event = try _eventExchangeL3MutationV2()
         guard log.topics.count == 4 else { throw WrapperError.eventMismatch }
         guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
-        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeL3Mutation(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeL3MutationV2(bytes32,bytes32,address,uint8,uint8,uint64,uint64,uint64)") }
         let topic0 = log.topics[1]
         guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
         guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
@@ -1619,45 +1554,45 @@ public enum IDiesisSpotBook {
         let value5 = try _cast(decoded[2], as: BigUInt.self)
         let value6 = try _cast(decoded[3], as: BigUInt.self)
         let value7 = try _cast(decoded[4], as: BigUInt.self)
-        return ExchangeL3MutationEvent(marketId: value0, orderId: value1, trader: value2, mutation: value3, side: value4, priceTicks: value5, quantityLots: value6, remainingLots: value7)
+        return ExchangeL3MutationV2Event(marketId: value0, orderId: value1, trader: value2, mutation: value3, side: value4, priceTicks: value5, quantityLots: value6, remainingLots: value7)
     }
 
-    private static func _eventExchangeTradeFill() throws -> ABI.Element.Event {
+    private static func _eventExchangeTradeFillV2() throws -> ABI.Element.Event {
         guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
             if case .event(let value) = element { return value }
             return nil
-        }).first(where: { $0.signature == "ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)" }) else { throw WrapperError.invalidValue("ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
+        }).first(where: { $0.signature == "ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)" }) else { throw WrapperError.invalidValue("ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
         return event
     }
 
-    /// Builds indexed topics for `ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)`. Reference values use their 32-byte topic hashes.
-    public static func filterExchangeTradeFill(filter0: Data? = nil, filter1: Data? = nil, filter2: Data? = nil) throws -> [EventFilterParameters.Topic?] {
-        let event = try _eventExchangeTradeFill()
+    /// Builds indexed topics for `ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)`. Reference values use their 32-byte topic hashes.
+    public static func filterExchangeTradeFillV2(filter0: Data? = nil, filter1: Data? = nil, filter2: Data? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventExchangeTradeFillV2()
         var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
         if let value = filter0 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter1 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
             topics.append(topic)
         } else { topics.append(nil) }
         if let value = filter2 {
             guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[2], value: value) else { throw WrapperError.encodingFailed("ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[2], value: value) else { throw WrapperError.encodingFailed("ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
             topics.append(topic)
         } else { topics.append(nil) }
         return topics
     }
 
-    /// Decodes a `ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)` log.
-    public static func decodeExchangeTradeFillEvent(_ log: EventLog) throws -> ExchangeTradeFillEvent {
-        let event = try _eventExchangeTradeFill()
+    /// Decodes a `ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)` log.
+    public static func decodeExchangeTradeFillV2Event(_ log: EventLog) throws -> ExchangeTradeFillV2Event {
+        let event = try _eventExchangeTradeFillV2()
         guard log.topics.count == 4 else { throw WrapperError.eventMismatch }
         guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
-        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeTradeFill(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("ExchangeTradeFillV2(bytes32,bytes32,bytes32,address,address,uint8,uint64,uint64)") }
         let topic0 = log.topics[1]
         guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
         guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
@@ -1675,7 +1610,7 @@ public enum IDiesisSpotBook {
         let value5 = try _cast(decoded[2], as: BigUInt.self)
         let value6 = try _cast(decoded[3], as: BigUInt.self)
         let value7 = try _cast(decoded[4], as: BigUInt.self)
-        return ExchangeTradeFillEvent(marketId: value0, makerOrderId: value1, takerOrderId: value2, maker: value3, taker: value4, aggressorSide: value5, priceTicks: value6, quantityLots: value7)
+        return ExchangeTradeFillV2Event(marketId: value0, makerOrderId: value1, takerOrderId: value2, maker: value3, taker: value4, aggressorSide: value5, priceTicks: value6, quantityLots: value7)
     }
 
     private static func _eventOrderCancelled() throws -> ABI.Element.Event {

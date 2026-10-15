@@ -8,13 +8,13 @@ import web3swift
 /// Types and constants of the `IDiesisMargin` contract.
 public enum IDiesisMargin {
     /// JSON ABI of the `IDiesisMargin` contract.
-    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"resolvePerpProtection","outputs":[{"internalType":"bytes32","name":"transactionId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"deleveraged","type":"address"},{"indexed":true,"internalType":"address","name":"counterparty","type":"address"},{"indexed":false,"internalType":"uint256","name":"size","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"}],"name":"AutoDeleverage","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"size","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"penalty","type":"uint256"}],"name":"Liquidation","type":"event"}]"#
+    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"resolvePerpProtectionV1","outputs":[{"internalType":"bytes32","name":"transactionId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"deleveraged","type":"address"},{"indexed":true,"internalType":"address","name":"counterparty","type":"address"},{"indexed":false,"internalType":"uint256","name":"size","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"}],"name":"AutoDeleverage","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"size","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"penalty","type":"uint256"}],"name":"Liquidation","type":"event"}]"#
 
-    /// Canonical signature of `resolvePerpProtection(bytes32)`.
-    public static let resolvePerpProtectionSignature = "resolvePerpProtection(bytes32)"
+    /// Canonical signature of `resolvePerpProtectionV1(bytes32)`.
+    public static let resolvePerpProtectionV1Signature = "resolvePerpProtectionV1(bytes32)"
 
-    /// Selector of `resolvePerpProtection(bytes32)`.
-    public static let resolvePerpProtectionSelector = Data([0x94, 0x48, 0x12, 0x98])
+    /// Selector of `resolvePerpProtectionV1(bytes32)`.
+    public static let resolvePerpProtectionV1Selector = Data([0x31, 0x0d, 0x20, 0xc3])
 
     /// Canonical signature of the `AutoDeleverage(bytes32,address,address,uint256,uint256)` event.
     public static let autoDeleverageEventSignature = "AutoDeleverage(bytes32,address,address,uint256,uint256)"
@@ -28,10 +28,10 @@ public enum IDiesisMargin {
     /// Topic 0 of the `Liquidation(bytes32,address,uint256,uint256,uint256)` event.
     public static let liquidationEventTopic = Data([0x3b, 0xa3, 0x6e, 0x56, 0x50, 0xf6, 0x25, 0x51, 0x14, 0x17, 0x12, 0xb1, 0xc5, 0x1b, 0xb8, 0x7e, 0xfe, 0x73, 0x3d, 0x5e, 0x06, 0xba, 0x74, 0x05, 0x92, 0x60, 0xac, 0xc4, 0x4e, 0x99, 0x84, 0x48])
 
-    /// Arguments of `resolvePerpProtection(bytes32)`.
+    /// Arguments of `resolvePerpProtectionV1(bytes32)`.
     ///
     /// System-owned canonical frontier resolution. External callers are rejected.
-    public struct ResolvePerpProtectionParams: Sendable, Hashable {
+    public struct ResolvePerpProtectionV1Params: Sendable, Hashable {
         public let marketId: Data
 
         public init(marketId: Data) {
@@ -95,17 +95,17 @@ public enum IDiesisMargin {
     }
     private static func _contract() throws -> EthereumContract { try EthereumContract(abi) }
 
-    /// ABI-encodes `resolvePerpProtection(bytes32)` for an offline transaction.
-    public static func encodeResolvePerpProtection(_ args: ResolvePerpProtectionParams) throws -> Data {
+    /// ABI-encodes `resolvePerpProtectionV1(bytes32)` for an offline transaction.
+    public static func encodeResolvePerpProtectionV1(_ args: ResolvePerpProtectionV1Params) throws -> Data {
         guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
-        guard let data = try _contract().method("resolvePerpProtection(bytes32)", parameters: [args.marketId], extraData: nil) else { throw WrapperError.encodingFailed("resolvePerpProtection(bytes32)") }
+        guard let data = try _contract().method("resolvePerpProtectionV1(bytes32)", parameters: [args.marketId], extraData: nil) else { throw WrapperError.encodingFailed("resolvePerpProtectionV1(bytes32)") }
         return data
     }
 
-    /// Decoded result of `resolvePerpProtection(bytes32)`.
+    /// Decoded result of `resolvePerpProtectionV1(bytes32)`.
     ///
     /// System-owned canonical frontier resolution. External callers are rejected.
-    public struct ResolvePerpProtectionResult: Sendable, Hashable {
+    public struct ResolvePerpProtectionV1Result: Sendable, Hashable {
         public let transactionId: Data
 
         public init(transactionId: Data) {
@@ -113,15 +113,15 @@ public enum IDiesisMargin {
         }
     }
 
-    private static func _decodeResolvePerpProtectionValues(_ values: [String: Any]) throws -> ResolvePerpProtectionResult {
+    private static func _decodeResolvePerpProtectionV1Values(_ values: [String: Any]) throws -> ResolvePerpProtectionV1Result {
         guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
         let value0 = try _cast(raw0, as: Data.self)
-        return ResolvePerpProtectionResult(transactionId: value0)
+        return ResolvePerpProtectionV1Result(transactionId: value0)
     }
 
-    /// Decodes raw return data for `resolvePerpProtection(bytes32)` offline.
-    public static func decodeResolvePerpProtectionResult(_ data: Data) throws -> ResolvePerpProtectionResult {
-        return try _decodeResolvePerpProtectionValues(_contract().decodeReturnData("resolvePerpProtection(bytes32)", data: data))
+    /// Decodes raw return data for `resolvePerpProtectionV1(bytes32)` offline.
+    public static func decodeResolvePerpProtectionV1Result(_ data: Data) throws -> ResolvePerpProtectionV1Result {
+        return try _decodeResolvePerpProtectionV1Values(_contract().decodeReturnData("resolvePerpProtectionV1(bytes32)", data: data))
     }
 
     /// A web3swift contract instance for typed reads and writes.
@@ -137,14 +137,14 @@ public enum IDiesisMargin {
             self.contract = try EthereumContract(IDiesisMargin.abi, at: address)
         }
 
-        /// Prepares `resolvePerpProtection(bytes32)` with transaction options for signing or submission.
-        public func prepareResolvePerpProtection(_ args: ResolvePerpProtectionParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+        /// Prepares `resolvePerpProtectionV1(bytes32)` with transaction options for signing or submission.
+        public func prepareResolvePerpProtectionV1(_ args: ResolvePerpProtectionV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
             tx.to = address
-            tx.data = try IDiesisMargin.encodeResolvePerpProtection(args)
+            tx.data = try IDiesisMargin.encodeResolvePerpProtectionV1(args)
             tx.value = 0
-            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "resolvePerpProtection(bytes32)")
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "resolvePerpProtectionV1(bytes32)")
         }
     }
 

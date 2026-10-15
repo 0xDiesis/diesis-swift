@@ -159,6 +159,9 @@ public enum ILiquidStakedDS {
     }
 
     /// Arguments of `burnFrom(address,uint256)`.
+    ///
+    /// Burn holder tokens. Callers other than `from` must have allowance, including DiesisPosition.
+    /// Finite allowance decreases by the burn; maximum allowance is unchanged. Failed burns preserve allowance.
     public struct BurnFromParams: Sendable, Hashable {
         public let from: EthereumAddress
         public let amount: BigUInt
@@ -397,6 +400,9 @@ public enum ILiquidStakedDS {
     }
 
     /// Decoded result of `burnFrom(address,uint256)`.
+    ///
+    /// Burn holder tokens. Callers other than `from` must have allowance, including DiesisPosition.
+    /// Finite allowance decreases by the burn; maximum allowance is unchanged. Failed burns preserve allowance.
     public struct BurnFromResult: Sendable, Hashable {
         public init() {}
     }
