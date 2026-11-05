@@ -8,7 +8,7 @@ Usage:
 Inputs:
     DIESIS_CONTRACTS_DIR  contracts checkout with compiled artifacts in out/
                           (default: ../../diesis-core/diesis/contracts)
-    ABI_TYPEGEN           abi-typegen binary, 0.8.0 or later
+    ABI_TYPEGEN           abi-typegen binary, 0.9.1 or later
                           (default: <contracts>/node_modules/.bin/abi-typegen)
     ../diesis-js/canonical.json  source of the vendored canonical.json
 
@@ -17,7 +17,6 @@ Uses only the Python standard library.
 
 from __future__ import annotations
 
-from typegen_inputs import ordered_artifacts
 
 import argparse
 import difflib
@@ -96,7 +95,7 @@ def swift_string(value: str) -> str:
 
 # abi-typegen ----------------------------------------------------------------
 
-MIN_TYPEGEN = (0, 8, 0)
+MIN_TYPEGEN = (0, 9, 1)
 
 
 def check_typegen_version(binary: Path) -> None:
@@ -118,7 +117,8 @@ def run_typegen(contracts: Path) -> dict[str, str]:
         raise SystemExit(f"abi-typegen not found at {binary}; set ABI_TYPEGEN")
     check_typegen_version(binary)
     names = ",".join(name for _, name, _ in PUBLIC_CONTRACTS)
-    with tempfile.TemporaryDirectory(prefix="diesis-swift-typegen-") as tmp, ordered_artifacts(Path(os.environ.get("DIESIS_ARTIFACTS_DIR", contracts / "out")), names.split(",")) as inputs:
+    inputs = Path(os.environ.get("DIESIS_ARTIFACTS_DIR", contracts / "out"))
+    with tempfile.TemporaryDirectory(prefix="diesis-swift-typegen-") as tmp:
         subprocess.run(
             [
                 str(binary), "generate",

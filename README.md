@@ -195,7 +195,7 @@ The contracts checkout defaults to `../../diesis-core/diesis/contracts` with com
 artifacts in `out/`. Set `DIESIS_CONTRACTS_DIR` to use another checkout, and
 `ABI_TYPEGEN` to use another abi-typegen binary than
 `<contracts>/node_modules/.bin/abi-typegen`. The script needs abi-typegen
-0.8.0 or later and stops with an error on an older one.
+0.9.1 or later and stops with an error on an older one.
 
 ## Develop
 
