@@ -151,8 +151,8 @@ public enum IDiesisBundleEscrow {
 
     /// Arguments of `cancelBundle(address,bytes32,uint256)`.
     ///
-    /// Cancel a reservation and credit the full locked amount to the payer.
-    /// Node-only (`msg.sender == address(0)`). Used when a bundle is rejected or terminalized before settlement. Exactly-once via `settled`.
+    /// Cancel a reservation and credit the full locked amount to the payer. or terminalized before settlement. Exactly-once via `settled`.
+    /// Node-only (`msg.sender == address(0)`). Used when a bundle is rejected
     public struct CancelBundleParams: Sendable, Hashable {
         public let payer: EthereumAddress
         public let planHash: Data
@@ -178,8 +178,8 @@ public enum IDiesisBundleEscrow {
 
     /// Arguments of `finalizeBundle(address,bytes32,uint256,uint256,address)`.
     ///
-    /// Finalize a reservation after the member outcome is known.
-    /// Node-only (`msg.sender == address(0)`). Credits `beneficiary` the committed builder payment and the payer the capped skipped-work refund plus the unearned reserve. Purely mutates claimable balances with saturating arithmetic, so it can never revert on hostile terms or a hostile recipient. Exactly-once via the `settled` guard.
+    /// Finalize a reservation after the member outcome is known. committed builder payment and the payer the capped skipped-work refund plus the unearned reserve. Purely mutates claimable balances with saturating arithmetic, so it can never revert on hostile terms or a hostile recipient. Exactly-once via the `settled` guard.
+    /// Node-only (`msg.sender == address(0)`). Credits `beneficiary` the
     public struct FinalizeBundleParams: Sendable, Hashable {
         public let payer: EthereumAddress
         public let planHash: Data
@@ -198,8 +198,8 @@ public enum IDiesisBundleEscrow {
 
     /// Arguments of `reclaimExpiredBundle(bytes32,uint256)`.
     ///
-    /// Payer-initiated reclaim of an expired, unsettled reservation.
-    /// Callable only by the reservation's payer (`msg.sender`), and only once the committed expiry has passed. Credits the payer the full locked amount. Exactly-once via `settled`.
+    /// Payer-initiated reclaim of an expired, unsettled reservation. the committed expiry has passed. Credits the payer the full locked amount. Exactly-once via `settled`.
+    /// Callable only by the reservation's payer (`msg.sender`), and only once
     public struct ReclaimExpiredBundleParams: Sendable, Hashable {
         public let planHash: Data
         public let escrowNonce: BigUInt
@@ -227,8 +227,8 @@ public enum IDiesisBundleEscrow {
 
     /// Arguments of `reserveBundle(bytes32,uint256,uint256,uint256,uint256,uint64)`.
     ///
-    /// Lock `maximumBuilderPayment + maximumRefund` for a bundle plan.
-    /// Called by the payer as the bundle's reservation transaction. Must be funded with exactly `maximumBuilderPayment + maximumRefund` native wei. The reservation is keyed by `(msg.sender, planHash, escrowNonce)`; a live reservation for that triple rejects nonce replay.
+    /// Lock `maximumBuilderPayment + maximumRefund` for a bundle plan. funded with exactly `maximumBuilderPayment + maximumRefund` native wei. The reservation is keyed by `(msg.sender, planHash, escrowNonce)`; a live reservation for that triple rejects nonce replay. and plan hash.
+    /// Called by the payer as the bundle's reservation transaction. Must be
     public struct ReserveBundleParams: Sendable, Hashable {
         public let planHash: Data
         public let maximumBuilderPayment: BigUInt
@@ -406,8 +406,8 @@ public enum IDiesisBundleEscrow {
 
     /// Decoded result of `cancelBundle(address,bytes32,uint256)`.
     ///
-    /// Cancel a reservation and credit the full locked amount to the payer.
-    /// Node-only (`msg.sender == address(0)`). Used when a bundle is rejected or terminalized before settlement. Exactly-once via `settled`.
+    /// Cancel a reservation and credit the full locked amount to the payer. or terminalized before settlement. Exactly-once via `settled`.
+    /// Node-only (`msg.sender == address(0)`). Used when a bundle is rejected
     public struct CancelBundleResult: Sendable, Hashable {
         public let returned: BigUInt
 
@@ -466,8 +466,8 @@ public enum IDiesisBundleEscrow {
 
     /// Decoded result of `finalizeBundle(address,bytes32,uint256,uint256,address)`.
     ///
-    /// Finalize a reservation after the member outcome is known.
-    /// Node-only (`msg.sender == address(0)`). Credits `beneficiary` the committed builder payment and the payer the capped skipped-work refund plus the unearned reserve. Purely mutates claimable balances with saturating arithmetic, so it can never revert on hostile terms or a hostile recipient. Exactly-once via the `settled` guard.
+    /// Finalize a reservation after the member outcome is known. committed builder payment and the payer the capped skipped-work refund plus the unearned reserve. Purely mutates claimable balances with saturating arithmetic, so it can never revert on hostile terms or a hostile recipient. Exactly-once via the `settled` guard.
+    /// Node-only (`msg.sender == address(0)`). Credits `beneficiary` the
     public struct FinalizeBundleResult: Sendable, Hashable {
         public let builderPaid: BigUInt
         public let refunded: BigUInt
@@ -505,8 +505,8 @@ public enum IDiesisBundleEscrow {
 
     /// Decoded result of `reclaimExpiredBundle(bytes32,uint256)`.
     ///
-    /// Payer-initiated reclaim of an expired, unsettled reservation.
-    /// Callable only by the reservation's payer (`msg.sender`), and only once the committed expiry has passed. Credits the payer the full locked amount. Exactly-once via `settled`.
+    /// Payer-initiated reclaim of an expired, unsettled reservation. the committed expiry has passed. Credits the payer the full locked amount. Exactly-once via `settled`.
+    /// Callable only by the reservation's payer (`msg.sender`), and only once
     public struct ReclaimExpiredBundleResult: Sendable, Hashable {
         public let returned: BigUInt
 
@@ -570,8 +570,8 @@ public enum IDiesisBundleEscrow {
 
     /// Decoded result of `reserveBundle(bytes32,uint256,uint256,uint256,uint256,uint64)`.
     ///
-    /// Lock `maximumBuilderPayment + maximumRefund` for a bundle plan.
-    /// Called by the payer as the bundle's reservation transaction. Must be funded with exactly `maximumBuilderPayment + maximumRefund` native wei. The reservation is keyed by `(msg.sender, planHash, escrowNonce)`; a live reservation for that triple rejects nonce replay.
+    /// Lock `maximumBuilderPayment + maximumRefund` for a bundle plan. funded with exactly `maximumBuilderPayment + maximumRefund` native wei. The reservation is keyed by `(msg.sender, planHash, escrowNonce)`; a live reservation for that triple rejects nonce replay. and plan hash.
+    /// Called by the payer as the bundle's reservation transaction. Must be
     public struct ReserveBundleResult: Sendable, Hashable {
         public let reservedTotal: BigUInt
 
@@ -599,8 +599,8 @@ public enum IDiesisBundleEscrow {
 
     /// Decoded result of `withdraw()`.
     ///
-    /// Withdraw the caller's accumulated claimable balance.
-    /// The single native-transfer exit. Zeroes the balance before transfer (checks-effects-interactions) and is reentrancy-guarded. A caller that reverts on receipt only griefs itself; settlement already happened.
+    /// Withdraw the caller's accumulated claimable balance. (checks-effects-interactions) and is reentrancy-guarded. A caller that reverts on receipt only griefs itself; settlement already happened.
+    /// The single native-transfer exit. Zeroes the balance before transfer
     public struct WithdrawResult: Sendable, Hashable {
         public let amount: BigUInt
 

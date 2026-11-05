@@ -193,8 +193,20 @@ final class ContractTableTests: XCTestCase {
             let actual = try XCTUnwrap(
                 JSONSerialization.jsonObject(with: Data(abi.utf8)) as? NSArray, name
             )
-            XCTAssertEqual(actual, expected, name)
+            // ABI entry order is not semantic; retain every full entry and duplicate.
+            func orderedEntries(_ entries: NSArray) throws -> [String] {
+                try entries.map {
+                    String(decoding: try JSONSerialization.data(withJSONObject: $0, options: [.sortedKeys]), as: UTF8.self)
+                }.sorted()
+            }
+            XCTAssertEqual(try orderedEntries(actual), try orderedEntries(expected), name)
         }
+    }
+
+    func testOverloadAliasesKeepTheirExistingSelectors() {
+        XCTAssertEqual(IDiesisPosition.safeTransferFrom0Selector, Data([0x42, 0x84, 0x2e, 0x0e]))
+        XCTAssertEqual(IDiesisNameVerifier.attestations0Selector, Data([0x92, 0xab, 0xd1, 0x7b]))
+        XCTAssertEqual(DiesisPublicResolver.setAddr0Selector, Data([0x8b, 0x95, 0xdd, 0x71]))
     }
 
     func testGeneratedSelectorsAndTopics() throws {

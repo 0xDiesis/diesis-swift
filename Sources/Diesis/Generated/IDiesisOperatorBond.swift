@@ -98,8 +98,8 @@ public enum IDiesisOperatorBond {
 
     /// Arguments of `postBond(bytes32)`.
     ///
-    /// Post the operator bond for `marketId` with `msg.value` DS.
-    /// `msg.value` must equal exactly 50,000 DS. Reverts if a bond already exists for `marketId`.
+    /// Post the operator bond for `marketId` with `msg.value` DS. exists for `marketId`.
+    /// `msg.value` must equal exactly 50,000 DS. Reverts if a bond already
     public struct PostBondParams: Sendable, Hashable {
         public let marketId: Data
 
@@ -110,8 +110,8 @@ public enum IDiesisOperatorBond {
 
     /// Arguments of `requestRelease(bytes32)`.
     ///
-    /// Request voluntary release of the bond.
-    /// Subject to a 30-day timelock. Pending claims against the backstop must be resolved before the operator can finalize.
+    /// Request voluntary release of the bond. must be resolved before the operator can finalize.
+    /// Subject to a 30-day timelock. Pending claims against the backstop
     public struct RequestReleaseParams: Sendable, Hashable {
         public let marketId: Data
 
@@ -262,8 +262,8 @@ public enum IDiesisOperatorBond {
 
     /// Decoded result of `postBond(bytes32)`.
     ///
-    /// Post the operator bond for `marketId` with `msg.value` DS.
-    /// `msg.value` must equal exactly 50,000 DS. Reverts if a bond already exists for `marketId`.
+    /// Post the operator bond for `marketId` with `msg.value` DS. exists for `marketId`.
+    /// `msg.value` must equal exactly 50,000 DS. Reverts if a bond already
     public struct PostBondResult: Sendable, Hashable {
         public init() {}
     }
@@ -287,8 +287,8 @@ public enum IDiesisOperatorBond {
 
     /// Decoded result of `requestRelease(bytes32)`.
     ///
-    /// Request voluntary release of the bond.
-    /// Subject to a 30-day timelock. Pending claims against the backstop must be resolved before the operator can finalize.
+    /// Request voluntary release of the bond. must be resolved before the operator can finalize.
+    /// Subject to a 30-day timelock. Pending claims against the backstop
     public struct RequestReleaseResult: Sendable, Hashable {
         public init() {}
     }

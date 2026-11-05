@@ -138,8 +138,8 @@ public enum DiesisSettlementRouter {
 
     /// Arguments of `deposit(address,uint256,address)`.
     ///
-    /// Deposit `amount` of `token`, crediting `beneficiary`'s settlement balance.
-    /// Pulls tokens from `msg.sender` into router custody, verifies the exact received amount, then credits the settlement ledger. A balance-delta mismatch reverts before any ledger mutation.
+    /// Deposit `amount` of `token`, crediting `beneficiary`'s settlement balance. exact received amount, then credits the settlement ledger. A balance-delta mismatch reverts before any ledger mutation.
+    /// Pulls tokens from `msg.sender` into router custody, verifies the
     public struct DepositParams: Sendable, Hashable {
         public let token: EthereumAddress
         public let amount: BigUInt
@@ -154,8 +154,8 @@ public enum DiesisSettlementRouter {
 
     /// Arguments of `setTokenAllowed(address,bool)`.
     ///
-    /// Add or remove a token from the standard-collateral allowlist.
-    /// PRECONDITION: governance MUST only admit a token that is standard ERC-20, exact-balance-accounted, and neither fee-on-transfer nor rebasing (no supply-elastic or balance-mutating hooks). The router's single-transaction delta checks catch synchronous fee/rebase behavior, but an asynchronously rebasing token can still render pooled custody insolvent; admitting one is a governance error that only the vetting at admission time can prevent.
+    /// Add or remove a token from the standard-collateral allowlist. ERC-20, exact-balance-accounted, and neither fee-on-transfer nor rebasing (no supply-elastic or balance-mutating hooks). The router's single-transaction delta checks catch synchronous fee/rebase behavior, but an asynchronously rebasing token can still render pooled custody insolvent; admitting one is a governance error that only the vetting at admission time can prevent.
+    /// PRECONDITION: governance MUST only admit a token that is standard
     public struct SetTokenAllowedParams: Sendable, Hashable {
         public let token: EthereumAddress
         public let allowed: Bool
@@ -190,7 +190,9 @@ public enum DiesisSettlementRouter {
 
     /// Arguments of `transferOwnership(address)`.
     ///
-    /// Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.
+    /// Transfers ownership of the contract to a new account (`newOwner`).
+    /// * Can only be called by the current owner.
+    ///
     public struct TransferOwnershipParams: Sendable, Hashable {
         public let newOwner: EthereumAddress
 
@@ -201,8 +203,8 @@ public enum DiesisSettlementRouter {
 
     /// Arguments of `withdraw(address,uint256,address)`.
     ///
-    /// Withdraw `amount` of `token` from the caller's settlement balance to `recipient`.
-    /// Debits the settlement ledger and the aggregate liability first, then releases custody. A failed token transfer reverts both mutations atomically. Verifies the exact released amount against BOTH the router's balance delta and the recipient's balance delta: the recipient-delta check rejects outbound fee-on-transfer tokens that would deliver less than the debited amount. An asynchronous shortfall in pooled custody makes the releasing transfer revert on insufficient balance, so the withdrawal fails closed for the affected caller rather than corrupting other users' balances.
+    /// Withdraw `amount` of `token` from the caller's settlement balance to `recipient`. releases custody. A failed token transfer reverts both mutations atomically. Verifies the exact released amount against BOTH the router's balance delta and the recipient's balance delta: the recipient-delta check rejects outbound fee-on-transfer tokens that would deliver less than the debited amount. An asynchronous shortfall in pooled custody makes the releasing transfer revert on insufficient balance, so the withdrawal fails closed for the affected caller rather than corrupting other users' balances.
+    /// Debits the settlement ledger and the aggregate liability first, then
     public struct WithdrawParams: Sendable, Hashable {
         public let token: EthereumAddress
         public let amount: BigUInt
@@ -360,8 +362,8 @@ public enum DiesisSettlementRouter {
 
     /// Decoded result of `deposit(address,uint256,address)`.
     ///
-    /// Deposit `amount` of `token`, crediting `beneficiary`'s settlement balance.
-    /// Pulls tokens from `msg.sender` into router custody, verifies the exact received amount, then credits the settlement ledger. A balance-delta mismatch reverts before any ledger mutation.
+    /// Deposit `amount` of `token`, crediting `beneficiary`'s settlement balance. exact received amount, then credits the settlement ledger. A balance-delta mismatch reverts before any ledger mutation.
+    /// Pulls tokens from `msg.sender` into router custody, verifies the
     public struct DepositResult: Sendable, Hashable {
         public let credited: BigUInt
 
@@ -390,6 +392,7 @@ public enum DiesisSettlementRouter {
     /// Decoded result of `owner()`.
     ///
     /// Returns the address of the current owner.
+    ///
     public struct OwnerResult: Sendable, Hashable {
         public let address: EthereumAddress
 
@@ -417,7 +420,12 @@ public enum DiesisSettlementRouter {
 
     /// Decoded result of `renounceOwnership()`.
     ///
-    /// Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.
+    /// Leaves the contract without owner. It will not be possible to call
+    /// * `onlyOwner` functions. Can only be called by the current owner.
+    /// *
+    /// * NOTE: Renouncing ownership will leave the contract without an owner,
+    /// * thereby disabling any functionality that is only available to the owner.
+    ///
     public struct RenounceOwnershipResult: Sendable, Hashable {
         public init() {}
     }
@@ -440,8 +448,8 @@ public enum DiesisSettlementRouter {
 
     /// Decoded result of `setTokenAllowed(address,bool)`.
     ///
-    /// Add or remove a token from the standard-collateral allowlist.
-    /// PRECONDITION: governance MUST only admit a token that is standard ERC-20, exact-balance-accounted, and neither fee-on-transfer nor rebasing (no supply-elastic or balance-mutating hooks). The router's single-transaction delta checks catch synchronous fee/rebase behavior, but an asynchronously rebasing token can still render pooled custody insolvent; admitting one is a governance error that only the vetting at admission time can prevent.
+    /// Add or remove a token from the standard-collateral allowlist. ERC-20, exact-balance-accounted, and neither fee-on-transfer nor rebasing (no supply-elastic or balance-mutating hooks). The router's single-transaction delta checks catch synchronous fee/rebase behavior, but an asynchronously rebasing token can still render pooled custody insolvent; admitting one is a governance error that only the vetting at admission time can prevent.
+    /// PRECONDITION: governance MUST only admit a token that is standard
     public struct SetTokenAllowedResult: Sendable, Hashable {
         public init() {}
     }
@@ -548,7 +556,9 @@ public enum DiesisSettlementRouter {
 
     /// Decoded result of `transferOwnership(address)`.
     ///
-    /// Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.
+    /// Transfers ownership of the contract to a new account (`newOwner`).
+    /// * Can only be called by the current owner.
+    ///
     public struct TransferOwnershipResult: Sendable, Hashable {
         public init() {}
     }
@@ -572,8 +582,8 @@ public enum DiesisSettlementRouter {
 
     /// Decoded result of `withdraw(address,uint256,address)`.
     ///
-    /// Withdraw `amount` of `token` from the caller's settlement balance to `recipient`.
-    /// Debits the settlement ledger and the aggregate liability first, then releases custody. A failed token transfer reverts both mutations atomically. Verifies the exact released amount against BOTH the router's balance delta and the recipient's balance delta: the recipient-delta check rejects outbound fee-on-transfer tokens that would deliver less than the debited amount. An asynchronous shortfall in pooled custody makes the releasing transfer revert on insufficient balance, so the withdrawal fails closed for the affected caller rather than corrupting other users' balances.
+    /// Withdraw `amount` of `token` from the caller's settlement balance to `recipient`. releases custody. A failed token transfer reverts both mutations atomically. Verifies the exact released amount against BOTH the router's balance delta and the recipient's balance delta: the recipient-delta check rejects outbound fee-on-transfer tokens that would deliver less than the debited amount. An asynchronous shortfall in pooled custody makes the releasing transfer revert on insufficient balance, so the withdrawal fails closed for the affected caller rather than corrupting other users' balances.
+    /// Debits the settlement ledger and the aggregate liability first, then
     public struct WithdrawResult: Sendable, Hashable {
         public init() {}
     }

@@ -106,8 +106,8 @@ public enum IDiesisIssuanceAuction {
 
     /// Arguments of `bidPerpListingV1((bytes32,address,address,bytes32))`.
     ///
-    /// Place a canonical-USDC bid bound to one perpetual registration.
-    /// The native runtime debits USDC; this selector is intentionally not payable and accepts no caller-supplied winner.
+    /// Place a canonical-USDC bid bound to one perpetual registration. payable and accepts no caller-supplied winner.
+    /// The native runtime debits USDC; this selector is intentionally not
     public struct BidPerpListingV1Params: Sendable, Hashable {
         public let registration: PerpRegistrationV1
 
@@ -220,8 +220,8 @@ public enum IDiesisIssuanceAuction {
 
     /// Decoded result of `bidPerpListingV1((bytes32,address,address,bytes32))`.
     ///
-    /// Place a canonical-USDC bid bound to one perpetual registration.
-    /// The native runtime debits USDC; this selector is intentionally not payable and accepts no caller-supplied winner.
+    /// Place a canonical-USDC bid bound to one perpetual registration. payable and accepts no caller-supplied winner.
+    /// The native runtime debits USDC; this selector is intentionally not
     public struct BidPerpListingV1Result: Sendable, Hashable {
         public init() {}
     }
@@ -300,8 +300,8 @@ public enum IDiesisIssuanceAuction {
 
     /// Decoded result of `settlePerpListingV1()`.
     ///
-    /// Settle the elapsed perpetual-listing slot.
-    /// Native-runtime only: settlement atomically routes the accepted USDC price (70% burn, 20% treasury, 10% validator rewards) and records the winning registration with `DiesisPerpDeploy`. This selector is ABI-visible for system dispatch but intentionally not forwarded by `DiesisIssuanceAuction`. It returns no data; after the first due transition, every repeat is a successful no-op over persisted state.
+    /// Settle the elapsed perpetual-listing slot. price (70% burn, 20% treasury, 10% validator rewards) and records the winning registration with `DiesisPerpDeploy`. This selector is ABI-visible for system dispatch but intentionally not forwarded by `DiesisIssuanceAuction`. It returns no data; after the first due transition, every repeat is a successful no-op over persisted state.
+    /// Native-runtime only: settlement atomically routes the accepted USDC
     public struct SettlePerpListingV1Result: Sendable, Hashable {
         public init() {}
     }

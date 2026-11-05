@@ -273,8 +273,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `applyPerpAbandonmentV1(bytes32,bytes32,uint64,uint64,bytes32,uint64,uint64,uint256,uint256,uint64,bytes32,uint64,bytes32,uint64,uint64,uint16,bytes32)`.
     ///
-    /// Apply one consensus-attested perpetual-market abandonment transition.
-    /// Native-runtime only: the dispatcher accepts this fixed-width selector only from the system caller (`address(0)`).
+    /// Apply one consensus-attested perpetual-market abandonment transition. only from the system caller (`address(0)`).
+    /// Native-runtime only: the dispatcher accepts this fixed-width selector
     public struct ApplyPerpAbandonmentV1Params: Sendable, Hashable {
         public let marketId: Data
         public let parentHash: Data
@@ -317,8 +317,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `applySlash(bytes32,uint8)`.
     ///
-    /// Apply a canonical system-owned operator-bond slash.
-    /// Native-runtime only: the dispatcher accepts this selector only from the system caller (`address(0)`). It is ABI-visible but intentionally not forwarded by `DiesisPerpDeploy`.
+    /// Apply a canonical system-owned operator-bond slash. the system caller (`address(0)`). It is ABI-visible but intentionally not forwarded by `DiesisPerpDeploy`.
+    /// Native-runtime only: the dispatcher accepts this selector only from
     public struct ApplySlashParams: Sendable, Hashable {
         public let marketId: Data
         public let reason: BigUInt
@@ -331,8 +331,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `deployPerp(bytes32,bytes32,bytes,bytes,bytes)`.
     ///
-    /// Sole production deployment path for a settled slot.
-    /// Caller must be the recorded operator. The runtime validates all dynamic fields before ABI allocation and requires their canonical combined commitment to equal the auction registration evidence. The fields are opaque bytes: this version does not parse them or validate the signature bytes as attestations.
+    /// Sole production deployment path for a settled slot. dynamic fields before ABI allocation and requires their canonical combined commitment to equal the auction registration evidence. The fields are opaque bytes: this version does not parse them or validate the signature bytes as attestations.
+    /// Caller must be the recorded operator. The runtime validates all
     public struct DeployPerpParams: Sendable, Hashable {
         public let slotId: Data
         public let marketId: Data
@@ -351,8 +351,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `expireUnactivatedPerpV1(bytes32)`.
     ///
-    /// Expire one incomplete auction deployment after its deadline.
-    /// Native-runtime only. This covers both an untouched winner and a cooling/live deployment that never completed canonical market initialization. Missing bonds close without slashing; a posted bond is atomically slashed before the deployment record closes.
+    /// Expire one incomplete auction deployment after its deadline. cooling/live deployment that never completed canonical market initialization. Missing bonds close without slashing; a posted bond is atomically slashed before the deployment record closes.
+    /// Native-runtime only. This covers both an untouched winner and a
     public struct ExpireUnactivatedPerpV1Params: Sendable, Hashable {
         public let marketId: Data
 
@@ -363,8 +363,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `finalizeClose(bytes32)`.
     ///
-    /// Finalize close on a market whose `Delisting` or `Slashed` window has elapsed. Transitions to `Closed`.
-    /// Reverts with `InvalidStateTransition` if the window has not closed, or with `NoSuchMarket` if `marketId` is unknown.
+    /// Finalize close on a market whose `Delisting` or `Slashed` window has elapsed. Transitions to `Closed`. closed, or with `NoSuchMarket` if `marketId` is unknown.
+    /// Reverts with `InvalidStateTransition` if the window has not
     public struct FinalizeCloseParams: Sendable, Hashable {
         public let marketId: Data
 
@@ -424,8 +424,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `getPerpPolicyV1(bytes32)`.
     ///
-    /// Read the active perpetual policy through the native precompile.
-    /// M0 freezes the selector and structured return schema. Native policy read implementation remains deferred to X4b M2.
+    /// Read the active perpetual policy through the native precompile. read implementation remains deferred to X4b M2.
+    /// M0 freezes the selector and structured return schema. Native policy
     public struct GetPerpPolicyV1Params: Sendable, Hashable {
         public let marketId: Data
 
@@ -459,8 +459,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `initializePerpMarketV2(address,address,uint64,uint64,uint256,uint256,(uint64,uint16,(uint64,uint8,uint16)[]),(uint64,uint8,address[]))`.
     ///
-    /// Atomically initialize the market and its first policy/keyset.
-    /// This freezes the public V2 wire contract only. Native validation, registry writes, and idempotence are introduced by X4b M2.
+    /// Atomically initialize the market and its first policy/keyset. registry writes, and idempotence are introduced by X4b M2.
+    /// This freezes the public V2 wire contract only. Native validation,
     public struct InitializePerpMarketV2Params: Sendable, Hashable {
         public let baseToken: EthereumAddress
         public let quoteToken: EthereumAddress
@@ -485,8 +485,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `initiateDelist(bytes32)`.
     ///
-    /// Operator-initiated voluntary delist. Opens a 30-day backstop claim window before the bond becomes release-eligible.
-    /// Reverts with `InvalidStateTransition` if the market is not `Live`, or with `NoSuchMarket` if `marketId` is unknown.
+    /// Operator-initiated voluntary delist. Opens a 30-day backstop claim window before the bond becomes release-eligible. or with `NoSuchMarket` if `marketId` is unknown.
+    /// Reverts with `InvalidStateTransition` if the market is not `Live`,
     public struct InitiateDelistParams: Sendable, Hashable {
         public let marketId: Data
 
@@ -497,8 +497,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `preparePerpMarketCloseV1(bytes32,uint16,uint16)`.
     ///
-    /// Advance one bounded step of market-close preparation.
-    /// Cancels open orders with exact reserve release, settles funding, and closes or transfers residual positions in restart-safe chunks, charging a hard bound before mutation. Progress is persisted to the canonical close cursor so repeated calls resume deterministically. A `Slashed` market may be progressed permissionlessly because no caller-controlled economic transition remains after slashing. `finalizeClose` may only succeed once this returns `true`. Later tasks implement the continuation; this freezes the release selector and bounded argument layout.
+    /// Advance one bounded step of market-close preparation. and closes or transfers residual positions in restart-safe chunks, charging a hard bound before mutation. Progress is persisted to the canonical close cursor so repeated calls resume deterministically. A `Slashed` market may be progressed permissionlessly because no caller-controlled economic transition remains after slashing. `finalizeClose` may only succeed once this returns `true`. Later tasks implement the continuation; this freezes the release selector and bounded argument layout. market may be finalized.
+    /// Cancels open orders with exact reserve release, settles funding,
     public struct PreparePerpMarketCloseV1Params: Sendable, Hashable {
         public let marketId: Data
         public let maxOrders: BigUInt
@@ -513,8 +513,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `promoteToLive(bytes32)`.
     ///
-    /// Promote an elapsed cooling market to `Live`.
-    /// Permissionless: this only materializes the stored transition after its cooling deadline, and never changes the recorded operator.
+    /// Promote an elapsed cooling market to `Live`. its cooling deadline, and never changes the recorded operator.
+    /// Permissionless: this only materializes the stored transition after
     public struct PromoteToLiveParams: Sendable, Hashable {
         public let marketId: Data
 
@@ -525,8 +525,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `proposePerpPolicyV1(bytes32,uint64,uint64,uint16,(uint64,uint8,uint16)[],address[],uint8,(address,bytes32,bytes32,uint8)[])`.
     ///
-    /// Propose a timelocked, current-keyset-attested policy update.
-    /// Signature validation and timelock persistence are introduced by X4b M2; this packet intentionally freezes only the ABI.
+    /// Propose a timelocked, current-keyset-attested policy update. X4b M2; this packet intentionally freezes only the ABI.
+    /// Signature validation and timelock persistence are introduced by
     public struct ProposePerpPolicyV1Params: Sendable, Hashable {
         public let marketId: Data
         public let expectedRevision: BigUInt
@@ -551,8 +551,8 @@ public enum IDiesisPerpDeploy {
 
     /// Arguments of `recordAuctionWin(bytes32,address,bytes32,bytes32)`.
     ///
-    /// Record a settled auction registration before operator actions.
-    /// Native-runtime only: the dispatcher accepts this selector only from the system caller (`address(0)`). It is declared for ABI/indexer parity but intentionally not forwarded by `DiesisPerpDeploy`. An identical replay is a no-op; any commitment conflict reverts.
+    /// Record a settled auction registration before operator actions. the system caller (`address(0)`). It is declared for ABI/indexer parity but intentionally not forwarded by `DiesisPerpDeploy`. An identical replay is a no-op; any commitment conflict reverts.
+    /// Native-runtime only: the dispatcher accepts this selector only from
     public struct RecordAuctionWinParams: Sendable, Hashable {
         public let marketId: Data
         public let `operator`: EthereumAddress
@@ -795,8 +795,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `applyPerpAbandonmentV1(bytes32,bytes32,uint64,uint64,bytes32,uint64,uint64,uint256,uint256,uint64,bytes32,uint64,bytes32,uint64,uint64,uint16,bytes32)`.
     ///
-    /// Apply one consensus-attested perpetual-market abandonment transition.
-    /// Native-runtime only: the dispatcher accepts this fixed-width selector only from the system caller (`address(0)`).
+    /// Apply one consensus-attested perpetual-market abandonment transition. only from the system caller (`address(0)`).
+    /// Native-runtime only: the dispatcher accepts this fixed-width selector
     public struct ApplyPerpAbandonmentV1Result: Sendable, Hashable {
         public init() {}
     }
@@ -821,8 +821,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `applySlash(bytes32,uint8)`.
     ///
-    /// Apply a canonical system-owned operator-bond slash.
-    /// Native-runtime only: the dispatcher accepts this selector only from the system caller (`address(0)`). It is ABI-visible but intentionally not forwarded by `DiesisPerpDeploy`.
+    /// Apply a canonical system-owned operator-bond slash. the system caller (`address(0)`). It is ABI-visible but intentionally not forwarded by `DiesisPerpDeploy`.
+    /// Native-runtime only: the dispatcher accepts this selector only from
     public struct ApplySlashResult: Sendable, Hashable {
         public init() {}
     }
@@ -847,8 +847,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `deployPerp(bytes32,bytes32,bytes,bytes,bytes)`.
     ///
-    /// Sole production deployment path for a settled slot.
-    /// Caller must be the recorded operator. The runtime validates all dynamic fields before ABI allocation and requires their canonical combined commitment to equal the auction registration evidence. The fields are opaque bytes: this version does not parse them or validate the signature bytes as attestations.
+    /// Sole production deployment path for a settled slot. dynamic fields before ABI allocation and requires their canonical combined commitment to equal the auction registration evidence. The fields are opaque bytes: this version does not parse them or validate the signature bytes as attestations.
+    /// Caller must be the recorded operator. The runtime validates all
     public struct DeployPerpResult: Sendable, Hashable {
         public let bytes32: Data
 
@@ -876,8 +876,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `expireNextUnactivatedPerpV1()`.
     ///
-    /// Process at most one activation expiry and one completion expiry from separate bounded canonical queues.
-    /// Native-runtime only and replay-safe. It is invoked by deterministic block-start maintenance and intentionally omitted from the facade.
+    /// Process at most one activation expiry and one completion expiry from separate bounded canonical queues. block-start maintenance and intentionally omitted from the facade.
+    /// Native-runtime only and replay-safe. It is invoked by deterministic
     public struct ExpireNextUnactivatedPerpV1Result: Sendable, Hashable {
         public init() {}
     }
@@ -901,8 +901,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `expireUnactivatedPerpV1(bytes32)`.
     ///
-    /// Expire one incomplete auction deployment after its deadline.
-    /// Native-runtime only. This covers both an untouched winner and a cooling/live deployment that never completed canonical market initialization. Missing bonds close without slashing; a posted bond is atomically slashed before the deployment record closes.
+    /// Expire one incomplete auction deployment after its deadline. cooling/live deployment that never completed canonical market initialization. Missing bonds close without slashing; a posted bond is atomically slashed before the deployment record closes.
+    /// Native-runtime only. This covers both an untouched winner and a
     public struct ExpireUnactivatedPerpV1Result: Sendable, Hashable {
         public init() {}
     }
@@ -926,8 +926,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `finalizeClose(bytes32)`.
     ///
-    /// Finalize close on a market whose `Delisting` or `Slashed` window has elapsed. Transitions to `Closed`.
-    /// Reverts with `InvalidStateTransition` if the window has not closed, or with `NoSuchMarket` if `marketId` is unknown.
+    /// Finalize close on a market whose `Delisting` or `Slashed` window has elapsed. Transitions to `Closed`. closed, or with `NoSuchMarket` if `marketId` is unknown.
+    /// Reverts with `InvalidStateTransition` if the window has not
     public struct FinalizeCloseResult: Sendable, Hashable {
         public init() {}
     }
@@ -1064,8 +1064,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `getPerpPolicyV1(bytes32)`.
     ///
-    /// Read the active perpetual policy through the native precompile.
-    /// M0 freezes the selector and structured return schema. Native policy read implementation remains deferred to X4b M2.
+    /// Read the active perpetual policy through the native precompile. read implementation remains deferred to X4b M2.
+    /// M0 freezes the selector and structured return schema. Native policy
     public struct GetPerpPolicyV1Result: Sendable, Hashable {
         public let policy: PerpPolicyV1
         public let keyset: MetadataKeysetV1
@@ -1136,8 +1136,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `initializePerpMarketV2(address,address,uint64,uint64,uint256,uint256,(uint64,uint16,(uint64,uint8,uint16)[]),(uint64,uint8,address[]))`.
     ///
-    /// Atomically initialize the market and its first policy/keyset.
-    /// This freezes the public V2 wire contract only. Native validation, registry writes, and idempotence are introduced by X4b M2.
+    /// Atomically initialize the market and its first policy/keyset. registry writes, and idempotence are introduced by X4b M2.
+    /// This freezes the public V2 wire contract only. Native validation,
     public struct InitializePerpMarketV2Result: Sendable, Hashable {
         public let marketId: Data
 
@@ -1166,8 +1166,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `initiateDelist(bytes32)`.
     ///
-    /// Operator-initiated voluntary delist. Opens a 30-day backstop claim window before the bond becomes release-eligible.
-    /// Reverts with `InvalidStateTransition` if the market is not `Live`, or with `NoSuchMarket` if `marketId` is unknown.
+    /// Operator-initiated voluntary delist. Opens a 30-day backstop claim window before the bond becomes release-eligible. or with `NoSuchMarket` if `marketId` is unknown.
+    /// Reverts with `InvalidStateTransition` if the market is not `Live`,
     public struct InitiateDelistResult: Sendable, Hashable {
         public init() {}
     }
@@ -1193,8 +1193,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `preparePerpMarketCloseV1(bytes32,uint16,uint16)`.
     ///
-    /// Advance one bounded step of market-close preparation.
-    /// Cancels open orders with exact reserve release, settles funding, and closes or transfers residual positions in restart-safe chunks, charging a hard bound before mutation. Progress is persisted to the canonical close cursor so repeated calls resume deterministically. A `Slashed` market may be progressed permissionlessly because no caller-controlled economic transition remains after slashing. `finalizeClose` may only succeed once this returns `true`. Later tasks implement the continuation; this freezes the release selector and bounded argument layout.
+    /// Advance one bounded step of market-close preparation. and closes or transfers residual positions in restart-safe chunks, charging a hard bound before mutation. Progress is persisted to the canonical close cursor so repeated calls resume deterministically. A `Slashed` market may be progressed permissionlessly because no caller-controlled economic transition remains after slashing. `finalizeClose` may only succeed once this returns `true`. Later tasks implement the continuation; this freezes the release selector and bounded argument layout. market may be finalized.
+    /// Cancels open orders with exact reserve release, settles funding,
     public struct PreparePerpMarketCloseV1Result: Sendable, Hashable {
         public let readyToFinalize: Bool
 
@@ -1223,8 +1223,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `promoteToLive(bytes32)`.
     ///
-    /// Promote an elapsed cooling market to `Live`.
-    /// Permissionless: this only materializes the stored transition after its cooling deadline, and never changes the recorded operator.
+    /// Promote an elapsed cooling market to `Live`. its cooling deadline, and never changes the recorded operator.
+    /// Permissionless: this only materializes the stored transition after
     public struct PromoteToLiveResult: Sendable, Hashable {
         public init() {}
     }
@@ -1258,8 +1258,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `proposePerpPolicyV1(bytes32,uint64,uint64,uint16,(uint64,uint8,uint16)[],address[],uint8,(address,bytes32,bytes32,uint8)[])`.
     ///
-    /// Propose a timelocked, current-keyset-attested policy update.
-    /// Signature validation and timelock persistence are introduced by X4b M2; this packet intentionally freezes only the ABI.
+    /// Propose a timelocked, current-keyset-attested policy update. X4b M2; this packet intentionally freezes only the ABI.
+    /// Signature validation and timelock persistence are introduced by
     public struct ProposePerpPolicyV1Result: Sendable, Hashable {
         public let proposalId: Data
         public let executeAfter: BigUInt
@@ -1294,8 +1294,8 @@ public enum IDiesisPerpDeploy {
 
     /// Decoded result of `recordAuctionWin(bytes32,address,bytes32,bytes32)`.
     ///
-    /// Record a settled auction registration before operator actions.
-    /// Native-runtime only: the dispatcher accepts this selector only from the system caller (`address(0)`). It is declared for ABI/indexer parity but intentionally not forwarded by `DiesisPerpDeploy`. An identical replay is a no-op; any commitment conflict reverts.
+    /// Record a settled auction registration before operator actions. the system caller (`address(0)`). It is declared for ABI/indexer parity but intentionally not forwarded by `DiesisPerpDeploy`. An identical replay is a no-op; any commitment conflict reverts.
+    /// Native-runtime only: the dispatcher accepts this selector only from
     public struct RecordAuctionWinResult: Sendable, Hashable {
         public init() {}
     }

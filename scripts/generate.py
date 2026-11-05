@@ -17,6 +17,8 @@ Uses only the Python standard library.
 
 from __future__ import annotations
 
+from typegen_inputs import ordered_artifacts
+
 import argparse
 import difflib
 import json
@@ -116,11 +118,11 @@ def run_typegen(contracts: Path) -> dict[str, str]:
         raise SystemExit(f"abi-typegen not found at {binary}; set ABI_TYPEGEN")
     check_typegen_version(binary)
     names = ",".join(name for _, name, _ in PUBLIC_CONTRACTS)
-    with tempfile.TemporaryDirectory(prefix="diesis-swift-typegen-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="diesis-swift-typegen-") as tmp, ordered_artifacts(Path(os.environ.get("DIESIS_ARTIFACTS_DIR", contracts / "out")), names.split(",")) as inputs:
         subprocess.run(
             [
                 str(binary), "generate",
-                "--artifacts", str(contracts / "out"),
+                "--artifacts", str(inputs),
                 "--out", tmp,
                 "--target", "swift",
                 "--contracts", names,
@@ -249,7 +251,7 @@ def main() -> int:
     args = parser.parse_args()
 
     contracts = contracts_dir()
-    if not (contracts / "out").is_dir():
+    if not Path(os.environ.get("DIESIS_ARTIFACTS_DIR", contracts / "out")).is_dir():
         raise SystemExit(f"no compiled artifacts at {contracts / 'out'}; set DIESIS_CONTRACTS_DIR")
 
     if args.check:

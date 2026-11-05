@@ -84,7 +84,8 @@ public enum IDiesisMarkets {
 
     /// Arguments of `createSpotMarket(address,address,uint64,uint64,uint256)`.
     ///
-    /// Legacy provisioning requires the current Config owner. Public issuance uses `deployTokenAndSpotBook`. `bond`, when nonzero, is deducted from the creator's WDS settlement balance. Reverts after the append-only 256-market ordinal namespace is full.
+    /// uses `deployTokenAndSpotBook`. `bond`, when nonzero, is deducted from the creator's WDS settlement balance. Reverts after the append-only 256-market ordinal namespace is full.
+    /// Legacy provisioning requires the current Config owner. Public issuance
     public struct CreateSpotMarketParams: Sendable, Hashable {
         public let baseToken: EthereumAddress
         public let quoteToken: EthereumAddress
@@ -242,7 +243,8 @@ public enum IDiesisMarkets {
 
     /// Decoded result of `createSpotMarket(address,address,uint64,uint64,uint256)`.
     ///
-    /// Legacy provisioning requires the current Config owner. Public issuance uses `deployTokenAndSpotBook`. `bond`, when nonzero, is deducted from the creator's WDS settlement balance. Reverts after the append-only 256-market ordinal namespace is full.
+    /// uses `deployTokenAndSpotBook`. `bond`, when nonzero, is deducted from the creator's WDS settlement balance. Reverts after the append-only 256-market ordinal namespace is full.
+    /// Legacy provisioning requires the current Config owner. Public issuance
     public struct CreateSpotMarketResult: Sendable, Hashable {
         public let marketId: Data
 

@@ -105,8 +105,8 @@ public enum IDiesisBuybackBurn {
 
     /// Arguments of `lastTwapAveragePrice(address)`.
     ///
-    /// Last TWAP-average execution price recorded for `token`.
-    /// DS-quote, oracle scale. Updated incrementally on each successful chunk emission; zero if no chunks have executed yet.
+    /// Last TWAP-average execution price recorded for `token`. chunk emission; zero if no chunks have executed yet.
+    /// DS-quote, oracle scale. Updated incrementally on each successful
     public struct LastTwapAveragePriceParams: Sendable, Hashable {
         public let token: EthereumAddress
 
@@ -117,8 +117,8 @@ public enum IDiesisBuybackBurn {
 
     /// Arguments of `nextWindowStartBlock(address)`.
     ///
-    /// Block at which the next TWAP window for `token` opens.
-    /// When a window is active, this returns the active window's end block (the earliest block at which a fresh window may begin). Returns zero when no window has ever been scheduled for `token`.
+    /// Block at which the next TWAP window for `token` opens. block (the earliest block at which a fresh window may begin). Returns zero when no window has ever been scheduled for `token`.
+    /// When a window is active, this returns the active window's end
     public struct NextWindowStartBlockParams: Sendable, Hashable {
         public let token: EthereumAddress
 
@@ -129,8 +129,8 @@ public enum IDiesisBuybackBurn {
 
     /// Arguments of `pendingPurchaseByAsset(address)`.
     ///
-    /// Read the pending (non-DS) accumulator for `token`.
-    /// DS deposits burn immediately and never accumulate; this returns zero for DS.
+    /// Read the pending (non-DS) accumulator for `token`. zero for DS.
+    /// DS deposits burn immediately and never accumulate; this returns
     public struct PendingPurchaseByAssetParams: Sendable, Hashable {
         public let token: EthereumAddress
 
@@ -279,8 +279,8 @@ public enum IDiesisBuybackBurn {
 
     /// Decoded result of `lastTwapAveragePrice(address)`.
     ///
-    /// Last TWAP-average execution price recorded for `token`.
-    /// DS-quote, oracle scale. Updated incrementally on each successful chunk emission; zero if no chunks have executed yet.
+    /// Last TWAP-average execution price recorded for `token`. chunk emission; zero if no chunks have executed yet.
+    /// DS-quote, oracle scale. Updated incrementally on each successful
     public struct LastTwapAveragePriceResult: Sendable, Hashable {
         public let uint256: BigUInt
 
@@ -308,8 +308,8 @@ public enum IDiesisBuybackBurn {
 
     /// Decoded result of `nextWindowStartBlock(address)`.
     ///
-    /// Block at which the next TWAP window for `token` opens.
-    /// When a window is active, this returns the active window's end block (the earliest block at which a fresh window may begin). Returns zero when no window has ever been scheduled for `token`.
+    /// Block at which the next TWAP window for `token` opens. block (the earliest block at which a fresh window may begin). Returns zero when no window has ever been scheduled for `token`.
+    /// When a window is active, this returns the active window's end
     public struct NextWindowStartBlockResult: Sendable, Hashable {
         public let uint64: BigUInt
 
@@ -337,8 +337,8 @@ public enum IDiesisBuybackBurn {
 
     /// Decoded result of `pendingPurchaseByAsset(address)`.
     ///
-    /// Read the pending (non-DS) accumulator for `token`.
-    /// DS deposits burn immediately and never accumulate; this returns zero for DS.
+    /// Read the pending (non-DS) accumulator for `token`. zero for DS.
+    /// DS deposits burn immediately and never accumulate; this returns
     public struct PendingPurchaseByAssetResult: Sendable, Hashable {
         public let uint256: BigUInt
 

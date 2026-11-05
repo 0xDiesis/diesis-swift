@@ -211,8 +211,8 @@ public enum IDiesisCoreVault {
 
     /// Arguments of `deposit(uint8,uint256)`.
     ///
-    /// Deposit `amount` of the strategy's quote asset and mint proportional shares. Reverts if the strategy is paused.
-    /// `msg.value` semantics depend on the precompile's chosen payment routing; the canonical implementation accepts native DS for DS-denominated sub-vaults and bridges for others.
+    /// Deposit `amount` of the strategy's quote asset and mint proportional shares. Reverts if the strategy is paused. payment routing; the canonical implementation accepts native DS for DS-denominated sub-vaults and bridges for others.
+    /// `msg.value` semantics depend on the precompile's chosen
     public struct DepositParams: Sendable, Hashable {
         public let id: BigUInt
         public let amount: BigUInt
@@ -247,7 +247,7 @@ public enum IDiesisCoreVault {
 
     /// Arguments of `getCheckpoint(uint8,uint64)`.
     ///
-    /// Get the NAV checkpoint stored at `blockNumber`, if any.
+    /// Get the NAV checkpoint stored at `blockNumber`, if any. checkpoint exists at that block.
     public struct GetCheckpointParams: Sendable, Hashable {
         public let id: BigUInt
         public let blockNumber: BigUInt
@@ -547,8 +547,8 @@ public enum IDiesisCoreVault {
 
     /// Decoded result of `deposit(uint8,uint256)`.
     ///
-    /// Deposit `amount` of the strategy's quote asset and mint proportional shares. Reverts if the strategy is paused.
-    /// `msg.value` semantics depend on the precompile's chosen payment routing; the canonical implementation accepts native DS for DS-denominated sub-vaults and bridges for others.
+    /// Deposit `amount` of the strategy's quote asset and mint proportional shares. Reverts if the strategy is paused. payment routing; the canonical implementation accepts native DS for DS-denominated sub-vaults and bridges for others.
+    /// `msg.value` semantics depend on the precompile's chosen
     public struct DepositResult: Sendable, Hashable {
         public init() {}
     }
@@ -626,7 +626,7 @@ public enum IDiesisCoreVault {
 
     /// Decoded result of `getCheckpoint(uint8,uint64)`.
     ///
-    /// Get the NAV checkpoint stored at `blockNumber`, if any.
+    /// Get the NAV checkpoint stored at `blockNumber`, if any. checkpoint exists at that block.
     public struct GetCheckpointResult: Sendable, Hashable {
         public let cp: NavCheckpoint
 

@@ -168,8 +168,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `amendOrder(bytes32,uint256,uint256,uint8)`.
     ///
-    /// Amend an active order owned by the caller.
-    /// Cancel-and-replace preserving the original `orderId`. Preserving the id keeps user/market indexes and signed-intent nonce mappings stable. Requires the original market to still be active and new price/amount to be nonzero.
+    /// Amend an active order owned by the caller. id keeps user/market indexes and signed-intent nonce mappings stable. Requires the original market to still be active and new price/amount to be nonzero.
+    /// Cancel-and-replace preserving the original `orderId`. Preserving the
     public struct AmendOrderParams: Sendable, Hashable {
         public let orderId: Data
         public let newPrice: BigUInt
@@ -186,8 +186,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `cancelOrder(bytes32)`.
     ///
-    /// Cancel an active order owned by the caller.
-    /// Releases the order's locked collateral and clears the order storage. Historical user and market order lists may still contain the order id; clients should filter by order existence. Cancelling a dormant signed stop removes its bounded stop-index membership and releases its lock.
+    /// Cancel an active order owned by the caller. Historical user and market order lists may still contain the order id; clients should filter by order existence. Cancelling a dormant signed stop removes its bounded stop-index membership and releases its lock.
+    /// Releases the order's locked collateral and clears the order storage.
     public struct CancelOrderParams: Sendable, Hashable {
         public let orderId: Data
 
@@ -232,8 +232,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `finalizeOpeningAuction(bytes32)`.
     ///
-    /// Finalize an ended opening auction and return the market to active trading.
-    /// System-only. Runs the batch auction, settles crossing orders, restores residual live orders into the continuous BBO cache, emits `BatchAuctionCleared`, and stores final auction totals.
+    /// Finalize an ended opening auction and return the market to active trading. residual live orders into the continuous BBO cache, emits `BatchAuctionCleared`, and stores final auction totals.
+    /// System-only. Runs the batch auction, settles crossing orders, restores
     public struct FinalizeOpeningAuctionParams: Sendable, Hashable {
         public let marketId: Data
 
@@ -277,8 +277,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `getOrderBookDepth(bytes32,uint8)`.
     ///
-    /// Return on-chain book depth.
-    /// Runtime returns real best-bid/best-ask data at level 0 only. Levels 1+ are zero-filled; full multi-level depth is available over exchange RPC.
+    /// Return on-chain book depth. are zero-filled; full multi-level depth is available over exchange RPC.
+    /// Runtime returns real best-bid/best-ask data at level 0 only. Levels 1+
     public struct GetOrderBookDepthParams: Sendable, Hashable {
         public let marketId: Data
         public let levels: BigUInt
@@ -305,8 +305,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `startOpeningAuction(bytes32,uint64,uint64,uint256)`.
     ///
-    /// Start an opening auction for an active empty market.
-    /// System-only. The market must be active and have no live open orders. Historical cleared order ids do not block auction start, but the call charges gas for scanning those historical ids.
+    /// Start an opening auction for an active empty market. Historical cleared order ids do not block auction start, but the call charges gas for scanning those historical ids.
+    /// System-only. The market must be active and have no live open orders.
     public struct StartOpeningAuctionParams: Sendable, Hashable {
         public let marketId: Data
         public let startBlock: BigUInt
@@ -323,8 +323,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `submitExchangeActionsV2(bytes)`.
     ///
-    /// Submit one strictly bounded canonical V2 action batch.
-    /// The ordinary EVM caller authenticates the batch. The encoded bytes contain no action-level signature or replay nonce. `resultHash` commits to the original bytes and every ordered action outcome.
+    /// Submit one strictly bounded canonical V2 action batch. contain no action-level signature or replay nonce. `resultHash` commits to the original bytes and every ordered action outcome.
+    /// The ordinary EVM caller authenticates the batch. The encoded bytes
     public struct SubmitExchangeActionsV2Params: Sendable, Hashable {
         public let encodedActions: Data
 
@@ -335,8 +335,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `submitLimitOrder(bytes32,uint8,uint256,uint256,uint8)`.
     ///
-    /// Place a limit order in an active spot market.
-    /// Requires an active market, `priceTicks > 0`, `amountLots > 0`, a prior settlement deposit flag, and enough available collateral. Buy orders lock quote collateral equal to `priceTicks * amountLots`; sell orders lock base collateral equal to `amountLots`.
+    /// Place a limit order in an active spot market. settlement deposit flag, and enough available collateral. Buy orders lock quote collateral equal to `priceTicks * amountLots`; sell orders lock base collateral equal to `amountLots`.
+    /// Requires an active market, `priceTicks > 0`, `amountLots > 0`, a prior
     public struct SubmitLimitOrderParams: Sendable, Hashable {
         public let marketId: Data
         public let side: BigUInt
@@ -355,8 +355,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `submitMarketOrder(bytes32,uint8,uint256)`.
     ///
-    /// Submit a market order intent against the active continuous book.
-    /// Requires an active market and `amountLots > 0`. The returned `filledAmount` is currently zero; economic fills are emitted as canonical `OrderFilled` events when matching settles.
+    /// Submit a market order intent against the active continuous book. `filledAmount` is currently zero; economic fills are emitted as canonical `OrderFilled` events when matching settles.
+    /// Requires an active market and `amountLots > 0`. The returned
     public struct SubmitMarketOrderParams: Sendable, Hashable {
         public let marketId: Data
         public let side: BigUInt
@@ -371,8 +371,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `submitSignedCancelAllSpotIntent(bytes)`.
     ///
-    /// Submit a signed request to cancel all active orders in one market.
-    /// The payload is a JSON-encoded signed cancel-all spot intent. The signature binds trader, market, expiry, and replay nonce. The call scans the trader's historical user-order list for `marketId`, charges per scanned order, cancels currently active matching orders, and rolls back nonce consumption if cancellation fails.
+    /// Submit a signed request to cancel all active orders in one market. signature binds trader, market, expiry, and replay nonce. The call scans the trader's historical user-order list for `marketId`, charges per scanned order, cancels currently active matching orders, and rolls back nonce consumption if cancellation fails.
+    /// The payload is a JSON-encoded signed cancel-all spot intent. The
     public struct SubmitSignedCancelAllSpotIntentParams: Sendable, Hashable {
         public let signedCancelAllJson: Data
 
@@ -383,8 +383,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `submitSignedSpotIntent(bytes)`.
     ///
-    /// Submit a signed order or cancel intent.
-    /// The payload is a JSON-encoded `SignedIntent`. Order intents may be submitted by any relayer; the precompile verifies the signature and uses the signed trader as the effective caller. Trading-key signed order and cancel intents are constrained by the key's market mask and notional limit. This ABI intentionally declares no return value because order and cancel variants have different raw return data. Clients that need the returned order id should either call direct order methods or use a low-level call and decode the variant-specific bytes.
+    /// Submit a signed order or cancel intent. submitted by any relayer; the precompile verifies the signature and uses the signed trader as the effective caller. Trading-key signed order and cancel intents are constrained by the key's market mask and notional limit. This ABI intentionally declares no return value because order and cancel variants have different raw return data. Clients that need the returned order id should either call direct order methods or use a low-level call and decode the variant-specific bytes.
+    /// The payload is a JSON-encoded `SignedIntent`. Order intents may be
     public struct SubmitSignedSpotIntentParams: Sendable, Hashable {
         public let signedIntentJson: Data
 
@@ -395,8 +395,8 @@ public enum IDiesisSpotBook {
 
     /// Arguments of `triggerSpotStops(bytes32,uint16)`.
     ///
-    /// Activate dormant stops triggered by the market's last settled trade.
-    /// Permissionless bounded continuation. A buy stop triggers when the canonical last-trade price rises to or above its trigger price; a sell stop triggers when it falls to or below. `maxOrders` is clamped to the protocol activation limit and to the call's gas headroom; the call never triggers from an oracle, RPC quote, or user-supplied observation. Each activated stop inserts into the live book and matches at its limit/protection price (a stop-market executes as an IOC protected limit) and emits a `StopOrderTriggered` event. A paused market or a market with no settled trade activates nothing.
+    /// Activate dormant stops triggered by the market's last settled trade. canonical last-trade price rises to or above its trigger price; a sell stop triggers when it falls to or below. `maxOrders` is clamped to the protocol activation limit and to the call's gas headroom; the call never triggers from an oracle, RPC quote, or user-supplied observation. Each activated stop inserts into the live book and matches at its limit/protection price (a stop-market executes as an IOC protected limit) and emits a `StopOrderTriggered` event. A paused market or a market with no settled trade activates nothing.
+    /// Permissionless bounded continuation. A buy stop triggers when the
     public struct TriggerSpotStopsParams: Sendable, Hashable {
         public let marketId: Data
         public let maxOrders: BigUInt
@@ -614,8 +614,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `amendOrder(bytes32,uint256,uint256,uint8)`.
     ///
-    /// Amend an active order owned by the caller.
-    /// Cancel-and-replace preserving the original `orderId`. Preserving the id keeps user/market indexes and signed-intent nonce mappings stable. Requires the original market to still be active and new price/amount to be nonzero.
+    /// Amend an active order owned by the caller. id keeps user/market indexes and signed-intent nonce mappings stable. Requires the original market to still be active and new price/amount to be nonzero.
+    /// Cancel-and-replace preserving the original `orderId`. Preserving the
     public struct AmendOrderResult: Sendable, Hashable {
         public let newOrderId: Data
 
@@ -644,8 +644,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `cancelOrder(bytes32)`.
     ///
-    /// Cancel an active order owned by the caller.
-    /// Releases the order's locked collateral and clears the order storage. Historical user and market order lists may still contain the order id; clients should filter by order existence. Cancelling a dormant signed stop removes its bounded stop-index membership and releases its lock.
+    /// Cancel an active order owned by the caller. Historical user and market order lists may still contain the order id; clients should filter by order existence. Cancelling a dormant signed stop removes its bounded stop-index membership and releases its lock.
+    /// Releases the order's locked collateral and clears the order storage.
     public struct CancelOrderResult: Sendable, Hashable {
         public init() {}
     }
@@ -742,8 +742,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `finalizeOpeningAuction(bytes32)`.
     ///
-    /// Finalize an ended opening auction and return the market to active trading.
-    /// System-only. Runs the batch auction, settles crossing orders, restores residual live orders into the continuous BBO cache, emits `BatchAuctionCleared`, and stores final auction totals.
+    /// Finalize an ended opening auction and return the market to active trading. residual live orders into the continuous BBO cache, emits `BatchAuctionCleared`, and stores final auction totals.
+    /// System-only. Runs the batch auction, settles crossing orders, restores
     public struct FinalizeOpeningAuctionResult: Sendable, Hashable {
         public let clearingPrice: BigUInt
         public let totalVolume: BigUInt
@@ -892,8 +892,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `getOrderBookDepth(bytes32,uint8)`.
     ///
-    /// Return on-chain book depth.
-    /// Runtime returns real best-bid/best-ask data at level 0 only. Levels 1+ are zero-filled; full multi-level depth is available over exchange RPC.
+    /// Return on-chain book depth. are zero-filled; full multi-level depth is available over exchange RPC.
+    /// Runtime returns real best-bid/best-ask data at level 0 only. Levels 1+
     public struct GetOrderBookDepthResult: Sendable, Hashable {
         public let bidPrices: [BigUInt]
         public let bidAmounts: [BigUInt]
@@ -967,8 +967,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `startOpeningAuction(bytes32,uint64,uint64,uint256)`.
     ///
-    /// Start an opening auction for an active empty market.
-    /// System-only. The market must be active and have no live open orders. Historical cleared order ids do not block auction start, but the call charges gas for scanning those historical ids.
+    /// Start an opening auction for an active empty market. Historical cleared order ids do not block auction start, but the call charges gas for scanning those historical ids.
+    /// System-only. The market must be active and have no live open orders.
     public struct StartOpeningAuctionResult: Sendable, Hashable {
         public init() {}
     }
@@ -991,8 +991,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `submitExchangeActionsV2(bytes)`.
     ///
-    /// Submit one strictly bounded canonical V2 action batch.
-    /// The ordinary EVM caller authenticates the batch. The encoded bytes contain no action-level signature or replay nonce. `resultHash` commits to the original bytes and every ordered action outcome.
+    /// Submit one strictly bounded canonical V2 action batch. contain no action-level signature or replay nonce. `resultHash` commits to the original bytes and every ordered action outcome.
+    /// The ordinary EVM caller authenticates the batch. The encoded bytes
     public struct SubmitExchangeActionsV2Result: Sendable, Hashable {
         public let resultHash: Data
         public let acceptedCount: BigUInt
@@ -1033,8 +1033,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `submitLimitOrder(bytes32,uint8,uint256,uint256,uint8)`.
     ///
-    /// Place a limit order in an active spot market.
-    /// Requires an active market, `priceTicks > 0`, `amountLots > 0`, a prior settlement deposit flag, and enough available collateral. Buy orders lock quote collateral equal to `priceTicks * amountLots`; sell orders lock base collateral equal to `amountLots`.
+    /// Place a limit order in an active spot market. settlement deposit flag, and enough available collateral. Buy orders lock quote collateral equal to `priceTicks * amountLots`; sell orders lock base collateral equal to `amountLots`.
+    /// Requires an active market, `priceTicks > 0`, `amountLots > 0`, a prior
     public struct SubmitLimitOrderResult: Sendable, Hashable {
         public let orderId: Data
 
@@ -1065,8 +1065,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `submitMarketOrder(bytes32,uint8,uint256)`.
     ///
-    /// Submit a market order intent against the active continuous book.
-    /// Requires an active market and `amountLots > 0`. The returned `filledAmount` is currently zero; economic fills are emitted as canonical `OrderFilled` events when matching settles.
+    /// Submit a market order intent against the active continuous book. `filledAmount` is currently zero; economic fills are emitted as canonical `OrderFilled` events when matching settles.
+    /// Requires an active market and `amountLots > 0`. The returned
     public struct SubmitMarketOrderResult: Sendable, Hashable {
         public let filledAmount: BigUInt
         public let orderId: Data
@@ -1098,8 +1098,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `submitSignedCancelAllSpotIntent(bytes)`.
     ///
-    /// Submit a signed request to cancel all active orders in one market.
-    /// The payload is a JSON-encoded signed cancel-all spot intent. The signature binds trader, market, expiry, and replay nonce. The call scans the trader's historical user-order list for `marketId`, charges per scanned order, cancels currently active matching orders, and rolls back nonce consumption if cancellation fails.
+    /// Submit a signed request to cancel all active orders in one market. signature binds trader, market, expiry, and replay nonce. The call scans the trader's historical user-order list for `marketId`, charges per scanned order, cancels currently active matching orders, and rolls back nonce consumption if cancellation fails.
+    /// The payload is a JSON-encoded signed cancel-all spot intent. The
     public struct SubmitSignedCancelAllSpotIntentResult: Sendable, Hashable {
         public let cancelled: BigUInt
 
@@ -1127,8 +1127,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `submitSignedSpotIntent(bytes)`.
     ///
-    /// Submit a signed order or cancel intent.
-    /// The payload is a JSON-encoded `SignedIntent`. Order intents may be submitted by any relayer; the precompile verifies the signature and uses the signed trader as the effective caller. Trading-key signed order and cancel intents are constrained by the key's market mask and notional limit. This ABI intentionally declares no return value because order and cancel variants have different raw return data. Clients that need the returned order id should either call direct order methods or use a low-level call and decode the variant-specific bytes.
+    /// Submit a signed order or cancel intent. submitted by any relayer; the precompile verifies the signature and uses the signed trader as the effective caller. Trading-key signed order and cancel intents are constrained by the key's market mask and notional limit. This ABI intentionally declares no return value because order and cancel variants have different raw return data. Clients that need the returned order id should either call direct order methods or use a low-level call and decode the variant-specific bytes.
+    /// The payload is a JSON-encoded `SignedIntent`. Order intents may be
     public struct SubmitSignedSpotIntentResult: Sendable, Hashable {
         public init() {}
     }
@@ -1153,8 +1153,8 @@ public enum IDiesisSpotBook {
 
     /// Decoded result of `triggerSpotStops(bytes32,uint16)`.
     ///
-    /// Activate dormant stops triggered by the market's last settled trade.
-    /// Permissionless bounded continuation. A buy stop triggers when the canonical last-trade price rises to or above its trigger price; a sell stop triggers when it falls to or below. `maxOrders` is clamped to the protocol activation limit and to the call's gas headroom; the call never triggers from an oracle, RPC quote, or user-supplied observation. Each activated stop inserts into the live book and matches at its limit/protection price (a stop-market executes as an IOC protected limit) and emits a `StopOrderTriggered` event. A paused market or a market with no settled trade activates nothing.
+    /// Activate dormant stops triggered by the market's last settled trade. canonical last-trade price rises to or above its trigger price; a sell stop triggers when it falls to or below. `maxOrders` is clamped to the protocol activation limit and to the call's gas headroom; the call never triggers from an oracle, RPC quote, or user-supplied observation. Each activated stop inserts into the live book and matches at its limit/protection price (a stop-market executes as an IOC protected limit) and emits a `StopOrderTriggered` event. A paused market or a market with no settled trade activates nothing.
+    /// Permissionless bounded continuation. A buy stop triggers when the
     public struct TriggerSpotStopsResult: Sendable, Hashable {
         public let activated: BigUInt
         public let hasMore: Bool

@@ -105,8 +105,8 @@ public enum IDiesisErc20Factory {
 
     /// Arguments of `deploy((bytes11,string,uint256,address))`.
     ///
-    /// Deploy a new ERC-20 at the deterministic address.
-    /// Reverts with `DuplicateDeployment` if the `(deployer, symbol)` pair has already been used, with `InvalidSymbolLength` or `InvalidSupply` on parameter validation, and with `FactoryCallFailed` for any other precompile-side failure.External callers must equal `params.deployer`.
+    /// Deploy a new ERC-20 at the deterministic address. has already been used, with `InvalidSymbolLength` or `InvalidSupply` on parameter validation, and with `FactoryCallFailed` for any other precompile-side failure.
+    /// Reverts with `DuplicateDeployment` if the `(deployer, symbol)` pairExternal callers must equal `params.deployer`.
     public struct Deploy2Params: Sendable, Hashable {
         public let params: DeployParams
 
@@ -117,8 +117,8 @@ public enum IDiesisErc20Factory {
 
     /// Arguments of `predictAddress(address,bytes11)`.
     ///
-    /// Predict the address the factory will deploy for `(deployer, symbol)`.
-    /// The address is `keccak256(0xFF || factory || salt || keccak256(initCode))[12:]` where `salt = keccak256(deployer || symbol)` and `initCode` is the pinned template constructor bytecode wrapping `(name, symbol, initialSupply, deployer)`.
+    /// Predict the address the factory will deploy for `(deployer, symbol)`. where `salt = keccak256(deployer || symbol)` and `initCode` is the pinned template constructor bytecode wrapping `(name, symbol, initialSupply, deployer)`.
+    /// The address is `keccak256(0xFF || factory || salt || keccak256(initCode))[12:]`
     public struct PredictAddressParams: Sendable, Hashable {
         public let deployer: EthereumAddress
         public let symbol: Data
@@ -131,8 +131,8 @@ public enum IDiesisErc20Factory {
 
     /// Arguments of `proposeTemplateUpdate(bytes32)`.
     ///
-    /// Propose a new template bytecode hash. Subject to a 604,800-block delay.
-    /// The current Config owner must propose a runtime embedded in this node build. Multiple proposals overwrite the pending hash and reset the block delay.
+    /// Propose a new template bytecode hash. Subject to a 604,800-block delay. Multiple proposals overwrite the pending hash and reset the block delay.
+    /// The current Config owner must propose a runtime embedded in this node build.
     public struct ProposeTemplateUpdateParams: Sendable, Hashable {
         public let newHash: Data
 
@@ -238,8 +238,8 @@ public enum IDiesisErc20Factory {
 
     /// Decoded result of `deploy((bytes11,string,uint256,address))`.
     ///
-    /// Deploy a new ERC-20 at the deterministic address.
-    /// Reverts with `DuplicateDeployment` if the `(deployer, symbol)` pair has already been used, with `InvalidSymbolLength` or `InvalidSupply` on parameter validation, and with `FactoryCallFailed` for any other precompile-side failure.External callers must equal `params.deployer`.
+    /// Deploy a new ERC-20 at the deterministic address. has already been used, with `InvalidSymbolLength` or `InvalidSupply` on parameter validation, and with `FactoryCallFailed` for any other precompile-side failure.
+    /// Reverts with `DuplicateDeployment` if the `(deployer, symbol)` pairExternal callers must equal `params.deployer`.
     public struct DeployResult: Sendable, Hashable {
         public let tokenAddress: EthereumAddress
 
@@ -267,8 +267,8 @@ public enum IDiesisErc20Factory {
 
     /// Decoded result of `executeTemplateUpdate()`.
     ///
-    /// Execute the pending template update if its timelock has elapsed.
-    /// Execution is permissionless and rechecks embedded artifact availability. Reverts with `TemplateUpdateLocked` if invoked before the unlock block or if no proposal is pending.
+    /// Execute the pending template update if its timelock has elapsed. Reverts with `TemplateUpdateLocked` if invoked before the unlock block or if no proposal is pending.
+    /// Execution is permissionless and rechecks embedded artifact availability.
     public struct ExecuteTemplateUpdateResult: Sendable, Hashable {
         public init() {}
     }
@@ -292,8 +292,8 @@ public enum IDiesisErc20Factory {
 
     /// Decoded result of `predictAddress(address,bytes11)`.
     ///
-    /// Predict the address the factory will deploy for `(deployer, symbol)`.
-    /// The address is `keccak256(0xFF || factory || salt || keccak256(initCode))[12:]` where `salt = keccak256(deployer || symbol)` and `initCode` is the pinned template constructor bytecode wrapping `(name, symbol, initialSupply, deployer)`.
+    /// Predict the address the factory will deploy for `(deployer, symbol)`. where `salt = keccak256(deployer || symbol)` and `initCode` is the pinned template constructor bytecode wrapping `(name, symbol, initialSupply, deployer)`.
+    /// The address is `keccak256(0xFF || factory || salt || keccak256(initCode))[12:]`
     public struct PredictAddressResult: Sendable, Hashable {
         public let address: EthereumAddress
 
@@ -322,8 +322,8 @@ public enum IDiesisErc20Factory {
 
     /// Decoded result of `proposeTemplateUpdate(bytes32)`.
     ///
-    /// Propose a new template bytecode hash. Subject to a 604,800-block delay.
-    /// The current Config owner must propose a runtime embedded in this node build. Multiple proposals overwrite the pending hash and reset the block delay.
+    /// Propose a new template bytecode hash. Subject to a 604,800-block delay. Multiple proposals overwrite the pending hash and reset the block delay.
+    /// The current Config owner must propose a runtime embedded in this node build.
     public struct ProposeTemplateUpdateResult: Sendable, Hashable {
         public init() {}
     }

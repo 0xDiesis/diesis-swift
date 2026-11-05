@@ -8,7 +8,7 @@ import web3swift
 /// Types and constants of the `DiesisStaking` contract.
 public enum DiesisStaking {
     /// JSON ABI of the `DiesisStaking` contract.
-    public static let abi = #"[{"inputs":[{"internalType":"address","name":"owner_","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"DIESIS_POSITION","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"EPOCH_AUTHORITY","outputs":[{"internalType":"contract IDiesisEpochAuthority","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_REGISTERED_VALIDATORS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_REWARD_STREAM_PER_SECOND","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_EXIT_DELAY_CHECKPOINTS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_EXIT_DELAY_SECONDS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_EQUIVOCATION","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_EVIDENCE_MASK","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_INACTIVE_MASK","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_OPERATOR_REVIEW","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_PROBATION_MASK","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_PROTOCOL_BREACH","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_SCORE_DRIFT","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_SLASH_REVIEW","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_UPTIME_DRIFT","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_NODE_ACTIVE","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_NODE_EXITING","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"accountedNativeFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"accrueRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"activateValidatorEpoch","outputs":[{"internalType":"bool","name":"activated","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"activeEpoch","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"activeEpochIdentityDigest","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"activeRecovery","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"activeRoleBundleId","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"aggregateActiveStake","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"aggregateStake","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"checkpoint","type":"uint256"},{"internalType":"bool","name":"withBurn","type":"bool"}],"name":"allocateExtraReward","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"anchorLotByNode","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"oldAddress","type":"address"},{"internalType":"address","name":"newAddress","type":"address"}],"name":"approveKeyRecovery","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"delegator","type":"address"},{"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"internalType":"uint256","name":"stakeAmount","type":"uint256"}],"name":"bootstrapDelegation","outputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"auth","type":"address"},{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"bytes","name":"pubkey","type":"bytes"},{"internalType":"uint256","name":"createdTime","type":"uint256"}],"name":"bootstrapValidator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"burnTokens","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"cancelKeyRecovery","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"cancelPendingValidatorEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"components":[{"internalType":"uint64","name":"oldEpoch","type":"uint64"},{"internalType":"bytes32","name":"oldIdentityDigest","type":"bytes32"},{"internalType":"bytes32","name":"nextIdentityDigest","type":"bytes32"},{"internalType":"uint64","name":"activationBlockNumber","type":"uint64"},{"internalType":"uint64","name":"certificationBoundaryNumber","type":"uint64"},{"internalType":"bytes32","name":"certificationBoundaryParentHash","type":"bytes32"},{"internalType":"bytes32","name":"certifiedCheckpointDigest","type":"bytes32"},{"internalType":"bytes","name":"signerBitmap","type":"bytes"},{"internalType":"bytes","name":"aggregateSignature","type":"bytes"}],"internalType":"struct IDiesisEpochAuthority.EpochTransitionCertificateV1","name":"certificate","type":"tuple"}],"name":"certifyValidatorEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"circulatingSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"checkpoint","type":"uint256"}],"name":"collectedCheckpointFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"requestId","type":"uint256"}],"name":"completeUnstake","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"requestId","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"}],"name":"completeUnstakeForPosition","outputs":[{"internalType":"uint256","name":"payout","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"compoundRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"compoundRewardsForPosition","outputs":[{"internalType":"uint256","name":"compounded","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"config","outputs":[{"internalType":"contract IDiesisConfig","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"consensusKeyByNode","outputs":[{"internalType":"bytes","name":"","type":"bytes"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"epochCandidate","outputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"uint256","name":"bonded","type":"uint256"},{"internalType":"uint256","name":"marks","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint64","name":"epoch","type":"uint64"}],"name":"epochIdentityDigest","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint64","name":"epoch","type":"uint64"},{"internalType":"uint256","name":"cursor","type":"uint256"},{"internalType":"uint256","name":"limit","type":"uint256"}],"name":"epochIdentityPage","outputs":[{"components":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"uint256","name":"bondedStakeWei","type":"uint256"},{"internalType":"uint64","name":"votingPower","type":"uint64"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"},{"internalType":"uint8","name":"status","type":"uint8"}],"internalType":"struct IDiesisEpochIdentity.ValidatorIdentityV1[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"oldAddress","type":"address"}],"name":"executeKeyRecovery","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"exitTickets","outputs":[{"internalType":"uint128","name":"amount","type":"uint128"},{"internalType":"uint48","name":"validatorId","type":"uint48"},{"internalType":"uint40","name":"checkpoint","type":"uint40"},{"internalType":"uint40","name":"timestamp","type":"uint40"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"expirePendingValidatorEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"components":[{"internalType":"uint256[]","name":"offlineDurations","type":"uint256[]"},{"internalType":"uint256[]","name":"missedBlocks","type":"uint256[]"},{"internalType":"uint256[]","name":"uptimeDurations","type":"uint256[]"},{"internalType":"uint256[]","name":"txFeesOriginated","type":"uint256[]"},{"internalType":"uint256[]","name":"slotFillRates","type":"uint256[]"},{"internalType":"uint256[]","name":"inclusionRates","type":"uint256[]"},{"internalType":"uint256[]","name":"leaderPerformances","type":"uint256[]"}],"internalType":"struct IDiesisTypes.CheckpointMetrics","name":"metrics","type":"tuple"}],"name":"finalizeCheckpoint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"finalizeValidatorWithdrawal","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"flushTreasuryFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"harvestRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"}],"name":"harvestRewardsForPosition","outputs":[{"internalType":"uint256","name":"reward","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"increaseStakeForPosition","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"finalizedCheckpoint","type":"uint256"},{"internalType":"uint256","name":"_totalSupply","type":"uint256"},{"internalType":"address","name":"configContract","type":"address"},{"internalType":"address","name":"owner_","type":"address"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"components":[{"internalType":"uint16","name":"version","type":"uint16"},{"internalType":"uint64","name":"chainId","type":"uint64"},{"internalType":"bytes32","name":"genesisHash","type":"bytes32"},{"internalType":"uint64","name":"epoch","type":"uint64"},{"internalType":"uint64","name":"activationBlockNumber","type":"uint64"},{"internalType":"bytes32","name":"previousIdentityDigest","type":"bytes32"},{"components":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"uint256","name":"bondedStakeWei","type":"uint256"},{"internalType":"uint64","name":"votingPower","type":"uint64"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"},{"internalType":"uint8","name":"status","type":"uint8"}],"internalType":"struct IDiesisEpochIdentity.ValidatorIdentityV1[]","name":"validators","type":"tuple[]"}],"internalType":"struct IDiesisEpochIdentity.EpochIdentityV1","name":"identity","type":"tuple"},{"components":[{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"}],"internalType":"struct IDiesisEpochAuthority.RoleKeyBundle[]","name":"bundles","type":"tuple[]"},{"components":[{"internalType":"bytes","name":"consensusSignature","type":"bytes"},{"internalType":"bytes","name":"blsContextSignature","type":"bytes"},{"internalType":"uint256","name":"vrfX","type":"uint256"},{"internalType":"uint256","name":"vrfY","type":"uint256"},{"internalType":"bytes","name":"vrfSignature","type":"bytes"},{"internalType":"bytes","name":"quicSignature","type":"bytes"},{"internalType":"bytes","name":"relayerSignature","type":"bytes"}],"internalType":"struct IDiesisEpochAuthority.RoleProofBundle[]","name":"proofs","type":"tuple[]"}],"name":"initializeEpochZero","outputs":[{"internalType":"bool","name":"epochInitialized","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"initialized","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256","name":"fee","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"}],"name":"instantUnstakeForPosition","outputs":[{"internalType":"uint256","name":"payout","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"isSlashable","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastFeeAccrualBlock","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"latestFinalizedCheckpoint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"mintEmptyPositionForSplit","outputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mintTokens","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"nextPositionId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"nextValidatorId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes","name":"","type":"bytes"}],"name":"nodeByConsensusKey","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"nodeIdByOperator","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"nodeLedger","outputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"uint256","name":"marks","type":"uint256"},{"internalType":"uint256","name":"bonded","type":"uint256"},{"internalType":"uint256","name":"joinedCheckpoint","type":"uint256"},{"internalType":"uint256","name":"joinedAt","type":"uint256"},{"internalType":"uint256","name":"heldAt","type":"uint256"},{"internalType":"uint256","name":"heldCheckpoint","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"operatorTakeRateByNode","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"participationPoolBps","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pendingEpochCertificationFields","outputs":[{"internalType":"uint64","name":"oldEpoch","type":"uint64"},{"internalType":"bytes32","name":"oldIdentityDigest","type":"bytes32"},{"internalType":"bytes32","name":"nextIdentityDigest","type":"bytes32"},{"internalType":"uint64","name":"activationBlockNumber","type":"uint64"},{"internalType":"uint64","name":"certificationBoundaryNumber","type":"uint64"},{"internalType":"bytes32","name":"certificationBoundaryParentHash","type":"bytes32"},{"internalType":"bytes32","name":"certifiedCheckpointDigest","type":"bytes32"},{"internalType":"bool","name":"epochCertified","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"pendingOperatorTakeCheckpoint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"pendingOperatorTakeRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"pendingRecovery","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"pendingRoleBundleId","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pendingTreasuryFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"recordBootstrapMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"checkpoint","type":"uint256"},{"internalType":"uint256","name":"blockNumber","type":"uint256"},{"internalType":"uint256","name":"fee","type":"uint256"}],"name":"recordCheckpointFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint64","name":"boundaryNumber","type":"uint64"},{"internalType":"bytes32","name":"boundaryParentHash","type":"bytes32"},{"internalType":"bytes32","name":"checkpointDigest","type":"bytes32"}],"name":"recordEpochCertificationBoundary","outputs":[{"internalType":"bool","name":"recorded","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"recoveryAuthorizer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes","name":"pubkey","type":"bytes"}],"name":"registerValidator","outputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint64","name":"targetEpoch","type":"uint64"},{"components":[{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"}],"internalType":"struct IDiesisEpochAuthority.RoleKeyBundle","name":"keys","type":"tuple"},{"components":[{"internalType":"bytes","name":"consensusSignature","type":"bytes"},{"internalType":"bytes","name":"blsContextSignature","type":"bytes"},{"internalType":"uint256","name":"vrfX","type":"uint256"},{"internalType":"uint256","name":"vrfY","type":"uint256"},{"internalType":"bytes","name":"vrfSignature","type":"bytes"},{"internalType":"bytes","name":"quicSignature","type":"bytes"},{"internalType":"bytes","name":"relayerSignature","type":"bytes"}],"internalType":"struct IDiesisEpochAuthority.RoleProofBundle","name":"proofs","type":"tuple"}],"name":"registerValidatorRoleKeys","outputs":[{"internalType":"bytes32","name":"bundleId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newAddress","type":"address"}],"name":"requestKeyRecovery","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"requestId","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"requestUnstake","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"requestId","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"requestUnstakeForPosition","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"rewardsAccruedThrough","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint64","name":"targetEpoch","type":"uint64"},{"internalType":"uint8","name":"role","type":"uint8"},{"internalType":"bytes","name":"publicIdentity","type":"bytes"}],"name":"roleDigest","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"bundleId","type":"bytes32"}],"name":"roleKeyBundle","outputs":[{"components":[{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"}],"internalType":"struct IDiesisEpochAuthority.RoleKeyBundle","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint64","name":"activationBlockNumber","type":"uint64"}],"name":"scheduleValidatorEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"configContract","type":"address"}],"name":"setConfigContract","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"rate","type":"uint256"}],"name":"setOperatorTakeRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"bps","type":"uint256"}],"name":"setParticipationPoolBps","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"auth","type":"address"}],"name":"setRecoveryAuthorizer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"refundRatio","type":"uint256"}],"name":"setSlashRefundRatio","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"observer","type":"address"}],"name":"setStakeObserver","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256[3]","name":"weights","type":"uint256[3]"}],"name":"setSubScoreWeights","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"treasury_","type":"address"}],"name":"setTreasury","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"slashRefundRatio","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"toValidatorId","type":"uint256"}],"name":"stake","outputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"toValidatorId","type":"uint256"}],"name":"stakeForPosition","outputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"stakeLots","outputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"stakeAmount","type":"uint256"},{"internalType":"uint256","name":"entryCheckpoint","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"stakeObserver","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"subScoreWeights","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"reason","type":"uint256"}],"name":"suspendValidator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"fromTokenId","type":"uint256"},{"internalType":"uint256","name":"toTokenId","type":"uint256"},{"internalType":"uint256","name":"swapAmount","type":"uint256"}],"name":"swapDelegate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"fromTokenId","type":"uint256"},{"internalType":"uint256","name":"toTokenId","type":"uint256"},{"internalType":"uint256","name":"swapAmount","type":"uint256"}],"name":"swapDelegateForPosition","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"unclaimedRewards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"withdrawValidator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"checkpoint","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"validatorCount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"aggregateActiveStake","type":"uint256"}],"name":"CertifiedEpochApplied","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"checkpoint","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"blockNumber","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fee","type":"uint256"}],"name":"CheckpointFeesRecorded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"checkpointId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"received","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"distributed","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"burned","type":"uint256"}],"name":"ExtraRewardAllocated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"newAddress","type":"address"},{"indexed":true,"internalType":"address","name":"authorizer","type":"address"}],"name":"KeyRecoveryApproved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"newAddress","type":"address"}],"name":"KeyRecoveryCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":true,"internalType":"address","name":"oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"newAddress","type":"address"}],"name":"KeyRecoveryExecuted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"newAddress","type":"address"}],"name":"KeyRecoveryRequested","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":true,"internalType":"address","name":"delegator","type":"address"}],"name":"ObserverCallbackFailed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newRate","type":"uint256"}],"name":"OperatorTakeRateActivated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newRate","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"effectiveCheckpoint","type":"uint256"}],"name":"OperatorTakeRateScheduled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"bps","type":"uint256"}],"name":"ParticipationPoolBpsUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"checkpoint","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"availabilityPool","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"participationPool","type":"uint256"},{"indexed":false,"internalType":"uint256[]","name":"composites","type":"uint256[]"}],"name":"ParticipationRewards","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"authorizer","type":"address"}],"name":"RecoveryAuthorizerSet","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"RewardsCompounded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":false,"internalType":"address","name":"recipient","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"RewardsHarvested","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"refundRatio","type":"uint256"}],"name":"SlashRefundRatioUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"observer","type":"address"}],"name":"StakeObserverSet","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"delegator","type":"address"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Staked","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256[3]","name":"weights","type":"uint256[3]"}],"name":"SubScoreWeightsUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"burner","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TokensBurned","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TreasuryFeesFlushed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"requestId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"slashPenalty","type":"uint256"}],"name":"UnstakeCompleted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"requestId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"UnstakeRequested","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":true,"internalType":"address","name":"authority","type":"address"},{"indexed":false,"internalType":"uint256","name":"atCheckpoint","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"atTime","type":"uint256"}],"name":"ValidatorRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newMarks","type":"uint256"}],"name":"ValidatorStatusChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"atCheckpoint","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"atTime","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"reason","type":"uint256"}],"name":"ValidatorSuspended","type":"event"},{"inputs":[],"name":"AlreadyInitialized","type":"error"},{"inputs":[{"internalType":"uint256","name":"count","type":"uint256"},{"internalType":"uint256","name":"maximum","type":"uint256"}],"name":"BootstrapValidatorSetRequiresCursor","type":"error"},{"inputs":[],"name":"CheckpointOutOfRange","type":"error"},{"inputs":[],"name":"ConfigurationBindingFixed","type":"error"},{"inputs":[],"name":"CooldownNotElapsed","type":"error"},{"inputs":[],"name":"DelegationCapExceeded","type":"error"},{"inputs":[],"name":"DiscretionaryMintDisabled","type":"error"},{"inputs":[],"name":"DuplicatePubkey","type":"error"},{"inputs":[],"name":"DuplicateRequest","type":"error"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"address","name":"owner","type":"address"}],"name":"ERC721IncorrectOwner","type":"error"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ERC721InsufficientApproval","type":"error"},{"inputs":[{"internalType":"address","name":"approver","type":"address"}],"name":"ERC721InvalidApprover","type":"error"},{"inputs":[{"internalType":"address","name":"operator","type":"address"}],"name":"ERC721InvalidOperator","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"ERC721InvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"receiver","type":"address"}],"name":"ERC721InvalidReceiver","type":"error"},{"inputs":[{"internalType":"address","name":"sender","type":"address"}],"name":"ERC721InvalidSender","type":"error"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ERC721NonexistentToken","type":"error"},{"inputs":[],"name":"EpochAuthorityUnavailable","type":"error"},{"inputs":[],"name":"FeeCustodyInsufficient","type":"error"},{"inputs":[],"name":"InstantExitDisabled","type":"error"},{"inputs":[],"name":"InsufficientStake","type":"error"},{"inputs":[],"name":"InvalidAddress","type":"error"},{"inputs":[],"name":"InvalidAmount","type":"error"},{"inputs":[],"name":"InvalidFeeAccrualBlock","type":"error"},{"inputs":[],"name":"InvalidParameter","type":"error"},{"inputs":[],"name":"InvalidPubkeyFormat","type":"error"},{"inputs":[],"name":"MetricLengthMismatch","type":"error"},{"inputs":[],"name":"NativeTransferFailed","type":"error"},{"inputs":[],"name":"NoOutstandingFees","type":"error"},{"inputs":[],"name":"NoPendingRecovery","type":"error"},{"inputs":[],"name":"NoRewardsToClaim","type":"error"},{"inputs":[],"name":"NotPositionOwner","type":"error"},{"inputs":[],"name":"OperatorBondTooLow","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"OwnableInvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"OwnableUnauthorizedAccount","type":"error"},{"inputs":[],"name":"RecoveryAlreadyPending","type":"error"},{"inputs":[],"name":"RecoveryNotApproved","type":"error"},{"inputs":[],"name":"RefundTooHigh","type":"error"},{"inputs":[],"name":"RequestNotFound","type":"error"},{"inputs":[],"name":"SamePosition","type":"error"},{"inputs":[],"name":"SlashableValidatorInstantExitDisabled","type":"error"},{"inputs":[],"name":"TreasuryUnconfigured","type":"error"},{"inputs":[],"name":"Unauthorized","type":"error"},{"inputs":[],"name":"ValidatorAlreadyExists","type":"error"},{"inputs":[],"name":"ValidatorInactive","type":"error"},{"inputs":[],"name":"ValidatorMismatch","type":"error"},{"inputs":[],"name":"ValidatorNotFound","type":"error"},{"inputs":[],"name":"ValidatorNotSlashable","type":"error"},{"inputs":[],"name":"ValidatorStillAuthoritative","type":"error"}]"#
+    public static let abi = #"[{"inputs":[{"internalType":"address","name":"owner_","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"DIESIS_POSITION","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"EPOCH_AUTHORITY","outputs":[{"internalType":"contract IDiesisEpochAuthority","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_REGISTERED_VALIDATORS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_REWARD_STREAM_PER_SECOND","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_EXIT_DELAY_CHECKPOINTS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_EXIT_DELAY_SECONDS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_EQUIVOCATION","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_EVIDENCE_MASK","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_INACTIVE_MASK","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_OPERATOR_REVIEW","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_PROBATION_MASK","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_PROTOCOL_BREACH","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_SCORE_DRIFT","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_SLASH_REVIEW","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_MARK_UPTIME_DRIFT","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_NODE_ACTIVE","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_NODE_EXITING","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"accountedNativeFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"accrueRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"activateValidatorEpoch","outputs":[{"internalType":"bool","name":"activated","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"activeEpoch","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"activeEpochIdentityDigest","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"activeRecovery","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"activeRoleBundleId","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"aggregateActiveStake","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"aggregateStake","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"checkpoint","type":"uint256"},{"internalType":"bool","name":"withBurn","type":"bool"}],"name":"allocateExtraReward","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"anchorLotByNode","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"oldAddress","type":"address"},{"internalType":"address","name":"newAddress","type":"address"}],"name":"approveKeyRecovery","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"delegator","type":"address"},{"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"internalType":"uint256","name":"stakeAmount","type":"uint256"}],"name":"bootstrapDelegation","outputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"auth","type":"address"},{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"bytes","name":"pubkey","type":"bytes"},{"internalType":"uint256","name":"createdTime","type":"uint256"}],"name":"bootstrapValidator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"burnTokens","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"cancelKeyRecovery","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"cancelPendingValidatorEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"components":[{"internalType":"uint64","name":"oldEpoch","type":"uint64"},{"internalType":"bytes32","name":"oldIdentityDigest","type":"bytes32"},{"internalType":"bytes32","name":"nextIdentityDigest","type":"bytes32"},{"internalType":"uint64","name":"activationBlockNumber","type":"uint64"},{"internalType":"uint64","name":"certificationBoundaryNumber","type":"uint64"},{"internalType":"bytes32","name":"certificationBoundaryParentHash","type":"bytes32"},{"internalType":"bytes32","name":"certifiedCheckpointDigest","type":"bytes32"},{"internalType":"bytes","name":"signerBitmap","type":"bytes"},{"internalType":"bytes","name":"aggregateSignature","type":"bytes"}],"internalType":"struct IDiesisEpochAuthority.EpochTransitionCertificateV1","name":"certificate","type":"tuple"}],"name":"certifyValidatorEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"circulatingSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"checkpoint","type":"uint256"}],"name":"collectedCheckpointFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"requestId","type":"uint256"}],"name":"completeUnstake","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"requestId","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"}],"name":"completeUnstakeForPosition","outputs":[{"internalType":"uint256","name":"payout","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"compoundRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"compoundRewardsForPosition","outputs":[{"internalType":"uint256","name":"compounded","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"config","outputs":[{"internalType":"contract IDiesisConfig","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"consensusKeyByNode","outputs":[{"internalType":"bytes","name":"","type":"bytes"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"epochCandidate","outputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"uint256","name":"bonded","type":"uint256"},{"internalType":"uint256","name":"marks","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint64","name":"epoch","type":"uint64"}],"name":"epochIdentityDigest","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint64","name":"epoch","type":"uint64"},{"internalType":"uint256","name":"cursor","type":"uint256"},{"internalType":"uint256","name":"limit","type":"uint256"}],"name":"epochIdentityPage","outputs":[{"components":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"uint256","name":"bondedStakeWei","type":"uint256"},{"internalType":"uint64","name":"votingPower","type":"uint64"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"},{"internalType":"uint8","name":"status","type":"uint8"}],"internalType":"struct IDiesisEpochIdentity.ValidatorIdentityV1[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"oldAddress","type":"address"}],"name":"executeKeyRecovery","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"exitSequence","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"exitTickets","outputs":[{"internalType":"uint128","name":"amount","type":"uint128"},{"internalType":"uint48","name":"validatorId","type":"uint48"},{"internalType":"uint40","name":"checkpoint","type":"uint40"},{"internalType":"uint40","name":"timestamp","type":"uint40"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"expirePendingValidatorEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"components":[{"internalType":"uint256[]","name":"offlineDurations","type":"uint256[]"},{"internalType":"uint256[]","name":"missedBlocks","type":"uint256[]"},{"internalType":"uint256[]","name":"uptimeDurations","type":"uint256[]"},{"internalType":"uint256[]","name":"txFeesOriginated","type":"uint256[]"},{"internalType":"uint256[]","name":"slotFillRates","type":"uint256[]"},{"internalType":"uint256[]","name":"inclusionRates","type":"uint256[]"},{"internalType":"uint256[]","name":"leaderPerformances","type":"uint256[]"}],"internalType":"struct IDiesisTypes.CheckpointMetrics","name":"metrics","type":"tuple"}],"name":"finalizeCheckpoint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"finalizeValidatorWithdrawal","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"flushTreasuryFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"harvestRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"}],"name":"harvestRewardsForPosition","outputs":[{"internalType":"uint256","name":"reward","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"increaseStakeForPosition","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"finalizedCheckpoint","type":"uint256"},{"internalType":"uint256","name":"_totalSupply","type":"uint256"},{"internalType":"address","name":"configContract","type":"address"},{"internalType":"address","name":"owner_","type":"address"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"components":[{"internalType":"uint16","name":"version","type":"uint16"},{"internalType":"uint64","name":"chainId","type":"uint64"},{"internalType":"bytes32","name":"genesisHash","type":"bytes32"},{"internalType":"uint64","name":"epoch","type":"uint64"},{"internalType":"uint64","name":"activationBlockNumber","type":"uint64"},{"internalType":"bytes32","name":"previousIdentityDigest","type":"bytes32"},{"components":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"uint256","name":"bondedStakeWei","type":"uint256"},{"internalType":"uint64","name":"votingPower","type":"uint64"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"},{"internalType":"uint8","name":"status","type":"uint8"}],"internalType":"struct IDiesisEpochIdentity.ValidatorIdentityV1[]","name":"validators","type":"tuple[]"}],"internalType":"struct IDiesisEpochIdentity.EpochIdentityV1","name":"identity","type":"tuple"},{"components":[{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"}],"internalType":"struct IDiesisEpochAuthority.RoleKeyBundle[]","name":"bundles","type":"tuple[]"},{"components":[{"internalType":"bytes","name":"consensusSignature","type":"bytes"},{"internalType":"bytes","name":"blsContextSignature","type":"bytes"},{"internalType":"uint256","name":"vrfX","type":"uint256"},{"internalType":"uint256","name":"vrfY","type":"uint256"},{"internalType":"bytes","name":"vrfSignature","type":"bytes"},{"internalType":"bytes","name":"quicSignature","type":"bytes"},{"internalType":"bytes","name":"relayerSignature","type":"bytes"}],"internalType":"struct IDiesisEpochAuthority.RoleProofBundle[]","name":"proofs","type":"tuple[]"}],"name":"initializeEpochZero","outputs":[{"internalType":"bool","name":"epochInitialized","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"initialized","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256","name":"fee","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"}],"name":"instantUnstakeForPosition","outputs":[{"internalType":"uint256","name":"payout","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"isSlashable","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastFeeAccrualBlock","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"latestFinalizedCheckpoint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"fromTokenId","type":"uint256"},{"internalType":"uint256","name":"toTokenId","type":"uint256"}],"name":"mergeStakeForPosition","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"mintEmptyPositionForSplit","outputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mintTokens","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"nextPositionId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"nextValidatorId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes","name":"","type":"bytes"}],"name":"nodeByConsensusKey","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"nodeIdByOperator","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"nodeLedger","outputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"uint256","name":"marks","type":"uint256"},{"internalType":"uint256","name":"bonded","type":"uint256"},{"internalType":"uint256","name":"joinedCheckpoint","type":"uint256"},{"internalType":"uint256","name":"joinedAt","type":"uint256"},{"internalType":"uint256","name":"heldAt","type":"uint256"},{"internalType":"uint256","name":"heldCheckpoint","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"operatorTakeRateByNode","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"participationPoolBps","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pendingEpochCertificationFields","outputs":[{"internalType":"uint64","name":"oldEpoch","type":"uint64"},{"internalType":"bytes32","name":"oldIdentityDigest","type":"bytes32"},{"internalType":"bytes32","name":"nextIdentityDigest","type":"bytes32"},{"internalType":"uint64","name":"activationBlockNumber","type":"uint64"},{"internalType":"uint64","name":"certificationBoundaryNumber","type":"uint64"},{"internalType":"bytes32","name":"certificationBoundaryParentHash","type":"bytes32"},{"internalType":"bytes32","name":"certifiedCheckpointDigest","type":"bytes32"},{"internalType":"bool","name":"epochCertified","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"pendingOperatorTakeCheckpoint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"pendingOperatorTakeRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"pendingRecovery","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"pendingRoleBundleId","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pendingTreasuryFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"recordBootstrapMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"checkpoint","type":"uint256"},{"internalType":"uint256","name":"blockNumber","type":"uint256"},{"internalType":"uint256","name":"fee","type":"uint256"}],"name":"recordCheckpointFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint64","name":"boundaryNumber","type":"uint64"},{"internalType":"bytes32","name":"boundaryParentHash","type":"bytes32"},{"internalType":"bytes32","name":"checkpointDigest","type":"bytes32"}],"name":"recordEpochCertificationBoundary","outputs":[{"internalType":"bool","name":"recorded","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"recoveryAuthorizer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"recoveryAuthorizerGeneration","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes","name":"pubkey","type":"bytes"}],"name":"registerValidator","outputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint64","name":"targetEpoch","type":"uint64"},{"components":[{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"}],"internalType":"struct IDiesisEpochAuthority.RoleKeyBundle","name":"keys","type":"tuple"},{"components":[{"internalType":"bytes","name":"consensusSignature","type":"bytes"},{"internalType":"bytes","name":"blsContextSignature","type":"bytes"},{"internalType":"uint256","name":"vrfX","type":"uint256"},{"internalType":"uint256","name":"vrfY","type":"uint256"},{"internalType":"bytes","name":"vrfSignature","type":"bytes"},{"internalType":"bytes","name":"quicSignature","type":"bytes"},{"internalType":"bytes","name":"relayerSignature","type":"bytes"}],"internalType":"struct IDiesisEpochAuthority.RoleProofBundle","name":"proofs","type":"tuple"}],"name":"registerValidatorRoleKeys","outputs":[{"internalType":"bytes32","name":"bundleId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"registeredValidatorIds","outputs":[{"internalType":"uint256[]","name":"","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newAddress","type":"address"}],"name":"requestKeyRecovery","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"requestId","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"requestUnstake","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"requestId","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"requestUnstakeForPosition","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"rewardsAccruedThrough","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint64","name":"targetEpoch","type":"uint64"},{"internalType":"uint8","name":"role","type":"uint8"},{"internalType":"bytes","name":"publicIdentity","type":"bytes"}],"name":"roleDigest","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"bundleId","type":"bytes32"}],"name":"roleKeyBundle","outputs":[{"components":[{"internalType":"address","name":"consensusAddress","type":"address"},{"internalType":"bytes","name":"blsPublicKey","type":"bytes"},{"internalType":"bytes","name":"blsProofOfPossession","type":"bytes"},{"internalType":"bytes","name":"vrfPublicKey","type":"bytes"},{"internalType":"address","name":"quicTransportAddress","type":"address"},{"internalType":"address","name":"relayerAddress","type":"address"}],"internalType":"struct IDiesisEpochAuthority.RoleKeyBundle","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint64","name":"activationBlockNumber","type":"uint64"}],"name":"scheduleValidatorEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"configContract","type":"address"}],"name":"setConfigContract","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"rate","type":"uint256"}],"name":"setOperatorTakeRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"bps","type":"uint256"}],"name":"setParticipationPoolBps","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"auth","type":"address"}],"name":"setRecoveryAuthorizer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"refundRatio","type":"uint256"}],"name":"setSlashRefundRatio","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"observer","type":"address"}],"name":"setStakeObserver","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256[3]","name":"weights","type":"uint256[3]"}],"name":"setSubScoreWeights","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"treasury_","type":"address"}],"name":"setTreasury","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"slashRefundRatio","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"toValidatorId","type":"uint256"}],"name":"stake","outputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"toValidatorId","type":"uint256"}],"name":"stakeForPosition","outputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"stakeLots","outputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"stakeAmount","type":"uint256"},{"internalType":"uint256","name":"entryCheckpoint","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"stakeObserver","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"subScoreWeights","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"},{"internalType":"uint256","name":"reason","type":"uint256"}],"name":"suspendValidator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"fromTokenId","type":"uint256"},{"internalType":"uint256","name":"toTokenId","type":"uint256"},{"internalType":"uint256","name":"swapAmount","type":"uint256"}],"name":"swapDelegate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"fromTokenId","type":"uint256"},{"internalType":"uint256","name":"toTokenId","type":"uint256"},{"internalType":"uint256","name":"swapAmount","type":"uint256"}],"name":"swapDelegateForPosition","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"unclaimedRewards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"validatorId","type":"uint256"}],"name":"withdrawValidator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"checkpoint","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"validatorCount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"aggregateActiveStake","type":"uint256"}],"name":"CertifiedEpochApplied","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"checkpoint","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"blockNumber","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fee","type":"uint256"}],"name":"CheckpointFeesRecorded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"checkpointId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"received","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"distributed","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"burned","type":"uint256"}],"name":"ExtraRewardAllocated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"newAddress","type":"address"},{"indexed":true,"internalType":"address","name":"authorizer","type":"address"}],"name":"KeyRecoveryApproved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"newAddress","type":"address"}],"name":"KeyRecoveryCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":true,"internalType":"address","name":"oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"newAddress","type":"address"}],"name":"KeyRecoveryExecuted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"newAddress","type":"address"}],"name":"KeyRecoveryRequested","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":true,"internalType":"address","name":"delegator","type":"address"}],"name":"ObserverCallbackFailed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newRate","type":"uint256"}],"name":"OperatorTakeRateActivated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newRate","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"effectiveCheckpoint","type":"uint256"}],"name":"OperatorTakeRateScheduled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"bps","type":"uint256"}],"name":"ParticipationPoolBpsUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"checkpoint","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"availabilityPool","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"participationPool","type":"uint256"},{"indexed":false,"internalType":"uint256[]","name":"composites","type":"uint256[]"}],"name":"ParticipationRewards","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"authorizer","type":"address"}],"name":"RecoveryAuthorizerSet","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"RewardsCompounded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":false,"internalType":"address","name":"recipient","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"RewardsHarvested","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"refundRatio","type":"uint256"}],"name":"SlashRefundRatioUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"observer","type":"address"}],"name":"StakeObserverSet","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"delegator","type":"address"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Staked","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256[3]","name":"weights","type":"uint256[3]"}],"name":"SubScoreWeightsUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"burner","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TokensBurned","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TreasuryFeesFlushed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"requestId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"slashPenalty","type":"uint256"}],"name":"UnstakeCompleted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"toValidatorId","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"requestId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"UnstakeRequested","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":true,"internalType":"address","name":"authority","type":"address"},{"indexed":false,"internalType":"uint256","name":"atCheckpoint","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"atTime","type":"uint256"}],"name":"ValidatorRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newMarks","type":"uint256"}],"name":"ValidatorStatusChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"validatorId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"atCheckpoint","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"atTime","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"reason","type":"uint256"}],"name":"ValidatorSuspended","type":"event"},{"inputs":[],"name":"AlreadyInitialized","type":"error"},{"inputs":[{"internalType":"uint256","name":"count","type":"uint256"},{"internalType":"uint256","name":"maximum","type":"uint256"}],"name":"BootstrapValidatorSetRequiresCursor","type":"error"},{"inputs":[],"name":"CheckpointOutOfRange","type":"error"},{"inputs":[],"name":"ConfigurationBindingFixed","type":"error"},{"inputs":[],"name":"CooldownNotElapsed","type":"error"},{"inputs":[],"name":"DelegationCapExceeded","type":"error"},{"inputs":[],"name":"DiscretionaryMintDisabled","type":"error"},{"inputs":[],"name":"DuplicatePubkey","type":"error"},{"inputs":[],"name":"DuplicateRequest","type":"error"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"address","name":"owner","type":"address"}],"name":"ERC721IncorrectOwner","type":"error"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ERC721InsufficientApproval","type":"error"},{"inputs":[{"internalType":"address","name":"approver","type":"address"}],"name":"ERC721InvalidApprover","type":"error"},{"inputs":[{"internalType":"address","name":"operator","type":"address"}],"name":"ERC721InvalidOperator","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"ERC721InvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"receiver","type":"address"}],"name":"ERC721InvalidReceiver","type":"error"},{"inputs":[{"internalType":"address","name":"sender","type":"address"}],"name":"ERC721InvalidSender","type":"error"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ERC721NonexistentToken","type":"error"},{"inputs":[],"name":"EpochAuthorityUnavailable","type":"error"},{"inputs":[],"name":"FeeCustodyInsufficient","type":"error"},{"inputs":[],"name":"InstantExitDisabled","type":"error"},{"inputs":[],"name":"InsufficientStake","type":"error"},{"inputs":[],"name":"InvalidAddress","type":"error"},{"inputs":[],"name":"InvalidAmount","type":"error"},{"inputs":[],"name":"InvalidFeeAccrualBlock","type":"error"},{"inputs":[],"name":"InvalidParameter","type":"error"},{"inputs":[],"name":"InvalidPubkeyFormat","type":"error"},{"inputs":[],"name":"MetricLengthMismatch","type":"error"},{"inputs":[],"name":"NativeTransferFailed","type":"error"},{"inputs":[],"name":"NoOutstandingFees","type":"error"},{"inputs":[],"name":"NoPendingRecovery","type":"error"},{"inputs":[],"name":"NoRewardsToClaim","type":"error"},{"inputs":[],"name":"NotPositionOwner","type":"error"},{"inputs":[],"name":"OperatorBondTooLow","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"OwnableInvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"OwnableUnauthorizedAccount","type":"error"},{"inputs":[],"name":"RecoveryAlreadyPending","type":"error"},{"inputs":[],"name":"RecoveryNotApproved","type":"error"},{"inputs":[],"name":"RefundTooHigh","type":"error"},{"inputs":[],"name":"RequestNotFound","type":"error"},{"inputs":[],"name":"SamePosition","type":"error"},{"inputs":[],"name":"SlashableValidatorInstantExitDisabled","type":"error"},{"inputs":[],"name":"TreasuryUnconfigured","type":"error"},{"inputs":[],"name":"Unauthorized","type":"error"},{"inputs":[],"name":"ValidatorAlreadyExists","type":"error"},{"inputs":[],"name":"ValidatorInactive","type":"error"},{"inputs":[],"name":"ValidatorMismatch","type":"error"},{"inputs":[],"name":"ValidatorNotFound","type":"error"},{"inputs":[],"name":"ValidatorNotSlashable","type":"error"},{"inputs":[],"name":"ValidatorStillAuthoritative","type":"error"}]"#
 
     /// Canonical signature of `DIESIS_POSITION()`.
     public static let DIESIS_POSITIONSignature = "DIESIS_POSITION()"
@@ -304,6 +304,12 @@ public enum DiesisStaking {
     /// Selector of `executeKeyRecovery(address)`.
     public static let executeKeyRecoverySelector = Data([0xec, 0x2b, 0x51, 0x46])
 
+    /// Canonical signature of `exitSequence()`.
+    public static let exitSequenceSignature = "exitSequence()"
+
+    /// Selector of `exitSequence()`.
+    public static let exitSequenceSelector = Data([0xb9, 0xad, 0xcf, 0x04])
+
     /// Canonical signature of `exitTickets(uint256,uint256)`.
     public static let exitTicketsSignature = "exitTickets(uint256,uint256)"
 
@@ -405,6 +411,12 @@ public enum DiesisStaking {
 
     /// Selector of `latestFinalizedCheckpoint()`.
     public static let latestFinalizedCheckpointSelector = Data([0x51, 0x86, 0x97, 0xee])
+
+    /// Canonical signature of `mergeStakeForPosition(uint256,uint256)`.
+    public static let mergeStakeForPositionSignature = "mergeStakeForPosition(uint256,uint256)"
+
+    /// Selector of `mergeStakeForPosition(uint256,uint256)`.
+    public static let mergeStakeForPositionSelector = Data([0x31, 0x50, 0x4d, 0x69])
 
     /// Canonical signature of `mintEmptyPositionForSplit(uint256)`.
     public static let mintEmptyPositionForSplitSignature = "mintEmptyPositionForSplit(uint256)"
@@ -538,6 +550,12 @@ public enum DiesisStaking {
     /// Selector of `recoveryAuthorizer()`.
     public static let recoveryAuthorizerSelector = Data([0xc7, 0xc7, 0x0d, 0x25])
 
+    /// Canonical signature of `recoveryAuthorizerGeneration()`.
+    public static let recoveryAuthorizerGenerationSignature = "recoveryAuthorizerGeneration()"
+
+    /// Selector of `recoveryAuthorizerGeneration()`.
+    public static let recoveryAuthorizerGenerationSelector = Data([0x10, 0x16, 0x8a, 0x31])
+
     /// Canonical signature of `registerValidator(bytes)`.
     public static let registerValidatorSignature = "registerValidator(bytes)"
 
@@ -549,6 +567,12 @@ public enum DiesisStaking {
 
     /// Selector of `registerValidatorRoleKeys(uint256,uint64,(address,bytes,bytes,bytes,address,address),(bytes,bytes,uint256,uint256,bytes,bytes,bytes))`.
     public static let registerValidatorRoleKeysSelector = Data([0xcd, 0x15, 0x7d, 0x43])
+
+    /// Canonical signature of `registeredValidatorIds()`.
+    public static let registeredValidatorIdsSignature = "registeredValidatorIds()"
+
+    /// Selector of `registeredValidatorIds()`.
+    public static let registeredValidatorIdsSelector = Data([0x3c, 0xdc, 0xcf, 0x5c])
 
     /// Canonical signature of `renounceOwnership()`.
     public static let renounceOwnershipSignature = "renounceOwnership()"
@@ -1407,8 +1431,8 @@ public enum DiesisStaking {
 
     /// Arguments of `allocateExtraReward(uint256,bool)`.
     ///
-    /// Fund additional rewards for the currently open checkpoint.
-    /// The active validator set for the open checkpoint must already be committed. The full contribution leaves logical supply immediately; claims re-add only the distributable portion, so `burned` is the net burn.
+    /// Fund additional rewards for the currently open checkpoint. The full contribution leaves logical supply immediately; claims re-add only the distributable portion, so `burned` is the net burn.
+    /// The active validator set for the open checkpoint must already be committed.
     public struct AllocateExtraRewardParams: Sendable, Hashable {
         public let checkpoint: BigUInt
         public let withBurn: Bool
@@ -1430,7 +1454,18 @@ public enum DiesisStaking {
 
     /// Arguments of `approve(address,uint256)`.
     ///
-    /// Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event.
+    /// Gives permission to `to` to transfer `tokenId` token to another account.
+    /// * The approval is cleared when the token is transferred.
+    /// *
+    /// * Only a single account can be approved at a time, so approving the zero address clears previous approvals.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - The caller must own the token or be an approved operator.
+    /// * - `tokenId` must exist.
+    /// *
+    /// * Emits an {Approval} event.
+    ///
     public struct ApproveParams: Sendable, Hashable {
         public let to: EthereumAddress
         public let tokenId: BigUInt
@@ -1442,9 +1477,6 @@ public enum DiesisStaking {
     }
 
     /// Arguments of `approveKeyRecovery(address,address)`.
-    ///
-    /// Approve the exact recovery pair previously configured by `oldAddress`.
-    /// Callable only by the configured, non-zero independent recovery authorizer.
     public struct ApproveKeyRecoveryParams: Sendable, Hashable {
         public let oldAddress: EthereumAddress
         public let newAddress: EthereumAddress
@@ -1458,6 +1490,7 @@ public enum DiesisStaking {
     /// Arguments of `balanceOf(address)`.
     ///
     /// Returns the number of tokens in ``owner``'s account.
+    ///
     public struct BalanceOfParams: Sendable, Hashable {
         public let owner: EthereumAddress
 
@@ -1609,9 +1642,6 @@ public enum DiesisStaking {
     }
 
     /// Arguments of `executeKeyRecovery(address)`.
-    ///
-    /// Replace `oldAddress` as validator operator with the caller.
-    /// The caller must be the exact approved destination and must not already operate a validator.
     public struct ExecuteKeyRecoveryParams: Sendable, Hashable {
         public let oldAddress: EthereumAddress
 
@@ -1655,7 +1685,12 @@ public enum DiesisStaking {
 
     /// Arguments of `getApproved(uint256)`.
     ///
-    /// Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist.
+    /// Returns the account approved for `tokenId` token.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `tokenId` must exist.
+    ///
     public struct GetApprovedParams: Sendable, Hashable {
         public let tokenId: BigUInt
 
@@ -1749,7 +1784,10 @@ public enum DiesisStaking {
 
     /// Arguments of `isApprovedForAll(address,address)`.
     ///
-    /// Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}
+    /// Returns if the `operator` is allowed to manage all of the assets of `owner`.
+    /// *
+    /// * See {setApprovalForAll}
+    ///
     public struct IsApprovedForAllParams: Sendable, Hashable {
         public let owner: EthereumAddress
         public let `operator`: EthereumAddress
@@ -1766,6 +1804,19 @@ public enum DiesisStaking {
 
         public init(validatorId: BigUInt) {
             self.validatorId = validatorId
+        }
+    }
+
+    /// Arguments of `mergeStakeForPosition(uint256,uint256)`.
+    ///
+    /// Merge controller-owned lots, including entitlement earned in the open checkpoint.
+    public struct MergeStakeForPositionParams: Sendable, Hashable {
+        public let fromTokenId: BigUInt
+        public let toTokenId: BigUInt
+
+        public init(fromTokenId: BigUInt, toTokenId: BigUInt) {
+            self.fromTokenId = fromTokenId
+            self.toTokenId = toTokenId
         }
     }
 
@@ -1831,7 +1882,12 @@ public enum DiesisStaking {
 
     /// Arguments of `ownerOf(uint256)`.
     ///
-    /// Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist.
+    /// Returns the owner of the `tokenId` token.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `tokenId` must exist.
+    ///
     public struct OwnerOfParams: Sendable, Hashable {
         public let tokenId: BigUInt
 
@@ -1896,8 +1952,8 @@ public enum DiesisStaking {
 
     /// Arguments of `recordCheckpointFees(uint256,uint256,uint256)`.
     ///
-    /// Account for one committed block's ordinary fees already credited by the node.
-    /// Transaction settlement credits the full charged fee into locked staking custody. Sponsored fees remain in Patron and must never enter this route. The system caller attests the ordinary fee total; the balance bound is an additional consistency check, not a replacement for execution validation because staking also holds stake deposits.
+    /// Account for one committed block's ordinary fees already credited by the node. Sponsored fees remain in Patron and must never enter this route. The system caller attests the ordinary fee total; the balance bound is an additional consistency check, not a replacement for execution validation because staking also holds stake deposits.
+    /// Transaction settlement credits the full charged fee into locked staking custody.
     public struct RecordCheckpointFeesParams: Sendable, Hashable {
         public let checkpoint: BigUInt
         public let blockNumber: BigUInt
@@ -2025,7 +2081,21 @@ public enum DiesisStaking {
 
     /// Arguments of `safeTransferFrom(address,address,uint256)`.
     ///
-    /// Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC-721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.
+    /// Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
+    /// * are aware of the ERC-721 protocol to prevent tokens from being forever locked.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must exist and be owned by `from`.
+    /// * - If the caller is not `from`, it must have been allowed to move this token by either {approve} or
+    /// * {setApprovalForAll}.
+    /// * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+    /// * a safe transfer.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct SafeTransferFrom0Params: Sendable, Hashable {
         public let from: EthereumAddress
         public let to: EthereumAddress
@@ -2040,7 +2110,19 @@ public enum DiesisStaking {
 
     /// Arguments of `safeTransferFrom(address,address,uint256,bytes)`.
     ///
-    /// Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.
+    /// Safely transfers `tokenId` token from `from` to `to`.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must exist and be owned by `from`.
+    /// * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+    /// * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+    /// * a safe transfer.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct SafeTransferFrom1Params: Sendable, Hashable {
         public let from: EthereumAddress
         public let to: EthereumAddress
@@ -2066,7 +2148,15 @@ public enum DiesisStaking {
 
     /// Arguments of `setApprovalForAll(address,bool)`.
     ///
-    /// Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the address zero. Emits an {ApprovalForAll} event.
+    /// Approve or remove `operator` as an operator for the caller.
+    /// * Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - The `operator` cannot be the address zero.
+    /// *
+    /// * Emits an {ApprovalForAll} event.
+    ///
     public struct SetApprovalForAllParams: Sendable, Hashable {
         public let `operator`: EthereumAddress
         public let approved: Bool
@@ -2090,8 +2180,8 @@ public enum DiesisStaking {
 
     /// Arguments of `setOperatorTakeRate(uint256,uint256)`.
     ///
-    /// Schedule an operator reward cut change for a validator.
-    /// Takes effect after the next checkpoint finalization (1-checkpoint cooldown). Only callable by the validator's authority address. Rate is capped at 20% (OPERATOR_TAKE_RATE_UPPER from DiesisConfig). Upward changes are capped at 1 percentage point per checkpoint; reductions can be scheduled immediately.
+    /// Schedule an operator reward cut change for a validator. Only callable by the validator's authority address. Rate is capped at 20% (OPERATOR_TAKE_RATE_UPPER from DiesisConfig). Upward changes are capped at 1 percentage point per checkpoint; reductions can be scheduled immediately.
+    /// Takes effect after the next checkpoint finalization (1-checkpoint cooldown).
     public struct SetOperatorTakeRateParams: Sendable, Hashable {
         public let validatorId: BigUInt
         public let rate: BigUInt
@@ -2194,8 +2284,6 @@ public enum DiesisStaking {
     }
 
     /// Arguments of `stakeLots(uint256)`.
-    ///
-    /// Returns (validatorId, amount, entryCheckpoint) for a stake lot.
     public struct StakeLotsParams: Sendable, Hashable {
         public let tokenId: BigUInt
 
@@ -2217,7 +2305,13 @@ public enum DiesisStaking {
 
     /// Arguments of `supportsInterface(bytes4)`.
     ///
-    /// Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section] to learn more about how these ids are created. This function call must use less than 30 000 gas.
+    /// Returns true if this contract implements the interface defined by
+    /// * `interfaceId`. See the corresponding
+    /// * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section]
+    /// * to learn more about how these ids are created.
+    /// *
+    /// * This function call must use less than 30 000 gas.
+    ///
     public struct SupportsInterfaceParams: Sendable, Hashable {
         public let interfaceId: Data
 
@@ -2273,6 +2367,7 @@ public enum DiesisStaking {
     /// Arguments of `tokenURI(uint256)`.
     ///
     /// Returns the Uniform Resource Identifier (URI) for `tokenId` token.
+    ///
     public struct TokenURIParams: Sendable, Hashable {
         public let tokenId: BigUInt
 
@@ -2283,7 +2378,21 @@ public enum DiesisStaking {
 
     /// Arguments of `transferFrom(address,address,uint256)`.
     ///
-    /// Transfers `tokenId` token from `from` to `to`. WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721 or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must understand this adds an external call which potentially creates a reentrancy vulnerability. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event.
+    /// Transfers `tokenId` token from `from` to `to`.
+    /// *
+    /// * WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721
+    /// * or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must
+    /// * understand this adds an external call which potentially creates a reentrancy vulnerability.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must be owned by `from`.
+    /// * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct TransferFromParams: Sendable, Hashable {
         public let from: EthereumAddress
         public let to: EthereumAddress
@@ -2298,7 +2407,9 @@ public enum DiesisStaking {
 
     /// Arguments of `transferOwnership(address)`.
     ///
-    /// Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.
+    /// Transfers ownership of the contract to a new account (`newOwner`).
+    /// * Can only be called by the current owner.
+    ///
     public struct TransferOwnershipParams: Sendable, Hashable {
         public let newOwner: EthereumAddress
 
@@ -3119,6 +3230,8 @@ public enum DiesisStaking {
     }
 
     /// Decoded result of `DIESIS_POSITION()`.
+    ///
+    /// for the `ForPosition` controller methods.
     public struct DIESISPOSITIONResult: Sendable, Hashable {
         public let address: EthereumAddress
 
@@ -3752,8 +3865,6 @@ public enum DiesisStaking {
     }
 
     /// Decoded result of `aggregateActiveStake()`.
-    ///
-    /// Returns the aggregate active stake across all validators.
     public struct AggregateActiveStakeResult: Sendable, Hashable {
         public let uint256: BigUInt
 
@@ -3808,8 +3919,8 @@ public enum DiesisStaking {
 
     /// Decoded result of `allocateExtraReward(uint256,bool)`.
     ///
-    /// Fund additional rewards for the currently open checkpoint.
-    /// The active validator set for the open checkpoint must already be committed. The full contribution leaves logical supply immediately; claims re-add only the distributable portion, so `burned` is the net burn.
+    /// Fund additional rewards for the currently open checkpoint. The full contribution leaves logical supply immediately; claims re-add only the distributable portion, so `burned` is the net burn.
+    /// The active validator set for the open checkpoint must already be committed.
     public struct AllocateExtraRewardResult: Sendable, Hashable {
         public init() {}
     }
@@ -3860,7 +3971,18 @@ public enum DiesisStaking {
 
     /// Decoded result of `approve(address,uint256)`.
     ///
-    /// Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event.
+    /// Gives permission to `to` to transfer `tokenId` token to another account.
+    /// * The approval is cleared when the token is transferred.
+    /// *
+    /// * Only a single account can be approved at a time, so approving the zero address clears previous approvals.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - The caller must own the token or be an approved operator.
+    /// * - `tokenId` must exist.
+    /// *
+    /// * Emits an {Approval} event.
+    ///
     public struct ApproveResult: Sendable, Hashable {
         public init() {}
     }
@@ -3882,9 +4004,6 @@ public enum DiesisStaking {
     }
 
     /// Decoded result of `approveKeyRecovery(address,address)`.
-    ///
-    /// Approve the exact recovery pair previously configured by `oldAddress`.
-    /// Callable only by the configured, non-zero independent recovery authorizer.
     public struct ApproveKeyRecoveryResult: Sendable, Hashable {
         public init() {}
     }
@@ -3908,6 +4027,7 @@ public enum DiesisStaking {
     /// Decoded result of `balanceOf(address)`.
     ///
     /// Returns the number of tokens in ``owner``'s account.
+    ///
     public struct BalanceOfResult: Sendable, Hashable {
         public let uint256: BigUInt
 
@@ -3990,8 +4110,8 @@ public enum DiesisStaking {
 
     /// Decoded result of `burnTokens()`.
     ///
-    /// Burn tokens by accepting msg.value and removing it from gross supply.
-    /// The received value stays locked in this contract (no spend path exists for it), so decrementing grossSupply is what actually retires it from circulatingSupply(). The subtraction is clamped rather than reverting: burnTokens is on the patronage fee path (DiesisPatron._burnGrantFee), and a revert here would invalidate synchronous patron settlement for the transaction.
+    /// Burn tokens by accepting msg.value and removing it from gross supply. for it), so decrementing grossSupply is what actually retires it from circulatingSupply(). The subtraction is clamped rather than reverting: burnTokens is on the patronage fee path (DiesisPatron._burnGrantFee), and a revert here would invalidate synchronous patron settlement for the transaction.
+    /// The received value stays locked in this contract (no spend path exists
     public struct BurnTokensResult: Sendable, Hashable {
         public init() {}
     }
@@ -4013,9 +4133,6 @@ public enum DiesisStaking {
     }
 
     /// Decoded result of `cancelKeyRecovery()`.
-    ///
-    /// Cancel the caller's pending recovery and any approval for it.
-    /// This remains available to the old key until the approved destination executes.
     public struct CancelKeyRecoveryResult: Sendable, Hashable {
         public init() {}
     }
@@ -4390,9 +4507,6 @@ public enum DiesisStaking {
     }
 
     /// Decoded result of `executeKeyRecovery(address)`.
-    ///
-    /// Replace `oldAddress` as validator operator with the caller.
-    /// The caller must be the exact approved destination and must not already operate a validator.
     public struct ExecuteKeyRecoveryResult: Sendable, Hashable {
         public init() {}
     }
@@ -4405,6 +4519,34 @@ public enum DiesisStaking {
     public static func decodeExecuteKeyRecoveryResult(_ data: Data) throws -> ExecuteKeyRecoveryResult {
         guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
         return ExecuteKeyRecoveryResult()
+    }
+
+    /// ABI-encodes `exitSequence()` for an offline transaction.
+    public static func encodeExitSequence() throws -> Data {
+        guard let data = try _contract().method("exitSequence()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("exitSequence()") }
+        return data
+    }
+
+    /// Decoded result of `exitSequence()`.
+    ///
+    /// Monotonic exit-request sequence captured with each scheduled stake snapshot.
+    public struct ExitSequenceResult: Sendable, Hashable {
+        public let uint64: BigUInt
+
+        public init(uint64: BigUInt) {
+            self.uint64 = uint64
+        }
+    }
+
+    private static func _decodeExitSequenceValues(_ values: [String: Any]) throws -> ExitSequenceResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: BigUInt.self)
+        return ExitSequenceResult(uint64: value0)
+    }
+
+    /// Decodes raw return data for `exitSequence()` offline.
+    public static func decodeExitSequenceResult(_ data: Data) throws -> ExitSequenceResult {
+        return try _decodeExitSequenceValues(_contract().decodeReturnData("exitSequence()", data: data))
     }
 
     /// ABI-encodes `exitTickets(uint256,uint256)` for an offline transaction.
@@ -4546,7 +4688,12 @@ public enum DiesisStaking {
 
     /// Decoded result of `getApproved(uint256)`.
     ///
-    /// Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist.
+    /// Returns the account approved for `tokenId` token.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `tokenId` must exist.
+    ///
     public struct GetApprovedResult: Sendable, Hashable {
         public let address: EthereumAddress
 
@@ -4767,7 +4914,10 @@ public enum DiesisStaking {
 
     /// Decoded result of `isApprovedForAll(address,address)`.
     ///
-    /// Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}
+    /// Returns if the `operator` is allowed to manage all of the assets of `owner`.
+    /// *
+    /// * See {setApprovalForAll}
+    ///
     public struct IsApprovedForAllResult: Sendable, Hashable {
         public let bool: Bool
 
@@ -4868,6 +5018,31 @@ public enum DiesisStaking {
         return try _decodeLatestFinalizedCheckpointValues(_contract().decodeReturnData("latestFinalizedCheckpoint()", data: data))
     }
 
+    /// ABI-encodes `mergeStakeForPosition(uint256,uint256)` for an offline transaction.
+    public static func encodeMergeStakeForPosition(_ args: MergeStakeForPositionParams) throws -> Data {
+        guard args.fromTokenId < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
+        guard args.toTokenId < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
+        guard let data = try _contract().method("mergeStakeForPosition(uint256,uint256)", parameters: [args.fromTokenId, args.toTokenId], extraData: nil) else { throw WrapperError.encodingFailed("mergeStakeForPosition(uint256,uint256)") }
+        return data
+    }
+
+    /// Decoded result of `mergeStakeForPosition(uint256,uint256)`.
+    ///
+    /// Merge controller-owned lots, including entitlement earned in the open checkpoint.
+    public struct MergeStakeForPositionResult: Sendable, Hashable {
+        public init() {}
+    }
+
+    private static func _decodeMergeStakeForPositionValues(_ values: [String: Any]) throws -> MergeStakeForPositionResult {
+        return MergeStakeForPositionResult()
+    }
+
+    /// Decodes raw return data for `mergeStakeForPosition(uint256,uint256)` offline.
+    public static func decodeMergeStakeForPositionResult(_ data: Data) throws -> MergeStakeForPositionResult {
+        guard data.isEmpty else { throw WrapperError.invalidValue("unexpected return bytes") }
+        return MergeStakeForPositionResult()
+    }
+
     /// ABI-encodes `mintEmptyPositionForSplit(uint256)` for an offline transaction.
     public static func encodeMintEmptyPositionForSplit(_ args: MintEmptyPositionForSplitParams) throws -> Data {
         guard args.validatorId < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
@@ -4930,6 +5105,7 @@ public enum DiesisStaking {
     /// Decoded result of `name()`.
     ///
     /// Returns the token collection name.
+    ///
     public struct NameResult: Sendable, Hashable {
         public let string: String
 
@@ -5142,6 +5318,7 @@ public enum DiesisStaking {
     /// Decoded result of `owner()`.
     ///
     /// Returns the address of the current owner.
+    ///
     public struct OwnerResult: Sendable, Hashable {
         public let address: EthereumAddress
 
@@ -5170,7 +5347,12 @@ public enum DiesisStaking {
 
     /// Decoded result of `ownerOf(uint256)`.
     ///
-    /// Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist.
+    /// Returns the owner of the `tokenId` token.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `tokenId` must exist.
+    ///
     public struct OwnerOfResult: Sendable, Hashable {
         public let address: EthereumAddress
 
@@ -5447,8 +5629,8 @@ public enum DiesisStaking {
 
     /// Decoded result of `recordCheckpointFees(uint256,uint256,uint256)`.
     ///
-    /// Account for one committed block's ordinary fees already credited by the node.
-    /// Transaction settlement credits the full charged fee into locked staking custody. Sponsored fees remain in Patron and must never enter this route. The system caller attests the ordinary fee total; the balance bound is an additional consistency check, not a replacement for execution validation because staking also holds stake deposits.
+    /// Account for one committed block's ordinary fees already credited by the node. Sponsored fees remain in Patron and must never enter this route. The system caller attests the ordinary fee total; the balance bound is an additional consistency check, not a replacement for execution validation because staking also holds stake deposits.
+    /// Transaction settlement credits the full charged fee into locked staking custody.
     public struct RecordCheckpointFeesResult: Sendable, Hashable {
         public init() {}
     }
@@ -5518,6 +5700,34 @@ public enum DiesisStaking {
         return try _decodeRecoveryAuthorizerValues(_contract().decodeReturnData("recoveryAuthorizer()", data: data))
     }
 
+    /// ABI-encodes `recoveryAuthorizerGeneration()` for an offline transaction.
+    public static func encodeRecoveryAuthorizerGeneration() throws -> Data {
+        guard let data = try _contract().method("recoveryAuthorizerGeneration()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("recoveryAuthorizerGeneration()") }
+        return data
+    }
+
+    /// Decoded result of `recoveryAuthorizerGeneration()`.
+    ///
+    /// Approval epoch; rotating the authorizer revokes its outstanding approvals.
+    public struct RecoveryAuthorizerGenerationResult: Sendable, Hashable {
+        public let uint256: BigUInt
+
+        public init(uint256: BigUInt) {
+            self.uint256 = uint256
+        }
+    }
+
+    private static func _decodeRecoveryAuthorizerGenerationValues(_ values: [String: Any]) throws -> RecoveryAuthorizerGenerationResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: BigUInt.self)
+        return RecoveryAuthorizerGenerationResult(uint256: value0)
+    }
+
+    /// Decodes raw return data for `recoveryAuthorizerGeneration()` offline.
+    public static func decodeRecoveryAuthorizerGenerationResult(_ data: Data) throws -> RecoveryAuthorizerGenerationResult {
+        return try _decodeRecoveryAuthorizerGenerationValues(_contract().decodeReturnData("recoveryAuthorizerGeneration()", data: data))
+    }
+
     /// ABI-encodes `registerValidator(bytes)` for an offline transaction.
     public static func encodeRegisterValidator(_ args: RegisterValidatorParams) throws -> Data {
         guard let data = try _contract().method("registerValidator(bytes)", parameters: [args.pubkey], extraData: nil) else { throw WrapperError.encodingFailed("registerValidator(bytes)") }
@@ -5580,6 +5790,34 @@ public enum DiesisStaking {
         return try _decodeRegisterValidatorRoleKeysValues(_contract().decodeReturnData("registerValidatorRoleKeys(uint256,uint64,(address,bytes,bytes,bytes,address,address),(bytes,bytes,uint256,uint256,bytes,bytes,bytes))", data: data))
     }
 
+    /// ABI-encodes `registeredValidatorIds()` for an offline transaction.
+    public static func encodeRegisteredValidatorIds() throws -> Data {
+        guard let data = try _contract().method("registeredValidatorIds()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("registeredValidatorIds()") }
+        return data
+    }
+
+    /// Decoded result of `registeredValidatorIds()`.
+    ///
+    /// Bounded current registrations; retired IDs retain their original custody ledgers.
+    public struct RegisteredValidatorIdsResult: Sendable, Hashable {
+        public let uint256Array: [BigUInt]
+
+        public init(uint256Array: [BigUInt]) {
+            self.uint256Array = uint256Array
+        }
+    }
+
+    private static func _decodeRegisteredValidatorIdsValues(_ values: [String: Any]) throws -> RegisteredValidatorIdsResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _array(raw0) { item in try _cast(item, as: BigUInt.self) }
+        return RegisteredValidatorIdsResult(uint256Array: value0)
+    }
+
+    /// Decodes raw return data for `registeredValidatorIds()` offline.
+    public static func decodeRegisteredValidatorIdsResult(_ data: Data) throws -> RegisteredValidatorIdsResult {
+        return try _decodeRegisteredValidatorIdsValues(_contract().decodeReturnData("registeredValidatorIds()", data: data))
+    }
+
     /// ABI-encodes `renounceOwnership()` for an offline transaction.
     public static func encodeRenounceOwnership() throws -> Data {
         guard let data = try _contract().method("renounceOwnership()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("renounceOwnership()") }
@@ -5588,7 +5826,12 @@ public enum DiesisStaking {
 
     /// Decoded result of `renounceOwnership()`.
     ///
-    /// Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.
+    /// Leaves the contract without owner. It will not be possible to call
+    /// * `onlyOwner` functions. Can only be called by the current owner.
+    /// *
+    /// * NOTE: Renouncing ownership will leave the contract without an owner,
+    /// * thereby disabling any functionality that is only available to the owner.
+    ///
     public struct RenounceOwnershipResult: Sendable, Hashable {
         public init() {}
     }
@@ -5770,7 +6013,21 @@ public enum DiesisStaking {
 
     /// Decoded result of `safeTransferFrom(address,address,uint256)`.
     ///
-    /// Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC-721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.
+    /// Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
+    /// * are aware of the ERC-721 protocol to prevent tokens from being forever locked.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must exist and be owned by `from`.
+    /// * - If the caller is not `from`, it must have been allowed to move this token by either {approve} or
+    /// * {setApprovalForAll}.
+    /// * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+    /// * a safe transfer.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct SafeTransferFrom0Result: Sendable, Hashable {
         public init() {}
     }
@@ -5794,7 +6051,19 @@ public enum DiesisStaking {
 
     /// Decoded result of `safeTransferFrom(address,address,uint256,bytes)`.
     ///
-    /// Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.
+    /// Safely transfers `tokenId` token from `from` to `to`.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must exist and be owned by `from`.
+    /// * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+    /// * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+    /// * a safe transfer.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct SafeTransferFrom1Result: Sendable, Hashable {
         public init() {}
     }
@@ -5839,7 +6108,15 @@ public enum DiesisStaking {
 
     /// Decoded result of `setApprovalForAll(address,bool)`.
     ///
-    /// Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the address zero. Emits an {ApprovalForAll} event.
+    /// Approve or remove `operator` as an operator for the caller.
+    /// * Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - The `operator` cannot be the address zero.
+    /// *
+    /// * Emits an {ApprovalForAll} event.
+    ///
     public struct SetApprovalForAllResult: Sendable, Hashable {
         public init() {}
     }
@@ -5887,8 +6164,8 @@ public enum DiesisStaking {
 
     /// Decoded result of `setOperatorTakeRate(uint256,uint256)`.
     ///
-    /// Schedule an operator reward cut change for a validator.
-    /// Takes effect after the next checkpoint finalization (1-checkpoint cooldown). Only callable by the validator's authority address. Rate is capped at 20% (OPERATOR_TAKE_RATE_UPPER from DiesisConfig). Upward changes are capped at 1 percentage point per checkpoint; reductions can be scheduled immediately.
+    /// Schedule an operator reward cut change for a validator. Only callable by the validator's authority address. Rate is capped at 20% (OPERATOR_TAKE_RATE_UPPER from DiesisConfig). Upward changes are capped at 1 percentage point per checkpoint; reductions can be scheduled immediately.
+    /// Takes effect after the next checkpoint finalization (1-checkpoint cooldown).
     public struct SetOperatorTakeRateResult: Sendable, Hashable {
         public init() {}
     }
@@ -6133,8 +6410,6 @@ public enum DiesisStaking {
     }
 
     /// Decoded result of `stakeLots(uint256)`.
-    ///
-    /// Returns (validatorId, amount, entryCheckpoint) for a stake lot.
     public struct StakeLotsResult: Sendable, Hashable {
         public let validatorId: BigUInt
         public let stakeAmount: BigUInt
@@ -6226,7 +6501,13 @@ public enum DiesisStaking {
 
     /// Decoded result of `supportsInterface(bytes4)`.
     ///
-    /// Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section] to learn more about how these ids are created. This function call must use less than 30 000 gas.
+    /// Returns true if this contract implements the interface defined by
+    /// * `interfaceId`. See the corresponding
+    /// * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section]
+    /// * to learn more about how these ids are created.
+    /// *
+    /// * This function call must use less than 30 000 gas.
+    ///
     public struct SupportsInterfaceResult: Sendable, Hashable {
         public let bool: Bool
 
@@ -6333,6 +6614,7 @@ public enum DiesisStaking {
     /// Decoded result of `symbol()`.
     ///
     /// Returns the token collection symbol.
+    ///
     public struct SymbolResult: Sendable, Hashable {
         public let string: String
 
@@ -6362,6 +6644,7 @@ public enum DiesisStaking {
     /// Decoded result of `tokenURI(uint256)`.
     ///
     /// Returns the Uniform Resource Identifier (URI) for `tokenId` token.
+    ///
     public struct TokenURIResult: Sendable, Hashable {
         public let string: String
 
@@ -6390,7 +6673,21 @@ public enum DiesisStaking {
 
     /// Decoded result of `transferFrom(address,address,uint256)`.
     ///
-    /// Transfers `tokenId` token from `from` to `to`. WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721 or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must understand this adds an external call which potentially creates a reentrancy vulnerability. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event.
+    /// Transfers `tokenId` token from `from` to `to`.
+    /// *
+    /// * WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721
+    /// * or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must
+    /// * understand this adds an external call which potentially creates a reentrancy vulnerability.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must be owned by `from`.
+    /// * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct TransferFromResult: Sendable, Hashable {
         public init() {}
     }
@@ -6413,7 +6710,9 @@ public enum DiesisStaking {
 
     /// Decoded result of `transferOwnership(address)`.
     ///
-    /// Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.
+    /// Transfers ownership of the contract to a new account (`newOwner`).
+    /// * Can only be called by the current owner.
+    ///
     public struct TransferOwnershipResult: Sendable, Hashable {
         public init() {}
     }
@@ -6817,6 +7116,15 @@ public enum DiesisStaking {
             return try DiesisStaking._decodeEpochIdentityPageValues(await operation.callContractMethod())
         }
 
+        /// Calls `exitSequence()` and decodes its result.
+        public func readExitSequence(transaction: CodableTransaction? = nil) async throws -> ExitSequenceResult {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            tx.to = address
+            tx.data = try DiesisStaking.encodeExitSequence()
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "exitSequence()")
+            return try DiesisStaking._decodeExitSequenceValues(await operation.callContractMethod())
+        }
+
         /// Calls `exitTickets(uint256,uint256)` and decodes its result.
         public func readExitTickets(_ args: ExitTicketsParams, transaction: CodableTransaction? = nil) async throws -> ExitTicketsResult {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
@@ -7031,6 +7339,24 @@ public enum DiesisStaking {
             tx.data = try DiesisStaking.encodeRecoveryAuthorizer()
             let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "recoveryAuthorizer()")
             return try DiesisStaking._decodeRecoveryAuthorizerValues(await operation.callContractMethod())
+        }
+
+        /// Calls `recoveryAuthorizerGeneration()` and decodes its result.
+        public func readRecoveryAuthorizerGeneration(transaction: CodableTransaction? = nil) async throws -> RecoveryAuthorizerGenerationResult {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            tx.to = address
+            tx.data = try DiesisStaking.encodeRecoveryAuthorizerGeneration()
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "recoveryAuthorizerGeneration()")
+            return try DiesisStaking._decodeRecoveryAuthorizerGenerationValues(await operation.callContractMethod())
+        }
+
+        /// Calls `registeredValidatorIds()` and decodes its result.
+        public func readRegisteredValidatorIds(transaction: CodableTransaction? = nil) async throws -> RegisteredValidatorIdsResult {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            tx.to = address
+            tx.data = try DiesisStaking.encodeRegisteredValidatorIds()
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "registeredValidatorIds()")
+            return try DiesisStaking._decodeRegisteredValidatorIdsValues(await operation.callContractMethod())
         }
 
         /// Calls `rewardsAccruedThrough(uint256)` and decodes its result.
@@ -7396,6 +7722,16 @@ public enum DiesisStaking {
             tx.data = try DiesisStaking.encodeInstantUnstakeForPosition(args)
             tx.value = 0
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "instantUnstakeForPosition(uint256,uint256,uint256,address)")
+        }
+
+        /// Prepares `mergeStakeForPosition(uint256,uint256)` with transaction options for signing or submission.
+        public func prepareMergeStakeForPosition(_ args: MergeStakeForPositionParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
+            tx.to = address
+            tx.data = try DiesisStaking.encodeMergeStakeForPosition(args)
+            tx.value = 0
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "mergeStakeForPosition(uint256,uint256)")
         }
 
         /// Prepares `mintEmptyPositionForSplit(uint256)` with transaction options for signing or submission.

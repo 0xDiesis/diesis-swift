@@ -593,7 +593,18 @@ public enum IDiesisPosition {
 
     /// Arguments of `approve(address,uint256)`.
     ///
-    /// Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event.
+    /// Gives permission to `to` to transfer `tokenId` token to another account.
+    /// * The approval is cleared when the token is transferred.
+    /// *
+    /// * Only a single account can be approved at a time, so approving the zero address clears previous approvals.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - The caller must own the token or be an approved operator.
+    /// * - `tokenId` must exist.
+    /// *
+    /// * Emits an {Approval} event.
+    ///
     public struct ApproveParams: Sendable, Hashable {
         public let to: EthereumAddress
         public let tokenId: BigUInt
@@ -607,6 +618,7 @@ public enum IDiesisPosition {
     /// Arguments of `balanceOf(address)`.
     ///
     /// Returns the number of tokens in ``owner``'s account.
+    ///
     public struct BalanceOfParams: Sendable, Hashable {
         public let owner: EthereumAddress
 
@@ -628,8 +640,8 @@ public enum IDiesisPosition {
 
     /// Arguments of `createRedemptionPosition(uint32)`.
     ///
-    /// Create a zero-stake position to receive existing backing on a registered validator.
-    /// Nonpayable. Inactive validators are allowed; funded delegation remains subject to its active gate. Creates the backing staking NFT before the public NFT. Adds no principal or debt.
+    /// Create a zero-stake position to receive existing backing on a registered validator. Creates the backing staking NFT before the public NFT. Adds no principal or debt.
+    /// Nonpayable. Inactive validators are allowed; funded delegation remains subject to its active gate.
     public struct CreateRedemptionPositionParams: Sendable, Hashable {
         public let validator: BigUInt
 
@@ -671,7 +683,12 @@ public enum IDiesisPosition {
 
     /// Arguments of `getApproved(uint256)`.
     ///
-    /// Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist.
+    /// Returns the account approved for `tokenId` token.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `tokenId` must exist.
+    ///
     public struct GetApprovedParams: Sendable, Hashable {
         public let tokenId: BigUInt
 
@@ -697,7 +714,10 @@ public enum IDiesisPosition {
 
     /// Arguments of `isApprovedForAll(address,address)`.
     ///
-    /// Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}
+    /// Returns if the `operator` is allowed to manage all of the assets of `owner`.
+    /// *
+    /// * See {setApprovalForAll}
+    ///
     public struct IsApprovedForAllParams: Sendable, Hashable {
         public let owner: EthereumAddress
         public let `operator`: EthereumAddress
@@ -737,8 +757,8 @@ public enum IDiesisPosition {
 
     /// Arguments of `lockPositionFor(uint256,bytes32,uint40)`.
     ///
-    /// Lock a position on behalf of its owner.
-    /// Callable by authorized lock managers. Outstanding records remain enumerable after expiry until their manager removes them; at most `MAX_LOCK_RECORDS` may exist per position. A zero duration or a deadline that does not strictly extend the same record reverts.
+    /// Lock a position on behalf of its owner. until their manager removes them; at most `MAX_LOCK_RECORDS` may exist per position. A zero duration or a deadline that does not strictly extend the same record reverts.
+    /// Callable by authorized lock managers. Outstanding records remain enumerable after expiry
     public struct LockPositionForParams: Sendable, Hashable {
         public let tokenId: BigUInt
         public let lockId: Data
@@ -792,8 +812,8 @@ public enum IDiesisPosition {
 
     /// Arguments of `mergePosition(uint256,uint256)`.
     ///
-    /// Atomically merge two positions on the same validator.
-    /// Source must have no debt and not be locked. Uses swapDelegate for atomic re-delegation. Burns the source NFT.
+    /// Atomically merge two positions on the same validator. Burns the source NFT.
+    /// Source must have no debt and not be locked. Uses swapDelegate for atomic re-delegation.
     public struct MergePositionParams: Sendable, Hashable {
         public let fromTokenId: BigUInt
         public let intoTokenId: BigUInt
@@ -839,7 +859,12 @@ public enum IDiesisPosition {
 
     /// Arguments of `ownerOf(uint256)`.
     ///
-    /// Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist.
+    /// Returns the owner of the `tokenId` token.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `tokenId` must exist.
+    ///
     public struct OwnerOfParams: Sendable, Hashable {
         public let tokenId: BigUInt
 
@@ -906,7 +931,21 @@ public enum IDiesisPosition {
 
     /// Arguments of `safeTransferFrom(address,address,uint256)`.
     ///
-    /// Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC-721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.
+    /// Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
+    /// * are aware of the ERC-721 protocol to prevent tokens from being forever locked.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must exist and be owned by `from`.
+    /// * - If the caller is not `from`, it must have been allowed to move this token by either {approve} or
+    /// * {setApprovalForAll}.
+    /// * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+    /// * a safe transfer.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct SafeTransferFrom0Params: Sendable, Hashable {
         public let from: EthereumAddress
         public let to: EthereumAddress
@@ -921,7 +960,19 @@ public enum IDiesisPosition {
 
     /// Arguments of `safeTransferFrom(address,address,uint256,bytes)`.
     ///
-    /// Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.
+    /// Safely transfers `tokenId` token from `from` to `to`.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must exist and be owned by `from`.
+    /// * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+    /// * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+    /// * a safe transfer.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct SafeTransferFrom1Params: Sendable, Hashable {
         public let from: EthereumAddress
         public let to: EthereumAddress
@@ -938,7 +989,15 @@ public enum IDiesisPosition {
 
     /// Arguments of `setApprovalForAll(address,bool)`.
     ///
-    /// Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the address zero. Emits an {ApprovalForAll} event.
+    /// Approve or remove `operator` as an operator for the caller.
+    /// * Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - The `operator` cannot be the address zero.
+    /// *
+    /// * Emits an {ApprovalForAll} event.
+    ///
     public struct SetApprovalForAllParams: Sendable, Hashable {
         public let `operator`: EthereumAddress
         public let approved: Bool
@@ -979,7 +1038,7 @@ public enum IDiesisPosition {
 
     /// Arguments of `splitPosition(uint256,uint256)`.
     ///
-    /// Atomically split a position into two on the same validator (no unbonding delay).
+    /// Atomically split a position into two on the same validator (no unbonding delay). source remainder must be 0 or ≥ MIN_STAKE).
     /// Uses swapDelegate for instant re-delegation between positions.
     public struct SplitPositionParams: Sendable, Hashable {
         public let fromTokenId: BigUInt
@@ -1004,7 +1063,13 @@ public enum IDiesisPosition {
 
     /// Arguments of `supportsInterface(bytes4)`.
     ///
-    /// Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section] to learn more about how these ids are created. This function call must use less than 30 000 gas.
+    /// Returns true if this contract implements the interface defined by
+    /// * `interfaceId`. See the corresponding
+    /// * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section]
+    /// * to learn more about how these ids are created.
+    /// *
+    /// * This function call must use less than 30 000 gas.
+    ///
     public struct SupportsInterfaceParams: Sendable, Hashable {
         public let interfaceId: Data
 
@@ -1053,7 +1118,21 @@ public enum IDiesisPosition {
 
     /// Arguments of `transferFrom(address,address,uint256)`.
     ///
-    /// Transfers `tokenId` token from `from` to `to`. WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721 or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must understand this adds an external call which potentially creates a reentrancy vulnerability. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event.
+    /// Transfers `tokenId` token from `from` to `to`.
+    /// *
+    /// * WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721
+    /// * or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must
+    /// * understand this adds an external call which potentially creates a reentrancy vulnerability.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must be owned by `from`.
+    /// * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct TransferFromParams: Sendable, Hashable {
         public let from: EthereumAddress
         public let to: EthereumAddress
@@ -1115,8 +1194,8 @@ public enum IDiesisPosition {
 
     /// Arguments of `withdrawTo(uint256,uint256,address)`.
     ///
-    /// Complete a matured withdrawal and forward the native tokens directly to `recipient`.
-    /// The amount is determined by DiesisStaking's stored unstake request; callers cannot supply a partial amount. `recipient` must be non-zero.
+    /// Complete a matured withdrawal and forward the native tokens directly to `recipient`. supply a partial amount. `recipient` must be non-zero.
+    /// The amount is determined by DiesisStaking's stored unstake request; callers cannot
     public struct WithdrawToParams: Sendable, Hashable {
         public let tokenId: BigUInt
         public let wrId: BigUInt
@@ -1612,7 +1691,18 @@ public enum IDiesisPosition {
 
     /// Decoded result of `approve(address,uint256)`.
     ///
-    /// Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event.
+    /// Gives permission to `to` to transfer `tokenId` token to another account.
+    /// * The approval is cleared when the token is transferred.
+    /// *
+    /// * Only a single account can be approved at a time, so approving the zero address clears previous approvals.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - The caller must own the token or be an approved operator.
+    /// * - `tokenId` must exist.
+    /// *
+    /// * Emits an {Approval} event.
+    ///
     public struct ApproveResult: Sendable, Hashable {
         public init() {}
     }
@@ -1636,6 +1726,7 @@ public enum IDiesisPosition {
     /// Decoded result of `balanceOf(address)`.
     ///
     /// Returns the number of tokens in ``owner``'s account.
+    ///
     public struct BalanceOfResult: Sendable, Hashable {
         public let balance: BigUInt
 
@@ -1686,8 +1777,8 @@ public enum IDiesisPosition {
 
     /// Decoded result of `createRedemptionPosition(uint32)`.
     ///
-    /// Create a zero-stake position to receive existing backing on a registered validator.
-    /// Nonpayable. Inactive validators are allowed; funded delegation remains subject to its active gate. Creates the backing staking NFT before the public NFT. Adds no principal or debt.
+    /// Create a zero-stake position to receive existing backing on a registered validator. Creates the backing staking NFT before the public NFT. Adds no principal or debt.
+    /// Nonpayable. Inactive validators are allowed; funded delegation remains subject to its active gate.
     public struct CreateRedemptionPositionResult: Sendable, Hashable {
         public let tokenId: BigUInt
 
@@ -1796,7 +1887,12 @@ public enum IDiesisPosition {
 
     /// Decoded result of `getApproved(uint256)`.
     ///
-    /// Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist.
+    /// Returns the account approved for `tokenId` token.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `tokenId` must exist.
+    ///
     public struct GetApprovedResult: Sendable, Hashable {
         public let `operator`: EthereumAddress
 
@@ -1854,7 +1950,10 @@ public enum IDiesisPosition {
 
     /// Decoded result of `isApprovedForAll(address,address)`.
     ///
-    /// Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}
+    /// Returns if the `operator` is allowed to manage all of the assets of `owner`.
+    /// *
+    /// * See {setApprovalForAll}
+    ///
     public struct IsApprovedForAllResult: Sendable, Hashable {
         public let bool: Bool
 
@@ -1939,8 +2038,8 @@ public enum IDiesisPosition {
 
     /// Decoded result of `lockPositionFor(uint256,bytes32,uint40)`.
     ///
-    /// Lock a position on behalf of its owner.
-    /// Callable by authorized lock managers. Outstanding records remain enumerable after expiry until their manager removes them; at most `MAX_LOCK_RECORDS` may exist per position. A zero duration or a deadline that does not strictly extend the same record reverts.
+    /// Lock a position on behalf of its owner. until their manager removes them; at most `MAX_LOCK_RECORDS` may exist per position. A zero duration or a deadline that does not strictly extend the same record reverts.
+    /// Callable by authorized lock managers. Outstanding records remain enumerable after expiry
     public struct LockPositionForResult: Sendable, Hashable {
         public init() {}
     }
@@ -2062,8 +2161,8 @@ public enum IDiesisPosition {
 
     /// Decoded result of `mergePosition(uint256,uint256)`.
     ///
-    /// Atomically merge two positions on the same validator.
-    /// Source must have no debt and not be locked. Uses swapDelegate for atomic re-delegation. Burns the source NFT.
+    /// Atomically merge two positions on the same validator. Burns the source NFT.
+    /// Source must have no debt and not be locked. Uses swapDelegate for atomic re-delegation.
     public struct MergePositionResult: Sendable, Hashable {
         public init() {}
     }
@@ -2160,7 +2259,12 @@ public enum IDiesisPosition {
 
     /// Decoded result of `ownerOf(uint256)`.
     ///
-    /// Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist.
+    /// Returns the owner of the `tokenId` token.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `tokenId` must exist.
+    ///
     public struct OwnerOfResult: Sendable, Hashable {
         public let owner: EthereumAddress
 
@@ -2311,7 +2415,21 @@ public enum IDiesisPosition {
 
     /// Decoded result of `safeTransferFrom(address,address,uint256)`.
     ///
-    /// Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC-721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.
+    /// Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
+    /// * are aware of the ERC-721 protocol to prevent tokens from being forever locked.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must exist and be owned by `from`.
+    /// * - If the caller is not `from`, it must have been allowed to move this token by either {approve} or
+    /// * {setApprovalForAll}.
+    /// * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+    /// * a safe transfer.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct SafeTransferFrom0Result: Sendable, Hashable {
         public init() {}
     }
@@ -2335,7 +2453,19 @@ public enum IDiesisPosition {
 
     /// Decoded result of `safeTransferFrom(address,address,uint256,bytes)`.
     ///
-    /// Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.
+    /// Safely transfers `tokenId` token from `from` to `to`.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must exist and be owned by `from`.
+    /// * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+    /// * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+    /// * a safe transfer.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct SafeTransferFrom1Result: Sendable, Hashable {
         public init() {}
     }
@@ -2358,7 +2488,15 @@ public enum IDiesisPosition {
 
     /// Decoded result of `setApprovalForAll(address,bool)`.
     ///
-    /// Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the address zero. Emits an {ApprovalForAll} event.
+    /// Approve or remove `operator` as an operator for the caller.
+    /// * Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - The `operator` cannot be the address zero.
+    /// *
+    /// * Emits an {ApprovalForAll} event.
+    ///
     public struct SetApprovalForAllResult: Sendable, Hashable {
         public init() {}
     }
@@ -2436,7 +2574,7 @@ public enum IDiesisPosition {
 
     /// Decoded result of `splitPosition(uint256,uint256)`.
     ///
-    /// Atomically split a position into two on the same validator (no unbonding delay).
+    /// Atomically split a position into two on the same validator (no unbonding delay). source remainder must be 0 or ≥ MIN_STAKE).
     /// Uses swapDelegate for instant re-delegation between positions.
     public struct SplitPositionResult: Sendable, Hashable {
         public let newTokenId: BigUInt
@@ -2495,7 +2633,13 @@ public enum IDiesisPosition {
 
     /// Decoded result of `supportsInterface(bytes4)`.
     ///
-    /// Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section] to learn more about how these ids are created. This function call must use less than 30 000 gas.
+    /// Returns true if this contract implements the interface defined by
+    /// * `interfaceId`. See the corresponding
+    /// * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section]
+    /// * to learn more about how these ids are created.
+    /// *
+    /// * This function call must use less than 30 000 gas.
+    ///
     public struct SupportsInterfaceResult: Sendable, Hashable {
         public let bool: Bool
 
@@ -2609,7 +2753,21 @@ public enum IDiesisPosition {
 
     /// Decoded result of `transferFrom(address,address,uint256)`.
     ///
-    /// Transfers `tokenId` token from `from` to `to`. WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721 or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must understand this adds an external call which potentially creates a reentrancy vulnerability. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event.
+    /// Transfers `tokenId` token from `from` to `to`.
+    /// *
+    /// * WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721
+    /// * or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must
+    /// * understand this adds an external call which potentially creates a reentrancy vulnerability.
+    /// *
+    /// * Requirements:
+    /// *
+    /// * - `from` cannot be the zero address.
+    /// * - `to` cannot be the zero address.
+    /// * - `tokenId` token must be owned by `from`.
+    /// * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+    /// *
+    /// * Emits a {Transfer} event.
+    ///
     public struct TransferFromResult: Sendable, Hashable {
         public init() {}
     }
@@ -2734,8 +2892,8 @@ public enum IDiesisPosition {
 
     /// Decoded result of `withdrawTo(uint256,uint256,address)`.
     ///
-    /// Complete a matured withdrawal and forward the native tokens directly to `recipient`.
-    /// The amount is determined by DiesisStaking's stored unstake request; callers cannot supply a partial amount. `recipient` must be non-zero.
+    /// Complete a matured withdrawal and forward the native tokens directly to `recipient`. supply a partial amount. `recipient` must be non-zero.
+    /// The amount is determined by DiesisStaking's stored unstake request; callers cannot
     public struct WithdrawToResult: Sendable, Hashable {
         public init() {}
     }

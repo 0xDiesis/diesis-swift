@@ -214,3 +214,9 @@ the network.
 ## License
 
 MIT
+
+For a build stored outside the source checkout, set `DIESIS_ARTIFACTS_DIR`
+to the compiled artifact directory. The generator uses it instead of `out/`.
+
+Numbered overload aliases retain selector order across compiler versions. Generation
+uses temporary copies ordered by compiler method identifiers; original artifacts stay intact.
