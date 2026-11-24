@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/web3swift-team/web3swift.git", "3.3.2"..<"4.0.0"),
-        .package(url: "https://github.com/attaswift/BigInt.git", "5.4.0"..<"6.0.0"),
+        .package(url: "https://github.com/attaswift/BigInt.git", "5.4.1"..<"6.0.0"),
     ],
     targets: [
         .target(
