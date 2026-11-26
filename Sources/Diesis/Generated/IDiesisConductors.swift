@@ -327,11 +327,11 @@ public enum IDiesisConductors {
         }
 
         /// Prepares `registerOrTopup()` with transaction options for signing or submission.
-        public func prepareRegisterOrTopup(transaction: CodableTransaction? = nil, value: BigUInt = 0) throws -> WriteOperation {
+        public func prepareRegisterOrTopup(transaction: CodableTransaction? = nil, value: BigUInt? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             tx.to = address
             tx.data = try IDiesisConductors.encodeRegisterOrTopup()
-            tx.value = value
+            if let value { tx.value = value }
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "registerOrTopup()")
         }
 

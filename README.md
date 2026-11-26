@@ -178,9 +178,11 @@ JSON, for tools that don't run Swift.
 **In short.** One script rebuilds every generated file from the Solidity
 build and `canonical.json`. A check mode tells you if anything is stale.
 
-**Details.** `scripts/generate.py` uses only the Python standard library. It
-runs abi-typegen's Swift target into a temporary directory and writes its
-output unchanged to `Sources/Diesis/Generated/`. It copies
+**Details.** `scripts/generate.py` uses Python 3, abi-typegen 0.9.3, and a clean
+contracts checkout built at the revision in
+[`contracts-provenance.json`](contracts-provenance.json). It checks the
+generator executable, compiler version, and normalized ABI hashes before
+writing the bindings to `Sources/Diesis/Generated/`. It copies
 `../diesis-js/canonical.json` into the repo and generates `Addresses.swift`,
 `Chains+Generated.swift`, and `Contracts+Generated.swift` from it. `--check` writes nothing and exits non-zero if any of
 those files, or the vendored `canonical.json`, differs from what it would
@@ -192,10 +194,10 @@ python3 scripts/generate.py --check  # fail if anything is stale
 ```
 
 The contracts checkout defaults to `../../diesis-core/diesis/contracts` with compiled
-artifacts in `out/`. Set `DIESIS_CONTRACTS_DIR` to use another checkout, and
-`ABI_TYPEGEN` to use another abi-typegen binary than
-`<contracts>/node_modules/.bin/abi-typegen`. The script needs abi-typegen
-0.9.1 or later and stops with an error on an older one.
+artifacts in `out/`. Set `DIESIS_CONTRACTS_DIR` to use another checkout at
+the pinned revision. The script finds the release executable in the
+contracts checkout's installed `@0xdoublesharp/abi-typegen` package. Set
+`ABI_TYPEGEN` to use a copy of that release executable from another location.
 
 ## Develop
 
@@ -218,5 +220,4 @@ MIT
 For a build stored outside the source checkout, set `DIESIS_ARTIFACTS_DIR`
 to the compiled artifact directory. The generator uses it instead of `out/`.
 
-Numbered overload aliases retain selector order across compiler versions. Generation
-uses temporary copies ordered by compiler method identifiers; original artifacts stay intact.
+Numbered overload aliases follow the compiler method selectors.

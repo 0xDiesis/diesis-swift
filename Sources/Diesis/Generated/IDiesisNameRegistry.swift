@@ -8,7 +8,7 @@ import web3swift
 /// Types and constants of the `IDiesisNameRegistry` contract.
 public enum IDiesisNameRegistry {
     /// JSON ABI of the `IDiesisNameRegistry` contract.
-    public static let abi = #"[{"inputs":[{"internalType":"address","name":"controller","type":"address"}],"name":"controllers","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"expiry","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner_","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"address","name":"actor","type":"address"}],"name":"isAuthorized","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"isExpired","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"namePolicy","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"ownershipEpoch","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"resolver","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"controller","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setController","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"uint64","name":"expiry_","type":"uint64"}],"name":"setExpiry","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"policy","type":"address"}],"name":"setNamePolicy","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"address","name":"owner_","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"address","name":"resolver_","type":"address"}],"name":"setResolver","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"bytes32","name":"label","type":"bytes32"},{"internalType":"address","name":"owner_","type":"address"}],"name":"setSubnodeOwner","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"bytes32","name":"label","type":"bytes32"},{"internalType":"address","name":"owner_","type":"address"},{"internalType":"address","name":"resolver_","type":"address"},{"internalType":"uint64","name":"ttl_","type":"uint64"},{"internalType":"uint64","name":"expiry_","type":"uint64"}],"name":"setSubnodeRecord","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"uint64","name":"ttl_","type":"uint64"}],"name":"setTTL","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"ttl","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"controller","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ControllerChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":false,"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"ExpiryChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"policy","type":"address"}],"name":"NamePolicyChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":true,"internalType":"address","name":"owner","type":"address"}],"name":"OwnerChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":true,"internalType":"address","name":"resolver","type":"address"}],"name":"ResolverChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":false,"internalType":"uint64","name":"ttl","type":"uint64"}],"name":"TTLChanged","type":"event"},{"inputs":[],"name":"NotAuthorized","type":"error"},{"inputs":[],"name":"ZeroOwner","type":"error"}]"#
+    public static let abi = #"[{"inputs":[{"internalType":"address","name":"controller","type":"address"}],"name":"controllers","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"expiry","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner_","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"address","name":"actor","type":"address"}],"name":"isAuthorized","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"isExpired","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"namePolicy","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"ownershipEpoch","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"resolver","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"controller","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setController","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"uint64","name":"expiry_","type":"uint64"}],"name":"setExpiry","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"policy","type":"address"}],"name":"setNamePolicy","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"address","name":"owner_","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"address","name":"resolver_","type":"address"}],"name":"setResolver","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"bytes32","name":"label","type":"bytes32"},{"internalType":"address","name":"owner_","type":"address"}],"name":"setSubnodeOwner","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"string","name":"label","type":"string"},{"internalType":"address","name":"owner_","type":"address"}],"name":"setSubnodeOwnerWithLabel","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"bytes32","name":"label","type":"bytes32"},{"internalType":"address","name":"owner_","type":"address"},{"internalType":"address","name":"resolver_","type":"address"},{"internalType":"uint64","name":"ttl_","type":"uint64"},{"internalType":"uint64","name":"expiry_","type":"uint64"}],"name":"setSubnodeRecord","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"string","name":"label","type":"string"},{"internalType":"address","name":"owner_","type":"address"},{"internalType":"address","name":"resolver_","type":"address"},{"internalType":"uint64","name":"ttl_","type":"uint64"},{"internalType":"uint64","name":"expiry_","type":"uint64"}],"name":"setSubnodeRecordWithLabel","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"},{"internalType":"uint64","name":"ttl_","type":"uint64"}],"name":"setTTL","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"name":"ttl","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"controller","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ControllerChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":false,"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"ExpiryChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"policy","type":"address"}],"name":"NamePolicyChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":true,"internalType":"address","name":"owner","type":"address"}],"name":"OwnerChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":true,"internalType":"address","name":"resolver","type":"address"}],"name":"ResolverChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"parent","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":false,"internalType":"string","name":"label","type":"string"}],"name":"SubnameLabel","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":false,"internalType":"uint64","name":"ttl","type":"uint64"}],"name":"TTLChanged","type":"event"},{"inputs":[],"name":"InvalidSubnameLabel","type":"error"},{"inputs":[],"name":"NotAuthorized","type":"error"},{"inputs":[],"name":"ZeroOwner","type":"error"}]"#
 
     /// Canonical signature of `controllers(address)`.
     public static let controllersSignature = "controllers(address)"
@@ -106,11 +106,23 @@ public enum IDiesisNameRegistry {
     /// Selector of `setSubnodeOwner(bytes32,bytes32,address)`.
     public static let setSubnodeOwnerSelector = Data([0x06, 0xab, 0x59, 0x23])
 
+    /// Canonical signature of `setSubnodeOwnerWithLabel(bytes32,string,address)`.
+    public static let setSubnodeOwnerWithLabelSignature = "setSubnodeOwnerWithLabel(bytes32,string,address)"
+
+    /// Selector of `setSubnodeOwnerWithLabel(bytes32,string,address)`.
+    public static let setSubnodeOwnerWithLabelSelector = Data([0x83, 0x8f, 0x18, 0x76])
+
     /// Canonical signature of `setSubnodeRecord(bytes32,bytes32,address,address,uint64,uint64)`.
     public static let setSubnodeRecordSignature = "setSubnodeRecord(bytes32,bytes32,address,address,uint64,uint64)"
 
     /// Selector of `setSubnodeRecord(bytes32,bytes32,address,address,uint64,uint64)`.
     public static let setSubnodeRecordSelector = Data([0x78, 0x1d, 0x8b, 0x10])
+
+    /// Canonical signature of `setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)`.
+    public static let setSubnodeRecordWithLabelSignature = "setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)"
+
+    /// Selector of `setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)`.
+    public static let setSubnodeRecordWithLabelSelector = Data([0x6a, 0xa0, 0x27, 0x86])
 
     /// Canonical signature of `setTTL(bytes32,uint64)`.
     public static let setTTLSignature = "setTTL(bytes32,uint64)"
@@ -160,11 +172,23 @@ public enum IDiesisNameRegistry {
     /// Topic 0 of the `ResolverChanged(bytes32,address)` event.
     public static let resolverChangedEventTopic = Data([0x95, 0x36, 0x64, 0x15, 0x48, 0x72, 0x3c, 0x98, 0x58, 0x01, 0xee, 0xf8, 0x0f, 0xb3, 0x86, 0x03, 0xb8, 0x37, 0x72, 0x2c, 0xcd, 0x8b, 0x61, 0xd4, 0x2f, 0x62, 0x47, 0xc2, 0x8a, 0xfd, 0x33, 0x59])
 
+    /// Canonical signature of the `SubnameLabel(bytes32,bytes32,string)` event.
+    public static let subnameLabelEventSignature = "SubnameLabel(bytes32,bytes32,string)"
+
+    /// Topic 0 of the `SubnameLabel(bytes32,bytes32,string)` event.
+    public static let subnameLabelEventTopic = Data([0x32, 0x1e, 0x7d, 0xf2, 0xe4, 0x8e, 0xe6, 0x5f, 0xd6, 0x79, 0x9f, 0xa6, 0x3b, 0xbe, 0xcb, 0x83, 0x76, 0x42, 0x44, 0x74, 0xfc, 0x07, 0xb4, 0x9c, 0xdf, 0xa5, 0x47, 0x28, 0xe3, 0x37, 0x6e, 0xa5])
+
     /// Canonical signature of the `TTLChanged(bytes32,uint64)` event.
     public static let tTLChangedEventSignature = "TTLChanged(bytes32,uint64)"
 
     /// Topic 0 of the `TTLChanged(bytes32,uint64)` event.
     public static let tTLChangedEventTopic = Data([0xf6, 0x1c, 0xa6, 0x01, 0xab, 0x50, 0x14, 0xcb, 0xdb, 0xae, 0x70, 0x8f, 0x39, 0x25, 0x99, 0xdd, 0x04, 0xe8, 0xa0, 0xc2, 0x84, 0xee, 0x70, 0xe2, 0x7d, 0xa6, 0x94, 0x02, 0x6a, 0x84, 0x5f, 0xe7])
+
+    /// Canonical signature of the `InvalidSubnameLabel()` error.
+    public static let invalidSubnameLabelErrorSignature = "InvalidSubnameLabel()"
+
+    /// Selector of the `InvalidSubnameLabel()` error.
+    public static let invalidSubnameLabelErrorSelector = Data([0x60, 0x9e, 0x13, 0x35])
 
     /// Canonical signature of the `NotAuthorized()` error.
     public static let notAuthorizedErrorSignature = "NotAuthorized()"
@@ -331,6 +355,19 @@ public enum IDiesisNameRegistry {
         }
     }
 
+    /// Arguments of `setSubnodeOwnerWithLabel(bytes32,string,address)`.
+    public struct SetSubnodeOwnerWithLabelParams: Sendable, Hashable {
+        public let node: Data
+        public let label: String
+        public let owner_: EthereumAddress
+
+        public init(node: Data, label: String, owner_: EthereumAddress) {
+            self.node = node
+            self.label = label
+            self.owner_ = owner_
+        }
+    }
+
     /// Arguments of `setSubnodeRecord(bytes32,bytes32,address,address,uint64,uint64)`.
     public struct SetSubnodeRecordParams: Sendable, Hashable {
         public let node: Data
@@ -341,6 +378,25 @@ public enum IDiesisNameRegistry {
         public let expiry_: BigUInt
 
         public init(node: Data, label: Data, owner_: EthereumAddress, resolver_: EthereumAddress, ttl_: BigUInt, expiry_: BigUInt) {
+            self.node = node
+            self.label = label
+            self.owner_ = owner_
+            self.resolver_ = resolver_
+            self.ttl_ = ttl_
+            self.expiry_ = expiry_
+        }
+    }
+
+    /// Arguments of `setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)`.
+    public struct SetSubnodeRecordWithLabelParams: Sendable, Hashable {
+        public let node: Data
+        public let label: String
+        public let owner_: EthereumAddress
+        public let resolver_: EthereumAddress
+        public let ttl_: BigUInt
+        public let expiry_: BigUInt
+
+        public init(node: Data, label: String, owner_: EthereumAddress, resolver_: EthereumAddress, ttl_: BigUInt, expiry_: BigUInt) {
             self.node = node
             self.label = label
             self.owner_ = owner_
@@ -436,6 +492,19 @@ public enum IDiesisNameRegistry {
         }
     }
 
+    /// Fields of the `SubnameLabel(bytes32,bytes32,string)` event.
+    public struct SubnameLabelEvent: Sendable, Hashable {
+        public let parent: Data
+        public let node: Data
+        public let label: String
+
+        public init(parent: Data, node: Data, label: String) {
+            self.parent = parent
+            self.node = node
+            self.label = label
+        }
+    }
+
     /// Fields of the `TTLChanged(bytes32,uint64)` event.
     public struct TTLChangedEvent: Sendable, Hashable {
         public let node: Data
@@ -445,6 +514,11 @@ public enum IDiesisNameRegistry {
             self.node = node
             self.ttl = ttl
         }
+    }
+
+    /// Arguments of the `InvalidSubnameLabel()` error.
+    public struct InvalidSubnameLabelError: Sendable, Hashable {
+        public init() {}
     }
 
     /// Arguments of the `NotAuthorized()` error.
@@ -877,6 +951,33 @@ public enum IDiesisNameRegistry {
         return try _decodeSetSubnodeOwnerValues(_contract().decodeReturnData("setSubnodeOwner(bytes32,bytes32,address)", data: data))
     }
 
+    /// ABI-encodes `setSubnodeOwnerWithLabel(bytes32,string,address)` for an offline transaction.
+    public static func encodeSetSubnodeOwnerWithLabel(_ args: SetSubnodeOwnerWithLabelParams) throws -> Data {
+        guard args.node.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+        guard let data = try _contract().method("setSubnodeOwnerWithLabel(bytes32,string,address)", parameters: [args.node, args.label, args.owner_], extraData: nil) else { throw WrapperError.encodingFailed("setSubnodeOwnerWithLabel(bytes32,string,address)") }
+        return data
+    }
+
+    /// Decoded result of `setSubnodeOwnerWithLabel(bytes32,string,address)`.
+    public struct SetSubnodeOwnerWithLabelResult: Sendable, Hashable {
+        public let bytes32: Data
+
+        public init(bytes32: Data) {
+            self.bytes32 = bytes32
+        }
+    }
+
+    private static func _decodeSetSubnodeOwnerWithLabelValues(_ values: [String: Any]) throws -> SetSubnodeOwnerWithLabelResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        return SetSubnodeOwnerWithLabelResult(bytes32: value0)
+    }
+
+    /// Decodes raw return data for `setSubnodeOwnerWithLabel(bytes32,string,address)` offline.
+    public static func decodeSetSubnodeOwnerWithLabelResult(_ data: Data) throws -> SetSubnodeOwnerWithLabelResult {
+        return try _decodeSetSubnodeOwnerWithLabelValues(_contract().decodeReturnData("setSubnodeOwnerWithLabel(bytes32,string,address)", data: data))
+    }
+
     /// ABI-encodes `setSubnodeRecord(bytes32,bytes32,address,address,uint64,uint64)` for an offline transaction.
     public static func encodeSetSubnodeRecord(_ args: SetSubnodeRecordParams) throws -> Data {
         guard args.node.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
@@ -905,6 +1006,35 @@ public enum IDiesisNameRegistry {
     /// Decodes raw return data for `setSubnodeRecord(bytes32,bytes32,address,address,uint64,uint64)` offline.
     public static func decodeSetSubnodeRecordResult(_ data: Data) throws -> SetSubnodeRecordResult {
         return try _decodeSetSubnodeRecordValues(_contract().decodeReturnData("setSubnodeRecord(bytes32,bytes32,address,address,uint64,uint64)", data: data))
+    }
+
+    /// ABI-encodes `setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)` for an offline transaction.
+    public static func encodeSetSubnodeRecordWithLabel(_ args: SetSubnodeRecordWithLabelParams) throws -> Data {
+        guard args.node.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+        guard args.ttl_ < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
+        guard args.expiry_ < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
+        guard let data = try _contract().method("setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)", parameters: [args.node, args.label, args.owner_, args.resolver_, args.ttl_, args.expiry_], extraData: nil) else { throw WrapperError.encodingFailed("setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)") }
+        return data
+    }
+
+    /// Decoded result of `setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)`.
+    public struct SetSubnodeRecordWithLabelResult: Sendable, Hashable {
+        public let bytes32: Data
+
+        public init(bytes32: Data) {
+            self.bytes32 = bytes32
+        }
+    }
+
+    private static func _decodeSetSubnodeRecordWithLabelValues(_ values: [String: Any]) throws -> SetSubnodeRecordWithLabelResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        return SetSubnodeRecordWithLabelResult(bytes32: value0)
+    }
+
+    /// Decodes raw return data for `setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)` offline.
+    public static func decodeSetSubnodeRecordWithLabelResult(_ data: Data) throws -> SetSubnodeRecordWithLabelResult {
+        return try _decodeSetSubnodeRecordWithLabelValues(_contract().decodeReturnData("setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)", data: data))
     }
 
     /// ABI-encodes `setTTL(bytes32,uint64)` for an offline transaction.
@@ -1130,6 +1260,16 @@ public enum IDiesisNameRegistry {
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "setSubnodeOwner(bytes32,bytes32,address)")
         }
 
+        /// Prepares `setSubnodeOwnerWithLabel(bytes32,string,address)` with transaction options for signing or submission.
+        public func prepareSetSubnodeOwnerWithLabel(_ args: SetSubnodeOwnerWithLabelParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
+            tx.to = address
+            tx.data = try IDiesisNameRegistry.encodeSetSubnodeOwnerWithLabel(args)
+            tx.value = 0
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "setSubnodeOwnerWithLabel(bytes32,string,address)")
+        }
+
         /// Prepares `setSubnodeRecord(bytes32,bytes32,address,address,uint64,uint64)` with transaction options for signing or submission.
         public func prepareSetSubnodeRecord(_ args: SetSubnodeRecordParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
@@ -1138,6 +1278,16 @@ public enum IDiesisNameRegistry {
             tx.data = try IDiesisNameRegistry.encodeSetSubnodeRecord(args)
             tx.value = 0
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "setSubnodeRecord(bytes32,bytes32,address,address,uint64,uint64)")
+        }
+
+        /// Prepares `setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)` with transaction options for signing or submission.
+        public func prepareSetSubnodeRecordWithLabel(_ args: SetSubnodeRecordWithLabelParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
+            tx.to = address
+            tx.data = try IDiesisNameRegistry.encodeSetSubnodeRecordWithLabel(args)
+            tx.value = 0
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "setSubnodeRecordWithLabel(bytes32,string,address,address,uint64,uint64)")
         }
 
         /// Prepares `setTTL(bytes32,uint64)` with transaction options for signing or submission.
@@ -1373,6 +1523,49 @@ public enum IDiesisNameRegistry {
         return ResolverChangedEvent(node: value0, resolver: value1)
     }
 
+    private static func _eventSubnameLabel() throws -> ABI.Element.Event {
+        guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
+            if case .event(let value) = element { return value }
+            return nil
+        }).first(where: { $0.signature == "SubnameLabel(bytes32,bytes32,string)" }) else { throw WrapperError.invalidValue("SubnameLabel(bytes32,bytes32,string)") }
+        return event
+    }
+
+    /// Builds indexed topics for `SubnameLabel(bytes32,bytes32,string)`. Reference values use their 32-byte topic hashes.
+    public static func filterSubnameLabel(filter0: Data? = nil, filter1: Data? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventSubnameLabel()
+        var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
+        if let value = filter0 {
+            guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("SubnameLabel(bytes32,bytes32,string)") }
+            topics.append(topic)
+        } else { topics.append(nil) }
+        if let value = filter1 {
+            guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("SubnameLabel(bytes32,bytes32,string)") }
+            topics.append(topic)
+        } else { topics.append(nil) }
+        return topics
+    }
+
+    /// Decodes a `SubnameLabel(bytes32,bytes32,string)` log.
+    public static func decodeSubnameLabelEvent(_ log: EventLog) throws -> SubnameLabelEvent {
+        let event = try _eventSubnameLabel()
+        guard log.topics.count == 3 else { throw WrapperError.eventMismatch }
+        guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("SubnameLabel(bytes32,bytes32,string)") }
+        let topic0 = log.topics[1]
+        guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
+        guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        let topic1 = log.topics[2]
+        guard topic1.count == 32 else { throw WrapperError.invalidValue("event topic 1") }
+        guard let raw1 = ABIDecoder.decode(types: [event.inputs[1].type], data: topic1)?.first else { throw WrapperError.invalidValue("event field 1") }
+        let value1 = try _cast(raw1, as: Data.self)
+        let value2 = try _cast(decoded[0], as: String.self)
+        return SubnameLabelEvent(parent: value0, node: value1, label: value2)
+    }
+
     private static func _eventTTLChanged() throws -> ABI.Element.Event {
         guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
             if case .event(let value) = element { return value }
@@ -1409,6 +1602,8 @@ public enum IDiesisNameRegistry {
 
     /// A decoded custom ABI error.
     public enum DecodedCustomError {
+        /// `InvalidSubnameLabel()`.
+        case invalidSubnameLabel(InvalidSubnameLabelError)
         /// `NotAuthorized()`.
         case notAuthorized(NotAuthorizedError)
         /// `ZeroOwner()`.
@@ -1420,6 +1615,13 @@ public enum IDiesisNameRegistry {
         guard data.count >= 4 else { throw WrapperError.invalidValue("error selector") }
         let contract = try _contract()
         let selector = Data(data.prefix(4))
+        if selector == Data([0x60, 0x9e, 0x13, 0x35]) {
+            guard let error = contract.abi.compactMap({ element -> ABI.Element.EthError? in
+                if case .error(let value) = element { return value }
+                return nil
+            }).first(where: { $0.signature == "InvalidSubnameLabel()" }), error.decodeEthError(Data(data.dropFirst(4))) != nil else { throw WrapperError.invalidValue("InvalidSubnameLabel()") }
+            return .invalidSubnameLabel(InvalidSubnameLabelError())
+        }
         if selector == Data([0xea, 0x8e, 0x4e, 0xb5]) {
             guard let error = contract.abi.compactMap({ element -> ABI.Element.EthError? in
                 if case .error(let value) = element { return value }

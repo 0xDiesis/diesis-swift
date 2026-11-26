@@ -3114,11 +3114,11 @@ public enum IDiesisPosition {
         }
 
         /// Prepares `delegate(uint256)` with transaction options for signing or submission.
-        public func prepareDelegate(_ args: DelegateParams, transaction: CodableTransaction? = nil, value: BigUInt = 0) throws -> WriteOperation {
+        public func prepareDelegate(_ args: DelegateParams, transaction: CodableTransaction? = nil, value: BigUInt? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             tx.to = address
             tx.data = try IDiesisPosition.encodeDelegate(args)
-            tx.value = value
+            if let value { tx.value = value }
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "delegate(uint256)")
         }
 
@@ -3153,11 +3153,11 @@ public enum IDiesisPosition {
         }
 
         /// Prepares `mint(uint32)` with transaction options for signing or submission.
-        public func prepareMint(_ args: MintParams, transaction: CodableTransaction? = nil, value: BigUInt = 0) throws -> WriteOperation {
+        public func prepareMint(_ args: MintParams, transaction: CodableTransaction? = nil, value: BigUInt? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             tx.to = address
             tx.data = try IDiesisPosition.encodeMint(args)
-            tx.value = value
+            if let value { tx.value = value }
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "mint(uint32)")
         }
 

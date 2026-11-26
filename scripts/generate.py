@@ -8,8 +8,8 @@ Usage:
 Inputs:
     DIESIS_CONTRACTS_DIR  contracts checkout with compiled artifacts in out/
                           (default: ../../diesis-core/diesis/contracts)
-    ABI_TYPEGEN           abi-typegen binary, 0.9.1 or later
-                          (default: <contracts>/node_modules/.bin/abi-typegen)
+    ABI_TYPEGEN           pinned native abi-typegen release executable
+    DIESIS_ARTIFACTS_DIR  compiled artifacts (default: <contracts>/out)
     ../diesis-js/canonical.json  source of the vendored canonical.json
 
 Uses only the Python standard library.
@@ -22,12 +22,12 @@ import argparse
 import difflib
 import json
 import os
-import re
 import shutil
-import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+from contract_inputs import generate
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "Sources" / "Diesis"
@@ -79,11 +79,6 @@ def contracts_dir() -> Path:
     return Path(env).resolve() if env else (ROOT.parent.parent / "diesis-core" / "diesis" / "contracts").resolve()
 
 
-def typegen_bin(contracts: Path) -> Path:
-    env = os.environ.get("ABI_TYPEGEN")
-    return Path(env).resolve() if env else contracts / "node_modules" / ".bin" / "abi-typegen"
-
-
 def lower_camel(constant: str) -> str:
     parts = constant.lower().split("_")
     return parts[0] + "".join(p[:1].upper() + p[1:] for p in parts[1:])
@@ -95,43 +90,12 @@ def swift_string(value: str) -> str:
 
 # abi-typegen ----------------------------------------------------------------
 
-MIN_TYPEGEN = (0, 9, 1)
-
-
-def check_typegen_version(binary: Path) -> None:
-    out = subprocess.run(
-        [str(binary), "--version"], check=True, capture_output=True, text=True
-    ).stdout
-    m = re.search(r"(\d+)\.(\d+)\.(\d+)", out)
-    if not m:
-        raise SystemExit(f"cannot parse abi-typegen version from {out!r}")
-    version = tuple(int(g) for g in m.groups())
-    if version < MIN_TYPEGEN:
-        want = ".".join(map(str, MIN_TYPEGEN))
-        raise SystemExit(f"abi-typegen {m.group(0)} is too old; need {want} or later")
-
-
 def run_typegen(contracts: Path) -> dict[str, str]:
-    binary = typegen_bin(contracts)
-    if not binary.exists():
-        raise SystemExit(f"abi-typegen not found at {binary}; set ABI_TYPEGEN")
-    check_typegen_version(binary)
-    names = ",".join(name for _, name, _ in PUBLIC_CONTRACTS)
-    inputs = Path(os.environ.get("DIESIS_ARTIFACTS_DIR", contracts / "out"))
+    names = [name for _, name, _ in PUBLIC_CONTRACTS]
     with tempfile.TemporaryDirectory(prefix="diesis-swift-typegen-") as tmp:
-        subprocess.run(
-            [
-                str(binary), "generate",
-                "--artifacts", str(inputs),
-                "--out", tmp,
-                "--target", "swift",
-                "--contracts", names,
-            ],
-            check=True,
-            stdout=subprocess.DEVNULL,
-        )
+        generate(contracts, names, "swift", Path(tmp))
         produced = sorted(Path(tmp).glob("*.swift"))
-        expected = {f"{name}.swift" for _, name, _ in PUBLIC_CONTRACTS}
+        expected = {f"{name}.swift" for name in names}
         got = {p.name for p in produced}
         if got != expected:
             raise SystemExit(
@@ -251,9 +215,6 @@ def main() -> int:
     args = parser.parse_args()
 
     contracts = contracts_dir()
-    if not Path(os.environ.get("DIESIS_ARTIFACTS_DIR", contracts / "out")).is_dir():
-        raise SystemExit(f"no compiled artifacts at {contracts / 'out'}; set DIESIS_CONTRACTS_DIR")
-
     if args.check:
         if not SDK_CANONICAL.exists():
             raise SystemExit(f"{SDK_CANONICAL} not found; cannot check canonical.json")

@@ -8,7 +8,7 @@ import web3swift
 /// Types and constants of the `IDiesisMarkets` contract.
 public enum IDiesisMarkets {
     /// JSON ABI of the `IDiesisMarkets` contract.
-    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"currentPrice","type":"uint256"},{"internalType":"uint256","name":"referencePrice","type":"uint256"},{"internalType":"uint256","name":"thresholdBps","type":"uint256"}],"name":"checkCircuitBreaker","outputs":[{"internalType":"uint256","name":"tripped","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"baseToken","type":"address"},{"internalType":"address","name":"quoteToken","type":"address"},{"internalType":"uint64","name":"tickSize","type":"uint64"},{"internalType":"uint64","name":"lotSize","type":"uint64"},{"internalType":"uint256","name":"bond","type":"uint256"}],"name":"createSpotMarket","outputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes11","name":"symbol","type":"bytes11"},{"internalType":"string","name":"name","type":"string"},{"internalType":"uint256","name":"initialSupply","type":"uint256"},{"internalType":"uint256","name":"dsBond","type":"uint256"},{"internalType":"uint256","name":"usdcFee","type":"uint256"}],"name":"deployTokenAndSpotBook","outputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"address","name":"token","type":"address"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getMarket","outputs":[{"components":[{"internalType":"bytes32","name":"slot0","type":"bytes32"},{"internalType":"bytes32","name":"slot1","type":"bytes32"},{"internalType":"uint256","name":"maxOpenInterest","type":"uint256"}],"internalType":"struct IDiesisMarkets.PackedMarket","name":"market","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"resumeMarket","outputs":[{"internalType":"uint256","name":"success","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"priceDeviation","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"threshold","type":"uint256"}],"name":"CircuitBreakerTriggered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"baseToken","type":"address"},{"indexed":false,"internalType":"address","name":"quoteToken","type":"address"},{"indexed":false,"internalType":"uint8","name":"marketType","type":"uint8"}],"name":"MarketCreated","type":"event"}]"#
+    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"currentPrice","type":"uint256"},{"internalType":"uint256","name":"referencePrice","type":"uint256"},{"internalType":"uint256","name":"thresholdBps","type":"uint256"}],"name":"checkCircuitBreaker","outputs":[{"internalType":"uint256","name":"tripped","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"baseToken","type":"address"},{"internalType":"address","name":"quoteToken","type":"address"},{"internalType":"uint64","name":"tickSize","type":"uint64"},{"internalType":"uint64","name":"lotSize","type":"uint64"},{"internalType":"uint256","name":"bond","type":"uint256"}],"name":"createSpotMarket","outputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"baseToken","type":"address"},{"internalType":"address","name":"quoteToken","type":"address"},{"internalType":"uint64","name":"tickSize","type":"uint64"},{"internalType":"uint64","name":"lotSize","type":"uint64"},{"internalType":"uint64","name":"priceDenominator","type":"uint64"},{"internalType":"uint256","name":"bond","type":"uint256"}],"name":"createSpotMarketV1","outputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes11","name":"symbol","type":"bytes11"},{"internalType":"string","name":"name","type":"string"},{"internalType":"uint256","name":"initialSupply","type":"uint256"},{"internalType":"uint256","name":"dsBond","type":"uint256"},{"internalType":"uint256","name":"usdcFee","type":"uint256"}],"name":"deployTokenAndSpotBook","outputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"address","name":"token","type":"address"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getMarket","outputs":[{"components":[{"internalType":"bytes32","name":"slot0","type":"bytes32"},{"internalType":"bytes32","name":"slot1","type":"bytes32"},{"internalType":"uint256","name":"maxOpenInterest","type":"uint256"}],"internalType":"struct IDiesisMarkets.PackedMarket","name":"market","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getMarketPricing","outputs":[{"internalType":"uint8","name":"pricingVersion","type":"uint8"},{"internalType":"uint64","name":"priceDenominator","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"resumeMarket","outputs":[{"internalType":"uint256","name":"success","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"priceDeviation","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"threshold","type":"uint256"}],"name":"CircuitBreakerTriggered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"baseToken","type":"address"},{"indexed":false,"internalType":"address","name":"quoteToken","type":"address"},{"indexed":false,"internalType":"uint8","name":"marketType","type":"uint8"}],"name":"MarketCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"uint8","name":"pricingVersion","type":"uint8"},{"indexed":false,"internalType":"uint64","name":"priceDenominator","type":"uint64"}],"name":"MarketPricingDefinedV1","type":"event"}]"#
 
     /// Canonical signature of `checkCircuitBreaker(bytes32,uint256,uint256,uint256)`.
     public static let checkCircuitBreakerSignature = "checkCircuitBreaker(bytes32,uint256,uint256,uint256)"
@@ -22,6 +22,12 @@ public enum IDiesisMarkets {
     /// Selector of `createSpotMarket(address,address,uint64,uint64,uint256)`.
     public static let createSpotMarketSelector = Data([0x6f, 0xc2, 0xe4, 0x70])
 
+    /// Canonical signature of `createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)`.
+    public static let createSpotMarketV1Signature = "createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)"
+
+    /// Selector of `createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)`.
+    public static let createSpotMarketV1Selector = Data([0x33, 0x40, 0x7c, 0x52])
+
     /// Canonical signature of `deployTokenAndSpotBook(bytes11,string,uint256,uint256,uint256)`.
     public static let deployTokenAndSpotBookSignature = "deployTokenAndSpotBook(bytes11,string,uint256,uint256,uint256)"
 
@@ -33,6 +39,12 @@ public enum IDiesisMarkets {
 
     /// Selector of `getMarket(bytes32)`.
     public static let getMarketSelector = Data([0xc3, 0xc9, 0x5c, 0x7b])
+
+    /// Canonical signature of `getMarketPricing(bytes32)`.
+    public static let getMarketPricingSignature = "getMarketPricing(bytes32)"
+
+    /// Selector of `getMarketPricing(bytes32)`.
+    public static let getMarketPricingSelector = Data([0x6f, 0x71, 0x04, 0x90])
 
     /// Canonical signature of `resumeMarket(bytes32)`.
     public static let resumeMarketSignature = "resumeMarket(bytes32)"
@@ -51,6 +63,12 @@ public enum IDiesisMarkets {
 
     /// Topic 0 of the `MarketCreated(bytes32,address,address,uint8)` event.
     public static let marketCreatedEventTopic = Data([0xf0, 0x82, 0x4d, 0x22, 0xd1, 0xe2, 0xdc, 0xd5, 0xde, 0x4f, 0x41, 0x24, 0xf6, 0xfc, 0x11, 0x6f, 0x8b, 0x84, 0x9a, 0x77, 0x75, 0x1e, 0x04, 0xc5, 0xd2, 0x4c, 0x89, 0x53, 0x4a, 0xb6, 0xce, 0x79])
+
+    /// Canonical signature of the `MarketPricingDefinedV1(bytes32,uint8,uint64)` event.
+    public static let marketPricingDefinedV1EventSignature = "MarketPricingDefinedV1(bytes32,uint8,uint64)"
+
+    /// Topic 0 of the `MarketPricingDefinedV1(bytes32,uint8,uint64)` event.
+    public static let marketPricingDefinedV1EventTopic = Data([0x6c, 0xcc, 0x92, 0xd4, 0x5a, 0x08, 0x14, 0x0b, 0xf9, 0xf7, 0xe0, 0xc7, 0x0e, 0xe7, 0xa9, 0xd6, 0xfd, 0xe1, 0xa4, 0x54, 0xdc, 0x56, 0xe7, 0x0a, 0x9c, 0xe6, 0x60, 0x31, 0xd1, 0xb4, 0xac, 0xaf])
 
     /// The `PackedMarket` tuple.
     public struct PackedMarket: Sendable, Hashable {
@@ -102,6 +120,28 @@ public enum IDiesisMarkets {
         }
     }
 
+    /// Arguments of `createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)`.
+    ///
+    /// positive and divides lotSize exactly; identity commits it independently of legacy markets, including when denominator equals one.
+    /// Config-owner provisioning of immutable Spot V1 units. Denominator is
+    public struct CreateSpotMarketV1Params: Sendable, Hashable {
+        public let baseToken: EthereumAddress
+        public let quoteToken: EthereumAddress
+        public let tickSize: BigUInt
+        public let lotSize: BigUInt
+        public let priceDenominator: BigUInt
+        public let bond: BigUInt
+
+        public init(baseToken: EthereumAddress, quoteToken: EthereumAddress, tickSize: BigUInt, lotSize: BigUInt, priceDenominator: BigUInt, bond: BigUInt) {
+            self.baseToken = baseToken
+            self.quoteToken = quoteToken
+            self.tickSize = tickSize
+            self.lotSize = lotSize
+            self.priceDenominator = priceDenominator
+            self.bond = bond
+        }
+    }
+
     /// Arguments of `deployTokenAndSpotBook(bytes11,string,uint256,uint256,uint256)`.
     ///
     /// Deploys a token through the factory and creates its USDC spot market atomically.
@@ -123,6 +163,18 @@ public enum IDiesisMarkets {
 
     /// Arguments of `getMarket(bytes32)`.
     public struct GetMarketParams: Sendable, Hashable {
+        public let marketId: Data
+
+        public init(marketId: Data) {
+            self.marketId = marketId
+        }
+    }
+
+    /// Arguments of `getMarketPricing(bytes32)`.
+    ///
+    /// Unknown or corrupt definitions revert. Legacy markets return (0,1).
+    /// Validates the full immutable pricing definition and market identity.
+    public struct GetMarketPricingParams: Sendable, Hashable {
         public let marketId: Data
 
         public init(marketId: Data) {
@@ -164,6 +216,19 @@ public enum IDiesisMarkets {
             self.baseToken = baseToken
             self.quoteToken = quoteToken
             self.marketType = marketType
+        }
+    }
+
+    /// Fields of the `MarketPricingDefinedV1(bytes32,uint8,uint64)` event.
+    public struct MarketPricingDefinedV1Event: Sendable, Hashable {
+        public let marketId: Data
+        public let pricingVersion: BigUInt
+        public let priceDenominator: BigUInt
+
+        public init(marketId: Data, pricingVersion: BigUInt, priceDenominator: BigUInt) {
+            self.marketId = marketId
+            self.pricingVersion = pricingVersion
+            self.priceDenominator = priceDenominator
         }
     }
 
@@ -264,6 +329,39 @@ public enum IDiesisMarkets {
         return try _decodeCreateSpotMarketValues(_contract().decodeReturnData("createSpotMarket(address,address,uint64,uint64,uint256)", data: data))
     }
 
+    /// ABI-encodes `createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)` for an offline transaction.
+    public static func encodeCreateSpotMarketV1(_ args: CreateSpotMarketV1Params) throws -> Data {
+        guard args.tickSize < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
+        guard args.lotSize < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
+        guard args.priceDenominator < (BigUInt(1) << 64) else { throw WrapperError.encodingFailed("uint64 out of range") }
+        guard args.bond < (BigUInt(1) << 256) else { throw WrapperError.encodingFailed("uint256 out of range") }
+        guard let data = try _contract().method("createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)", parameters: [args.baseToken, args.quoteToken, args.tickSize, args.lotSize, args.priceDenominator, args.bond], extraData: nil) else { throw WrapperError.encodingFailed("createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)") }
+        return data
+    }
+
+    /// Decoded result of `createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)`.
+    ///
+    /// positive and divides lotSize exactly; identity commits it independently of legacy markets, including when denominator equals one.
+    /// Config-owner provisioning of immutable Spot V1 units. Denominator is
+    public struct CreateSpotMarketV1Result: Sendable, Hashable {
+        public let marketId: Data
+
+        public init(marketId: Data) {
+            self.marketId = marketId
+        }
+    }
+
+    private static func _decodeCreateSpotMarketV1Values(_ values: [String: Any]) throws -> CreateSpotMarketV1Result {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        return CreateSpotMarketV1Result(marketId: value0)
+    }
+
+    /// Decodes raw return data for `createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)` offline.
+    public static func decodeCreateSpotMarketV1Result(_ data: Data) throws -> CreateSpotMarketV1Result {
+        return try _decodeCreateSpotMarketV1Values(_contract().decodeReturnData("createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)", data: data))
+    }
+
     /// ABI-encodes `deployTokenAndSpotBook(bytes11,string,uint256,uint256,uint256)` for an offline transaction.
     public static func encodeDeployTokenAndSpotBook(_ args: DeployTokenAndSpotBookParams) throws -> Data {
         guard args.symbol.count == 11 else { throw WrapperError.encodingFailed("bytes11 length") }
@@ -327,6 +425,40 @@ public enum IDiesisMarkets {
         return try _decodeGetMarketValues(_contract().decodeReturnData("getMarket(bytes32)", data: data))
     }
 
+    /// ABI-encodes `getMarketPricing(bytes32)` for an offline transaction.
+    public static func encodeGetMarketPricing(_ args: GetMarketPricingParams) throws -> Data {
+        guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+        guard let data = try _contract().method("getMarketPricing(bytes32)", parameters: [args.marketId], extraData: nil) else { throw WrapperError.encodingFailed("getMarketPricing(bytes32)") }
+        return data
+    }
+
+    /// Decoded result of `getMarketPricing(bytes32)`.
+    ///
+    /// Unknown or corrupt definitions revert. Legacy markets return (0,1).
+    /// Validates the full immutable pricing definition and market identity.
+    public struct GetMarketPricingResult: Sendable, Hashable {
+        public let pricingVersion: BigUInt
+        public let priceDenominator: BigUInt
+
+        public init(pricingVersion: BigUInt, priceDenominator: BigUInt) {
+            self.pricingVersion = pricingVersion
+            self.priceDenominator = priceDenominator
+        }
+    }
+
+    private static func _decodeGetMarketPricingValues(_ values: [String: Any]) throws -> GetMarketPricingResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: BigUInt.self)
+        guard let raw1 = values["1"] else { throw WrapperError.invalidValue("output 1") }
+        let value1 = try _cast(raw1, as: BigUInt.self)
+        return GetMarketPricingResult(pricingVersion: value0, priceDenominator: value1)
+    }
+
+    /// Decodes raw return data for `getMarketPricing(bytes32)` offline.
+    public static func decodeGetMarketPricingResult(_ data: Data) throws -> GetMarketPricingResult {
+        return try _decodeGetMarketPricingValues(_contract().decodeReturnData("getMarketPricing(bytes32)", data: data))
+    }
+
     /// ABI-encodes `resumeMarket(bytes32)` for an offline transaction.
     public static func encodeResumeMarket(_ args: ResumeMarketParams) throws -> Data {
         guard args.marketId.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
@@ -376,6 +508,15 @@ public enum IDiesisMarkets {
             return try IDiesisMarkets._decodeGetMarketValues(await operation.callContractMethod())
         }
 
+        /// Calls `getMarketPricing(bytes32)` and decodes its result.
+        public func readGetMarketPricing(_ args: GetMarketPricingParams, transaction: CodableTransaction? = nil) async throws -> GetMarketPricingResult {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            tx.to = address
+            tx.data = try IDiesisMarkets.encodeGetMarketPricing(args)
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "getMarketPricing(bytes32)")
+            return try IDiesisMarkets._decodeGetMarketPricingValues(await operation.callContractMethod())
+        }
+
         /// Prepares `checkCircuitBreaker(bytes32,uint256,uint256,uint256)` with transaction options for signing or submission.
         public func prepareCheckCircuitBreaker(_ args: CheckCircuitBreakerParams, transaction: CodableTransaction? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
@@ -394,6 +535,16 @@ public enum IDiesisMarkets {
             tx.data = try IDiesisMarkets.encodeCreateSpotMarket(args)
             tx.value = 0
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "createSpotMarket(address,address,uint64,uint64,uint256)")
+        }
+
+        /// Prepares `createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)` with transaction options for signing or submission.
+        public func prepareCreateSpotMarketV1(_ args: CreateSpotMarketV1Params, transaction: CodableTransaction? = nil) throws -> WriteOperation {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            guard tx.value == 0 else { throw WrapperError.encodingFailed("nonpayable value") }
+            tx.to = address
+            tx.data = try IDiesisMarkets.encodeCreateSpotMarketV1(args)
+            tx.value = 0
+            return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "createSpotMarketV1(address,address,uint64,uint64,uint64,uint256)")
         }
 
         /// Prepares `deployTokenAndSpotBook(bytes11,string,uint256,uint256,uint256)` with transaction options for signing or submission.
@@ -486,6 +637,41 @@ public enum IDiesisMarkets {
         let value2 = try _cast(decoded[1], as: EthereumAddress.self)
         let value3 = try _cast(decoded[2], as: BigUInt.self)
         return MarketCreatedEvent(marketId: value0, baseToken: value1, quoteToken: value2, marketType: value3)
+    }
+
+    private static func _eventMarketPricingDefinedV1() throws -> ABI.Element.Event {
+        guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
+            if case .event(let value) = element { return value }
+            return nil
+        }).first(where: { $0.signature == "MarketPricingDefinedV1(bytes32,uint8,uint64)" }) else { throw WrapperError.invalidValue("MarketPricingDefinedV1(bytes32,uint8,uint64)") }
+        return event
+    }
+
+    /// Builds indexed topics for `MarketPricingDefinedV1(bytes32,uint8,uint64)`. Reference values use their 32-byte topic hashes.
+    public static func filterMarketPricingDefinedV1(filter0: Data? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventMarketPricingDefinedV1()
+        var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
+        if let value = filter0 {
+            guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("MarketPricingDefinedV1(bytes32,uint8,uint64)") }
+            topics.append(topic)
+        } else { topics.append(nil) }
+        return topics
+    }
+
+    /// Decodes a `MarketPricingDefinedV1(bytes32,uint8,uint64)` log.
+    public static func decodeMarketPricingDefinedV1Event(_ log: EventLog) throws -> MarketPricingDefinedV1Event {
+        let event = try _eventMarketPricingDefinedV1()
+        guard log.topics.count == 2 else { throw WrapperError.eventMismatch }
+        guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("MarketPricingDefinedV1(bytes32,uint8,uint64)") }
+        let topic0 = log.topics[1]
+        guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
+        guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        let value1 = try _cast(decoded[0], as: BigUInt.self)
+        let value2 = try _cast(decoded[1], as: BigUInt.self)
+        return MarketPricingDefinedV1Event(marketId: value0, pricingVersion: value1, priceDenominator: value2)
     }
 
     /// A decoded custom ABI error.

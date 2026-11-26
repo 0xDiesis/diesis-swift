@@ -1471,11 +1471,11 @@ public enum DiesisShieldedPool {
         }
 
         /// Prepares `deposit(bytes32,bytes)` with transaction options for signing or submission.
-        public func prepareDeposit(_ args: DepositParams, transaction: CodableTransaction? = nil, value: BigUInt = 0) throws -> WriteOperation {
+        public func prepareDeposit(_ args: DepositParams, transaction: CodableTransaction? = nil, value: BigUInt? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             tx.to = address
             tx.data = try DiesisShieldedPool.encodeDeposit(args)
-            tx.value = value
+            if let value { tx.value = value }
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "deposit(bytes32,bytes)")
         }
 

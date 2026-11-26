@@ -8,7 +8,7 @@ import web3swift
 /// Types and constants of the `IDiesisPerpsBook` contract.
 public enum IDiesisPerpsBook {
     /// JSON ABI of the `IDiesisPerpsBook` contract.
-    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"int256","name":"marginDelta","type":"int256"}],"name":"adjustIsolatedMargin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"amendPerpOrderV1","outputs":[{"internalType":"bytes32","name":"replacementOrderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"int256","name":"fundingRateBps","type":"int256"}],"name":"applyPerpFundingV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"cancelPerpOrderV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"makerOrderId","type":"bytes32"},{"internalType":"bytes32","name":"takerOrderId","type":"bytes32"},{"internalType":"uint256","name":"fillPrice","type":"uint256"},{"internalType":"uint256","name":"fillQty","type":"uint256"}],"name":"executePerpTradeV1","outputs":[{"internalType":"bytes32","name":"clearingTransactionId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"expirePerpOrderV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint64","name":"epoch","type":"uint64"},{"internalType":"bytes32","name":"snapshotHash","type":"bytes32"}],"name":"finalizePerpFeeEpochV2","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"trader","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getIsolatedMargin","outputs":[{"internalType":"uint256","name":"isolatedMargin","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"trader","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getPosition","outputs":[{"components":[{"internalType":"bytes32","name":"header","type":"bytes32"},{"internalType":"uint256","name":"size","type":"uint256"},{"internalType":"uint256","name":"entryPrice","type":"uint256"}],"internalType":"struct IDiesisPerpsBook.PackedPosition","name":"position","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes","name":"encodedActions","type":"bytes"}],"name":"submitExchangeActionsV2","outputs":[{"internalType":"bytes32","name":"resultHash","type":"bytes32"},{"internalType":"uint16","name":"acceptedCount","type":"uint16"},{"internalType":"uint16","name":"rejectedCount","type":"uint16"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"side","type":"uint8"},{"internalType":"uint8","name":"orderType","type":"uint8"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint8","name":"flags","type":"uint8"},{"internalType":"uint8","name":"marginType","type":"uint8"},{"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"submitPerpOrderV1","outputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"signedEnvelope","type":"bytes"}],"name":"submitSignedPerpActionsV2","outputs":[{"internalType":"bytes32","name":"batchId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"markPrice","type":"uint256"}],"name":"updatePerpMarkV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"indexPrice","type":"uint256"},{"internalType":"uint256","name":"markPrice","type":"uint256"},{"internalType":"uint64","name":"observedAt","type":"uint64"},{"internalType":"uint64","name":"oracleRound","type":"uint64"},{"internalType":"bytes32","name":"sourceSetHash","type":"bytes32"},{"internalType":"bytes32","name":"evidenceHash","type":"bytes32"}],"name":"updatePerpOracleV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"bytes32","name":"resultId","type":"bytes32"}],"name":"ExchangeActionAcceptedV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"uint16","name":"reasonCode","type":"uint16"},{"indexed":false,"internalType":"bytes32","name":"context","type":"bytes32"}],"name":"ExchangeActionRejectedV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"mutation","type":"uint8"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint64","name":"priceTicks","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"quantityLots","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"remainingLots","type":"uint64"}],"name":"ExchangeL3MutationV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"int256","name":"fundingRate","type":"int256"},{"indexed":false,"internalType":"uint64","name":"timestamp","type":"uint64"}],"name":"FundingApplied","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"marginDelta","type":"int256"},{"indexed":false,"internalType":"uint256","name":"newIsolatedMargin","type":"uint256"}],"name":"IsolatedMarginAdjusted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"timestamp","type":"uint256"}],"name":"MarkPriceUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"}],"name":"OrderCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"fillQty","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fillPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"remainingAmount","type":"uint256"},{"indexed":false,"internalType":"bool","name":"complete","type":"bool"}],"name":"OrderFilled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint8","name":"flags","type":"uint8"}],"name":"OrderPlaced","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"realizedPnl","type":"int256"}],"name":"PositionClosed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"collateralDelta","type":"int256"},{"indexed":false,"internalType":"uint256","name":"newClaim","type":"uint256"}],"name":"PositionCollateralAdjusted","type":"event"}]"#
+    public static let abi = #"[{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"int256","name":"marginDelta","type":"int256"}],"name":"adjustIsolatedMargin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"amendPerpOrderV1","outputs":[{"internalType":"bytes32","name":"replacementOrderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"int256","name":"fundingRateBps","type":"int256"}],"name":"applyPerpFundingV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"cancelPerpOrderV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"makerOrderId","type":"bytes32"},{"internalType":"bytes32","name":"takerOrderId","type":"bytes32"},{"internalType":"uint256","name":"fillPrice","type":"uint256"},{"internalType":"uint256","name":"fillQty","type":"uint256"}],"name":"executePerpTradeV1","outputs":[{"internalType":"bytes32","name":"clearingTransactionId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"name":"expirePerpOrderV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint64","name":"epoch","type":"uint64"},{"internalType":"bytes32","name":"snapshotHash","type":"bytes32"}],"name":"finalizePerpFeeEpochV2","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"trader","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getIsolatedMargin","outputs":[{"internalType":"uint256","name":"isolatedMargin","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"trader","type":"address"},{"internalType":"bytes32","name":"marketId","type":"bytes32"}],"name":"getPosition","outputs":[{"components":[{"internalType":"bytes32","name":"header","type":"bytes32"},{"internalType":"uint256","name":"size","type":"uint256"},{"internalType":"uint256","name":"entryPrice","type":"uint256"}],"internalType":"struct IDiesisPerpsBook.PackedPosition","name":"position","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes","name":"encodedActions","type":"bytes"}],"name":"submitExchangeActionsV2","outputs":[{"internalType":"bytes32","name":"resultHash","type":"bytes32"},{"internalType":"uint16","name":"acceptedCount","type":"uint16"},{"internalType":"uint16","name":"rejectedCount","type":"uint16"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint8","name":"side","type":"uint8"},{"internalType":"uint8","name":"orderType","type":"uint8"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint8","name":"flags","type":"uint8"},{"internalType":"uint8","name":"marginType","type":"uint8"},{"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"submitPerpOrderV1","outputs":[{"internalType":"bytes32","name":"orderId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"signedEnvelope","type":"bytes"}],"name":"submitSignedPerpActionsV2","outputs":[{"internalType":"bytes32","name":"batchId","type":"bytes32"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"markPrice","type":"uint256"}],"name":"updatePerpMarkV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"marketId","type":"bytes32"},{"internalType":"uint256","name":"indexPrice","type":"uint256"},{"internalType":"uint256","name":"markPrice","type":"uint256"},{"internalType":"uint64","name":"observedAt","type":"uint64"},{"internalType":"uint64","name":"oracleRound","type":"uint64"},{"internalType":"bytes32","name":"sourceSetHash","type":"bytes32"},{"internalType":"bytes32","name":"evidenceHash","type":"bytes32"}],"name":"updatePerpOracleV1","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"bytes32","name":"resultId","type":"bytes32"}],"name":"ExchangeActionAcceptedV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes16","name":"clientActionId","type":"bytes16"},{"indexed":true,"internalType":"uint16","name":"actionIndex","type":"uint16"},{"indexed":false,"internalType":"uint8","name":"actionTag","type":"uint8"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"address","name":"principal","type":"address"},{"indexed":false,"internalType":"uint16","name":"reasonCode","type":"uint16"},{"indexed":false,"internalType":"bytes32","name":"context","type":"bytes32"}],"name":"ExchangeActionRejectedV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"mutation","type":"uint8"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint64","name":"priceTicks","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"quantityLots","type":"uint64"},{"indexed":false,"internalType":"uint64","name":"remainingLots","type":"uint64"}],"name":"ExchangeL3MutationV2","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"int256","name":"fundingRate","type":"int256"},{"indexed":false,"internalType":"uint64","name":"timestamp","type":"uint64"}],"name":"FundingApplied","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"marginDelta","type":"int256"},{"indexed":false,"internalType":"uint256","name":"newIsolatedMargin","type":"uint256"}],"name":"IsolatedMarginAdjusted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"timestamp","type":"uint256"}],"name":"MarkPriceUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"}],"name":"OrderCancelled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"address","name":"feeToken","type":"address"},{"indexed":false,"internalType":"uint256","name":"chargedRaw","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"rebateCreditedRaw","type":"uint256"}],"name":"OrderFillFeeV1","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint256","name":"fillQty","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fillPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"remainingAmount","type":"uint256"},{"indexed":false,"internalType":"bool","name":"complete","type":"bool"}],"name":"OrderFilled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"orderId","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"uint8","name":"side","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint8","name":"flags","type":"uint8"}],"name":"OrderPlaced","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":false,"internalType":"bytes4","name":"selector","type":"bytes4"},{"indexed":false,"internalType":"bytes32","name":"reasonHash","type":"bytes32"}],"name":"PerpMaintenanceFault","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"realizedPnl","type":"int256"}],"name":"PositionClosed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"marketId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"trader","type":"address"},{"indexed":false,"internalType":"int256","name":"collateralDelta","type":"int256"},{"indexed":false,"internalType":"uint256","name":"newClaim","type":"uint256"}],"name":"PositionCollateralAdjusted","type":"event"}]"#
 
     /// Canonical signature of `adjustIsolatedMargin(bytes32,int256)`.
     public static let adjustIsolatedMarginSignature = "adjustIsolatedMargin(bytes32,int256)"
@@ -136,6 +136,12 @@ public enum IDiesisPerpsBook {
     /// Topic 0 of the `OrderCancelled(bytes32,bytes32,address)` event.
     public static let orderCancelledEventTopic = Data([0x2d, 0xbd, 0xb9, 0xf0, 0x31, 0xc8, 0xfb, 0xcb, 0x8a, 0x51, 0xb5, 0x12, 0x3a, 0x04, 0xba, 0x32, 0xfa, 0x8e, 0x2c, 0xae, 0x50, 0x92, 0x51, 0x7f, 0x0f, 0xa0, 0xa2, 0x6a, 0x2c, 0x6b, 0xc8, 0x8c])
 
+    /// Canonical signature of the `OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)` event.
+    public static let orderFillFeeV1EventSignature = "OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)"
+
+    /// Topic 0 of the `OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)` event.
+    public static let orderFillFeeV1EventTopic = Data([0x14, 0x79, 0x1c, 0xfc, 0x69, 0x03, 0x52, 0xc1, 0x4f, 0x00, 0x48, 0x5b, 0x4e, 0xb8, 0x82, 0x2f, 0x2a, 0xe8, 0x79, 0x84, 0xe8, 0x17, 0x84, 0xad, 0x29, 0x05, 0x28, 0x2c, 0xfd, 0x15, 0x3a, 0x93])
+
     /// Canonical signature of the `OrderFilled(bytes32,bytes32,address,uint256,uint256,uint256,bool)` event.
     public static let orderFilledEventSignature = "OrderFilled(bytes32,bytes32,address,uint256,uint256,uint256,bool)"
 
@@ -147,6 +153,12 @@ public enum IDiesisPerpsBook {
 
     /// Topic 0 of the `OrderPlaced(bytes32,bytes32,address,uint8,uint256,uint256,uint8)` event.
     public static let orderPlacedEventTopic = Data([0xb8, 0x67, 0xfb, 0x86, 0xac, 0xd4, 0x8d, 0xa3, 0x7a, 0xe7, 0xef, 0x7b, 0x3b, 0xe0, 0x99, 0xad, 0xca, 0xf7, 0x97, 0x03, 0xdc, 0x07, 0x1c, 0x8f, 0xcf, 0x5b, 0x19, 0xae, 0xad, 0x57, 0x00, 0x48])
+
+    /// Canonical signature of the `PerpMaintenanceFault(bytes32,bytes4,bytes32)` event.
+    public static let perpMaintenanceFaultEventSignature = "PerpMaintenanceFault(bytes32,bytes4,bytes32)"
+
+    /// Topic 0 of the `PerpMaintenanceFault(bytes32,bytes4,bytes32)` event.
+    public static let perpMaintenanceFaultEventTopic = Data([0xec, 0x8a, 0xe2, 0xfe, 0x61, 0xde, 0xf4, 0x30, 0x23, 0xf4, 0x57, 0x58, 0x24, 0x14, 0x46, 0x79, 0x94, 0xc9, 0x1c, 0x8a, 0xe8, 0x66, 0xd9, 0x23, 0x27, 0x5e, 0x00, 0xe5, 0x15, 0xb2, 0x23, 0xe9])
 
     /// Canonical signature of the `PositionClosed(bytes32,address,int256)` event.
     public static let positionClosedEventSignature = "PositionClosed(bytes32,address,int256)"
@@ -505,6 +517,25 @@ public enum IDiesisPerpsBook {
         }
     }
 
+    /// Fields of the `OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)` event.
+    public struct OrderFillFeeV1Event: Sendable, Hashable {
+        public let marketId: Data
+        public let orderId: Data
+        public let trader: EthereumAddress
+        public let feeToken: EthereumAddress
+        public let chargedRaw: BigUInt
+        public let rebateCreditedRaw: BigUInt
+
+        public init(marketId: Data, orderId: Data, trader: EthereumAddress, feeToken: EthereumAddress, chargedRaw: BigUInt, rebateCreditedRaw: BigUInt) {
+            self.marketId = marketId
+            self.orderId = orderId
+            self.trader = trader
+            self.feeToken = feeToken
+            self.chargedRaw = chargedRaw
+            self.rebateCreditedRaw = rebateCreditedRaw
+        }
+    }
+
     /// Fields of the `OrderFilled(bytes32,bytes32,address,uint256,uint256,uint256,bool)` event.
     public struct OrderFilledEvent: Sendable, Hashable {
         public let orderId: Data
@@ -544,6 +575,19 @@ public enum IDiesisPerpsBook {
             self.price = price
             self.amount = amount
             self.flags = flags
+        }
+    }
+
+    /// Fields of the `PerpMaintenanceFault(bytes32,bytes4,bytes32)` event.
+    public struct PerpMaintenanceFaultEvent: Sendable, Hashable {
+        public let marketId: Data
+        public let selector: Data
+        public let reasonHash: Data
+
+        public init(marketId: Data, selector: Data, reasonHash: Data) {
+            self.marketId = marketId
+            self.selector = selector
+            self.reasonHash = reasonHash
         }
     }
 
@@ -1497,6 +1541,59 @@ public enum IDiesisPerpsBook {
         return OrderCancelledEvent(orderId: value0, marketId: value1, trader: value2)
     }
 
+    private static func _eventOrderFillFeeV1() throws -> ABI.Element.Event {
+        guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
+            if case .event(let value) = element { return value }
+            return nil
+        }).first(where: { $0.signature == "OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)" }) else { throw WrapperError.invalidValue("OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)") }
+        return event
+    }
+
+    /// Builds indexed topics for `OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)`. Reference values use their 32-byte topic hashes.
+    public static func filterOrderFillFeeV1(filter0: Data? = nil, filter1: Data? = nil, filter2: EthereumAddress? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventOrderFillFeeV1()
+        var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
+        if let value = filter0 {
+            guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)") }
+            topics.append(topic)
+        } else { topics.append(nil) }
+        if let value = filter1 {
+            guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[1], value: value) else { throw WrapperError.encodingFailed("OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)") }
+            topics.append(topic)
+        } else { topics.append(nil) }
+        if let value = filter2 {
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[2], value: value) else { throw WrapperError.encodingFailed("OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)") }
+            topics.append(topic)
+        } else { topics.append(nil) }
+        return topics
+    }
+
+    /// Decodes a `OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)` log.
+    public static func decodeOrderFillFeeV1Event(_ log: EventLog) throws -> OrderFillFeeV1Event {
+        let event = try _eventOrderFillFeeV1()
+        guard log.topics.count == 4 else { throw WrapperError.eventMismatch }
+        guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("OrderFillFeeV1(bytes32,bytes32,address,address,uint256,uint256)") }
+        let topic0 = log.topics[1]
+        guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
+        guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        let topic1 = log.topics[2]
+        guard topic1.count == 32 else { throw WrapperError.invalidValue("event topic 1") }
+        guard let raw1 = ABIDecoder.decode(types: [event.inputs[1].type], data: topic1)?.first else { throw WrapperError.invalidValue("event field 1") }
+        let value1 = try _cast(raw1, as: Data.self)
+        let topic2 = log.topics[3]
+        guard topic2.count == 32 else { throw WrapperError.invalidValue("event topic 2") }
+        guard let raw2 = ABIDecoder.decode(types: [event.inputs[2].type], data: topic2)?.first else { throw WrapperError.invalidValue("event field 2") }
+        let value2 = try _cast(raw2, as: EthereumAddress.self)
+        let value3 = try _cast(decoded[0], as: EthereumAddress.self)
+        let value4 = try _cast(decoded[1], as: BigUInt.self)
+        let value5 = try _cast(decoded[2], as: BigUInt.self)
+        return OrderFillFeeV1Event(marketId: value0, orderId: value1, trader: value2, feeToken: value3, chargedRaw: value4, rebateCreditedRaw: value5)
+    }
+
     private static func _eventOrderFilled() throws -> ABI.Element.Event {
         guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
             if case .event(let value) = element { return value }
@@ -1603,6 +1700,41 @@ public enum IDiesisPerpsBook {
         let value5 = try _cast(decoded[2], as: BigUInt.self)
         let value6 = try _cast(decoded[3], as: BigUInt.self)
         return OrderPlacedEvent(orderId: value0, marketId: value1, trader: value2, side: value3, price: value4, amount: value5, flags: value6)
+    }
+
+    private static func _eventPerpMaintenanceFault() throws -> ABI.Element.Event {
+        guard let event = try _contract().abi.compactMap({ element -> ABI.Element.Event? in
+            if case .event(let value) = element { return value }
+            return nil
+        }).first(where: { $0.signature == "PerpMaintenanceFault(bytes32,bytes4,bytes32)" }) else { throw WrapperError.invalidValue("PerpMaintenanceFault(bytes32,bytes4,bytes32)") }
+        return event
+    }
+
+    /// Builds indexed topics for `PerpMaintenanceFault(bytes32,bytes4,bytes32)`. Reference values use their 32-byte topic hashes.
+    public static func filterPerpMaintenanceFault(filter0: Data? = nil) throws -> [EventFilterParameters.Topic?] {
+        let event = try _eventPerpMaintenanceFault()
+        var topics: [EventFilterParameters.Topic?] = [.string("0x" + event.topic.map { String(format: "%02x", $0) }.joined())]
+        if let value = filter0 {
+            guard value.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+            guard let topic = ABI.Element.Event.encodeTopic(input: event.inputs[0], value: value) else { throw WrapperError.encodingFailed("PerpMaintenanceFault(bytes32,bytes4,bytes32)") }
+            topics.append(topic)
+        } else { topics.append(nil) }
+        return topics
+    }
+
+    /// Decodes a `PerpMaintenanceFault(bytes32,bytes4,bytes32)` log.
+    public static func decodePerpMaintenanceFaultEvent(_ log: EventLog) throws -> PerpMaintenanceFaultEvent {
+        let event = try _eventPerpMaintenanceFault()
+        guard log.topics.count == 2 else { throw WrapperError.eventMismatch }
+        guard log.topics.first == event.topic else { throw WrapperError.eventMismatch }
+        guard let decoded = ABIDecoder.decode(types: event.inputs.filter { !$0.indexed }.map { $0.type }, data: log.data) else { throw WrapperError.invalidValue("PerpMaintenanceFault(bytes32,bytes4,bytes32)") }
+        let topic0 = log.topics[1]
+        guard topic0.count == 32 else { throw WrapperError.invalidValue("event topic 0") }
+        guard let raw0 = ABIDecoder.decode(types: [event.inputs[0].type], data: topic0)?.first else { throw WrapperError.invalidValue("event field 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        let value1 = try _cast(decoded[0], as: Data.self)
+        let value2 = try _cast(decoded[1], as: Data.self)
+        return PerpMaintenanceFaultEvent(marketId: value0, selector: value1, reasonHash: value2)
     }
 
     private static func _eventPositionClosed() throws -> ABI.Element.Event {

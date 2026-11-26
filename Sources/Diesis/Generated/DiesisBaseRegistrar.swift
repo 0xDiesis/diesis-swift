@@ -8,7 +8,7 @@ import web3swift
 /// Types and constants of the `DiesisBaseRegistrar` contract.
 public enum DiesisBaseRegistrar {
     /// JSON ABI of the `DiesisBaseRegistrar` contract.
-    public static let abi = #"[{"inputs":[{"internalType":"contract IDiesisNameRegistry","name":"registry_","type":"address"},{"internalType":"address payable","name":"treasury_","type":"address"},{"internalType":"address payable","name":"maintenance_","type":"address"},{"internalType":"address","name":"owner_","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"DEFAULT_YEAR_PRICE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"DS_NODE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"FOUR_CHAR_YEAR_PRICE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"GRACE_PERIOD","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_COMMITMENT_AGE","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_REGISTRATION_DURATION","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_COMMITMENT_AGE","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_REGISTRATION_DURATION","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PREMIUM_PERIOD","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"START_PREMIUM","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"THREE_CHAR_YEAR_PRICE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"}],"name":"available","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"burnShare","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"burnSink","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"commitment","type":"bytes32"}],"name":"commit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"commitment","type":"bytes32"}],"name":"commitmentAge","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"commitment","type":"bytes32"}],"name":"commitments","outputs":[{"internalType":"uint64","name":"timestamp","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"}],"name":"currentPremium","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultYearPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"fourCharYearPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"gracePeriod","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maintenance","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maintenanceShare","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"address","name":"owner_","type":"address"},{"internalType":"address","name":"resolver_","type":"address"},{"internalType":"bytes32","name":"recordsHash","type":"bytes32"},{"internalType":"uint64","name":"duration","type":"uint64"},{"internalType":"bytes32","name":"secret","type":"bytes32"},{"internalType":"bool","name":"reverseRecord","type":"bool"},{"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"makeCommitment","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"maxCommitmentAge","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxRegistrationDuration","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minCommitmentAge","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minRegistrationDuration","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"labelhash","type":"bytes32"}],"name":"nameExpires","outputs":[{"internalType":"uint64","name":"expiry","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"}],"name":"normalizeLabel","outputs":[{"internalType":"string","name":"normalized","type":"string"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"premiumPeriod","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"address","name":"owner_","type":"address"},{"internalType":"address","name":"resolver_","type":"address"},{"internalType":"uint64","name":"duration","type":"uint64"},{"internalType":"bytes32","name":"secret","type":"bytes32"},{"internalType":"bool","name":"reverseRecord","type":"bool"},{"internalType":"uint256","name":"nonce","type":"uint256"},{"internalType":"bytes[]","name":"resolverCalls","type":"bytes[]"}],"name":"register","outputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registry","outputs":[{"internalType":"contract IDiesisNameRegistry","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"uint64","name":"duration","type":"uint64"}],"name":"renew","outputs":[{"internalType":"uint64","name":"expiry","type":"uint64"}],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"uint64","name":"duration","type":"uint64"}],"name":"rentPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"labelhash","type":"bytes32"}],"name":"reservedLabels","outputs":[{"internalType":"bool","name":"reserved","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"reverseRegistrar","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"burnShare_","type":"uint256"},{"internalType":"uint256","name":"treasuryShare_","type":"uint256"},{"internalType":"uint256","name":"maintenanceShare_","type":"uint256"}],"name":"setFeeSplit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"threeCharYearPrice_","type":"uint256"},{"internalType":"uint256","name":"fourCharYearPrice_","type":"uint256"},{"internalType":"uint256","name":"defaultYearPrice_","type":"uint256"},{"internalType":"uint256","name":"startPremium_","type":"uint256"}],"name":"setPricing","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"bool","name":"reserved","type":"bool"}],"name":"setReservedLabel","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"reverseRegistrar_","type":"address"}],"name":"setReverseRegistrar","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"minCommitmentAge_","type":"uint256"},{"internalType":"uint256","name":"maxCommitmentAge_","type":"uint256"},{"internalType":"uint256","name":"minRegistrationDuration_","type":"uint256"},{"internalType":"uint256","name":"maxRegistrationDuration_","type":"uint256"},{"internalType":"uint256","name":"gracePeriod_","type":"uint256"},{"internalType":"uint256","name":"premiumPeriod_","type":"uint256"}],"name":"setTiming","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"startPremium","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"threeCharYearPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"treasuryShare","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"commitment","type":"bytes32"}],"name":"usedCommitments","outputs":[{"internalType":"bool","name":"used","type":"bool"}],"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"burnShare","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"treasuryShare","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"maintenanceShare","type":"uint256"}],"name":"FeeSplitUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"commitment","type":"bytes32"},{"indexed":false,"internalType":"uint64","name":"timestamp","type":"uint64"}],"name":"NameCommitted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"labelhash","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":false,"internalType":"string","name":"label","type":"string"},{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":false,"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"NameRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"labelhash","type":"bytes32"},{"indexed":false,"internalType":"string","name":"label","type":"string"},{"indexed":false,"internalType":"uint64","name":"expiry","type":"uint64"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"}],"name":"NameRenewed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"labelhash","type":"bytes32"},{"indexed":false,"internalType":"string","name":"label","type":"string"},{"indexed":false,"internalType":"bool","name":"reserved","type":"bool"}],"name":"NameReserved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"threeCharYearPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fourCharYearPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"defaultYearPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"startPremium","type":"uint256"}],"name":"PricingUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"labelhash","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"burnAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"treasuryAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"maintenanceAmount","type":"uint256"}],"name":"RentPaid","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"reverseRegistrar","type":"address"}],"name":"ReverseRegistrarChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"minCommitmentAge","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"maxCommitmentAge","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"minRegistrationDuration","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"maxRegistrationDuration","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"gracePeriod","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"premiumPeriod","type":"uint256"}],"name":"TimingUpdated","type":"event"},{"inputs":[],"name":"CommitmentMissing","type":"error"},{"inputs":[],"name":"CommitmentTooNew","type":"error"},{"inputs":[],"name":"CommitmentTooOld","type":"error"},{"inputs":[],"name":"CommitmentUsed","type":"error"},{"inputs":[],"name":"DurationOutOfRange","type":"error"},{"inputs":[],"name":"InsufficientPayment","type":"error"},{"inputs":[],"name":"InvalidLabel","type":"error"},{"inputs":[],"name":"NameUnavailable","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"OwnableInvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"OwnableUnauthorizedAccount","type":"error"},{"inputs":[],"name":"RecordsHashMismatch","type":"error"},{"inputs":[],"name":"ReservedLabel","type":"error"},{"inputs":[],"name":"ResolverCallFailed","type":"error"},{"inputs":[],"name":"ReverseRecordUnauthorized","type":"error"}]"#
+    public static let abi = #"[{"inputs":[{"internalType":"contract IDiesisNameRegistry","name":"registry_","type":"address"},{"internalType":"address payable","name":"treasury_","type":"address"},{"internalType":"address payable","name":"maintenance_","type":"address"},{"internalType":"address","name":"owner_","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"DEFAULT_YEAR_PRICE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"DS_NODE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"FOUR_CHAR_YEAR_PRICE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"GRACE_PERIOD","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_COMMITMENT_AGE","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_REGISTRATION_DURATION","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_COMMITMENT_AGE","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_REGISTRATION_DURATION","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PREMIUM_PERIOD","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"START_PREMIUM","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"THREE_CHAR_YEAR_PRICE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"}],"name":"available","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"burnShare","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"burnSink","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"commitment","type":"bytes32"}],"name":"commit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"commitment","type":"bytes32"}],"name":"commitmentAge","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"commitment","type":"bytes32"}],"name":"commitments","outputs":[{"internalType":"uint64","name":"timestamp","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"}],"name":"currentPremium","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultYearPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"fourCharYearPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"gracePeriod","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"}],"name":"labelSkeleton","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"}],"name":"lookalikeHolder","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maintenance","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maintenanceShare","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"address","name":"owner_","type":"address"},{"internalType":"address","name":"resolver_","type":"address"},{"internalType":"bytes32","name":"recordsHash","type":"bytes32"},{"internalType":"uint64","name":"duration","type":"uint64"},{"internalType":"bytes32","name":"secret","type":"bytes32"},{"internalType":"bool","name":"reverseRecord","type":"bool"},{"internalType":"uint256","name":"nonce","type":"uint256"}],"name":"makeCommitment","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"maxCommitmentAge","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxRegistrationDuration","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minCommitmentAge","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minRegistrationDuration","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"labelhash","type":"bytes32"}],"name":"nameExpires","outputs":[{"internalType":"uint64","name":"expiry","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"}],"name":"normalizeLabel","outputs":[{"internalType":"string","name":"normalized","type":"string"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"premiumPeriod","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"address","name":"owner_","type":"address"},{"internalType":"address","name":"resolver_","type":"address"},{"internalType":"uint64","name":"duration","type":"uint64"},{"internalType":"bytes32","name":"secret","type":"bytes32"},{"internalType":"bool","name":"reverseRecord","type":"bool"},{"internalType":"uint256","name":"nonce","type":"uint256"},{"internalType":"bytes[]","name":"resolverCalls","type":"bytes[]"}],"name":"register","outputs":[{"internalType":"bytes32","name":"node","type":"bytes32"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"skeletonHash","type":"bytes32"}],"name":"registeredSkeletonHolders","outputs":[{"internalType":"bytes32","name":"labelhash","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"registry","outputs":[{"internalType":"contract IDiesisNameRegistry","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"uint64","name":"duration","type":"uint64"}],"name":"renew","outputs":[{"internalType":"uint64","name":"expiry","type":"uint64"}],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"uint64","name":"duration","type":"uint64"}],"name":"rentPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"labelhash","type":"bytes32"}],"name":"reservedLabels","outputs":[{"internalType":"bool","name":"reserved","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"skeletonHash","type":"bytes32"}],"name":"reservedSkeletonHolders","outputs":[{"internalType":"bytes32","name":"labelhash","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"reverseRegistrar","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"burnShare_","type":"uint256"},{"internalType":"uint256","name":"treasuryShare_","type":"uint256"},{"internalType":"uint256","name":"maintenanceShare_","type":"uint256"}],"name":"setFeeSplit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"threeCharYearPrice_","type":"uint256"},{"internalType":"uint256","name":"fourCharYearPrice_","type":"uint256"},{"internalType":"uint256","name":"defaultYearPrice_","type":"uint256"},{"internalType":"uint256","name":"startPremium_","type":"uint256"}],"name":"setPricing","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"label","type":"string"},{"internalType":"bool","name":"reserved","type":"bool"}],"name":"setReservedLabel","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"reverseRegistrar_","type":"address"}],"name":"setReverseRegistrar","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"minCommitmentAge_","type":"uint256"},{"internalType":"uint256","name":"maxCommitmentAge_","type":"uint256"},{"internalType":"uint256","name":"minRegistrationDuration_","type":"uint256"},{"internalType":"uint256","name":"maxRegistrationDuration_","type":"uint256"},{"internalType":"uint256","name":"gracePeriod_","type":"uint256"},{"internalType":"uint256","name":"premiumPeriod_","type":"uint256"}],"name":"setTiming","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"startPremium","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"threeCharYearPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"treasuryShare","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"commitment","type":"bytes32"}],"name":"usedCommitments","outputs":[{"internalType":"bool","name":"used","type":"bool"}],"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"burnShare","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"treasuryShare","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"maintenanceShare","type":"uint256"}],"name":"FeeSplitUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"commitment","type":"bytes32"},{"indexed":false,"internalType":"uint64","name":"timestamp","type":"uint64"}],"name":"NameCommitted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"labelhash","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"node","type":"bytes32"},{"indexed":false,"internalType":"string","name":"label","type":"string"},{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":false,"internalType":"uint64","name":"expiry","type":"uint64"}],"name":"NameRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"labelhash","type":"bytes32"},{"indexed":false,"internalType":"string","name":"label","type":"string"},{"indexed":false,"internalType":"uint64","name":"expiry","type":"uint64"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"}],"name":"NameRenewed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"labelhash","type":"bytes32"},{"indexed":false,"internalType":"string","name":"label","type":"string"},{"indexed":false,"internalType":"bool","name":"reserved","type":"bool"}],"name":"NameReserved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"threeCharYearPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fourCharYearPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"defaultYearPrice","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"startPremium","type":"uint256"}],"name":"PricingUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"labelhash","type":"bytes32"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"burnAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"treasuryAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"maintenanceAmount","type":"uint256"}],"name":"RentPaid","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"reverseRegistrar","type":"address"}],"name":"ReverseRegistrarChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"minCommitmentAge","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"maxCommitmentAge","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"minRegistrationDuration","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"maxRegistrationDuration","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"gracePeriod","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"premiumPeriod","type":"uint256"}],"name":"TimingUpdated","type":"event"},{"inputs":[],"name":"CommitmentMissing","type":"error"},{"inputs":[],"name":"CommitmentTooNew","type":"error"},{"inputs":[],"name":"CommitmentTooOld","type":"error"},{"inputs":[],"name":"CommitmentUsed","type":"error"},{"inputs":[],"name":"DurationOutOfRange","type":"error"},{"inputs":[],"name":"InsufficientPayment","type":"error"},{"inputs":[],"name":"InvalidLabel","type":"error"},{"inputs":[{"internalType":"bytes32","name":"heldBy","type":"bytes32"}],"name":"LookalikeName","type":"error"},{"inputs":[],"name":"NameUnavailable","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"OwnableInvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"OwnableUnauthorizedAccount","type":"error"},{"inputs":[],"name":"RecordsHashMismatch","type":"error"},{"inputs":[],"name":"ReservedLabel","type":"error"},{"inputs":[],"name":"ResolverCallFailed","type":"error"},{"inputs":[],"name":"ReverseRecordUnauthorized","type":"error"}]"#
 
     /// Canonical signature of `DEFAULT_YEAR_PRICE()`.
     public static let DEFAULT_YEAR_PRICESignature = "DEFAULT_YEAR_PRICE()"
@@ -136,6 +136,18 @@ public enum DiesisBaseRegistrar {
     /// Selector of `gracePeriod()`.
     public static let gracePeriodSelector = Data([0xa0, 0x6d, 0xb7, 0xdc])
 
+    /// Canonical signature of `labelSkeleton(string)`.
+    public static let labelSkeletonSignature = "labelSkeleton(string)"
+
+    /// Selector of `labelSkeleton(string)`.
+    public static let labelSkeletonSelector = Data([0xf0, 0xc9, 0x42, 0x64])
+
+    /// Canonical signature of `lookalikeHolder(string)`.
+    public static let lookalikeHolderSignature = "lookalikeHolder(string)"
+
+    /// Selector of `lookalikeHolder(string)`.
+    public static let lookalikeHolderSelector = Data([0xee, 0x02, 0xc3, 0x4f])
+
     /// Canonical signature of `maintenance()`.
     public static let maintenanceSignature = "maintenance()"
 
@@ -208,6 +220,12 @@ public enum DiesisBaseRegistrar {
     /// Selector of `register(string,address,address,uint64,bytes32,bool,uint256,bytes[])`.
     public static let registerSelector = Data([0x7e, 0x58, 0xcb, 0x6f])
 
+    /// Canonical signature of `registeredSkeletonHolders(bytes32)`.
+    public static let registeredSkeletonHoldersSignature = "registeredSkeletonHolders(bytes32)"
+
+    /// Selector of `registeredSkeletonHolders(bytes32)`.
+    public static let registeredSkeletonHoldersSelector = Data([0xda, 0x69, 0x96, 0xb2])
+
     /// Canonical signature of `registry()`.
     public static let registrySignature = "registry()"
 
@@ -237,6 +255,12 @@ public enum DiesisBaseRegistrar {
 
     /// Selector of `reservedLabels(bytes32)`.
     public static let reservedLabelsSelector = Data([0x68, 0xe8, 0x11, 0x5b])
+
+    /// Canonical signature of `reservedSkeletonHolders(bytes32)`.
+    public static let reservedSkeletonHoldersSignature = "reservedSkeletonHolders(bytes32)"
+
+    /// Selector of `reservedSkeletonHolders(bytes32)`.
+    public static let reservedSkeletonHoldersSelector = Data([0x92, 0xd0, 0x69, 0x9c])
 
     /// Canonical signature of `reverseRegistrar()`.
     public static let reverseRegistrarSignature = "reverseRegistrar()"
@@ -412,6 +436,12 @@ public enum DiesisBaseRegistrar {
     /// Selector of the `InvalidLabel()` error.
     public static let invalidLabelErrorSelector = Data([0x3d, 0x36, 0xcb, 0x8d])
 
+    /// Canonical signature of the `LookalikeName(bytes32)` error.
+    public static let lookalikeNameErrorSignature = "LookalikeName(bytes32)"
+
+    /// Selector of the `LookalikeName(bytes32)` error.
+    public static let lookalikeNameErrorSelector = Data([0xfb, 0x80, 0xe2, 0x13])
+
     /// Canonical signature of the `NameUnavailable()` error.
     public static let nameUnavailableErrorSignature = "NameUnavailable()"
 
@@ -499,6 +529,24 @@ public enum DiesisBaseRegistrar {
         }
     }
 
+    /// Arguments of `labelSkeleton(string)`.
+    public struct LabelSkeletonParams: Sendable, Hashable {
+        public let label: String
+
+        public init(label: String) {
+            self.label = label
+        }
+    }
+
+    /// Arguments of `lookalikeHolder(string)`.
+    public struct LookalikeHolderParams: Sendable, Hashable {
+        public let label: String
+
+        public init(label: String) {
+            self.label = label
+        }
+    }
+
     /// Arguments of `makeCommitment(string,address,address,bytes32,uint64,bytes32,bool,uint256)`.
     public struct MakeCommitmentParams: Sendable, Hashable {
         public let label: String
@@ -563,6 +611,17 @@ public enum DiesisBaseRegistrar {
         }
     }
 
+    /// Arguments of `registeredSkeletonHolders(bytes32)`.
+    ///
+    /// Most recently registered label for each lookalike skeleton hash.
+    public struct RegisteredSkeletonHoldersParams: Sendable, Hashable {
+        public let skeletonHash: Data
+
+        public init(skeletonHash: Data) {
+            self.skeletonHash = skeletonHash
+        }
+    }
+
     /// Arguments of `renew(string,uint64)`.
     public struct RenewParams: Sendable, Hashable {
         public let label: String
@@ -591,6 +650,17 @@ public enum DiesisBaseRegistrar {
 
         public init(labelhash: Data) {
             self.labelhash = labelhash
+        }
+    }
+
+    /// Arguments of `reservedSkeletonHolders(bytes32)`.
+    ///
+    /// Reserved label currently claiming each lookalike skeleton hash.
+    public struct ReservedSkeletonHoldersParams: Sendable, Hashable {
+        public let skeletonHash: Data
+
+        public init(skeletonHash: Data) {
+            self.skeletonHash = skeletonHash
         }
     }
 
@@ -856,6 +926,15 @@ public enum DiesisBaseRegistrar {
     /// Arguments of the `InvalidLabel()` error.
     public struct InvalidLabelError: Sendable, Hashable {
         public init() {}
+    }
+
+    /// Arguments of the `LookalikeName(bytes32)` error.
+    public struct LookalikeNameError: Sendable, Hashable {
+        public let heldBy: Data
+
+        public init(heldBy: Data) {
+            self.heldBy = heldBy
+        }
     }
 
     /// Arguments of the `NameUnavailable()` error.
@@ -1467,6 +1546,58 @@ public enum DiesisBaseRegistrar {
         return try _decodeGracePeriodValues(_contract().decodeReturnData("gracePeriod()", data: data))
     }
 
+    /// ABI-encodes `labelSkeleton(string)` for an offline transaction.
+    public static func encodeLabelSkeleton(_ args: LabelSkeletonParams) throws -> Data {
+        guard let data = try _contract().method("labelSkeleton(string)", parameters: [args.label], extraData: nil) else { throw WrapperError.encodingFailed("labelSkeleton(string)") }
+        return data
+    }
+
+    /// Decoded result of `labelSkeleton(string)`.
+    public struct LabelSkeletonResult: Sendable, Hashable {
+        public let string: String
+
+        public init(string: String) {
+            self.string = string
+        }
+    }
+
+    private static func _decodeLabelSkeletonValues(_ values: [String: Any]) throws -> LabelSkeletonResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: String.self)
+        return LabelSkeletonResult(string: value0)
+    }
+
+    /// Decodes raw return data for `labelSkeleton(string)` offline.
+    public static func decodeLabelSkeletonResult(_ data: Data) throws -> LabelSkeletonResult {
+        return try _decodeLabelSkeletonValues(_contract().decodeReturnData("labelSkeleton(string)", data: data))
+    }
+
+    /// ABI-encodes `lookalikeHolder(string)` for an offline transaction.
+    public static func encodeLookalikeHolder(_ args: LookalikeHolderParams) throws -> Data {
+        guard let data = try _contract().method("lookalikeHolder(string)", parameters: [args.label], extraData: nil) else { throw WrapperError.encodingFailed("lookalikeHolder(string)") }
+        return data
+    }
+
+    /// Decoded result of `lookalikeHolder(string)`.
+    public struct LookalikeHolderResult: Sendable, Hashable {
+        public let bytes32: Data
+
+        public init(bytes32: Data) {
+            self.bytes32 = bytes32
+        }
+    }
+
+    private static func _decodeLookalikeHolderValues(_ values: [String: Any]) throws -> LookalikeHolderResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        return LookalikeHolderResult(bytes32: value0)
+    }
+
+    /// Decodes raw return data for `lookalikeHolder(string)` offline.
+    public static func decodeLookalikeHolderResult(_ data: Data) throws -> LookalikeHolderResult {
+        return try _decodeLookalikeHolderValues(_contract().decodeReturnData("lookalikeHolder(string)", data: data))
+    }
+
     /// ABI-encodes `maintenance()` for an offline transaction.
     public static func encodeMaintenance() throws -> Data {
         guard let data = try _contract().method("maintenance()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("maintenance()") }
@@ -1790,6 +1921,35 @@ public enum DiesisBaseRegistrar {
         return try _decodeRegisterValues(_contract().decodeReturnData("register(string,address,address,uint64,bytes32,bool,uint256,bytes[])", data: data))
     }
 
+    /// ABI-encodes `registeredSkeletonHolders(bytes32)` for an offline transaction.
+    public static func encodeRegisteredSkeletonHolders(_ args: RegisteredSkeletonHoldersParams) throws -> Data {
+        guard args.skeletonHash.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+        guard let data = try _contract().method("registeredSkeletonHolders(bytes32)", parameters: [args.skeletonHash], extraData: nil) else { throw WrapperError.encodingFailed("registeredSkeletonHolders(bytes32)") }
+        return data
+    }
+
+    /// Decoded result of `registeredSkeletonHolders(bytes32)`.
+    ///
+    /// Most recently registered label for each lookalike skeleton hash.
+    public struct RegisteredSkeletonHoldersResult: Sendable, Hashable {
+        public let labelhash: Data
+
+        public init(labelhash: Data) {
+            self.labelhash = labelhash
+        }
+    }
+
+    private static func _decodeRegisteredSkeletonHoldersValues(_ values: [String: Any]) throws -> RegisteredSkeletonHoldersResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        return RegisteredSkeletonHoldersResult(labelhash: value0)
+    }
+
+    /// Decodes raw return data for `registeredSkeletonHolders(bytes32)` offline.
+    public static func decodeRegisteredSkeletonHoldersResult(_ data: Data) throws -> RegisteredSkeletonHoldersResult {
+        return try _decodeRegisteredSkeletonHoldersValues(_contract().decodeReturnData("registeredSkeletonHolders(bytes32)", data: data))
+    }
+
     /// ABI-encodes `registry()` for an offline transaction.
     public static func encodeRegistry() throws -> Data {
         guard let data = try _contract().method("registry()", parameters: [], extraData: nil) else { throw WrapperError.encodingFailed("registry()") }
@@ -1923,6 +2083,35 @@ public enum DiesisBaseRegistrar {
     /// Decodes raw return data for `reservedLabels(bytes32)` offline.
     public static func decodeReservedLabelsResult(_ data: Data) throws -> ReservedLabelsResult {
         return try _decodeReservedLabelsValues(_contract().decodeReturnData("reservedLabels(bytes32)", data: data))
+    }
+
+    /// ABI-encodes `reservedSkeletonHolders(bytes32)` for an offline transaction.
+    public static func encodeReservedSkeletonHolders(_ args: ReservedSkeletonHoldersParams) throws -> Data {
+        guard args.skeletonHash.count == 32 else { throw WrapperError.encodingFailed("bytes32 length") }
+        guard let data = try _contract().method("reservedSkeletonHolders(bytes32)", parameters: [args.skeletonHash], extraData: nil) else { throw WrapperError.encodingFailed("reservedSkeletonHolders(bytes32)") }
+        return data
+    }
+
+    /// Decoded result of `reservedSkeletonHolders(bytes32)`.
+    ///
+    /// Reserved label currently claiming each lookalike skeleton hash.
+    public struct ReservedSkeletonHoldersResult: Sendable, Hashable {
+        public let labelhash: Data
+
+        public init(labelhash: Data) {
+            self.labelhash = labelhash
+        }
+    }
+
+    private static func _decodeReservedSkeletonHoldersValues(_ values: [String: Any]) throws -> ReservedSkeletonHoldersResult {
+        guard let raw0 = values["0"] else { throw WrapperError.invalidValue("output 0") }
+        let value0 = try _cast(raw0, as: Data.self)
+        return ReservedSkeletonHoldersResult(labelhash: value0)
+    }
+
+    /// Decodes raw return data for `reservedSkeletonHolders(bytes32)` offline.
+    public static func decodeReservedSkeletonHoldersResult(_ data: Data) throws -> ReservedSkeletonHoldersResult {
+        return try _decodeReservedSkeletonHoldersValues(_contract().decodeReturnData("reservedSkeletonHolders(bytes32)", data: data))
     }
 
     /// ABI-encodes `reverseRegistrar()` for an offline transaction.
@@ -2418,6 +2607,24 @@ public enum DiesisBaseRegistrar {
             return try DiesisBaseRegistrar._decodeGracePeriodValues(await operation.callContractMethod())
         }
 
+        /// Calls `labelSkeleton(string)` and decodes its result.
+        public func readLabelSkeleton(_ args: LabelSkeletonParams, transaction: CodableTransaction? = nil) async throws -> LabelSkeletonResult {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            tx.to = address
+            tx.data = try DiesisBaseRegistrar.encodeLabelSkeleton(args)
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "labelSkeleton(string)")
+            return try DiesisBaseRegistrar._decodeLabelSkeletonValues(await operation.callContractMethod())
+        }
+
+        /// Calls `lookalikeHolder(string)` and decodes its result.
+        public func readLookalikeHolder(_ args: LookalikeHolderParams, transaction: CodableTransaction? = nil) async throws -> LookalikeHolderResult {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            tx.to = address
+            tx.data = try DiesisBaseRegistrar.encodeLookalikeHolder(args)
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "lookalikeHolder(string)")
+            return try DiesisBaseRegistrar._decodeLookalikeHolderValues(await operation.callContractMethod())
+        }
+
         /// Calls `maintenance()` and decodes its result.
         public func readMaintenance(transaction: CodableTransaction? = nil) async throws -> MaintenanceResult {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
@@ -2517,6 +2724,15 @@ public enum DiesisBaseRegistrar {
             return try DiesisBaseRegistrar._decodePremiumPeriodValues(await operation.callContractMethod())
         }
 
+        /// Calls `registeredSkeletonHolders(bytes32)` and decodes its result.
+        public func readRegisteredSkeletonHolders(_ args: RegisteredSkeletonHoldersParams, transaction: CodableTransaction? = nil) async throws -> RegisteredSkeletonHoldersResult {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            tx.to = address
+            tx.data = try DiesisBaseRegistrar.encodeRegisteredSkeletonHolders(args)
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "registeredSkeletonHolders(bytes32)")
+            return try DiesisBaseRegistrar._decodeRegisteredSkeletonHoldersValues(await operation.callContractMethod())
+        }
+
         /// Calls `registry()` and decodes its result.
         public func readRegistry(transaction: CodableTransaction? = nil) async throws -> RegistryResult {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
@@ -2542,6 +2758,15 @@ public enum DiesisBaseRegistrar {
             tx.data = try DiesisBaseRegistrar.encodeReservedLabels(args)
             let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "reservedLabels(bytes32)")
             return try DiesisBaseRegistrar._decodeReservedLabelsValues(await operation.callContractMethod())
+        }
+
+        /// Calls `reservedSkeletonHolders(bytes32)` and decodes its result.
+        public func readReservedSkeletonHolders(_ args: ReservedSkeletonHoldersParams, transaction: CodableTransaction? = nil) async throws -> ReservedSkeletonHoldersResult {
+            var tx = transaction ?? CodableTransaction(to: address, data: Data())
+            tx.to = address
+            tx.data = try DiesisBaseRegistrar.encodeReservedSkeletonHolders(args)
+            let operation = ReadOperation(transaction: tx, web3: web3, contract: contract, method: "reservedSkeletonHolders(bytes32)")
+            return try DiesisBaseRegistrar._decodeReservedSkeletonHoldersValues(await operation.callContractMethod())
         }
 
         /// Calls `reverseRegistrar()` and decodes its result.
@@ -2609,20 +2834,20 @@ public enum DiesisBaseRegistrar {
         }
 
         /// Prepares `register(string,address,address,uint64,bytes32,bool,uint256,bytes[])` with transaction options for signing or submission.
-        public func prepareRegister(_ args: RegisterParams, transaction: CodableTransaction? = nil, value: BigUInt = 0) throws -> WriteOperation {
+        public func prepareRegister(_ args: RegisterParams, transaction: CodableTransaction? = nil, value: BigUInt? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             tx.to = address
             tx.data = try DiesisBaseRegistrar.encodeRegister(args)
-            tx.value = value
+            if let value { tx.value = value }
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "register(string,address,address,uint64,bytes32,bool,uint256,bytes[])")
         }
 
         /// Prepares `renew(string,uint64)` with transaction options for signing or submission.
-        public func prepareRenew(_ args: RenewParams, transaction: CodableTransaction? = nil, value: BigUInt = 0) throws -> WriteOperation {
+        public func prepareRenew(_ args: RenewParams, transaction: CodableTransaction? = nil, value: BigUInt? = nil) throws -> WriteOperation {
             var tx = transaction ?? CodableTransaction(to: address, data: Data())
             tx.to = address
             tx.data = try DiesisBaseRegistrar.encodeRenew(args)
-            tx.value = value
+            if let value { tx.value = value }
             return WriteOperation(transaction: tx, web3: web3, contract: contract, method: "renew(string,uint64)")
         }
 
@@ -3064,6 +3289,8 @@ public enum DiesisBaseRegistrar {
         case insufficientPayment(InsufficientPaymentError)
         /// `InvalidLabel()`.
         case invalidLabel(InvalidLabelError)
+        /// `LookalikeName(bytes32)`.
+        case lookalikeName(LookalikeNameError)
         /// `NameUnavailable()`.
         case nameUnavailable(NameUnavailableError)
         /// `OwnableInvalidOwner(address)`.
@@ -3133,6 +3360,15 @@ public enum DiesisBaseRegistrar {
                 return nil
             }).first(where: { $0.signature == "InvalidLabel()" }), error.decodeEthError(Data(data.dropFirst(4))) != nil else { throw WrapperError.invalidValue("InvalidLabel()") }
             return .invalidLabel(InvalidLabelError())
+        }
+        if selector == Data([0xfb, 0x80, 0xe2, 0x13]) {
+            guard let error = contract.abi.compactMap({ element -> ABI.Element.EthError? in
+                if case .error(let value) = element { return value }
+                return nil
+            }).first(where: { $0.signature == "LookalikeName(bytes32)" }), let values = error.decodeEthError(Data(data.dropFirst(4))) else { throw WrapperError.invalidValue("LookalikeName(bytes32)") }
+            guard let raw0 = values["0"] else { throw WrapperError.invalidValue("error field 0") }
+            let value0 = try _cast(raw0, as: Data.self)
+            return .lookalikeName(LookalikeNameError(heldBy: value0))
         }
         if selector == Data([0x05, 0xa2, 0xa9, 0x6e]) {
             guard let error = contract.abi.compactMap({ element -> ABI.Element.EthError? in
